@@ -1,0 +1,174 @@
+{
+  "classification": {
+    "diagram_type": "software_architecture",
+    "domain": "microservices",
+    "complexity": "medium",
+    "cloud_provider": "AWS"
+  },
+  "components": [
+    {
+      "name": "API Gateway",
+      "type": "gateway"
+    },
+    {
+      "name": "Database",
+      "type": "database"
+    },
+    {
+      "name": "Cloud Storage",
+      "type": "service"
+    },
+    {
+      "name": "Monitoring",
+      "type": "monitoring"
+    },
+    {
+      "name": "Security",
+      "type": "security"
+    }
+  ],
+  "relationships": [
+    {
+      "from": "API Gateway",
+      "to": "Auth Service",
+      "type": "calls"
+    },
+    {
+      "from": "Auth Service",
+      "to": "Database",
+      "type": "writes",
+      "condition": "on user login"
+    },
+    {
+      "from": "Database",
+      "to": "App Server",
+      "type": "reads",
+      "condition": "on data query"
+    },
+    {
+      "from": "App Server",
+      "to": "Architecture Diagram",
+      "type": "calls"
+    },
+    {
+      "from": "Architecture Diagram",
+      "to": "Database",
+      "type": "writes",
+      "condition": "on data update"
+    }
+  ],
+  "component_count": 5,
+  "relationship_count": 5,
+  "graph_queries": {
+    "entry_points": {
+      "query": "What are the entry points to the system?",
+      "entry_points": [
+        "API Gateway",
+        "Cloud Storage",
+        "Monitoring",
+        "Security"
+      ]
+    },
+    "critical_path": {
+      "query": "Which components are single points of failure?",
+      "critical_nodes": [
+        "Database",
+        "Auth Service"
+      ],
+      "count": 2
+    },
+    "data_flow": {
+      "query": "Trace data flow from entry point to database",
+      "paths": [
+        {
+          "from": "API Gateway",
+          "to": "Database",
+          "path": [
+            "API Gateway",
+            "Auth Service",
+            "Database"
+          ],
+          "steps": 2
+        }
+      ]
+    },
+    "failure_impact": {
+      "API Gateway": {
+        "query": "What fails if 'API Gateway' goes down?",
+        "directly_affected": [
+          "Auth Service"
+        ],
+        "all_affected": [
+          "Database",
+          "Architecture Diagram",
+          "Auth Service",
+          "App Server"
+        ],
+        "affected_count": 4
+      },
+      "Database": {
+        "query": "What fails if 'Database' goes down?",
+        "directly_affected": [
+          "App Server"
+        ],
+        "all_affected": [
+          "Architecture Diagram",
+          "App Server"
+        ],
+        "affected_count": 2
+      },
+      "Cloud Storage": {
+        "query": "What fails if 'Cloud Storage' goes down?",
+        "directly_affected": [],
+        "all_affected": [],
+        "affected_count": 0
+      },
+      "Monitoring": {
+        "query": "What fails if 'Monitoring' goes down?",
+        "directly_affected": [],
+        "all_affected": [],
+        "affected_count": 0
+      },
+      "Security": {
+        "query": "What fails if 'Security' goes down?",
+        "directly_affected": [],
+        "all_affected": [],
+        "affected_count": 0
+      },
+      "Auth Service": {
+        "query": "What fails if 'Auth Service' goes down?",
+        "directly_affected": [
+          "Database"
+        ],
+        "all_affected": [
+          "Database",
+          "Architecture Diagram",
+          "App Server"
+        ],
+        "affected_count": 3
+      },
+      "App Server": {
+        "query": "What fails if 'App Server' goes down?",
+        "directly_affected": [
+          "Architecture Diagram"
+        ],
+        "all_affected": [
+          "Architecture Diagram",
+          "Database"
+        ],
+        "affected_count": 2
+      },
+      "Architecture Diagram": {
+        "query": "What fails if 'Architecture Diagram' goes down?",
+        "directly_affected": [
+          "Database"
+        ],
+        "all_affected": [
+          "Database",
+          "App Server"
+        ],
+        "affected_count": 2
+      }
+    }
+  }
+}
