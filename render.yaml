@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: diagramiq
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: standard
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: PYTHONUNBUFFERED
+        value: "1"

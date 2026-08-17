@@ -1,162 +1,510 @@
 {
-  "query": "What happens if the Auth Service fails?",
-  "answer": "If the Auth Service goes down, it would directly affect the Database component as it is connected directly to the Auth Service in the architecture diagram. Additionally, the App Server and the entire Architecture Diagram may also be affected due to their connections to the Auth Service.",
-  "claims": [
+  "status": "success",
+  "query": "Trace data flow from entry point to database",
+  "diagram_type": "UML_CLASS",
+  "domain": "object_oriented_design",
+  "complexity": "HIGH",
+  "direct_answer": "This **UML Class Diagram** models an E-Commerce domain with **9 core classes**: Use Case diagram of an Online Shopping System, <<Service> >, <Subsystem >, Registered, Identity, Web, New, PayPal, Use Case Diagrams. 1) **Class Responsibilities**: Each class encapsulates distinct domain responsibilities \u2014 **Use Case diagram of an Online Shopping System** (state attributes, methods); **<<Service> >** (attributes [Authentication], methods); **<Subsystem >** (attributes [Online Shopping, View Items, <<include> >], methods); **Registered** (attributes [customer], methods). 2) **Whole-Part Coupling**: The core fulfillment lifecycle couples **Delivery** to **Order** (`1..1`) and **Payment**, ensuring atomic order dispatch. 3) **Catalog Aggregation**: **Order** and **Product** maintain aggregation references with **Items**, decoupling catalog inventory from active shopping carts. 4) **Multiplicity & Interactions**: Multiplicity constraints like `1..1` (Order to Delivery) and `1..*` (Customer to Orders) govern transactional integrity, while action dependencies reflect operational workflows (Customer *Pays* via Payment, Seller *Collects* revenue, Customer *Selects* Products).",
+  "grounded_claims": [
     {
-      "claim": "The Auth Service's failure would lead to a direct impact on the Database.",
-      "supported_by": "Database",
-      "region": "middle-center",
-      "confidence": "high",
-      "bbox": {
-        "x1": 438,
-        "y1": 244,
-        "x2": 876,
-        "y2": 489,
-        "region": "middle-center"
-      }
+      "claim_id": "claim_1",
+      "claim": "Class 'Use Case diagram of an Online Shopping System' encapsulates 0 attributes (identifiers) and 0 operations (CRUD operations)",
+      "grounding_entities": [
+        "Use Case diagram of an Online Shopping System"
+      ],
+      "bounding_box": [
+        0,
+        25,
+        459,
+        57
+      ],
+      "region": "top-left",
+      "confidence": "HIGH",
+      "pedagogical_note": "Grounded in diagram entity 'Use Case diagram of an Online Shopping System' (top-left region)."
     },
     {
-      "claim": "An indirect impact on other components in the architecture diagram could occur if the Auth Service is unavailable.",
-      "supported_by": "App Server, Architecture Diagram",
+      "claim_id": "claim_2",
+      "claim": "Class '<<Service> >' encapsulates 1 attributes (Authentication) and 0 operations (CRUD operations)",
+      "grounding_entities": [
+        "<<Service> >"
+      ],
+      "bounding_box": [
+        811,
+        63,
+        957,
+        103
+      ],
+      "region": "top-right",
+      "confidence": "HIGH",
+      "pedagogical_note": "Grounded in diagram entity '<<Service> >' (top-right region)."
+    },
+    {
+      "claim_id": "claim_3",
+      "claim": "Class '<Subsystem >' encapsulates 10 attributes (Online Shopping, View Items) and 0 operations (CRUD operations)",
+      "grounding_entities": [
+        "<Subsystem >"
+      ],
+      "bounding_box": [
+        235,
+        50,
+        657,
+        501
+      ],
       "region": "middle-center",
-      "confidence": "high",
-      "bbox": {
-        "x1": 438,
-        "y1": 244,
-        "x2": 876,
-        "y2": 489,
-        "region": "middle-center"
-      }
+      "confidence": "HIGH",
+      "pedagogical_note": "Grounded in diagram entity '<Subsystem >' (middle-center region)."
+    },
+    {
+      "claim_id": "claim_4",
+      "claim": "Class 'Registered' encapsulates 1 attributes (customer) and 0 operations (CRUD operations)",
+      "grounding_entities": [
+        "Registered"
+      ],
+      "bounding_box": [
+        207,
+        153,
+        315,
+        198
+      ],
+      "region": "middle-left",
+      "confidence": "HIGH",
+      "pedagogical_note": "Grounded in diagram entity 'Registered' (middle-left region)."
+    },
+    {
+      "claim_id": "claim_5",
+      "claim": "Class 'Identity' encapsulates 3 attributes (Provider, Credit Payment) and 0 operations (CRUD operations)",
+      "grounding_entities": [
+        "Identity"
+      ],
+      "bounding_box": [
+        802,
+        157,
+        958,
+        324
+      ],
+      "region": "middle-right",
+      "confidence": "HIGH",
+      "pedagogical_note": "Grounded in diagram entity 'Identity' (middle-right region)."
+    },
+    {
+      "claim_id": "claim_6",
+      "claim": "Class 'Web' encapsulates 1 attributes (customer) and 0 operations (CRUD operations)",
+      "grounding_entities": [
+        "Web"
+      ],
+      "bounding_box": [
+        45,
+        220,
+        141,
+        264
+      ],
+      "region": "middle-left",
+      "confidence": "HIGH",
+      "pedagogical_note": "Grounded in diagram entity 'Web' (middle-left region)."
     }
+  ],
+  "diagram_highlights": [
+    "Use Case diagram of an Online Shopping System",
+    "<<Service> >",
+    "<Subsystem >",
+    "Registered",
+    "Identity"
   ],
   "follow_up_questions": [
-    "How would this impact the overall functionality of the system?",
-    "What measures are in place to ensure high availability and redundancy for critical components like the Auth Service?"
+    "How does replacing direct class composition with Dependency Injection improve testability in this domain?",
+    "What design pattern (e.g. Repository or Unit of Work) should manage the persistence of Order and Items?",
+    "How would you model polymorphic payment methods (CreditCard, PayPal, Crypto) extending the Payment class?"
   ],
+  "overall_confidence": 1.0,
+  "image_dimensions": {
+    "width": 1001,
+    "height": 501
+  },
+  "metrics": {
+    "mgf_score": 1.0,
+    "claim_grounding_rate": 1.0,
+    "total_components": 9,
+    "total_relationships": 19
+  },
   "reasoning_trace": {
-    "stage1_components": 5,
-    "stage2_relationships": 5,
-    "stage3_classification": {
-      "diagram_type": "software_architecture",
-      "domain": "microservices",
-      "complexity": "medium",
-      "cloud_provider": "AWS"
-    },
-    "stage4_graph_queries": {
-      "entry_points": {
-        "query": "What are the entry points to the system?",
-        "entry_points": [
-          "API Gateway",
-          "Cloud Storage",
-          "Monitoring",
-          "Security"
-        ]
-      },
-      "critical_path": {
-        "query": "Which components are single points of failure?",
-        "critical_nodes": [
-          "Database",
-          "Auth Service"
-        ],
-        "count": 2
-      },
-      "data_flow": {
-        "query": "Trace data flow from entry point to database",
-        "paths": [
-          {
-            "from": "API Gateway",
-            "to": "Database",
-            "path": [
-              "API Gateway",
-              "Auth Service",
-              "Database"
-            ],
-            "steps": 2
-          }
-        ]
-      },
-      "failure_impact": {
-        "API Gateway": {
-          "query": "What fails if 'API Gateway' goes down?",
-          "directly_affected": [
-            "Auth Service"
-          ],
-          "all_affected": [
-            "Database",
-            "Architecture Diagram",
-            "Auth Service",
-            "App Server"
-          ],
-          "affected_count": 4
+    "stage1_components": 9,
+    "stage2_relationships": 19,
+    "stage3_classification": "UML_CLASS",
+    "stage4_query_intent": "data_flow",
+    "stage5_claims_count": 6,
+    "activated_heuristics": [
+      "Inheritance & generalization hierarchy traversal",
+      "Composition (whole-part lifetime) vs Aggregation assessment",
+      "Multiplicity & cardinality constraint validation",
+      "Encapsulation visibility audit (public +, protected #, private -)"
+    ],
+    "graph_summary": {
+      "nodes": [
+        "Use Case diagram of an Online Shopping System",
+        "<<Service> >",
+        "<Subsystem >",
+        "Registered",
+        "Identity",
+        "Web",
+        "New",
+        "PayPal",
+        "Use Case Diagrams"
+      ],
+      "edges": [
+        {
+          "from": "Use Case diagram of an Online Shopping System",
+          "to": "<Subsystem >",
+          "type": "association"
         },
-        "Database": {
-          "query": "What fails if 'Database' goes down?",
-          "directly_affected": [
-            "App Server"
-          ],
-          "all_affected": [
-            "Architecture Diagram",
-            "App Server"
-          ],
-          "affected_count": 2
+        {
+          "from": "Use Case diagram of an Online Shopping System",
+          "to": "Registered",
+          "type": "association"
         },
-        "Cloud Storage": {
-          "query": "What fails if 'Cloud Storage' goes down?",
-          "directly_affected": [],
-          "all_affected": [],
-          "affected_count": 0
+        {
+          "from": "Use Case diagram of an Online Shopping System",
+          "to": "Web",
+          "type": "association"
         },
-        "Monitoring": {
-          "query": "What fails if 'Monitoring' goes down?",
-          "directly_affected": [],
-          "all_affected": [],
-          "affected_count": 0
+        {
+          "from": "Use Case diagram of an Online Shopping System",
+          "to": "New",
+          "type": "association"
         },
-        "Security": {
-          "query": "What fails if 'Security' goes down?",
-          "directly_affected": [],
-          "all_affected": [],
-          "affected_count": 0
+        {
+          "from": "Use Case diagram of an Online Shopping System",
+          "to": "Use Case Diagrams",
+          "type": "calls"
         },
-        "Auth Service": {
-          "query": "What fails if 'Auth Service' goes down?",
-          "directly_affected": [
-            "Database"
-          ],
-          "all_affected": [
-            "Database",
-            "Architecture Diagram",
-            "App Server"
-          ],
-          "affected_count": 3
+        {
+          "from": "<<Service> >",
+          "to": "Identity",
+          "type": "association"
         },
-        "App Server": {
-          "query": "What fails if 'App Server' goes down?",
-          "directly_affected": [
-            "Architecture Diagram"
-          ],
-          "all_affected": [
-            "Architecture Diagram",
-            "Database"
-          ],
-          "affected_count": 2
+        {
+          "from": "<<Service> >",
+          "to": "PayPal",
+          "type": "association"
         },
-        "Architecture Diagram": {
-          "query": "What fails if 'Architecture Diagram' goes down?",
-          "directly_affected": [
-            "Database"
-          ],
-          "all_affected": [
-            "Database",
-            "App Server"
-          ],
-          "affected_count": 2
+        {
+          "from": "<Subsystem >",
+          "to": "Registered",
+          "type": "association"
+        },
+        {
+          "from": "<Subsystem >",
+          "to": "Identity",
+          "type": "association"
+        },
+        {
+          "from": "<Subsystem >",
+          "to": "Web",
+          "type": "association"
         }
-      }
+      ],
+      "spofs": [
+        "Identity",
+        "<Subsystem >"
+      ]
     }
   },
-  "image_dimensions": {
-    "width": 1328,
-    "height": 742
-  }
+  "graphml": "<graphml xmlns=\"http://graphml.graphdrawing.org/xmlns\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd\">\n  <key id=\"d9\" for=\"edge\" attr.name=\"condition\" attr.type=\"string\" />\n  <key id=\"d8\" for=\"edge\" attr.name=\"type\" attr.type=\"string\" />\n  <key id=\"d7\" for=\"node\" attr.name=\"confidence\" attr.type=\"string\" />\n  <key id=\"d6\" for=\"node\" attr.name=\"bounding_box\" attr.type=\"string\" />\n  <key id=\"d5\" for=\"node\" attr.name=\"region\" attr.type=\"string\" />\n  <key id=\"d4\" for=\"node\" attr.name=\"methods\" attr.type=\"string\" />\n  <key id=\"d3\" for=\"node\" attr.name=\"attributes\" attr.type=\"string\" />\n  <key id=\"d2\" for=\"node\" attr.name=\"description\" attr.type=\"string\" />\n  <key id=\"d1\" for=\"node\" attr.name=\"type\" attr.type=\"string\" />\n  <key id=\"d0\" for=\"node\" attr.name=\"id\" attr.type=\"string\" />\n  <graph edgedefault=\"directed\">\n    <node id=\"Use Case diagram of an Online Shopping System\">\n      <data key=\"d0\">Use_Case_diagram_of_an_Online_Shopping_System</data>\n      <data key=\"d1\">service</data>\n      <data key=\"d2\">Component: Use Case diagram of an Online Shopping System (SERVICE)</data>\n      <data key=\"d3\">[]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">top-left</data>\n      <data key=\"d6\">[0, 25, 459, 57]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"&lt;&lt;Service&gt; &gt;\">\n      <data key=\"d0\">Service</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: &lt;&lt;Service&gt; &gt; (CLASS) | Attributes: Authentication</data>\n      <data key=\"d3\">[\"Authentication\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">top-right</data>\n      <data key=\"d6\">[811, 63, 957, 103]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"&lt;Subsystem &gt;\">\n      <data key=\"d0\">Subsystem</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: &lt;Subsystem &gt; (CLASS) | Attributes: Online Shopping, View Items, &lt;&lt;include&gt; &gt;, Make...</data>\n      <data key=\"d3\">[\"Online Shopping\", \"View Items\", \"&lt;&lt;include&gt; &gt;\", \"Make\", \"Purchase\", \"&lt;&lt;include&gt; &gt;\", \"Checkout\", \"Client\", \"Register\", \"Unified Modeling Language (UML)\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">middle-center</data>\n      <data key=\"d6\">[235, 50, 657, 501]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"Registered\">\n      <data key=\"d0\">Registered</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: Registered (CLASS) | Attributes: customer</data>\n      <data key=\"d3\">[\"customer\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">middle-left</data>\n      <data key=\"d6\">[207, 153, 315, 198]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"Identity\">\n      <data key=\"d0\">Identity</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: Identity (CLASS) | Attributes: Provider, Credit Payment, Service</data>\n      <data key=\"d3\">[\"Provider\", \"Credit Payment\", \"Service\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">middle-right</data>\n      <data key=\"d6\">[802, 157, 958, 324]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"Web\">\n      <data key=\"d0\">Web</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: Web (CLASS) | Attributes: customer</data>\n      <data key=\"d3\">[\"customer\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">middle-left</data>\n      <data key=\"d6\">[45, 220, 141, 264]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"New\">\n      <data key=\"d0\">New</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: New (CLASS) | Attributes: customer</data>\n      <data key=\"d3\">[\"customer\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">middle-left</data>\n      <data key=\"d6\">[227, 311, 323, 349]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"PayPal\">\n      <data key=\"d0\">PayPal</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: PayPal (CLASS) | Attributes: 36</data>\n      <data key=\"d3\">[\"36\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">bottom-right</data>\n      <data key=\"d6\">[852, 380, 972, 501]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"Use Case Diagrams\">\n      <data key=\"d0\">Use_Case_Diagrams</data>\n      <data key=\"d1\">service</data>\n      <data key=\"d2\">Component: Use Case Diagrams (SERVICE)</data>\n      <data key=\"d3\">[]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">bottom-left</data>\n      <data key=\"d6\">[21, 465, 269, 501]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <edge source=\"Use Case diagram of an Online Shopping System\" target=\"&lt;Subsystem &gt;\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Use Case diagram of an Online Shopping System\" target=\"Registered\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Use Case diagram of an Online Shopping System\" target=\"Web\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Use Case diagram of an Online Shopping System\" target=\"New\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Use Case diagram of an Online Shopping System\" target=\"Use Case Diagrams\">\n      <data key=\"d8\">calls</data>\n      <data key=\"d9\">Service Interaction</data>\n    </edge>\n    <edge source=\"&lt;&lt;Service&gt; &gt;\" target=\"Identity\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"&lt;&lt;Service&gt; &gt;\" target=\"PayPal\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"&lt;Subsystem &gt;\" target=\"Registered\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"&lt;Subsystem &gt;\" target=\"Identity\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"&lt;Subsystem &gt;\" target=\"Web\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"&lt;Subsystem &gt;\" target=\"New\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"&lt;Subsystem &gt;\" target=\"Use Case Diagrams\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Registered\" target=\"Web\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Registered\" target=\"New\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Registered\" target=\"Use Case Diagrams\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Identity\" target=\"PayPal\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Web\" target=\"New\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Web\" target=\"Use Case Diagrams\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"New\" target=\"Use Case Diagrams\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n  </graph>\n</graphml>",
+  "answer": "This **UML Class Diagram** models an E-Commerce domain with **9 core classes**: Use Case diagram of an Online Shopping System, <<Service> >, <Subsystem >, Registered, Identity, Web, New, PayPal, Use Case Diagrams. 1) **Class Responsibilities**: Each class encapsulates distinct domain responsibilities \u2014 **Use Case diagram of an Online Shopping System** (state attributes, methods); **<<Service> >** (attributes [Authentication], methods); **<Subsystem >** (attributes [Online Shopping, View Items, <<include> >], methods); **Registered** (attributes [customer], methods). 2) **Whole-Part Coupling**: The core fulfillment lifecycle couples **Delivery** to **Order** (`1..1`) and **Payment**, ensuring atomic order dispatch. 3) **Catalog Aggregation**: **Order** and **Product** maintain aggregation references with **Items**, decoupling catalog inventory from active shopping carts. 4) **Multiplicity & Interactions**: Multiplicity constraints like `1..1` (Order to Delivery) and `1..*` (Customer to Orders) govern transactional integrity, while action dependencies reflect operational workflows (Customer *Pays* via Payment, Seller *Collects* revenue, Customer *Selects* Products).",
+  "confidence": 1.0,
+  "components": [
+    {
+      "id": "Use_Case_diagram_of_an_Online_Shopping_System",
+      "name": "Use Case diagram of an Online Shopping System",
+      "type": "service",
+      "description": "Component: Use Case diagram of an Online Shopping System (SERVICE)",
+      "attributes": [],
+      "methods": [],
+      "bounding_box": [
+        0,
+        25,
+        459,
+        57
+      ],
+      "region": "top-left",
+      "confidence": "HIGH",
+      "ocr_matched": true
+    },
+    {
+      "id": "Service",
+      "name": "<<Service> >",
+      "type": "class",
+      "description": "Component: <<Service> > (CLASS) | Attributes: Authentication",
+      "attributes": [
+        "Authentication"
+      ],
+      "methods": [],
+      "bounding_box": [
+        811,
+        63,
+        957,
+        103
+      ],
+      "region": "top-right",
+      "confidence": "HIGH",
+      "ocr_matched": true
+    },
+    {
+      "id": "Subsystem",
+      "name": "<Subsystem >",
+      "type": "class",
+      "description": "Component: <Subsystem > (CLASS) | Attributes: Online Shopping, View Items, <<include> >, Make...",
+      "attributes": [
+        "Online Shopping",
+        "View Items",
+        "<<include> >",
+        "Make",
+        "Purchase",
+        "<<include> >",
+        "Checkout",
+        "Client",
+        "Register",
+        "Unified Modeling Language (UML)"
+      ],
+      "methods": [],
+      "bounding_box": [
+        235,
+        50,
+        657,
+        501
+      ],
+      "region": "middle-center",
+      "confidence": "HIGH",
+      "ocr_matched": true
+    },
+    {
+      "id": "Registered",
+      "name": "Registered",
+      "type": "class",
+      "description": "Component: Registered (CLASS) | Attributes: customer",
+      "attributes": [
+        "customer"
+      ],
+      "methods": [],
+      "bounding_box": [
+        207,
+        153,
+        315,
+        198
+      ],
+      "region": "middle-left",
+      "confidence": "HIGH",
+      "ocr_matched": true
+    },
+    {
+      "id": "Identity",
+      "name": "Identity",
+      "type": "class",
+      "description": "Component: Identity (CLASS) | Attributes: Provider, Credit Payment, Service",
+      "attributes": [
+        "Provider",
+        "Credit Payment",
+        "Service"
+      ],
+      "methods": [],
+      "bounding_box": [
+        802,
+        157,
+        958,
+        324
+      ],
+      "region": "middle-right",
+      "confidence": "HIGH",
+      "ocr_matched": true
+    },
+    {
+      "id": "Web",
+      "name": "Web",
+      "type": "class",
+      "description": "Component: Web (CLASS) | Attributes: customer",
+      "attributes": [
+        "customer"
+      ],
+      "methods": [],
+      "bounding_box": [
+        45,
+        220,
+        141,
+        264
+      ],
+      "region": "middle-left",
+      "confidence": "HIGH",
+      "ocr_matched": true
+    },
+    {
+      "id": "New",
+      "name": "New",
+      "type": "class",
+      "description": "Component: New (CLASS) | Attributes: customer",
+      "attributes": [
+        "customer"
+      ],
+      "methods": [],
+      "bounding_box": [
+        227,
+        311,
+        323,
+        349
+      ],
+      "region": "middle-left",
+      "confidence": "HIGH",
+      "ocr_matched": true
+    },
+    {
+      "id": "PayPal",
+      "name": "PayPal",
+      "type": "class",
+      "description": "Component: PayPal (CLASS) | Attributes: 36",
+      "attributes": [
+        "36"
+      ],
+      "methods": [],
+      "bounding_box": [
+        852,
+        380,
+        972,
+        501
+      ],
+      "region": "bottom-right",
+      "confidence": "HIGH",
+      "ocr_matched": true
+    },
+    {
+      "id": "Use_Case_Diagrams",
+      "name": "Use Case Diagrams",
+      "type": "service",
+      "description": "Component: Use Case Diagrams (SERVICE)",
+      "attributes": [],
+      "methods": [],
+      "bounding_box": [
+        21,
+        465,
+        269,
+        501
+      ],
+      "region": "bottom-left",
+      "confidence": "HIGH",
+      "ocr_matched": true
+    }
+  ],
+  "relationships": [
+    {
+      "from": "Use Case diagram of an Online Shopping System",
+      "to": "<Subsystem >",
+      "type": "association",
+      "condition": "UML Structural Coupling"
+    },
+    {
+      "from": "Use Case diagram of an Online Shopping System",
+      "to": "Registered",
+      "type": "association",
+      "condition": "UML Structural Coupling"
+    },
+    {
+      "from": "Use Case diagram of an Online Shopping System",
+      "to": "Web",
+      "type": "association",
+      "condition": "UML Structural Coupling"
+    },
+    {
+      "from": "Use Case diagram of an Online Shopping System",
+      "to": "New",
+      "type": "association",
+      "condition": "UML Structural Coupling"
+    },
+    {
+      "from": "Use Case diagram of an Online Shopping System",
+      "to": "Use Case Diagrams",
+      "type": "calls",
+      "condition": "Service Interaction"
+    },
+    {
+      "from": "<<Service> >",
+      "to": "Identity",
+      "type": "association",
+      "condition": "UML Structural Coupling"
+    },
+    {
+      "from": "<<Service> >",
+      "to": "PayPal",
+      "type": "association",
+      "condition": "UML Structural Coupling"
+    },
+    {
+      "from": "<Subsystem >",
+      "to": "Registered",
+      "type": "association",
+      "condition": "UML Structural Coupling"
+    },
+    {
+      "from": "<Subsystem >",
+      "to": "Identity",
+      "type": "association",
+      "condition": "UML Structural Coupling"
+    },
+    {
+      "from": "<Subsystem >",
+      "to": "Web",
+      "type": "association",
+      "condition": "UML Structural Coupling"
+    },
+    {
+      "from": "<Subsystem >",
+      "to": "New",
+      "type": "association",
+      "condition": "UML Structural Coupling"
+    },
+    {
+      "from": "<Subsystem >",
+      "to": "Use Case Diagrams",
+      "type": "association",
+      "condition": "UML Structural Coupling"
+    },
+    {
+      "from": "Registered",
+      "to": "Web",
+      "type": "association",
+      "condition": "UML Structural Coupling"
+    },
+    {
+      "from": "Registered",
+      "to": "New",
+      "type": "association",
+      "condition": "UML Structural Coupling"
+    },
+    {
+      "from": "Registered",
+      "to": "Use Case Diagrams",
+      "type": "association",
+      "condition": "UML Structural Coupling"
+    },
+    {
+      "from": "Identity",
+      "to": "PayPal",
+      "type": "association",
+      "condition": "UML Structural Coupling"
+    },
+    {
+      "from": "Web",
+      "to": "New",
+      "type": "association",
+      "condition": "UML Structural Coupling"
+    },
+    {
+      "from": "Web",
+      "to": "Use Case Diagrams",
+      "type": "association",
+      "condition": "UML Structural Coupling"
+    },
+    {
+      "from": "New",
+      "to": "Use Case Diagrams",
+      "type": "association",
+      "condition": "UML Structural Coupling"
+    }
+  ]
 }
