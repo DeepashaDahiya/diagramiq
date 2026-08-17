@@ -52,4 +52,4 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
   CMD curl -f http://localhost:5000/health || exit 1
 
 # Launch with Gunicorn production WSGI server
-CMD ["gunicorn", "--workers", "2", "--threads", "4", "--bind", "0.0.0.0:5000", "--timeout", "120", "backend.wsgi:app"]
+CMD ["sh", "-c", "gunicorn --workers 2 --threads 4 --bind 0.0.0.0:${PORT:-5000} --timeout 120 backend.wsgi:app"]
