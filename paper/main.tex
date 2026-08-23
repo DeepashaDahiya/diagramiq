@@ -1,6 +1,7 @@
 \documentclass[runningheads]{llncs}
 
 \usepackage[utf8]{inputenc}
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -8,10 +9,8 @@
 \usepackage{multirow}
 \usepackage{hyperref}
 \usepackage{xcolor}
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-\usepackage{listings}
 \usepackage{microtype}
+\usepackage{caption}
 
 \hypersetup{
     colorlinks=true,
@@ -60,7 +59,7 @@ The advent of multimodal Vision-Language Models (VLMs), such as GPT-4V~\cite{ach
     \item \textbf{Lack of Pedagogical Grounding and Verifiability:} Commercial VLMs produce monolithic text responses without explicit visual provenance. Students cannot verify which image regions support specific explanatory claims, fostering uncalibrated over-reliance or confusion.
 \end{enumerate}
 
-To overcome these limitations, we introduce \textbf{DiagramIQ}, a locally deployable neuro-symbolic multimodal reasoning system that enforces a strict 6-stage Chain-of-Thought (CoT) decomposition for software diagram interpretation. Rather than delegating both perception and logical deduction to a single neural network, DiagramIQ explicitly separates visual entity extraction from symbolic graph construction and traversal. By representing diagrams as typed directed graphs ($G = (V, E, \tau, \gamma)$) in NetworkX~\cite{hagberg2008exploring} and gating intermediate representations with a Multimodal Grounding Fidelity (MGF) metric, DiagramIQ halts error propagation before logical synthesis occurs. Furthermore, every claim synthesized by DiagramIQ is bound to normalized bounding box coordinates $[y_{\min}, x_{\min}, y_{\max}, x_{\max}]$ on the original diagram image, accompanied by empirical confidence ratings.
+To overcome these limitations, we introduce \textbf{DiagramIQ}, a locally deployable neuro-symbolic multimodal reasoning system that enforces a strict 6-stage Chain-of-Thought (CoT) decomposition for software diagram interpretation. Rather than delegating both perception and logical deduction to a single neural network, DiagramIQ explicitly separates visual entity extraction from symbolic graph construction and traversal. By representing diagrams as typed directed graphs ($G = (V, E, \tau_V, \tau_E, \mathbf{B})$) in NetworkX~\cite{hagberg2008exploring} and gating intermediate representations with a Multimodal Grounding Fidelity (MGF) metric, DiagramIQ halts error propagation before logical synthesis occurs. Furthermore, every claim synthesized by DiagramIQ is bound to normalized bounding box coordinates $[y_{\min}, x_{\min}, y_{\max}, x_{\max}]$ on the original diagram image, accompanied by empirical confidence ratings.
 
 \subsection{Research Contributions}
 This paper makes three primary contributions:
@@ -71,8 +70,6 @@ This paper makes three primary contributions:
 \end{enumerate}
 
 The remainder of this paper is organized as follows: Section~\ref{sec:related} reviews related work and contextualizes DiagramIQ within the literature. Section~\ref{sec:methodology} presents the formal system architecture and 6-stage pipeline. Section~\ref{sec:experiments} details the experimental setup and evaluation metrics. Section~\ref{sec:results} discusses empirical findings, ablation studies, and student user evaluations. Finally, Section~\ref{sec:conclusion} concludes and outlines future research trajectories.
-
----
 
 \section{Related Work}
 \label{sec:related}
@@ -90,10 +87,9 @@ Neuro-symbolic architectures combine the perceptual flexibility of deep neural n
 \centering
 \caption{Systematic comparison of DiagramIQ against existing multimodal diagram and reasoning approaches across five core dimensions.}
 \label{tab:comparison}
-\resizebox{\textwidth}{!}{%
 \begin{tabular}{lccccc}
 \toprule
-\textbf{Approach / System} & \textbf{Local / Privacy-Safe} & \textbf{Symbolic Graph Engine} & \textbf{Error-Gating (MGF)} & \textbf{Visual Bounding Box Provenance} & \textbf{Pedagogical CoT} \\
+\textbf{Approach / System} & \textbf{Local / Privacy-Safe} & \textbf{Symbolic Graph} & \textbf{Error-Gating (MGF)} & \textbf{BBox Provenance} & \textbf{Pedagogical CoT} \\
 \midrule
 Standard LLaVA 1.6~\cite{liu2024llava16} & \checkmark & $\times$ & $\times$ & Partial & $\times$ \\
 Zero-Shot GPT-4o~\cite{achiam2023gpt4} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ \\
@@ -102,11 +98,8 @@ GraphRAG~\cite{edge2024graphrag} & Partial & \checkmark (Text only) & $\times$ &
 Ibáñez et al. Benchmark~\cite{ibanez2025evaluating} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ \\
 \textbf{DiagramIQ (Ours)} & \textbf{\checkmark} & \textbf{\checkmark (NetworkX)} & \textbf{\checkmark} & \textbf{\checkmark} & \textbf{\checkmark} \\
 \bottomrule
-\end{tabular}%
-}
+\end{tabular}
 \end{table*}
-
----
 
 \section{System Methodology}
 \label{sec:methodology}
@@ -116,33 +109,20 @@ Let a software diagram be defined as an image tensor $I \in \mathbb{R}^{H \times
 \begin{equation}
     G = (V, E, \tau_V, \tau_E, \mathbf{B})
 \end{equation}
-where:
-\begin{itemize}
-    \item $V = \{v_1, v_2, \dots, v_n\}$ is the set of detected entity nodes (e.g., classes, microservices, databases, actors).
-    \item $E \subseteq V \times V$ is the set of directed relationship edges $(u, v)$ modeling data flow, inheritance, composition, or message passing.
-    \item $\tau_V: V \rightarrow \mathcal{T}_V$ maps each node to an ontological component category $\mathcal{T}_V = \{\text{gateway}, \text{service}, \text{database}, \text{class}, \text{decision}, \dots\}$.
-    \item $\tau_E: E \rightarrow \mathcal{T}_E$ assigns semantic relationship types $\mathcal{T}_E = \{\text{inherits}, \text{calls}, \text{associates}, \text{aggregates}, \dots\}$.
-    \item $\mathbf{B}: V \rightarrow [0, 1]^4$ assigns normalized spatial bounding box coordinates $[y_{\min}, x_{\min}, y_{\max}, x_{\max}]$ to each node.
-\end{itemize}
-
-\subsection{The 6-Stage Neuro-Symbolic Pipeline}
-
-DiagramIQ executes a strictly decoupled 6-stage pipeline (Figure~\ref{fig:pipeline}).
+where $V = \{v_1, v_2, \dots, v_n\}$ is the set of detected entity nodes (e.g., classes, microservices, databases, actors), $E \subseteq V \times V$ is the set of directed relationship edges $(u, v)$, $\tau_V: V \rightarrow \mathcal{T}_V$ maps nodes to ontological categories, $\tau_E: E \rightarrow \mathcal{T}_E$ assigns relationship types, and $\mathbf{B}: V \rightarrow [0, 1]^4$ assigns normalized spatial bounding box coordinates $[y_{\min}, x_{\min}, y_{\max}, x_{\max}]$.
 
 \begin{figure*}[t]
 \centering
-\fbox{\parbox{0.96\textwidth}{
-\centering
-\textbf{\large DiagramIQ 6-Stage Neuro-Symbolic Reasoning Workflow}\\[0.3em]
-\small
-$\text{Diagram } I + \text{Query } q \xrightarrow{\text{Stage 1}} \text{Entities } V, \mathbf{B} \xrightarrow{\text{Stage 2}} \text{DiGraph } G + \text{MGF Gate} \xrightarrow{\text{Stage 3}} \text{Domain Heuristics} \xrightarrow{\text{Stage 4}} \text{Graph Traversal } \mathcal{R} \xrightarrow{\text{Stage 5}} \text{Grounded Answer } \mathcal{A} \xrightarrow{\text{Stage 6}} \text{Canonical Output}$
-}}
-\caption{Conceptual workflow of the DiagramIQ pipeline decoupling perceptual entity extraction from topological graph reasoning and grounded explanation synthesis.}
+\includegraphics[width=\textwidth]{figures/fig1_pipeline_architecture.pdf}
+\caption{The DiagramIQ 6-stage neuro-symbolic reasoning architecture, illustrating the decoupled progression from visual input to symbolic graph modeling, MGF validation gating, deterministic topological traversal, and grounded pedagogical synthesis.}
 \label{fig:pipeline}
 \end{figure*}
 
+\subsection{The 6-Stage Neuro-Symbolic Pipeline}
+DiagramIQ executes a strictly decoupled 6-stage pipeline (Figure~\ref{fig:pipeline}):
+
 \subsubsection{Stage 1: Neural Visual Perception \& Entity Extraction}
-Given $I$, Stage 1 employs EasyOCR~\cite{baek2019character} with character region awareness (CRAFT) and OpenCV contour analysis to detect distinct text tokens and visual bounding boxes. Spatial clustering groups fragmented text lines (e.g., class names, attribute sections, and method signatures) into cohesive structural components $V$. For ambiguous visual glyphs, LLaVA 1.6 (13B)~\cite{liu2024llava16} executes zero-shot component classification under temperature $T=0.1$.
+Given $I$, Stage 1 employs EasyOCR~\cite{baek2019character} with character region awareness (CRAFT) and OpenCV contour analysis to detect distinct text tokens and visual bounding boxes. Spatial clustering groups fragmented text lines into cohesive structural components $V$. For ambiguous visual glyphs, LLaVA 1.6 (13B)~\cite{liu2024llava16} executes zero-shot component classification under temperature $T=0.1$.
 
 \subsubsection{Stage 2: Symbolic Graph Construction \& MGF Validation}
 Stage 2 resolves edge connectivity $E$ by analyzing directional line contours, arrowheads, and spatial proximity between bounding boxes $\mathbf{B}(u)$ and $\mathbf{B}(v)$. The extracted topology is instantiated as a NetworkX directed graph $G$. To prevent error snowballing, the pipeline computes the \textit{Multimodal Grounding Fidelity} (MGF) score:
@@ -152,8 +132,7 @@ Stage 2 resolves edge connectivity $E$ by analyzing directional line contours, a
 If $\text{MGF}(G, I) < 0.60$, the system flags a low-grounding anomaly and triggers an automated spatial re-clustering pass before proceeding.
 
 \subsubsection{Stage 3: Semantic Diagram Classification}
-Stage 3 classifies the diagram into one of six canonical categories:
-$$\mathcal{C} = \{\text{UML\_CLASS}, \text{UML\_SEQUENCE}, \text{SW\_ARCHITECTURE}, \text{ER\_DIAGRAM}, \text{FLOWCHART}, \text{NETWORK\_TOPOLOGY}\}$$
+Stage 3 classifies the diagram into one of six canonical categories: $\mathcal{C} = \{\text{UML\_CLASS}, \text{UML\_SEQUENCE}, \text{SW\_ARCHITECTURE}, \text{ER\_DIAGRAM}, \text{FLOWCHART}, \text{NETWORK\_TOPOLOGY}\}$.
 Diagram classification activates domain-specific reasoning heuristics:
 \begin{itemize}
     \item \textbf{UML Class:} Enforces inheritance hierarchy validation, abstract class constraints, and visibility checking ($+$, $-$, $\#$).
@@ -175,23 +154,7 @@ This deterministic execution guarantees that topological reasoning is mathematic
 Stage 5 synthesizes the pedagogical explanation. The VLM receives the structured traversal trace $\mathcal{R}$ from Stage 4 alongside the visual context. The model is constrained to generate an authoritative pedagogical explanation decomposed into individual grounded claims $\mathcal{K} = \{k_1, k_2, \dots, k_m\}$. Each claim $k_i$ explicitly cites its supporting component $v \in V$.
 
 \subsubsection{Stage 6: Canonical Structured Output Packaging}
-The final stage compiles the telemetry payload, embedding:
-\begin{enumerate}
-    \item Direct pedagogical answer and collapsible reasoning trace.
-    \item Grounded claim cards with per-claim confidence ratings:
-    \begin{equation}
-        \text{Conf}(k_i) = 
-        \begin{cases}
-            \text{HIGH}, & \text{if } v \text{ confirmed by OCR \& verified in } G \\
-            \text{MEDIUM}, & \text{if } v \text{ inferred from topological reachability} \\
-            \text{LOW}, & \text{if } v \text{ derived from heuristic extrapolation}
-        \end{cases}
-    \end{equation}
-    \item Serialized GraphML representation for external graph analysis tools.
-    \item Three proactive follow-up questions fostering deeper student exploration.
-\end{enumerate}
-
----
+The final stage compiles the telemetry payload, embedding the direct pedagogical answer, collapsible reasoning trace, grounded claim cards with calibrated confidence ratings, serialized GraphML representations, and three proactive follow-up exploratory questions.
 
 \section{Experimental Setup}
 \label{sec:experiments}
@@ -209,19 +172,13 @@ Each diagram is annotated with ground-truth directed graphs and three peer-valid
 \subsection{Evaluation Metrics}
 We define four quantitative metrics:
 \begin{enumerate}
-    \item \textbf{Exact Match Accuracy (EMA):} Evaluates graph edge precision:
-    \begin{equation}
-        \text{EMA} = \frac{|E_{\text{pred}} \cap E_{\text{gt}}|}{|E_{\text{gt}}|}
-    \end{equation}
+    \item \textbf{Exact Match Accuracy (EMA):} Evaluates graph edge precision: $\text{EMA} = \frac{|E_{\text{pred}} \cap E_{\text{gt}}|}{|E_{\text{gt}}|}$.
     \item \textbf{Graph Matching Score (GMS):} Structural similarity combining node and edge Jaccard indices:
     \begin{equation}
         \text{GMS} = 0.40 \cdot \frac{|V_{\text{pred}} \cap V_{\text{gt}}|}{|V_{\text{pred}} \cup V_{\text{gt}}|} + 0.60 \cdot \frac{|E_{\text{pred}} \cap E_{\text{gt}}|}{|E_{\text{pred}} \cup E_{\text{gt}}|}
     \end{equation}
     \item \textbf{Multimodal Grounding Fidelity (MGF):} The percentage of generated claims backed by valid, non-empty bounding box coordinates.
-    \item \textbf{Hallucination Reduction Rate (HRR):} Relative decrease in factually invalid structural claims compared to baseline:
-    \begin{equation}
-        \text{HRR} = \frac{\mathcal{E}_{\text{baseline}} - \mathcal{E}_{\text{DiagramIQ}}}{\mathcal{E}_{\text{baseline}}} \times 100\%
-    \end{equation}
+    \item \textbf{Hallucination Reduction Rate (HRR):} Relative decrease in factually invalid structural claims compared to baseline: $\text{HRR} = \frac{\mathcal{E}_{\text{baseline}} - \mathcal{E}_{\text{DiagramIQ}}}{\mathcal{E}_{\text{baseline}}} \times 100\%$.
 \end{enumerate}
 
 \subsection{Baseline Models}
@@ -231,13 +188,11 @@ We benchmark DiagramIQ against two established baselines:
     \item \textbf{GPT-4o~\cite{achiam2023gpt4}:} State-of-the-art commercial vision-language model evaluated in a zero-shot prompting configuration.
 \end{enumerate}
 
----
-
 \section{Results and Discussion}
 \label{sec:results}
 
 \subsection{Quantitative Performance Comparison}
-Table~\ref{tab:main_results} reports the performance of DiagramIQ against the baseline models across the DiagramIQ-Eval benchmark.
+Table~\ref{tab:main_results} and Figure~\ref{fig:benchmark_comparison} report the performance of DiagramIQ against baseline models across the DiagramIQ-Eval benchmark.
 
 \begin{table}[t]
 \centering
@@ -253,6 +208,13 @@ GPT-4o (Zero-Shot) & 69.4 & 0.72 & 58.4 & 18.2 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{figures/fig2_benchmark_comparison.pdf}
+\caption{Quantitative performance comparison of DiagramIQ against baseline vision-language models on the DiagramIQ-Eval benchmark (100 diagrams).}
+\label{fig:benchmark_comparison}
+\end{figure}
 
 DiagramIQ outperforms unguided LLaVA 1.6 by \textbf{+41.4\%} in Exact Match Accuracy and \textbf{+63.2\%} in Multimodal Grounding Fidelity, while reducing structural hallucinations from 34.5\% down to 4.1\% (achieving a \textbf{90.0\% Hallucination Reduction Rate}). While GPT-4o exhibits strong general visual reasoning, its absence of deterministic graph traversal causes it to hallucinate intermediate hops in complex architectures, achieving only 69.4\% EMA.
 
@@ -280,10 +242,17 @@ Variant C (w/o MGF Gating) & 78.3 & 0.81 & 81.2 & 68.1 \\
 \end{tabular}
 \end{table}
 
-As shown in Table~\ref{tab:ablation}, omitting Stage 2 results in a dramatic 38.6\% decline in EMA, confirming that explicit graph modeling is the principal driver of structural fidelity. Omitting the MGF validation gate (Variant C) allows early OCR misalignments to propagate into downstream explanations, demonstrating the essential role of intermediate gating in preventing error snowballing.
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{figures/fig3_ablation_study.pdf}
+\caption{Ablation analysis demonstrating the critical contribution of symbolic graph modeling (Stage 2), topological traversal (Stage 4), and MGF validation gating towards Exact Match Accuracy (EMA) and Hallucination Reduction Rate (HRR).}
+\label{fig:ablation_study}
+\end{figure}
+
+As shown in Table~\ref{tab:ablation} and Figure~\ref{fig:ablation_study}, omitting Stage 2 results in a dramatic 38.6\% decline in EMA, confirming that explicit graph modeling is the principal driver of structural fidelity. Omitting the MGF validation gate (Variant C) allows early OCR misalignments to propagate into downstream explanations, demonstrating the essential role of intermediate gating in preventing error snowballing.
 
 \subsection{Pedagogical User Study}
-We conducted an empirical user study with $N=15$ undergraduate and postgraduate computer science students. Participants evaluated DiagramIQ explanations across five criteria using a 5-point Likert scale (1 = Strongly Disagree, 5 = Strongly Agree):
+We conducted an empirical user study with $N=15$ undergraduate and postgraduate computer science students. Participants evaluated DiagramIQ explanations across five criteria using a 5-point Likert scale (Figure~\ref{fig:user_study}):
 \begin{enumerate}
     \item \textit{Clarity:} The explanation is intuitive and logically structured ($\mu = 4.73, \sigma = 0.45$).
     \item \textit{Completeness:} All key diagram entities and relations are addressed ($\mu = 4.60, \sigma = 0.51$).
@@ -293,14 +262,19 @@ We conducted an empirical user study with $N=15$ undergraduate and postgraduate 
 \end{enumerate}
 The overall mean Pedagogical Explanation Quality (PEQ) score reached \textbf{4.62 / 5.00}. Qualitative feedback highlighted that the synchronized bounding box highlights on the interactive canvas significantly reduced the time required to trace complex microservice failure cascades.
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{figures/fig4_user_study_peq.pdf}
+\caption{Mean ratings ($\pm \sigma$) from the empirical pedagogical user study ($N=15$ computer science students) across five evaluation dimensions on a 5-point Likert scale.}
+\label{fig:user_study}
+\end{figure}
+
 \subsection{Limitations and Failure Modes}
 Honest error analysis reveals two remaining edge cases:
 \begin{itemize}
     \item \textit{Dense Visual Overlap:} In diagrams where multiple relationship arrows intersect at acute angles with overlapping labels, OCR bounding box clustering occasionally merges adjacent relation labels.
     \item \textit{Hand-Drawn Diagrams:} While DiagramIQ excels on standardized PlantUML, Graphviz, and digital schemas, low-contrast hand-drawn whiteboard sketches reduce OCR recall.
 \end{itemize}
-
----
 
 \section{Conclusion and Future Work}
 \label{sec:conclusion}
