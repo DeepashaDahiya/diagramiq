@@ -1,0 +1,16 @@
+@startuml
+node "Client Browser" as Client
+node "API Gateway" as Gateway
+node "Auth Service" as Auth
+node "Order Service" as OrderSvc
+node "Payment Service" as PaySvc
+database "User DB" as UserDB
+database "Order DB" as OrderDB
+
+Client -> Gateway : HTTPS Request
+Gateway -> Auth : Verify Token
+Auth -> UserDB : Query Credentials
+Gateway -> OrderSvc : Route Order
+OrderSvc -> OrderDB : Persist Record
+OrderSvc -> PaySvc : Initiate Payment
+@enduml

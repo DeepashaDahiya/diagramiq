@@ -1,0 +1,29 @@
+@startuml
+class User {
+  +String userId
+  +String email
+  +login()
+  +logout()
+}
+
+class Customer {
+  +String shippingAddress
+  +placeOrder()
+}
+
+class Order {
+  +String orderId
+  +Date orderDate
+  +calculateTotal()
+}
+
+class Payment {
+  +String paymentId
+  +Float amount
+  +processPayment()
+}
+
+User <|-- Customer
+Customer "1" *-- "many" Order
+Order "1" o-- "1" Payment
+@enduml

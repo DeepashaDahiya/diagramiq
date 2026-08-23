@@ -1,0 +1,19 @@
+@startuml
+actor Customer
+participant "Frontend UI" as UI
+participant "Payment Gateway" as PG
+database "Banking Network" as Bank
+
+Customer -> UI : Click 'Pay Now'
+activate UI
+UI -> PG : Authorize Charge ($99)
+activate PG
+PG -> Bank : Submit Card Token
+activate Bank
+Bank --> PG : Approval Code
+deactivate Bank
+PG --> UI : 200 OK (Payment Success)
+deactivate PG
+UI --> Customer : Display Order Confirmation
+deactivate UI
+@enduml

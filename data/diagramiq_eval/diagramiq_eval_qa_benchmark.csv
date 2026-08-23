@@ -1,0 +1,6 @@
+diagram_id,diagram_type,complexity,question,reference_answer,question_type
+uml_class_ecommerce,UML_CLASS,MEDIUM,What is the relationship between Customer and User?,"Customer inherits from User (generalization relationship), meaning Customer possesses all attributes and methods of User.",relationship_reasoning
+uml_class_ecommerce,UML_CLASS,MEDIUM,What happens if the Order entity is removed?,"Removing Order severs the connection between Customer and Payment, causing order placement and total calculation to break.",structural_analysis
+architecture_microservices,SW_ARCHITECTURE,MEDIUM,Which component is a Single Point of Failure (SPOF)?,The API Gateway and Auth Service are Single Points of Failure because all downstream services (Order and Payment) depend on their operational status.,failure_impact
+architecture_microservices,SW_ARCHITECTURE,MEDIUM,Explain the request flow from Client to Order DB.,"Client requests flow through the API Gateway, which authenticates via Auth Service, forwards to Order Service, and writes to Order DB.",flow_tracing
+uml_sequence_checkout,UML_SEQUENCE,MEDIUM,Which participant initiates the authorization request to the Banking Network?,The Payment Gateway participant receives the token from Frontend UI and submits the card token directly to the Banking Network.,component_identification
