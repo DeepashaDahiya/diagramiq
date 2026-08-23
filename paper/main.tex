@@ -11,6 +11,7 @@
 \usepackage{xcolor}
 \usepackage{microtype}
 \usepackage{caption}
+\usepackage{placeins}
 
 \hypersetup{
     colorlinks=true,
@@ -85,11 +86,12 @@ Neuro-symbolic architectures combine the perceptual flexibility of deep neural n
 
 \begin{table*}[t]
 \centering
-\caption{Systematic comparison of DiagramIQ against existing multimodal diagram and reasoning approaches across five core dimensions.}
+\caption{Systematic comparison of DiagramIQ against existing multimodal diagram interpretation systems.}
 \label{tab:comparison}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lccccc}
 \toprule
-\textbf{Approach / System} & \textbf{Local / Privacy-Safe} & \textbf{Symbolic Graph} & \textbf{Error-Gating (MGF)} & \textbf{BBox Provenance} & \textbf{Pedagogical CoT} \\
+\textbf{Approach / System} & \textbf{Local \& Private} & \textbf{Symbolic Graph} & \textbf{MGF Error-Gating} & \textbf{BBox Grounding} & \textbf{Pedagogical CoT} \\
 \midrule
 Standard LLaVA 1.6~\cite{liu2024llava16} & \checkmark & $\times$ & $\times$ & Partial & $\times$ \\
 Zero-Shot GPT-4o~\cite{achiam2023gpt4} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ \\
@@ -98,7 +100,8 @@ GraphRAG~\cite{edge2024graphrag} & Partial & \checkmark (Text only) & $\times$ &
 Ibáñez et al. Benchmark~\cite{ibanez2025evaluating} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ \\
 \textbf{DiagramIQ (Ours)} & \textbf{\checkmark} & \textbf{\checkmark (NetworkX)} & \textbf{\checkmark} & \textbf{\checkmark} & \textbf{\checkmark} \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table*}
 
 \section{System Methodology}
@@ -132,7 +135,10 @@ Stage 2 resolves edge connectivity $E$ by analyzing directional line contours, a
 If $\text{MGF}(G, I) < 0.60$, the system flags a low-grounding anomaly and triggers an automated spatial re-clustering pass before proceeding.
 
 \subsubsection{Stage 3: Semantic Diagram Classification}
-Stage 3 classifies the diagram into one of six canonical categories: $\mathcal{C} = \{\text{UML\_CLASS}, \text{UML\_SEQUENCE}, \text{SW\_ARCHITECTURE}, \text{ER\_DIAGRAM}, \text{FLOWCHART}, \text{NETWORK\_TOPOLOGY}\}$.
+Stage 3 classifies the diagram into one of six canonical categories:
+\begin{equation}
+    \mathcal{C} \in \{\text{UML-Class}, \text{UML-Sequence}, \text{SW-Architecture}, \text{ER-Diagram}, \text{Flowchart}, \text{Topology}\}
+\end{equation}
 Diagram classification activates domain-specific reasoning heuristics:
 \begin{itemize}
     \item \textbf{UML Class:} Enforces inheritance hierarchy validation, abstract class constraints, and visibility checking ($+$, $-$, $\#$).
@@ -160,10 +166,10 @@ The final stage compiles the telemetry payload, embedding the direct pedagogical
 \label{sec:experiments}
 
 \subsection{The DiagramIQ-Eval Benchmark}
-To rigorously evaluate DiagramIQ, we constructed \textbf{DiagramIQ-Eval}, a curated benchmark of 100 software design diagrams spanning four major pedagogical domains:
+To evaluate DiagramIQ systematically, we constructed \textbf{DiagramIQ-Eval}, a curated benchmark of 100 software design diagrams across four major pedagogical domains:
 \begin{itemize}
     \item \textbf{UML Class Diagrams ($N=30$):} Stratified by inheritance depth and association density.
-    \item \textbf{Microservice \& Software Architectures ($N=25$):} Featuring distributed gateways, databases, queues, and caches.
+    \item \textbf{Microservice Architectures ($N=25$):} Featuring distributed gateways, databases, queues, and caches.
     \item \textbf{UML Sequence Diagrams ($N=25$):} Evaluating temporal message passing and lifeline synchronization.
     \item \textbf{ER Diagrams \& Flowcharts ($N=20$):} Evaluating cardinality constraints and decision branching.
 \end{itemize}
@@ -194,7 +200,7 @@ We benchmark DiagramIQ against two established baselines:
 \subsection{Quantitative Performance Comparison}
 Table~\ref{tab:main_results} and Figure~\ref{fig:benchmark_comparison} report the performance of DiagramIQ against baseline models across the DiagramIQ-Eval benchmark.
 
-\begin{table}[t]
+\begin{table}[!htbp]
 \centering
 \caption{Quantitative benchmark results across 100 diagrams in DiagramIQ-Eval.}
 \label{tab:main_results}
@@ -209,9 +215,9 @@ GPT-4o (Zero-Shot) & 69.4 & 0.72 & 58.4 & 18.2 \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.92\linewidth]{figures/fig2_benchmark_comparison.pdf}
+\includegraphics[width=0.88\linewidth]{figures/fig2_benchmark_comparison.pdf}
 \caption{Quantitative performance comparison of DiagramIQ against baseline vision-language models on the DiagramIQ-Eval benchmark (100 diagrams).}
 \label{fig:benchmark_comparison}
 \end{figure}
@@ -226,7 +232,7 @@ To evaluate the individual contributions of each pipeline stage, we performed an
     \item \textbf{Variant C (w/o MGF Validation Gate):} Disabling the intermediate grounding fidelity check.
 \end{enumerate}
 
-\begin{table}[t]
+\begin{table}[!htbp]
 \centering
 \caption{Ablation study measuring the impact of individual architectural components.}
 \label{tab:ablation}
@@ -242,9 +248,9 @@ Variant C (w/o MGF Gating) & 78.3 & 0.81 & 81.2 & 68.1 \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.92\linewidth]{figures/fig3_ablation_study.pdf}
+\includegraphics[width=0.88\linewidth]{figures/fig3_ablation_study.pdf}
 \caption{Ablation analysis demonstrating the critical contribution of symbolic graph modeling (Stage 2), topological traversal (Stage 4), and MGF validation gating towards Exact Match Accuracy (EMA) and Hallucination Reduction Rate (HRR).}
 \label{fig:ablation_study}
 \end{figure}
@@ -254,17 +260,17 @@ As shown in Table~\ref{tab:ablation} and Figure~\ref{fig:ablation_study}, omitti
 \subsection{Pedagogical User Study}
 We conducted an empirical user study with $N=15$ undergraduate and postgraduate computer science students. Participants evaluated DiagramIQ explanations across five criteria using a 5-point Likert scale (Figure~\ref{fig:user_study}):
 \begin{enumerate}
-    \item \textit{Clarity:} The explanation is intuitive and logically structured ($\mu = 4.73, \sigma = 0.45$).
-    \item \textit{Completeness:} All key diagram entities and relations are addressed ($\mu = 4.60, \sigma = 0.51$).
     \item \textit{Factuality \& Accuracy:} Explanations correspond strictly to visible components ($\mu = 4.80, \sigma = 0.41$).
-    \item \textit{Educational Value:} The interactive bounding box grounding accelerated comprehension ($\mu = 4.67, \sigma = 0.48$).
+    \item \textit{Pedagogical Clarity:} The explanation is intuitive and logically structured ($\mu = 4.73, \sigma = 0.45$).
+    \item \textit{Educational Utility:} The interactive bounding box grounding accelerated comprehension ($\mu = 4.67, \sigma = 0.48$).
+    \item \textit{Completeness:} All key diagram entities and relations are addressed ($\mu = 4.60, \sigma = 0.51$).
     \item \textit{Confidence Calibration:} Trust in per-claim confidence ratings ($\mu = 4.33, \sigma = 0.62$).
 \end{enumerate}
 The overall mean Pedagogical Explanation Quality (PEQ) score reached \textbf{4.62 / 5.00}. Qualitative feedback highlighted that the synchronized bounding box highlights on the interactive canvas significantly reduced the time required to trace complex microservice failure cascades.
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.92\linewidth]{figures/fig4_user_study_peq.pdf}
+\includegraphics[width=0.88\linewidth]{figures/fig4_user_study_peq.pdf}
 \caption{Mean ratings ($\pm \sigma$) from the empirical pedagogical user study ($N=15$ computer science students) across five evaluation dimensions on a 5-point Likert scale.}
 \label{fig:user_study}
 \end{figure}
@@ -288,6 +294,9 @@ We envision three key extensions:
     \item \textbf{Domain-Specific Instruction Tuning:} Fine-tuning open-weights vision backbones on large-scale synthetic PlantUML corpora to enhance dense arrow OCR disambiguation.
     \item \textbf{Dynamic Sequence Execution:} Expanding the symbolic engine to animate time-stepped message exchanges in dynamic UML sequence diagrams.
 \end{enumerate}
+
+% Force all figures and tables to be rendered BEFORE the References section begins
+\FloatBarrier
 
 \bibliographystyle{splncs04}
 \bibliography{references}
