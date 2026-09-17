@@ -1,0 +1,85 @@
+@startuml
+' Diagram: Abstract Factory & Builder Multi-Platform UI Framework (Refactoring.Guru)
+' Source: Refactoring.Guru — Gang of Four Design Patterns Catalog
+skinparam backgroundColor #0b1120
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+skinparam rectangleBackgroundColor #1e293b
+skinparam rectangleBorderColor #0284c7
+interface GUIFactory as "«interface» GUIFactory" {
+  +createButton(): Button
+  +createCheckbox(): Checkbox
+  +createScrollbar(): Scrollbar
+}
+interface Button as "«interface» Button" {
+  +render()
+  +onClick()
+}
+interface Checkbox as "«interface» Checkbox" {
+  +render()
+  +toggle()
+}
+interface Scrollbar as "«interface» Scrollbar" {
+  +render()
+  +scrollTo()
+}
+class WinFactory as "WinFactory" {
+  +createButton(): WinButton
+  +createCheckbox(): WinCheckbox
+}
+class WinButton as "WinButton" {
+  +render() (DirectX)
+}
+class WinCheckbox as "WinCheckbox" {
+  +render() (DirectX)
+}
+class MacFactory as "MacFactory" {
+  +createButton(): MacButton
+  +createCheckbox(): MacCheckbox
+}
+class MacButton as "MacButton" {
+  +render() (Metal)
+}
+class MacCheckbox as "MacCheckbox" {
+  +render() (Metal)
+}
+class LinuxFactory as "LinuxFactory" {
+  +createButton(): LinuxButton
+  +createCheckbox(): LinuxCheckbox
+}
+class LinuxButton as "LinuxButton" {
+  +render() (Vulkan)
+}
+class LinuxCheckbox as "LinuxCheckbox" {
+  +render() (Vulkan)
+}
+class ApplicationConfigurator as "ApplicationConfigurator" {
+  +main()
+  +detectOS()
+}
+class UIDirector as "UIDirector (Dialog Builder)" {
+  +buildLoginForm()
+  +buildSettings()
+}
+class ClientApp as "ClientApp" {
+  -factory: GUIFactory
+  -button: Button
+}
+WinFactory ..> GUIFactory : implements
+MacFactory ..> GUIFactory : implements
+LinuxFactory ..> GUIFactory : implements
+WinButton ..> Button : implements
+MacButton ..> Button : implements
+LinuxButton ..> Button : implements
+WinCheckbox ..> Checkbox : implements
+MacCheckbox ..> Checkbox : implements
+LinuxCheckbox ..> Checkbox : implements
+WinFactory --> WinButton : instantiates
+MacFactory --> MacButton : instantiates
+LinuxFactory --> LinuxButton : instantiates
+ApplicationConfigurator --> ClientApp : injects Factory
+ClientApp --> GUIFactory : uses interface
+ClientApp --> Button : holds reference
+UIDirector --> ClientApp : composes UI
+@enduml

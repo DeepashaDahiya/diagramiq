@@ -1,0 +1,58 @@
+{
+  "diagram_id": "uml_sequence_021",
+  "title": "SSL/TLS 1.3 Cryptographic Handshake",
+  "category": "UML_SEQUENCE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "WebClient",
+      "type": "actor",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "WebServer",
+      "type": "participant",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "CertificateAuthority",
+      "type": "participant",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "WebClient",
+      "to": "WebServer",
+      "type": "sends_message"
+    },
+    {
+      "from": "WebServer",
+      "to": "WebClient",
+      "type": "sends_message"
+    }
+  ],
+  "image_file": "images/uml_sequence_021.png",
+  "puml_file": "plantuml_sources/uml_sequence_021.puml"
+}

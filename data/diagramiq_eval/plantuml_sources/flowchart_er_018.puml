@@ -1,0 +1,20 @@
+@startuml
+' Diagram: ATM Cash Withdrawal Flowchart
+' Category: FLOWCHART
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+rectangle "CardInserted" as CardInserted
+rectangle "VerifyPIN" as VerifyPIN
+rectangle "CheckBalance" as CheckBalance
+rectangle "DispenseCash" as DispenseCash
+rectangle "EjectCard" as EjectCard
+rectangle "RetainCard" as RetainCard
+CardInserted --> VerifyPIN : transitions_to
+VerifyPIN --> CheckBalance : transitions_to
+VerifyPIN --> RetainCard : transitions_to
+CheckBalance --> DispenseCash : transitions_to
+CheckBalance --> EjectCard : transitions_to
+DispenseCash --> EjectCard : transitions_to
+@enduml

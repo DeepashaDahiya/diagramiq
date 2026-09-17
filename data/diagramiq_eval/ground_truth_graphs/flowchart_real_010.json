@@ -1,0 +1,847 @@
+{
+  "diagram_id": "flowchart_real_010",
+  "title": "Real Control Flowchart #10",
+  "category": "FLOWCHART",
+  "complexity": "MEDIUM",
+  "source_dataset": "MananSuri27/Flowchart2Mermaid",
+  "nodes": [
+    {
+      "id": "A",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "B",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "C",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "C{\"Inclined to Write?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "D",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "E",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F2",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F3",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F4",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F{\"Write a Letter or Email?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "G1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "G2",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "G3",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "G4",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "G5",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "H",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "I",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "I1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "J",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "K",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "L",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "M",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "N",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "O",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "P",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "P1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "P2",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "P3",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "P{\"Interested in Alphabet Game?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "Q1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "Q2",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "Q3",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "Q4",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "R",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "S",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| F1{\"Need to Write To-Do List?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| F2{\"Interested in Journaling?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| F3{\"Interested in Writing Stories?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| F4{\"Homework to Catch Up On?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| H",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| I1{\"Travel Mates Not Interested in Games?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| I{\"Prefer to Take a Break?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| N",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| P1{\"Play Solitaire with Cards?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| P2{\"Has Smartphone/Tablet?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| P3{\"Has Portable Gaming Device?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| R",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| D",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| G1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| G2",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| G3",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| G4",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| G5",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| J",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| M",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| Q1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| Q2",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| Q3",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| Q4",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "A",
+      "to": "B",
+      "type": "transitions_to"
+    },
+    {
+      "from": "B",
+      "to": "C{\"Inclined to Write?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "C",
+      "to": "|Yes| D",
+      "type": "transitions_to"
+    },
+    {
+      "from": "C",
+      "to": "|No| I{\"Prefer to Take a Break?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "D",
+      "to": "E",
+      "type": "transitions_to"
+    },
+    {
+      "from": "E",
+      "to": "F{\"Write a Letter or Email?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F",
+      "to": "|Yes| G1",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F",
+      "to": "|No| F1{\"Need to Write To-Do List?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F1",
+      "to": "|Yes| G2",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F1",
+      "to": "|No| F2{\"Interested in Journaling?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F2",
+      "to": "|Yes| G3",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F2",
+      "to": "|No| F3{\"Interested in Writing Stories?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F3",
+      "to": "|Yes| G4",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F3",
+      "to": "|No| F4{\"Homework to Catch Up On?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F4",
+      "to": "|Yes| G5",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F4",
+      "to": "|No| H",
+      "type": "transitions_to"
+    },
+    {
+      "from": "G1",
+      "to": "H",
+      "type": "transitions_to"
+    },
+    {
+      "from": "G2",
+      "to": "H",
+      "type": "transitions_to"
+    },
+    {
+      "from": "G3",
+      "to": "H",
+      "type": "transitions_to"
+    },
+    {
+      "from": "G4",
+      "to": "H",
+      "type": "transitions_to"
+    },
+    {
+      "from": "G5",
+      "to": "H",
+      "type": "transitions_to"
+    },
+    {
+      "from": "I",
+      "to": "|Yes| J",
+      "type": "transitions_to"
+    },
+    {
+      "from": "I",
+      "to": "|No| I1{\"Travel Mates Not Interested in Games?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "J",
+      "to": "K",
+      "type": "transitions_to"
+    },
+    {
+      "from": "K",
+      "to": "L",
+      "type": "transitions_to"
+    },
+    {
+      "from": "I1",
+      "to": "|Yes| M",
+      "type": "transitions_to"
+    },
+    {
+      "from": "I1",
+      "to": "|No| N",
+      "type": "transitions_to"
+    },
+    {
+      "from": "M",
+      "to": "O",
+      "type": "transitions_to"
+    },
+    {
+      "from": "O",
+      "to": "P{\"Interested in Alphabet Game?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "P",
+      "to": "|Yes| Q1",
+      "type": "transitions_to"
+    },
+    {
+      "from": "P",
+      "to": "|No| P1{\"Play Solitaire with Cards?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "P1",
+      "to": "|Yes| Q2",
+      "type": "transitions_to"
+    },
+    {
+      "from": "P1",
+      "to": "|No| P2{\"Has Smartphone/Tablet?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "P2",
+      "to": "|Yes| Q3",
+      "type": "transitions_to"
+    },
+    {
+      "from": "P2",
+      "to": "|No| P3{\"Has Portable Gaming Device?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "P3",
+      "to": "|Yes| Q4",
+      "type": "transitions_to"
+    },
+    {
+      "from": "P3",
+      "to": "|No| R",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Q1",
+      "to": "R",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Q2",
+      "to": "R",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Q3",
+      "to": "R",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Q4",
+      "to": "R",
+      "type": "transitions_to"
+    },
+    {
+      "from": "R",
+      "to": "S",
+      "type": "transitions_to"
+    },
+    {
+      "from": "H",
+      "to": "S",
+      "type": "transitions_to"
+    },
+    {
+      "from": "L",
+      "to": "S",
+      "type": "transitions_to"
+    },
+    {
+      "from": "N",
+      "to": "S",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_real_010.png"
+}

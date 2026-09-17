@@ -416,3 +416,85 @@
     padding: 0.75rem;
   }
 }
+
+/* ── Rich Markdown Pedagogical Renderer Styling ───────────────────────────── */
+.markdown-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  font-size: 0.84rem;
+  line-height: 1.68;
+}
+
+.md-header-2 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0.6rem 0 0.2rem 0;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.md-header-3 {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #c7d2fe;
+  margin: 0.75rem 0 0.2rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.md-header-3:first-child {
+  margin-top: 0;
+}
+
+.md-paragraph {
+  margin: 0;
+  color: #cbd5e1;
+}
+
+.md-unordered-list,
+.md-ordered-list {
+  margin: 0.15rem 0 0.4rem 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.md-list-item {
+  color: #e2e8f0;
+  line-height: 1.55;
+}
+
+.md-list-item strong.md-bold {
+  color: #ffffff;
+}
+
+.md-bold {
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.md-code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  word-break: break-word;
+}
+
+.answer-card-container {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease;
+}
+

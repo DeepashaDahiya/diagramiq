@@ -1,0 +1,75 @@
+{
+  "diagram_id": "flowchart_er_008",
+  "title": "Social Media Engagement ERD",
+  "category": "ER_DIAGRAM",
+  "complexity": "SIMPLE",
+  "nodes": [
+    {
+      "id": "UserAccount",
+      "type": "entity",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "UserPost",
+      "type": "entity",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "CommentRecord",
+      "type": "entity",
+      "bounding_box": [
+        480,
+        480,
+        640,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "LikeReaction",
+      "type": "entity",
+      "bounding_box": [
+        680,
+        480,
+        840,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "UserAccount",
+      "to": "UserPost",
+      "type": "relates_to"
+    },
+    {
+      "from": "UserPost",
+      "to": "CommentRecord",
+      "type": "relates_to"
+    },
+    {
+      "from": "UserPost",
+      "to": "LikeReaction",
+      "type": "relates_to"
+    }
+  ],
+  "image_file": "images/flowchart_er_008.png",
+  "puml_file": "plantuml_sources/flowchart_er_008.puml"
+}

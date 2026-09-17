@@ -1,0 +1,15 @@
+@startuml
+' Diagram: Hotel Room Hold & Booking Settlement
+' Category: UML_SEQUENCE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+participant "Traveler" as Traveler
+participant "BookingEngine" as BookingEngine
+participant "InventoryDB" as InventoryDB
+participant "PaymentProcessor" as PaymentProcessor
+Traveler -> BookingEngine : sends_message
+BookingEngine -> InventoryDB : sends_message
+BookingEngine -> PaymentProcessor : sends_message
+@enduml

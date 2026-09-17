@@ -1,0 +1,21 @@
+@startuml
+' Diagram: Real-Time Geo-Location Tracking System
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "MobileClient" as MobileClient
+node "WebSocketGateway" as WebSocketGateway
+node "LocationService" as LocationService
+node "RedisGeoCache" as RedisGeoCache
+node "KafkaStream" as KafkaStream
+node "DispatchEngine" as DispatchEngine
+node "PostgresDB" as PostgresDB
+MobileClient --> WebSocketGateway : calls
+WebSocketGateway --> LocationService : calls
+LocationService --> RedisGeoCache : calls
+LocationService --> KafkaStream : calls
+KafkaStream --> DispatchEngine : calls
+DispatchEngine --> PostgresDB : writes_to
+@enduml

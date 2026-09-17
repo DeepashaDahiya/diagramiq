@@ -1,0 +1,162 @@
+{
+  "diagram_id": "flowchart_real_019",
+  "title": "Real Control Flowchart #19",
+  "category": "FLOWCHART",
+  "complexity": "MEDIUM",
+  "source_dataset": "MananSuri27/Flowchart2Mermaid",
+  "nodes": [
+    {
+      "id": "A",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "B",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "C",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "D",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "D{\"For each pair",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "E",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "G",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "H",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| C",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| E",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "A",
+      "to": "B",
+      "type": "transitions_to"
+    },
+    {
+      "from": "B",
+      "to": "C",
+      "type": "transitions_to"
+    },
+    {
+      "from": "C",
+      "to": "D{\"For each pair",
+      "type": "transitions_to"
+    },
+    {
+      "from": "D",
+      "to": "|\"Yes\"| E",
+      "type": "transitions_to"
+    },
+    {
+      "from": "E",
+      "to": "F",
+      "type": "transitions_to"
+    },
+    {
+      "from": "D",
+      "to": "|\"No\"| C",
+      "type": "transitions_to"
+    },
+    {
+      "from": "C",
+      "to": "G",
+      "type": "transitions_to"
+    },
+    {
+      "from": "G",
+      "to": "H",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_real_019.png"
+}

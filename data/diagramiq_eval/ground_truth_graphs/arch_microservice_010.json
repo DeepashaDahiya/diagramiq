@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_010",
+  "title": "Medallion Data Lakehouse Architecture",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "SourceDB",
+      "type": "database",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "BronzeLayer",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "SparkETL",
+      "type": "gateway",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "SilverLayer",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "GoldAnalytics",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "SourceDB",
+      "to": "BronzeLayer",
+      "type": "calls"
+    },
+    {
+      "from": "BronzeLayer",
+      "to": "SparkETL",
+      "type": "calls"
+    },
+    {
+      "from": "SparkETL",
+      "to": "SilverLayer",
+      "type": "calls"
+    },
+    {
+      "from": "SilverLayer",
+      "to": "GoldAnalytics",
+      "type": "calls"
+    }
+  ],
+  "image_file": "images/arch_microservice_010.png",
+  "puml_file": "plantuml_sources/arch_microservice_010.puml"
+}

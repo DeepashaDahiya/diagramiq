@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_028",
+  "title": "Cloud VPC Infrastructure",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "VPC",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+vpcId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Subnet",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+subnetId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "EC2Instance",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+ec2instanceId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "SecurityGroup",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+securitygroupId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "RouteTable",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+routetableId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "VPC",
+      "to": "Subnet",
+      "type": "associates"
+    },
+    {
+      "from": "Subnet",
+      "to": "EC2Instance",
+      "type": "associates"
+    },
+    {
+      "from": "EC2Instance",
+      "to": "SecurityGroup",
+      "type": "associates"
+    },
+    {
+      "from": "Subnet",
+      "to": "RouteTable",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_028.png",
+  "puml_file": "plantuml_sources/uml_class_028.puml"
+}

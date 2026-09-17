@@ -1,0 +1,49 @@
+@startuml
+' Diagram: Azure AKS Enterprise Multi-Tier Microservices with APIM & Cosmos DB
+' Source: Microsoft Azure Architecture Center — Reference Architecture
+skinparam backgroundColor #0b1120
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+skinparam rectangleBackgroundColor #1e293b
+skinparam rectangleBorderColor #0284c7
+rectangle "Client Traffic (Web & Mobile)" as Client_Traffic
+rectangle "Azure Front Door + WAF Rules" as Azure_Front_Door
+rectangle "Application Gateway (WAF v2)" as Azure_App_Gateway
+rectangle "API Management (APIM Gateway)" as Azure_APIM
+rectangle "NGINX Ingress Controller" as AKS_Ingress_Controller
+rectangle "Auth Service (OAuth2 / JWT)" as Auth_Service_Pod
+rectangle "Order Service (Spring Boot)" as Order_Service_Pod
+rectangle "Payment Service (.NET Core)" as Payment_Service_Pod
+rectangle "Inventory Service (Go Microservice)" as Inventory_Service_Pod
+rectangle "Notification Background Worker" as Notification_Worker
+rectangle "Azure Cache for Redis" as Azure_Redis_Cache
+rectangle "Azure Service Bus (Topics & DLQ)" as Azure_Service_Bus
+rectangle "Azure Cosmos DB (Multi-Region NoSQL)" as Cosmos_DB_Global
+rectangle "Azure SQL DB (Auto-Failover Group)" as Azure_SQL_Failover
+rectangle "Azure Blob Storage (Data Lake Gen2)" as Azure_Blob_Storage
+rectangle "Azure Key Vault (Managed Identity HSM)" as Azure_Key_Vault
+rectangle "Microsoft Entra ID (Azure AD B2C)" as Microsoft_Entra_ID
+rectangle "Log Analytics Workspace + App Insights" as Azure_Log_Analytics
+rectangle "Azure Monitor (Alerts & Metrics)" as Azure_Monitor_Alerts
+Client_Traffic --> Azure_Front_Door : HTTPS (Port 443)
+Azure_Front_Door --> Azure_App_Gateway : Global Load Balancing
+Azure_App_Gateway --> Azure_APIM : WAF Filtered Ingress
+Azure_APIM --> AKS_Ingress_Controller : Private Link Endpoint
+AKS_Ingress_Controller --> Order_Service_Pod : Route /orders
+AKS_Ingress_Controller --> Auth_Service_Pod : Route /auth
+Order_Service_Pod --> Auth_Service_Pod : Validate JWT Token
+Order_Service_Pod --> Payment_Service_Pod : gRPC Direct Call
+Order_Service_Pod --> Inventory_Service_Pod : gRPC Check Stock
+Order_Service_Pod --> Azure_Redis_Cache : Read/Write Session Cache
+Order_Service_Pod --> Azure_Service_Bus : Publish 'OrderCreated'
+Azure_Service_Bus --> Notification_Worker : Consume Events (Topic)
+Payment_Service_Pod --> Azure_SQL_Failover : ACID Ledger Transactions
+Order_Service_Pod --> Cosmos_DB_Global : Persist JSON Order Doc
+Inventory_Service_Pod --> Cosmos_DB_Global : Update Stock Item Count
+Notification_Worker --> Azure_Blob_Storage : Archive PDF Invoices
+Auth_Service_Pod ..> Microsoft_Entra_ID : OAuth2 Handshake
+AKS_Ingress_Controller ..> Azure_Key_Vault : Fetch TLS Certificates
+AKS_Ingress_Controller ..> Azure_Log_Analytics : Stream W3C Traces
+Azure_Log_Analytics ..> Azure_Monitor_Alerts : Telemetry Trigger
+@enduml

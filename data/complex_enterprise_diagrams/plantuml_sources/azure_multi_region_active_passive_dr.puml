@@ -1,0 +1,40 @@
+@startuml
+' Diagram: Azure Multi-Region Active-Passive Disaster Recovery & Traffic Manager
+' Source: Microsoft Azure Architecture Center — Reliability Pillar
+skinparam backgroundColor #0b1120
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+skinparam rectangleBackgroundColor #1e293b
+skinparam rectangleBorderColor #0284c7
+rectangle "Global Users & API Consumers" as Global_Users
+rectangle "Azure Traffic Manager (DNS Probing & Failover)" as Azure_Traffic_Manager
+rectangle "Azure Front Door (Global Anycast CDN + WAF)" as Azure_Front_Door_Global
+rectangle "Primary App Gateway (VNet Hub)" as Primary_App_Gateway
+rectangle "Primary AKS Cluster (Microservices)" as Primary_AKS_Cluster
+rectangle "Azure SQL (Leader) Read-Write Replicas" as Primary_SQL_Leader
+rectangle "Blob Storage (GRS) Hot Tier Data" as Primary_Blob_Storage
+rectangle "Primary Key Vault" as Primary_Key_Vault
+rectangle "Secondary App Gateway (Standby VNet Hub)" as Secondary_App_Gateway
+rectangle "Secondary AKS Cluster (Scaled Down Nodes)" as Secondary_AKS_Cluster
+rectangle "Azure SQL (Follower) Async Read-Only Replicas" as Secondary_SQL_Follower
+rectangle "Blob Storage (GRS) Read-Access Replica" as Secondary_Blob_Storage
+rectangle "Secondary Key Vault" as Secondary_Key_Vault
+rectangle "Global VNet Peering & Failover Group Sync" as VNet_Global_Peering
+Global_Users --> Azure_Traffic_Manager : DNS Health Probe
+Global_Users --> Azure_Front_Door_Global : HTTPS Traffic Ingress
+Azure_Traffic_Manager --> Primary_App_Gateway : Primary Health: OK
+Azure_Traffic_Manager ..> Secondary_App_Gateway : Standby Probe
+Azure_Front_Door_Global --> Primary_App_Gateway : Route Active (100% weight)
+Azure_Front_Door_Global ..> Secondary_App_Gateway : Failover Route (0% weight)
+Primary_App_Gateway --> Primary_AKS_Cluster : Forward Traffic
+Primary_AKS_Cluster --> Primary_SQL_Leader : Read/Write SQL
+Primary_AKS_Cluster --> Primary_Blob_Storage : Store Media Assets
+Primary_AKS_Cluster ..> Primary_Key_Vault : Fetch Secrets
+Secondary_App_Gateway ..> Secondary_AKS_Cluster : Forward on Failover
+Secondary_AKS_Cluster ..> Secondary_SQL_Follower : Read Standby
+Secondary_AKS_Cluster ..> Secondary_Blob_Storage : Read Assets
+Primary_SQL_Leader --> VNet_Global_Peering : Async DB Replication
+VNet_Global_Peering --> Secondary_SQL_Follower : Sync SQL Log
+Primary_Blob_Storage --> Secondary_Blob_Storage : Geo-Redundant Replication (GRS)
+@enduml

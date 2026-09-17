@@ -1,0 +1,92 @@
+{
+  "diagram_id": "flowchart_er_005",
+  "title": "Airline Booking & Flight ERD",
+  "category": "ER_DIAGRAM",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Passenger",
+      "type": "entity",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Booking",
+      "type": "entity",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "FlightSchedule",
+      "type": "entity",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Aircraft",
+      "type": "entity",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Airport",
+      "type": "entity",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "Passenger",
+      "to": "Booking",
+      "type": "relates_to"
+    },
+    {
+      "from": "Booking",
+      "to": "FlightSchedule",
+      "type": "relates_to"
+    },
+    {
+      "from": "FlightSchedule",
+      "to": "Aircraft",
+      "type": "relates_to"
+    },
+    {
+      "from": "FlightSchedule",
+      "to": "Airport",
+      "type": "relates_to"
+    }
+  ],
+  "image_file": "images/flowchart_er_005.png",
+  "puml_file": "plantuml_sources/flowchart_er_005.puml"
+}

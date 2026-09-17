@@ -1,0 +1,20 @@
+@startuml
+' Diagram: E-Commerce Order Fulfillment Flowchart
+' Category: FLOWCHART
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+rectangle "OrderPlaced" as OrderPlaced
+rectangle "CheckInventory" as CheckInventory
+rectangle "ProcessPayment" as ProcessPayment
+rectangle "PickAndPack" as PickAndPack
+rectangle "DispatchCourier" as DispatchCourier
+rectangle "CancelOrder" as CancelOrder
+OrderPlaced --> CheckInventory : transitions_to
+CheckInventory --> ProcessPayment : transitions_to
+CheckInventory --> CancelOrder : transitions_to
+ProcessPayment --> PickAndPack : transitions_to
+ProcessPayment --> CancelOrder : transitions_to
+PickAndPack --> DispatchCourier : transitions_to
+@enduml

@@ -1,0 +1,126 @@
+{
+  "diagram_id": "arch_microservice_003",
+  "title": "Real-Time Geo-Location Tracking System",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "COMPLEX",
+  "nodes": [
+    {
+      "id": "MobileClient",
+      "type": "gateway",
+      "bounding_box": [
+        60,
+        480,
+        220,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "WebSocketGateway",
+      "type": "gateway",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "LocationService",
+      "type": "service",
+      "bounding_box": [
+        500,
+        480,
+        660,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "RedisGeoCache",
+      "type": "database",
+      "bounding_box": [
+        720,
+        480,
+        880,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "KafkaStream",
+      "type": "gateway",
+      "bounding_box": [
+        60,
+        300,
+        220,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DispatchEngine",
+      "type": "gateway",
+      "bounding_box": [
+        280,
+        300,
+        440,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PostgresDB",
+      "type": "database",
+      "bounding_box": [
+        500,
+        300,
+        660,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "MobileClient",
+      "to": "WebSocketGateway",
+      "type": "calls"
+    },
+    {
+      "from": "WebSocketGateway",
+      "to": "LocationService",
+      "type": "calls"
+    },
+    {
+      "from": "LocationService",
+      "to": "RedisGeoCache",
+      "type": "calls"
+    },
+    {
+      "from": "LocationService",
+      "to": "KafkaStream",
+      "type": "calls"
+    },
+    {
+      "from": "KafkaStream",
+      "to": "DispatchEngine",
+      "type": "calls"
+    },
+    {
+      "from": "DispatchEngine",
+      "to": "PostgresDB",
+      "type": "writes_to"
+    }
+  ],
+  "image_file": "images/arch_microservice_003.png",
+  "puml_file": "plantuml_sources/arch_microservice_003.puml"
+}

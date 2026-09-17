@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_015",
+  "title": "Kubernetes Ingress & Pod Fleet",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "IngressController",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "ClusterIPService",
+      "type": "service",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PodReplicas",
+      "type": "gateway",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PostgresStatefulSet",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PVStorage",
+      "type": "database",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "IngressController",
+      "to": "ClusterIPService",
+      "type": "calls"
+    },
+    {
+      "from": "ClusterIPService",
+      "to": "PodReplicas",
+      "type": "calls"
+    },
+    {
+      "from": "PodReplicas",
+      "to": "PostgresStatefulSet",
+      "type": "calls"
+    },
+    {
+      "from": "PostgresStatefulSet",
+      "to": "PVStorage",
+      "type": "calls"
+    }
+  ],
+  "image_file": "images/arch_microservice_015.png",
+  "puml_file": "plantuml_sources/arch_microservice_015.puml"
+}

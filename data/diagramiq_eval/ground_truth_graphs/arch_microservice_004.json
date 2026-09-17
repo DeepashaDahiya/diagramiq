@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_004",
+  "title": "Real-time Chat Messaging Architecture",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "WebClient",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "LoadBalancer",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "ChatServer",
+      "type": "gateway",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "RedisPubSub",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "CassandraDB",
+      "type": "database",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "WebClient",
+      "to": "LoadBalancer",
+      "type": "calls"
+    },
+    {
+      "from": "LoadBalancer",
+      "to": "ChatServer",
+      "type": "calls"
+    },
+    {
+      "from": "ChatServer",
+      "to": "RedisPubSub",
+      "type": "calls"
+    },
+    {
+      "from": "ChatServer",
+      "to": "CassandraDB",
+      "type": "writes_to"
+    }
+  ],
+  "image_file": "images/arch_microservice_004.png",
+  "puml_file": "plantuml_sources/arch_microservice_004.puml"
+}

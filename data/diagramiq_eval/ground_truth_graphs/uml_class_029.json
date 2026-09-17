@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_029",
+  "title": "Supply Chain Logistics",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Shipment",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+shipmentId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Carrier",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+carrierId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "RouteCheckpoint",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+routecheckpointId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Consignee",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+consigneeId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Manifest",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+manifestId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Carrier",
+      "to": "Shipment",
+      "type": "associates"
+    },
+    {
+      "from": "Shipment",
+      "to": "RouteCheckpoint",
+      "type": "associates"
+    },
+    {
+      "from": "Shipment",
+      "to": "Consignee",
+      "type": "associates"
+    },
+    {
+      "from": "Shipment",
+      "to": "Manifest",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_029.png",
+  "puml_file": "plantuml_sources/uml_class_029.puml"
+}

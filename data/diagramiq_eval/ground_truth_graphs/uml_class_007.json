@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_007",
+  "title": "Flight Reservation Engine",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Flight",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+flightId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Airline",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+airlineId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Passenger",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+passengerId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Ticket",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+ticketId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Airport",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+airportId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Passenger",
+      "to": "Ticket",
+      "type": "associates"
+    },
+    {
+      "from": "Ticket",
+      "to": "Flight",
+      "type": "associates"
+    },
+    {
+      "from": "Airline",
+      "to": "Flight",
+      "type": "associates"
+    },
+    {
+      "from": "Flight",
+      "to": "Airport",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_007.png",
+  "puml_file": "plantuml_sources/uml_class_007.puml"
+}

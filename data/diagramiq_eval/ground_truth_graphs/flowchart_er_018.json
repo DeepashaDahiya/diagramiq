@@ -1,0 +1,114 @@
+{
+  "diagram_id": "flowchart_er_018",
+  "title": "ATM Cash Withdrawal Flowchart",
+  "category": "FLOWCHART",
+  "complexity": "SIMPLE",
+  "nodes": [
+    {
+      "id": "CardInserted",
+      "type": "process",
+      "bounding_box": [
+        60,
+        480,
+        220,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "VerifyPIN",
+      "type": "process",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "CheckBalance",
+      "type": "decision",
+      "bounding_box": [
+        500,
+        480,
+        660,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DispenseCash",
+      "type": "process",
+      "bounding_box": [
+        720,
+        480,
+        880,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "EjectCard",
+      "type": "process",
+      "bounding_box": [
+        60,
+        300,
+        220,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "RetainCard",
+      "type": "process",
+      "bounding_box": [
+        280,
+        300,
+        440,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "CardInserted",
+      "to": "VerifyPIN",
+      "type": "transitions_to"
+    },
+    {
+      "from": "VerifyPIN",
+      "to": "CheckBalance",
+      "type": "transitions_to"
+    },
+    {
+      "from": "VerifyPIN",
+      "to": "RetainCard",
+      "type": "transitions_to"
+    },
+    {
+      "from": "CheckBalance",
+      "to": "DispenseCash",
+      "type": "transitions_to"
+    },
+    {
+      "from": "CheckBalance",
+      "to": "EjectCard",
+      "type": "transitions_to"
+    },
+    {
+      "from": "DispenseCash",
+      "to": "EjectCard",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_er_018.png",
+  "puml_file": "plantuml_sources/flowchart_er_018.puml"
+}

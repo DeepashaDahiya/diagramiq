@@ -1,0 +1,17 @@
+@startuml
+' Diagram: Cloud Single Sign-On Identity System
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "BrowserClient" as BrowserClient
+node "OAuthGateway" as OAuthGateway
+node "KeycloakIDP" as KeycloakIDP
+node "LDAPDirectory" as LDAPDirectory
+node "SessionRedis" as SessionRedis
+BrowserClient --> OAuthGateway : calls
+OAuthGateway --> KeycloakIDP : calls
+KeycloakIDP --> LDAPDirectory : calls
+KeycloakIDP --> SessionRedis : calls
+@enduml

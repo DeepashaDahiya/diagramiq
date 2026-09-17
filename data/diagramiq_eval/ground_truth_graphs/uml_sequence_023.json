@@ -1,0 +1,75 @@
+{
+  "diagram_id": "uml_sequence_023",
+  "title": "Webhook Delivery with Retry Backoff",
+  "category": "UML_SEQUENCE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "PublisherApp",
+      "type": "actor",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "WebhookWorker",
+      "type": "participant",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "SubscriberEndpoint",
+      "type": "participant",
+      "bounding_box": [
+        480,
+        480,
+        640,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DeadLetterQueue",
+      "type": "participant",
+      "bounding_box": [
+        680,
+        480,
+        840,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "PublisherApp",
+      "to": "WebhookWorker",
+      "type": "sends_message"
+    },
+    {
+      "from": "WebhookWorker",
+      "to": "SubscriberEndpoint",
+      "type": "sends_message"
+    },
+    {
+      "from": "WebhookWorker",
+      "to": "DeadLetterQueue",
+      "type": "sends_message"
+    }
+  ],
+  "image_file": "images/uml_sequence_023.png",
+  "puml_file": "plantuml_sources/uml_sequence_023.puml"
+}

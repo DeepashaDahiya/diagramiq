@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_010",
+  "title": "Online Food Delivery",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Customer",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+customerId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Restaurant",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+restaurantId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "MenuItem",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+menuitemId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Order",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+orderId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Courier",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+courierId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Customer",
+      "to": "Order",
+      "type": "associates"
+    },
+    {
+      "from": "Order",
+      "to": "MenuItem",
+      "type": "associates"
+    },
+    {
+      "from": "Restaurant",
+      "to": "MenuItem",
+      "type": "associates"
+    },
+    {
+      "from": "Courier",
+      "to": "Order",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_010.png",
+  "puml_file": "plantuml_sources/uml_class_010.puml"
+}

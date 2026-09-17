@@ -1,0 +1,32 @@
+@startuml
+' Diagram: Online Auction Marketplace
+' Category: UML_CLASS
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+class Seller {
+  +sellerId
+  +execute()
+}
+class AuctionItem {
+  +auctionitemId
+  +execute()
+}
+class Bid {
+  +bidId
+  +execute()
+}
+class Buyer {
+  +buyerId
+  +execute()
+}
+class EscrowAccount {
+  +escrowaccountId
+  +execute()
+}
+Seller --> AuctionItem : associates
+Buyer --> Bid : associates
+Bid --> AuctionItem : associates
+AuctionItem --> EscrowAccount : associates
+@enduml

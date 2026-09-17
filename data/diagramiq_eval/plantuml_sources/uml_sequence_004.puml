@@ -1,0 +1,16 @@
+@startuml
+' Diagram: Database Connection Pool Allocation
+' Category: UML_SEQUENCE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+participant "AppThread" as AppThread
+participant "PoolManager" as PoolManager
+participant "JDBCDriver" as JDBCDriver
+participant "DatabaseServer" as DatabaseServer
+AppThread -> PoolManager : sends_message
+PoolManager -> JDBCDriver : sends_message
+JDBCDriver -> DatabaseServer : sends_message
+PoolManager -> AppThread : sends_message
+@enduml

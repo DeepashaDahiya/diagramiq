@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_009",
+  "title": "Multi-Channel Notification Hub",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "EventProducer",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "SQSQueue",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "NotificationWorker",
+      "type": "service",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "TwilioSMS",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "SendGridEmail",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "EventProducer",
+      "to": "SQSQueue",
+      "type": "calls"
+    },
+    {
+      "from": "SQSQueue",
+      "to": "NotificationWorker",
+      "type": "calls"
+    },
+    {
+      "from": "NotificationWorker",
+      "to": "TwilioSMS",
+      "type": "calls"
+    },
+    {
+      "from": "NotificationWorker",
+      "to": "SendGridEmail",
+      "type": "calls"
+    }
+  ],
+  "image_file": "images/arch_microservice_009.png",
+  "puml_file": "plantuml_sources/arch_microservice_009.puml"
+}

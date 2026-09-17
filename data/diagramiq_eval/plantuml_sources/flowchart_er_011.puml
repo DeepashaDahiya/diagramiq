@@ -1,0 +1,23 @@
+@startuml
+' Diagram: User Authentication & 2FA Flowchart
+' Category: FLOWCHART
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+rectangle "Start" as Start
+rectangle "InputCredentials" as InputCredentials
+rectangle "ValidatePassword" as ValidatePassword
+rectangle "Check2FAEnabled" as Check2FAEnabled
+rectangle "PromptOTP" as PromptOTP
+rectangle "LoginSuccess" as LoginSuccess
+rectangle "LockoutAccount" as LockoutAccount
+Start --> InputCredentials : transitions_to
+InputCredentials --> ValidatePassword : transitions_to
+ValidatePassword --> Check2FAEnabled : transitions_to
+ValidatePassword --> LockoutAccount : transitions_to
+Check2FAEnabled --> PromptOTP : transitions_to
+Check2FAEnabled --> LoginSuccess : transitions_to
+PromptOTP --> LoginSuccess : transitions_to
+PromptOTP --> LockoutAccount : transitions_to
+@enduml

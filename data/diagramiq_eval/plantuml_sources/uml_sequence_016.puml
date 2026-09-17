@@ -1,0 +1,14 @@
+@startuml
+' Diagram: Push Notification Broadcast via FCM
+' Category: UML_SEQUENCE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+participant "BackendService" as BackendService
+participant "FCMGateway" as FCMGateway
+participant "APNsGateway" as APNsGateway
+participant "MobilePhone" as MobilePhone
+BackendService -> FCMGateway : sends_message
+FCMGateway -> MobilePhone : sends_message
+@enduml

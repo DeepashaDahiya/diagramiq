@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_024",
+  "title": "Global CDN Edge Compute Mesh",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "EndUser",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "AnycastDNS",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "CloudflareEdge",
+      "type": "gateway",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "OriginBackend",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "KVStorage",
+      "type": "database",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "EndUser",
+      "to": "AnycastDNS",
+      "type": "calls"
+    },
+    {
+      "from": "AnycastDNS",
+      "to": "CloudflareEdge",
+      "type": "calls"
+    },
+    {
+      "from": "CloudflareEdge",
+      "to": "KVStorage",
+      "type": "calls"
+    },
+    {
+      "from": "CloudflareEdge",
+      "to": "OriginBackend",
+      "type": "calls"
+    }
+  ],
+  "image_file": "images/arch_microservice_024.png",
+  "puml_file": "plantuml_sources/arch_microservice_024.puml"
+}

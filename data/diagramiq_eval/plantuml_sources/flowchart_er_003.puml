@@ -1,0 +1,17 @@
+@startuml
+' Diagram: E-Commerce Product & Order Schema ERD
+' Category: ER_DIAGRAM
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+rectangle "Customer" as Customer
+rectangle "OrderHeader" as OrderHeader
+rectangle "OrderItem" as OrderItem
+rectangle "ProductCatalog" as ProductCatalog
+rectangle "PaymentRecord" as PaymentRecord
+Customer --> OrderHeader : relates_to
+OrderHeader --> OrderItem : relates_to
+OrderItem --> ProductCatalog : relates_to
+OrderHeader --> PaymentRecord : relates_to
+@enduml

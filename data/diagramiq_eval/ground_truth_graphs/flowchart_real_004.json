@@ -1,0 +1,562 @@
+{
+  "diagram_id": "flowchart_real_004",
+  "title": "Real Control Flowchart #4",
+  "category": "FLOWCHART",
+  "complexity": "MEDIUM",
+  "source_dataset": "MananSuri27/Flowchart2Mermaid",
+  "nodes": [
+    {
+      "id": "A",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "B",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "C",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "C{\"Dirty diaper?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "D",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "E",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "G",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "H",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "I",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "J",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "K",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "L",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "M",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "N",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "O",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "P",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "Q",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "R",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "S",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "S{\"Wailing loudly?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "T",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "U",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "V",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "W",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "W{\"Accepts pacifier?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "Y",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "Z",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| F{\"Hungry?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| H{\"Illness?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| J{\"Room temperature discomfort?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| L",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| U",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| Y",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| D",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| G",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| I",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| K",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| T",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| X",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "A",
+      "to": "B",
+      "type": "transitions_to"
+    },
+    {
+      "from": "B",
+      "to": "C{\"Dirty diaper?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "C",
+      "to": "|Yes| D",
+      "type": "transitions_to"
+    },
+    {
+      "from": "D",
+      "to": "E",
+      "type": "transitions_to"
+    },
+    {
+      "from": "C",
+      "to": "|No| F{\"Hungry?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F",
+      "to": "|Yes| G",
+      "type": "transitions_to"
+    },
+    {
+      "from": "G",
+      "to": "E",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F",
+      "to": "|No| H{\"Illness?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "H",
+      "to": "|Yes| I",
+      "type": "transitions_to"
+    },
+    {
+      "from": "I",
+      "to": "E",
+      "type": "transitions_to"
+    },
+    {
+      "from": "H",
+      "to": "|No| J{\"Room temperature discomfort?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "J",
+      "to": "|Yes| K",
+      "type": "transitions_to"
+    },
+    {
+      "from": "K",
+      "to": "E",
+      "type": "transitions_to"
+    },
+    {
+      "from": "J",
+      "to": "|No| L",
+      "type": "transitions_to"
+    },
+    {
+      "from": "L",
+      "to": "M",
+      "type": "transitions_to"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "type": "transitions_to"
+    },
+    {
+      "from": "N",
+      "to": "O",
+      "type": "transitions_to"
+    },
+    {
+      "from": "O",
+      "to": "P",
+      "type": "transitions_to"
+    },
+    {
+      "from": "P",
+      "to": "Q",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Q",
+      "to": "R",
+      "type": "transitions_to"
+    },
+    {
+      "from": "R",
+      "to": "S{\"Wailing loudly?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "S",
+      "to": "|Yes| T",
+      "type": "transitions_to"
+    },
+    {
+      "from": "S",
+      "to": "|No| U",
+      "type": "transitions_to"
+    },
+    {
+      "from": "U",
+      "to": "V",
+      "type": "transitions_to"
+    },
+    {
+      "from": "V",
+      "to": "W{\"Accepts pacifier?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "W",
+      "to": "|Yes| X",
+      "type": "transitions_to"
+    },
+    {
+      "from": "W",
+      "to": "|No| Y",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Y",
+      "to": "Z",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Z",
+      "to": "A",
+      "type": "transitions_to"
+    },
+    {
+      "from": "T",
+      "to": "W",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_real_004.png"
+}

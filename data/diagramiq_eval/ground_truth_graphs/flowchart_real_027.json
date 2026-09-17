@@ -1,0 +1,502 @@
+{
+  "diagram_id": "flowchart_real_027",
+  "title": "Real Control Flowchart #27",
+  "category": "FLOWCHART",
+  "complexity": "MEDIUM",
+  "source_dataset": "MananSuri27/Flowchart2Mermaid",
+  "nodes": [
+    {
+      "id": "A",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "B",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "C",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "D",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "E",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F{\"Is the check for a company?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "G",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "H",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "I",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "J",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "K",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "L",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "M",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "N",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "O",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "P",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "Q",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "R",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "R{\"Is memo section required or helpful?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "S",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "T",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "U",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| H{\"Is there a recipient title?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| J",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| O",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| U",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| G",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| I",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| N",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| S",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Amount in dollars and cents| K",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Amount in words| M{\"Is the amount a whole number?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Current date| C",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Memo details| T",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Personal signature| Q",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Recipient's name| E",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "A",
+      "to": "B",
+      "type": "transitions_to"
+    },
+    {
+      "from": "B",
+      "to": "|Current date| C",
+      "type": "transitions_to"
+    },
+    {
+      "from": "C",
+      "to": "D",
+      "type": "transitions_to"
+    },
+    {
+      "from": "D",
+      "to": "|Recipient's name| E",
+      "type": "transitions_to"
+    },
+    {
+      "from": "E",
+      "to": "F{\"Is the check for a company?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F",
+      "to": "|\"Yes\"| G",
+      "type": "transitions_to"
+    },
+    {
+      "from": "G",
+      "to": "H",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F",
+      "to": "|\"No\"| H{\"Is there a recipient title?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "H",
+      "to": "|\"Yes\"| I",
+      "type": "transitions_to"
+    },
+    {
+      "from": "I",
+      "to": "J",
+      "type": "transitions_to"
+    },
+    {
+      "from": "H",
+      "to": "|\"No\"| J",
+      "type": "transitions_to"
+    },
+    {
+      "from": "J",
+      "to": "|Amount in dollars and cents| K",
+      "type": "transitions_to"
+    },
+    {
+      "from": "K",
+      "to": "L",
+      "type": "transitions_to"
+    },
+    {
+      "from": "L",
+      "to": "|Amount in words| M{\"Is the amount a whole number?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "M",
+      "to": "|\"Yes\"| N",
+      "type": "transitions_to"
+    },
+    {
+      "from": "M",
+      "to": "|\"No\"| O",
+      "type": "transitions_to"
+    },
+    {
+      "from": "N",
+      "to": "P",
+      "type": "transitions_to"
+    },
+    {
+      "from": "O",
+      "to": "P",
+      "type": "transitions_to"
+    },
+    {
+      "from": "P",
+      "to": "|Personal signature| Q",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Q",
+      "to": "R{\"Is memo section required or helpful?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "R",
+      "to": "|\"Yes\"| S",
+      "type": "transitions_to"
+    },
+    {
+      "from": "S",
+      "to": "|Memo details| T",
+      "type": "transitions_to"
+    },
+    {
+      "from": "T",
+      "to": "U",
+      "type": "transitions_to"
+    },
+    {
+      "from": "R",
+      "to": "|\"No\"| U",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_real_027.png"
+}

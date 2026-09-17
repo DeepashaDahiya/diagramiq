@@ -1,0 +1,15 @@
+@startuml
+' Diagram: Real-Time Credit Card Fraud Scoring
+' Category: UML_SEQUENCE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+participant "POSTerminal" as POSTerminal
+participant "BankAcquirer" as BankAcquirer
+participant "FraudScoringEngine" as FraudScoringEngine
+participant "CardNetwork" as CardNetwork
+POSTerminal -> BankAcquirer : sends_message
+BankAcquirer -> FraudScoringEngine : sends_message
+BankAcquirer -> CardNetwork : sends_message
+@enduml

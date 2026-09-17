@@ -1,0 +1,32 @@
+@startuml
+' Diagram: Project Task Management
+' Category: UML_CLASS
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+class Workspace {
+  +workspaceId
+  +execute()
+}
+class Project {
+  +projectId
+  +execute()
+}
+class Task {
+  +taskId
+  +execute()
+}
+class SubTask {
+  +subtaskId
+  +execute()
+}
+class Assignee {
+  +assigneeId
+  +execute()
+}
+Workspace --> Project : associates
+Project --> Task : associates
+Task --> SubTask : associates
+Task --> Assignee : associates
+@enduml

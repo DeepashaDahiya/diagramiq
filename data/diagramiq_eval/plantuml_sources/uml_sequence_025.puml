@@ -1,0 +1,15 @@
+@startuml
+' Diagram: GitHub Actions CI/CD Deployment Flow
+' Category: UML_SEQUENCE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+participant "GitPushEvent" as GitPushEvent
+participant "GitHubRunner" as GitHubRunner
+participant "DockerRegistry" as DockerRegistry
+participant "KubernetesCluster" as KubernetesCluster
+GitPushEvent -> GitHubRunner : sends_message
+GitHubRunner -> DockerRegistry : sends_message
+GitHubRunner -> KubernetesCluster : sends_message
+@enduml

@@ -1,0 +1,319 @@
+{
+  "diagram_id": "refactoring_guru_observer_mediator_event_bus",
+  "title": "Decoupled Observer & Mediator Architecture (Refactoring.Guru)",
+  "category": "UML_CLASS",
+  "complexity": "HIGHLY_COMPLEX",
+  "source_provenance": "Refactoring.Guru \u2014 Behavioral Design Patterns",
+  "nodes": [
+    {
+      "id": "Mediator",
+      "label": "\u00abinterface\u00bb\nMediator",
+      "type": "interface",
+      "bounding_box": [
+        70,
+        545,
+        250,
+        595
+      ],
+      "attributes": [
+        "+notify(sender, event)"
+      ]
+    },
+    {
+      "id": "AuthenticationDialog",
+      "label": "AuthenticationDialog\n(Concrete Mediator)",
+      "type": "class",
+      "bounding_box": [
+        285,
+        540,
+        475,
+        600
+      ],
+      "attributes": [
+        "-eventManager: EventManager",
+        "+notify(sender, event)",
+        "+registerColleague()"
+      ]
+    },
+    {
+      "id": "EventManager",
+      "label": "EventManager\n(Subject / Publisher)",
+      "type": "class",
+      "bounding_box": [
+        285,
+        437,
+        475,
+        492
+      ],
+      "attributes": [
+        "-listeners: Map<Event, List>",
+        "+subscribe(eventType, listener)",
+        "+unsubscribe(eventType)",
+        "+publish(event)"
+      ]
+    },
+    {
+      "id": "EventListener",
+      "label": "\u00abinterface\u00bb\nEventListener",
+      "type": "interface",
+      "bounding_box": [
+        630,
+        545,
+        810,
+        595
+      ],
+      "attributes": [
+        "+update(eventPayload)"
+      ]
+    },
+    {
+      "id": "LoggingListener",
+      "label": "LoggingListener",
+      "type": "class",
+      "bounding_box": [
+        895,
+        545,
+        1065,
+        595
+      ],
+      "attributes": [
+        "-logFile: File",
+        "+update(eventPayload)"
+      ]
+    },
+    {
+      "id": "EmailAlertListener",
+      "label": "EmailAlertListener",
+      "type": "class",
+      "bounding_box": [
+        630,
+        440,
+        810,
+        490
+      ],
+      "attributes": [
+        "-adminEmail: String",
+        "+update(eventPayload)"
+      ]
+    },
+    {
+      "id": "AuditMetricsListener",
+      "label": "AuditMetricsListener",
+      "type": "class",
+      "bounding_box": [
+        895,
+        440,
+        1065,
+        490
+      ],
+      "attributes": [
+        "-telemetryClient: Client",
+        "+update(eventPayload)"
+      ]
+    },
+    {
+      "id": "Component",
+      "label": "\u00ababstract\u00bb\nComponent",
+      "type": "abstract_class",
+      "bounding_box": [
+        70,
+        287,
+        250,
+        332
+      ],
+      "attributes": [
+        "#dialog: Mediator",
+        "+setMediator(m)"
+      ]
+    },
+    {
+      "id": "LoginButton",
+      "label": "LoginButton",
+      "type": "class",
+      "bounding_box": [
+        50,
+        177,
+        190,
+        222
+      ],
+      "attributes": [
+        "+click() -> notify()"
+      ]
+    },
+    {
+      "id": "UsernameInput",
+      "label": "UsernameInput",
+      "type": "class",
+      "bounding_box": [
+        190,
+        177,
+        330,
+        222
+      ],
+      "attributes": [
+        "+textChanged()"
+      ]
+    },
+    {
+      "id": "RememberMeCheckbox",
+      "label": "RememberMeCheckbox",
+      "type": "class",
+      "bounding_box": [
+        325,
+        177,
+        475,
+        222
+      ],
+      "attributes": [
+        "+toggle()"
+      ]
+    },
+    {
+      "id": "SMTPGateway",
+      "label": "SMTPGateway",
+      "type": "service",
+      "bounding_box": [
+        630,
+        177,
+        810,
+        222
+      ],
+      "attributes": [
+        "+sendEmail(to, msg)"
+      ]
+    },
+    {
+      "id": "PrometheusExporter",
+      "label": "PrometheusExporter",
+      "type": "service",
+      "bounding_box": [
+        895,
+        177,
+        1065,
+        222
+      ],
+      "attributes": [
+        "+recordMetric(counter)"
+      ]
+    },
+    {
+      "id": "EventPayload",
+      "label": "EventPayload",
+      "type": "class",
+      "bounding_box": [
+        290,
+        57,
+        470,
+        102
+      ],
+      "attributes": [
+        "+timestamp: Long",
+        "+userId: String",
+        "+eventType: String"
+      ]
+    },
+    {
+      "id": "SecurityAuditEvent",
+      "label": "SecurityAuditEvent",
+      "type": "class",
+      "bounding_box": [
+        625,
+        57,
+        815,
+        102
+      ],
+      "attributes": [
+        "+failedAttempts: Int",
+        "+ipAddress: String"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "AuthenticationDialog",
+      "to": "Mediator",
+      "label": "implements",
+      "style": "dashed"
+    },
+    {
+      "from": "AuthenticationDialog",
+      "to": "EventManager",
+      "label": "owns Publisher",
+      "style": "solid"
+    },
+    {
+      "from": "Component",
+      "to": "Mediator",
+      "label": "communicates via",
+      "style": "solid"
+    },
+    {
+      "from": "LoginButton",
+      "to": "Component",
+      "label": "inherits",
+      "style": "dashed"
+    },
+    {
+      "from": "UsernameInput",
+      "to": "Component",
+      "label": "inherits",
+      "style": "dashed"
+    },
+    {
+      "from": "RememberMeCheckbox",
+      "to": "Component",
+      "label": "inherits",
+      "style": "dashed"
+    },
+    {
+      "from": "EventManager",
+      "to": "EventListener",
+      "label": "notifies all",
+      "style": "solid"
+    },
+    {
+      "from": "LoggingListener",
+      "to": "EventListener",
+      "label": "implements",
+      "style": "dashed"
+    },
+    {
+      "from": "EmailAlertListener",
+      "to": "EventListener",
+      "label": "implements",
+      "style": "dashed"
+    },
+    {
+      "from": "AuditMetricsListener",
+      "to": "EventListener",
+      "label": "implements",
+      "style": "dashed"
+    },
+    {
+      "from": "EmailAlertListener",
+      "to": "SMTPGateway",
+      "label": "dispatches to",
+      "style": "solid"
+    },
+    {
+      "from": "AuditMetricsListener",
+      "to": "PrometheusExporter",
+      "label": "streams to",
+      "style": "solid"
+    },
+    {
+      "from": "SecurityAuditEvent",
+      "to": "EventPayload",
+      "label": "extends",
+      "style": "dashed"
+    },
+    {
+      "from": "EventManager",
+      "to": "EventPayload",
+      "label": "broadcasts",
+      "style": "solid"
+    }
+  ],
+  "image_file": "images/refactoring_guru_observer_mediator_event_bus.png",
+  "puml_file": "plantuml_sources/refactoring_guru_observer_mediator_event_bus.puml"
+}

@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_024",
+  "title": "Parking Lot Controller",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "ParkingLot",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+parkinglotId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "ParkingSpot",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+parkingspotId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "ParkingTicket",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+parkingticketId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Vehicle",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+vehicleId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "PaymentKiosk",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+paymentkioskId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "ParkingLot",
+      "to": "ParkingSpot",
+      "type": "associates"
+    },
+    {
+      "from": "Vehicle",
+      "to": "ParkingTicket",
+      "type": "associates"
+    },
+    {
+      "from": "ParkingTicket",
+      "to": "ParkingSpot",
+      "type": "associates"
+    },
+    {
+      "from": "ParkingTicket",
+      "to": "PaymentKiosk",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_024.png",
+  "puml_file": "plantuml_sources/uml_class_024.puml"
+}

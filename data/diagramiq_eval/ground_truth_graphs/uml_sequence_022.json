@@ -1,0 +1,75 @@
+{
+  "diagram_id": "uml_sequence_022",
+  "title": "Distributed Redlock Mutex Acquisition",
+  "category": "UML_SEQUENCE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "WorkerNode",
+      "type": "actor",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "RedisMaster1",
+      "type": "participant",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "RedisMaster2",
+      "type": "participant",
+      "bounding_box": [
+        480,
+        480,
+        640,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "RedisMaster3",
+      "type": "participant",
+      "bounding_box": [
+        680,
+        480,
+        840,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "WorkerNode",
+      "to": "RedisMaster1",
+      "type": "sends_message"
+    },
+    {
+      "from": "WorkerNode",
+      "to": "RedisMaster2",
+      "type": "sends_message"
+    },
+    {
+      "from": "WorkerNode",
+      "to": "RedisMaster3",
+      "type": "sends_message"
+    }
+  ],
+  "image_file": "images/uml_sequence_022.png",
+  "puml_file": "plantuml_sources/uml_sequence_022.puml"
+}

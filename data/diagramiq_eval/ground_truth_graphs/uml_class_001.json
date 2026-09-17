@@ -1,0 +1,117 @@
+{
+  "diagram_id": "uml_class_001",
+  "title": "E-Commerce User & Order System",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "User",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+userId",
+        "+email"
+      ],
+      "methods": [
+        "+login()",
+        "+logout()"
+      ]
+    },
+    {
+      "id": "Customer",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+shippingAddress"
+      ],
+      "methods": [
+        "+placeOrder()"
+      ]
+    },
+    {
+      "id": "Order",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+orderId",
+        "+orderDate"
+      ],
+      "methods": [
+        "+calculateTotal()"
+      ]
+    },
+    {
+      "id": "Payment",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+paymentId",
+        "+amount"
+      ],
+      "methods": [
+        "+process()"
+      ]
+    },
+    {
+      "id": "Product",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+sku",
+        "+price"
+      ],
+      "methods": [
+        "+updateStock()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Customer",
+      "to": "User",
+      "type": "inherits"
+    },
+    {
+      "from": "Customer",
+      "to": "Order",
+      "type": "places"
+    },
+    {
+      "from": "Order",
+      "to": "Payment",
+      "type": "has_payment"
+    },
+    {
+      "from": "Order",
+      "to": "Product",
+      "type": "contains_item"
+    }
+  ],
+  "image_file": "images/uml_class_001.png",
+  "puml_file": "plantuml_sources/uml_class_001.puml"
+}

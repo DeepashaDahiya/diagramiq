@@ -1,0 +1,297 @@
+{
+  "diagram_id": "flowchart_real_001",
+  "title": "Real Control Flowchart #1",
+  "category": "FLOWCHART",
+  "complexity": "MEDIUM",
+  "source_dataset": "MananSuri27/Flowchart2Mermaid",
+  "nodes": [
+    {
+      "id": "A",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "B",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "C",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "D",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "E",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "E{\"Is N % M not equal to 0?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "G",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "H",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "I",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "I{\"Is i less than N?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "J",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "K",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "L",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "M",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| H",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| L",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| M",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| F",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| J{\"Is str1",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| K",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "A",
+      "to": "B",
+      "type": "transitions_to"
+    },
+    {
+      "from": "B",
+      "to": "C",
+      "type": "transitions_to"
+    },
+    {
+      "from": "C",
+      "to": "D",
+      "type": "transitions_to"
+    },
+    {
+      "from": "D",
+      "to": "E{\"Is N % M not equal to 0?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "E",
+      "to": "|Yes| F",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F",
+      "to": "G",
+      "type": "transitions_to"
+    },
+    {
+      "from": "E",
+      "to": "|No| H",
+      "type": "transitions_to"
+    },
+    {
+      "from": "H",
+      "to": "I{\"Is i less than N?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "I",
+      "to": "|Yes| J{\"Is str1",
+      "type": "transitions_to"
+    },
+    {
+      "from": "J",
+      "to": "|Yes| K",
+      "type": "transitions_to"
+    },
+    {
+      "from": "K",
+      "to": "G",
+      "type": "transitions_to"
+    },
+    {
+      "from": "J",
+      "to": "|No| L",
+      "type": "transitions_to"
+    },
+    {
+      "from": "L",
+      "to": "I",
+      "type": "transitions_to"
+    },
+    {
+      "from": "I",
+      "to": "|No| M",
+      "type": "transitions_to"
+    },
+    {
+      "from": "M",
+      "to": "G",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_real_001.png"
+}

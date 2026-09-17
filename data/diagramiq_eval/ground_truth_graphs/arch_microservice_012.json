@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_012",
+  "title": "Serverless Event-Driven Order Processing",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "APIGW",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "LambdaAuth",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "LambdaOrder",
+      "type": "gateway",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DynamoDB",
+      "type": "database",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "EventBridge",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "APIGW",
+      "to": "LambdaAuth",
+      "type": "calls"
+    },
+    {
+      "from": "APIGW",
+      "to": "LambdaOrder",
+      "type": "calls"
+    },
+    {
+      "from": "LambdaOrder",
+      "to": "DynamoDB",
+      "type": "writes_to"
+    },
+    {
+      "from": "LambdaOrder",
+      "to": "EventBridge",
+      "type": "calls"
+    }
+  ],
+  "image_file": "images/arch_microservice_012.png",
+  "puml_file": "plantuml_sources/arch_microservice_012.puml"
+}

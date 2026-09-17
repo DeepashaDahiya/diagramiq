@@ -1,0 +1,75 @@
+{
+  "diagram_id": "uml_sequence_018",
+  "title": "Real-Time Credit Card Fraud Scoring",
+  "category": "UML_SEQUENCE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "POSTerminal",
+      "type": "actor",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "BankAcquirer",
+      "type": "participant",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "FraudScoringEngine",
+      "type": "participant",
+      "bounding_box": [
+        480,
+        480,
+        640,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "CardNetwork",
+      "type": "participant",
+      "bounding_box": [
+        680,
+        480,
+        840,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "POSTerminal",
+      "to": "BankAcquirer",
+      "type": "sends_message"
+    },
+    {
+      "from": "BankAcquirer",
+      "to": "FraudScoringEngine",
+      "type": "sends_message"
+    },
+    {
+      "from": "BankAcquirer",
+      "to": "CardNetwork",
+      "type": "sends_message"
+    }
+  ],
+  "image_file": "images/uml_sequence_018.png",
+  "puml_file": "plantuml_sources/uml_sequence_018.puml"
+}

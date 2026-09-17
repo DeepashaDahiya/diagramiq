@@ -1,0 +1,17 @@
+@startuml
+' Diagram: Kubernetes Ingress & Pod Fleet
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "IngressController" as IngressController
+node "ClusterIPService" as ClusterIPService
+node "PodReplicas" as PodReplicas
+node "PostgresStatefulSet" as PostgresStatefulSet
+node "PVStorage" as PVStorage
+IngressController --> ClusterIPService : calls
+ClusterIPService --> PodReplicas : calls
+PodReplicas --> PostgresStatefulSet : calls
+PostgresStatefulSet --> PVStorage : calls
+@enduml

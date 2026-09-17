@@ -23,17 +23,17 @@
 
 \begin{document}
 
-\title{DiagramIQ: A Neuro-Symbolic Multimodal Reasoning System for Structured Software Design Diagram Interpretation in Computing Education}
+\title{DiagramIQ: A Neuro-Symbolic Multimodal Reasoning System for Structured Software Design Diagram Interpretation in Computing Education\thanks{Source code, evaluation pipeline, and benchmark dataset are open-sourced at \url{https://github.com/DeepashaDahiya/diagramiq}.}}
 \titlerunning{DiagramIQ: Neuro-Symbolic Diagram Reasoning in Computing Education}
 
-\author{Deepasha Dahiya\inst{1}\orcidID{0009-0000-0000-0000} \and
-Co-Author Name\inst{1} \and
-Faculty Advisor\inst{1}}
+\author{Deepasha\inst{1} \and
+[Faculty Advisor / Mentor]\inst{1}}
 
-\authorrunning{D. Dahiya et al.}
+\authorrunning{Deepasha and Faculty Advisor}
 
-\institute{Department of Computer Science and Engineering\\
-\email{\{deepasha.dahiya, coauthor, advisor\}@institution.edu}}
+\institute{Department of Artificial Intelligence and Data Sciences,\\
+Indira Gandhi Delhi Technical University for Women, Delhi, India\\
+\email{dahiyadeepasha@gmail.com}, \email{advisor@igdtuw.ac.in}}
 
 \maketitle
 
@@ -97,11 +97,13 @@ Standard LLaVA 1.6~\cite{liu2024llava16} & \checkmark & $\times$ & $\times$ & Pa
 Zero-Shot GPT-4o~\cite{achiam2023gpt4} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ \\
 LLaVA-CoT~\cite{xu2024llavacot} & \checkmark & $\times$ & $\times$ & \checkmark & Partial \\
 GraphRAG~\cite{edge2024graphrag} & Partial & \checkmark (Text only) & $\times$ & $\times$ & $\times$ \\
-Ibáñez et al. Benchmark~\cite{ibanez2025evaluating} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ \\
+Ibáñez et al. Evaluation Study\textsuperscript{*}~\cite{ibanez2025evaluating} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ \\
 \textbf{DiagramIQ (Ours)} & \textbf{\checkmark} & \textbf{\checkmark (NetworkX)} & \textbf{\checkmark} & \textbf{\checkmark} & \textbf{\checkmark} \\
 \bottomrule
 \end{tabular}%
 }
+\vspace{1mm}
+\raggedright\footnotesize{\textsuperscript{*}Ibáñez et al.~\cite{ibanez2025evaluating} conducted an empirical evaluation study assessing general VLM limitations on software diagrams, rather than proposing a standalone interactive reasoning system; it is included here to benchmark baseline capability thresholds.}
 \end{table*}
 
 \section{System Methodology}
@@ -154,7 +156,7 @@ User queries $q$ expressed in natural language are classified into symbolic inte
     \item \textit{Data Flow Traversal:} Evaluated via Dijkstra shortest path: $\mathcal{P}_{s \rightarrow t} = \text{shortest\_path}(G, s, t)$.
     \item \textit{Cyclic Deadlock Detection:} Evaluated via Tarjan's strongly connected components algorithm.
 \end{itemize}
-This deterministic execution guarantees that topological reasoning is mathematically exact and 100\% hallucination-free.
+This deterministic symbolic execution guarantees that topological graph reasoning is mathematically exact and free of reasoning-time hallucination, conditional on graph extraction fidelity.
 
 \subsubsection{Stage 5: Grounded Answer Synthesis \& Citation}
 Stage 5 synthesizes the pedagogical explanation. The VLM receives the structured traversal trace $\mathcal{R}$ from Stage 4 alongside the visual context. The model is constrained to generate an authoritative pedagogical explanation decomposed into individual grounded claims $\mathcal{K} = \{k_1, k_2, \dots, k_m\}$. Each claim $k_i$ explicitly cites its supporting component $v \in V$.
@@ -171,9 +173,9 @@ To evaluate DiagramIQ systematically, we constructed \textbf{DiagramIQ-Eval}, a 
     \item \textbf{UML Class Diagrams ($N=30$):} Stratified by inheritance depth and association density.
     \item \textbf{Microservice Architectures ($N=25$):} Featuring distributed gateways, databases, queues, and caches.
     \item \textbf{UML Sequence Diagrams ($N=25$):} Evaluating temporal message passing and lifeline synchronization.
-    \item \textbf{ER Diagrams \& Flowcharts ($N=20$):} Evaluating cardinality constraints and decision branching.
+    \item \textbf{ER Diagrams \& Flowcharts ($N=20$):} Evaluating cardinality constraints and decision branching (10 ER schemas and 10 algorithmic flowcharts).
 \end{itemize}
-Each diagram is annotated with ground-truth directed graphs and three peer-validated Question-Answer (QA) pairs (300 QA pairs total) evaluating component identification, structural dependencies, failure analysis, and data flow.
+Each diagram is annotated with ground-truth directed graphs and three peer-validated Question-Answer (QA) pairs (300 QA pairs total) evaluating component identification, structural dependencies, failure analysis, and data flow. The benchmark incorporates standardized digital diagrams across Simple, Medium, and Complex topologies, curating out unparseable or severely truncated whiteboard artifacts to ensure robust ground-truth graph fidelity.
 
 \subsection{Evaluation Metrics}
 We define four quantitative metrics:
@@ -268,6 +270,9 @@ We conducted an empirical user study with $N=15$ undergraduate and postgraduate 
 \end{enumerate}
 The overall mean Pedagogical Explanation Quality (PEQ) score reached \textbf{4.62 / 5.00}. Qualitative feedback highlighted that the synchronized bounding box highlights on the interactive canvas significantly reduced the time required to trace complex microservice failure cascades.
 
+\subsubsection*{Ethics and Informed Consent}
+Informed consent was obtained from all $N=15$ student participants prior to conducting the user evaluation sessions. Participation was entirely voluntary, all questionnaire responses were anonymized, and no personally identifiable academic records were collected, conforming to institutional ethics standards for educational technology evaluation.
+
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.88\linewidth]{figures/fig4_user_study_peq.pdf}
@@ -294,6 +299,9 @@ We envision three key extensions:
     \item \textbf{Domain-Specific Instruction Tuning:} Fine-tuning open-weights vision backbones on large-scale synthetic PlantUML corpora to enhance dense arrow OCR disambiguation.
     \item \textbf{Dynamic Sequence Execution:} Expanding the symbolic engine to animate time-stepped message exchanges in dynamic UML sequence diagrams.
 \end{enumerate}
+
+\subsubsection*{Data and Code Availability}
+To ensure reproducibility and facilitate pedagogical adoption, the complete DiagramIQ codebase, Dockerized execution environment, figure reproduction scripts, and the DiagramIQ-Eval benchmark dataset are publicly available under the open-source MIT license at \url{https://github.com/DeepashaDahiya/diagramiq}.
 
 % Force all figures and tables to be rendered BEFORE the References section begins
 \FloatBarrier

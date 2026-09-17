@@ -1,0 +1,362 @@
+{
+  "diagram_id": "flowchart_real_006",
+  "title": "Real Control Flowchart #6",
+  "category": "FLOWCHART",
+  "complexity": "MEDIUM",
+  "source_dataset": "MananSuri27/Flowchart2Mermaid",
+  "nodes": [
+    {
+      "id": "A",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "B",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "C",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "D",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "D{\"Confident in pattern drafting skills?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "E",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "G",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "H",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "I",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "J",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "K",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "L",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "L{\"Dye Before or After Shaping?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "M",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "N",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "O",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "P",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "Q",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "R",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "S",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| F",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|No| N",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| E",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|Yes| M",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "A",
+      "to": "B",
+      "type": "transitions_to"
+    },
+    {
+      "from": "B",
+      "to": "C",
+      "type": "transitions_to"
+    },
+    {
+      "from": "C",
+      "to": "D{\"Confident in pattern drafting skills?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "D",
+      "to": "|Yes| E",
+      "type": "transitions_to"
+    },
+    {
+      "from": "D",
+      "to": "|No| F",
+      "type": "transitions_to"
+    },
+    {
+      "from": "E",
+      "to": "G",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F",
+      "to": "G",
+      "type": "transitions_to"
+    },
+    {
+      "from": "G",
+      "to": "H",
+      "type": "transitions_to"
+    },
+    {
+      "from": "H",
+      "to": "I",
+      "type": "transitions_to"
+    },
+    {
+      "from": "I",
+      "to": "J",
+      "type": "transitions_to"
+    },
+    {
+      "from": "J",
+      "to": "K",
+      "type": "transitions_to"
+    },
+    {
+      "from": "K",
+      "to": "L{\"Dye Before or After Shaping?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "L",
+      "to": "|Yes| M",
+      "type": "transitions_to"
+    },
+    {
+      "from": "L",
+      "to": "|No| N",
+      "type": "transitions_to"
+    },
+    {
+      "from": "M",
+      "to": "O",
+      "type": "transitions_to"
+    },
+    {
+      "from": "N",
+      "to": "P",
+      "type": "transitions_to"
+    },
+    {
+      "from": "O",
+      "to": "Q",
+      "type": "transitions_to"
+    },
+    {
+      "from": "P",
+      "to": "Q",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Q",
+      "to": "R",
+      "type": "transitions_to"
+    },
+    {
+      "from": "R",
+      "to": "S",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_real_006.png"
+}

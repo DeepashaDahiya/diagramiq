@@ -1,0 +1,263 @@
+{
+  "diagram_id": "activity_diag_012",
+  "title": "Activity Workflow Schema #12",
+  "category": "UML_SEQUENCE",
+  "complexity": "MEDIUM",
+  "source_dataset": "Francesco/activity-diagrams-qdobr",
+  "nodes": [
+    {
+      "id": "ActivityStep_1",
+      "type": "activity_node",
+      "category_code": 1,
+      "bounding_box": [
+        265,
+        325,
+        506,
+        401
+      ]
+    },
+    {
+      "id": "ActivityStep_2",
+      "type": "activity_node",
+      "category_code": 1,
+      "bounding_box": [
+        0,
+        325,
+        235,
+        401
+      ]
+    },
+    {
+      "id": "ActivityStep_3",
+      "type": "activity_node",
+      "category_code": 4,
+      "bounding_box": [
+        268,
+        394,
+        319,
+        467
+      ]
+    },
+    {
+      "id": "ActivityStep_4",
+      "type": "activity_node",
+      "category_code": 4,
+      "bounding_box": [
+        172,
+        394,
+        231,
+        467
+      ]
+    },
+    {
+      "id": "ActivityStep_5",
+      "type": "activity_node",
+      "category_code": 1,
+      "bounding_box": [
+        174,
+        461,
+        340,
+        534
+      ]
+    },
+    {
+      "id": "ActivityStep_6",
+      "type": "activity_node",
+      "category_code": 4,
+      "bounding_box": [
+        236,
+        522,
+        284,
+        573
+      ]
+    },
+    {
+      "id": "ActivityStep_7",
+      "type": "activity_node",
+      "category_code": 9,
+      "bounding_box": [
+        228,
+        570,
+        295,
+        640
+      ]
+    },
+    {
+      "id": "ActivityStep_8",
+      "type": "activity_node",
+      "category_code": 4,
+      "bounding_box": [
+        228,
+        43,
+        273,
+        97
+      ]
+    },
+    {
+      "id": "ActivityStep_9",
+      "type": "activity_node",
+      "category_code": 1,
+      "bounding_box": [
+        169,
+        88,
+        335,
+        167
+      ]
+    },
+    {
+      "id": "ActivityStep_10",
+      "type": "activity_node",
+      "category_code": 4,
+      "bounding_box": [
+        228,
+        152,
+        276,
+        203
+      ]
+    },
+    {
+      "id": "ActivityStep_11",
+      "type": "activity_node",
+      "category_code": 6,
+      "bounding_box": [
+        203,
+        176,
+        307,
+        279
+      ]
+    },
+    {
+      "id": "ActivityStep_12",
+      "type": "activity_node",
+      "category_code": 18,
+      "bounding_box": [
+        230,
+        0,
+        275,
+        51
+      ]
+    },
+    {
+      "id": "ActivityStep_13",
+      "type": "activity_node",
+      "category_code": 19,
+      "bounding_box": [
+        32,
+        258,
+        160,
+        288
+      ]
+    },
+    {
+      "id": "ActivityStep_14",
+      "type": "activity_node",
+      "category_code": 19,
+      "bounding_box": [
+        362,
+        264,
+        514,
+        294
+      ]
+    },
+    {
+      "id": "ActivityStep_15",
+      "type": "activity_node",
+      "category_code": 4,
+      "bounding_box": [
+        273,
+        252,
+        318,
+        325
+      ]
+    },
+    {
+      "id": "ActivityStep_16",
+      "type": "activity_node",
+      "category_code": 4,
+      "bounding_box": [
+        182,
+        252,
+        233,
+        328
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "ActivityStep_1",
+      "to": "ActivityStep_2",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ActivityStep_2",
+      "to": "ActivityStep_3",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ActivityStep_3",
+      "to": "ActivityStep_4",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ActivityStep_4",
+      "to": "ActivityStep_5",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ActivityStep_5",
+      "to": "ActivityStep_6",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ActivityStep_6",
+      "to": "ActivityStep_7",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ActivityStep_7",
+      "to": "ActivityStep_8",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ActivityStep_8",
+      "to": "ActivityStep_9",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ActivityStep_9",
+      "to": "ActivityStep_10",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ActivityStep_10",
+      "to": "ActivityStep_11",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ActivityStep_11",
+      "to": "ActivityStep_12",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ActivityStep_12",
+      "to": "ActivityStep_13",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ActivityStep_13",
+      "to": "ActivityStep_14",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ActivityStep_14",
+      "to": "ActivityStep_15",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ActivityStep_15",
+      "to": "ActivityStep_16",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/activity_diag_012.png"
+}

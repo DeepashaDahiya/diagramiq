@@ -44,7 +44,7 @@ How to view & compile this paper on Overleaf:
 5. Click "Recompile" (or Ctrl+S / Cmd+S).
 6. The formatted camera-ready PDF will appear in the right-hand preview panel.
 
-Authors: Deepasha Dahiya, Co-Author, Faculty Advisor
+Authors: Deepasha, [Faculty Advisor / Mentor]
 Title: DiagramIQ: A Neuro-Symbolic Multimodal Reasoning System for Structured Software Design Diagram Interpretation in Computing Education
 """
         zipf.writestr("README_OVERLEAF.txt", readme_content)

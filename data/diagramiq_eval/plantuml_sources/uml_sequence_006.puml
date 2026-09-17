@@ -1,0 +1,15 @@
+@startuml
+' Diagram: Order Cancellation & Auto-Refund Flow
+' Category: UML_SEQUENCE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+participant "Buyer" as Buyer
+participant "OrderService" as OrderService
+participant "PaymentGateway" as PaymentGateway
+participant "InventoryService" as InventoryService
+Buyer -> OrderService : sends_message
+OrderService -> PaymentGateway : sends_message
+OrderService -> InventoryService : sends_message
+@enduml

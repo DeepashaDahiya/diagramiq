@@ -1,0 +1,119 @@
+{
+  "diagram_id": "uml_class_005",
+  "title": "Ride-Sharing Driver & Rider Model",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Rider",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+riderId",
+        "+rating"
+      ],
+      "methods": [
+        "+requestRide()"
+      ]
+    },
+    {
+      "id": "Driver",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+driverId",
+        "+licenseNum"
+      ],
+      "methods": [
+        "+acceptRide()"
+      ]
+    },
+    {
+      "id": "Ride",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+pickupLoc",
+        "+dropoffLoc",
+        "+fare"
+      ],
+      "methods": [
+        "+start()",
+        "+complete()"
+      ]
+    },
+    {
+      "id": "Vehicle",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+plate",
+        "+model"
+      ],
+      "methods": [
+        "+inspect()"
+      ]
+    },
+    {
+      "id": "TripPayment",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+amount",
+        "+tip"
+      ],
+      "methods": [
+        "+chargeRider()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Rider",
+      "to": "Ride",
+      "type": "requests"
+    },
+    {
+      "from": "Driver",
+      "to": "Ride",
+      "type": "fulfills"
+    },
+    {
+      "from": "Driver",
+      "to": "Vehicle",
+      "type": "drives"
+    },
+    {
+      "from": "Ride",
+      "to": "TripPayment",
+      "type": "generates"
+    }
+  ],
+  "image_file": "images/uml_class_005.png",
+  "puml_file": "plantuml_sources/uml_class_005.puml"
+}

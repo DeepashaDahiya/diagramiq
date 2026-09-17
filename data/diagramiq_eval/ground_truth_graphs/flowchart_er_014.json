@@ -1,0 +1,119 @@
+{
+  "diagram_id": "flowchart_er_014",
+  "title": "Loan Credit Approval Decision Flowchart",
+  "category": "FLOWCHART",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "ApplyLoan",
+      "type": "process",
+      "bounding_box": [
+        60,
+        480,
+        220,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "CreditScoreCheck",
+      "type": "decision",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DebtIncomeRatio",
+      "type": "process",
+      "bounding_box": [
+        500,
+        480,
+        660,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "CollateralAudit",
+      "type": "process",
+      "bounding_box": [
+        720,
+        480,
+        880,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "ApproveLoan",
+      "type": "process",
+      "bounding_box": [
+        60,
+        300,
+        220,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "RejectLoan",
+      "type": "process",
+      "bounding_box": [
+        280,
+        300,
+        440,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "ApplyLoan",
+      "to": "CreditScoreCheck",
+      "type": "transitions_to"
+    },
+    {
+      "from": "CreditScoreCheck",
+      "to": "DebtIncomeRatio",
+      "type": "transitions_to"
+    },
+    {
+      "from": "CreditScoreCheck",
+      "to": "RejectLoan",
+      "type": "transitions_to"
+    },
+    {
+      "from": "DebtIncomeRatio",
+      "to": "CollateralAudit",
+      "type": "transitions_to"
+    },
+    {
+      "from": "DebtIncomeRatio",
+      "to": "RejectLoan",
+      "type": "transitions_to"
+    },
+    {
+      "from": "CollateralAudit",
+      "to": "ApproveLoan",
+      "type": "transitions_to"
+    },
+    {
+      "from": "CollateralAudit",
+      "to": "RejectLoan",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_er_014.png",
+  "puml_file": "plantuml_sources/flowchart_er_014.puml"
+}

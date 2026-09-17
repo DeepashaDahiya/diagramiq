@@ -1,0 +1,37 @@
+@startuml
+' Diagram: E-Commerce User & Order System
+' Category: UML_CLASS
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+class User {
+  +userId
+  +email
+  +login()
+  +logout()
+}
+class Customer {
+  +shippingAddress
+  +placeOrder()
+}
+class Order {
+  +orderId
+  +orderDate
+  +calculateTotal()
+}
+class Payment {
+  +paymentId
+  +amount
+  +process()
+}
+class Product {
+  +sku
+  +price
+  +updateStock()
+}
+Customer --> User : inherits
+Customer --> Order : places
+Order --> Payment : has_payment
+Order --> Product : contains_item
+@enduml

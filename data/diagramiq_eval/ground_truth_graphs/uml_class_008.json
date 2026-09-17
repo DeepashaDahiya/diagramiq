@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_008",
+  "title": "Hotel Booking Platform",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Guest",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+guestId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Room",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+roomId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Booking",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+bookingId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Invoice",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+invoiceId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Hotel",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+hotelId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Guest",
+      "to": "Booking",
+      "type": "associates"
+    },
+    {
+      "from": "Booking",
+      "to": "Room",
+      "type": "associates"
+    },
+    {
+      "from": "Booking",
+      "to": "Invoice",
+      "type": "associates"
+    },
+    {
+      "from": "Hotel",
+      "to": "Room",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_008.png",
+  "puml_file": "plantuml_sources/uml_class_008.puml"
+}

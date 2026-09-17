@@ -1,0 +1,77 @@
+@startuml
+' Diagram: Decoupled Observer & Mediator Architecture (Refactoring.Guru)
+' Source: Refactoring.Guru — Behavioral Design Patterns
+skinparam backgroundColor #0b1120
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+skinparam rectangleBackgroundColor #1e293b
+skinparam rectangleBorderColor #0284c7
+interface Mediator as "«interface» Mediator" {
+  +notify(sender, event)
+}
+class AuthenticationDialog as "AuthenticationDialog (Concrete Mediator)" {
+  -eventManager: EventManager
+  +notify(sender, event)
+  +registerColleague()
+}
+class EventManager as "EventManager (Subject / Publisher)" {
+  -listeners: Map<Event, List>
+  +subscribe(eventType, listener)
+  +unsubscribe(eventType)
+  +publish(event)
+}
+interface EventListener as "«interface» EventListener" {
+  +update(eventPayload)
+}
+class LoggingListener as "LoggingListener" {
+  -logFile: File
+  +update(eventPayload)
+}
+class EmailAlertListener as "EmailAlertListener" {
+  -adminEmail: String
+  +update(eventPayload)
+}
+class AuditMetricsListener as "AuditMetricsListener" {
+  -telemetryClient: Client
+  +update(eventPayload)
+}
+abstract_class Component as "«abstract» Component" {
+  #dialog: Mediator
+  +setMediator(m)
+}
+class LoginButton as "LoginButton" {
+  +click() -> notify()
+}
+class UsernameInput as "UsernameInput" {
+  +textChanged()
+}
+class RememberMeCheckbox as "RememberMeCheckbox" {
+  +toggle()
+}
+rectangle "SMTPGateway" as SMTPGateway
+rectangle "PrometheusExporter" as PrometheusExporter
+class EventPayload as "EventPayload" {
+  +timestamp: Long
+  +userId: String
+  +eventType: String
+}
+class SecurityAuditEvent as "SecurityAuditEvent" {
+  +failedAttempts: Int
+  +ipAddress: String
+}
+AuthenticationDialog ..> Mediator : implements
+AuthenticationDialog --> EventManager : owns Publisher
+Component --> Mediator : communicates via
+LoginButton ..> Component : inherits
+UsernameInput ..> Component : inherits
+RememberMeCheckbox ..> Component : inherits
+EventManager --> EventListener : notifies all
+LoggingListener ..> EventListener : implements
+EmailAlertListener ..> EventListener : implements
+AuditMetricsListener ..> EventListener : implements
+EmailAlertListener --> SMTPGateway : dispatches to
+AuditMetricsListener --> PrometheusExporter : streams to
+SecurityAuditEvent ..> EventPayload : extends
+EventManager --> EventPayload : broadcasts
+@enduml

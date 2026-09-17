@@ -1,0 +1,82 @@
+{
+  "diagram_id": "ai2d_technical_025",
+  "title": "Technical Schema & QA #25",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "source_dataset": "lmms-lab-encoder/ai2d",
+  "nodes": [
+    {
+      "id": "Component_1",
+      "type": "structural_entity",
+      "bounding_box": [
+        150,
+        80,
+        250,
+        180
+      ]
+    },
+    {
+      "id": "Component_2",
+      "type": "structural_entity",
+      "bounding_box": [
+        250,
+        80,
+        350,
+        180
+      ]
+    },
+    {
+      "id": "Component_3",
+      "type": "structural_entity",
+      "bounding_box": [
+        350,
+        80,
+        450,
+        180
+      ]
+    },
+    {
+      "id": "Component_4",
+      "type": "structural_entity",
+      "bounding_box": [
+        450,
+        80,
+        550,
+        180
+      ]
+    },
+    {
+      "id": "Component_5",
+      "type": "structural_entity",
+      "bounding_box": [
+        550,
+        80,
+        650,
+        180
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Component_1",
+      "to": "Component_2",
+      "type": "connects_to"
+    },
+    {
+      "from": "Component_2",
+      "to": "Component_3",
+      "type": "connects_to"
+    },
+    {
+      "from": "Component_3",
+      "to": "Component_4",
+      "type": "connects_to"
+    },
+    {
+      "from": "Component_4",
+      "to": "Component_5",
+      "type": "connects_to"
+    }
+  ],
+  "image_file": "images/ai2d_technical_025.png"
+}

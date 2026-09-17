@@ -1,136 +1,136 @@
 {
   "status": "success",
-  "query": "Trace data flow from entry point to database",
+  "query": "Trace the sequence of messages required to issue an access token",
   "diagram_type": "UML_CLASS",
   "domain": "object_oriented_design",
   "complexity": "HIGH",
-  "direct_answer": "This **UML Class Diagram** models an E-Commerce domain with **9 core classes**: Use Case diagram of an Online Shopping System, <<Service> >, <Subsystem >, Registered, Identity, Web, New, PayPal, Use Case Diagrams. 1) **Class Responsibilities**: Each class encapsulates distinct domain responsibilities \u2014 **Use Case diagram of an Online Shopping System** (state attributes, methods); **<<Service> >** (attributes [Authentication], methods); **<Subsystem >** (attributes [Online Shopping, View Items, <<include> >], methods); **Registered** (attributes [customer], methods). 2) **Whole-Part Coupling**: The core fulfillment lifecycle couples **Delivery** to **Order** (`1..1`) and **Payment**, ensuring atomic order dispatch. 3) **Catalog Aggregation**: **Order** and **Product** maintain aggregation references with **Items**, decoupling catalog inventory from active shopping carts. 4) **Multiplicity & Interactions**: Multiplicity constraints like `1..1` (Order to Delivery) and `1..*` (Customer to Orders) govern transactional integrity, while action dependencies reflect operational workflows (Customer *Pays* via Payment, Seller *Collects* revenue, Customer *Selects* Products).",
+  "direct_answer": "### \ud83d\udccc Domain Class Model Overview\nThis **UML Class Diagram** defines **12 structural domain entities**: **Computcr**, **Rcomponentw**, **Rcomponentw**, **Ccomooncn**, **{artifact\"**, **Rcomponentw**, **Acondonent**, **Bankserver**, **Smartphonc**, **Ccomoonem\"**, **Acomdonent**, **Acondonent**.\n\n### \ud83c\udfdb\ufe0f Class Encapsulation & Responsibilities\n- **Computcr**\n  - **State**: `Wcb Browser, acomdonent\", Ecommerce Client Module`\n  - **Operations**: `standard methods`\n- **Rcomponentw**\n  - **State**: `Product Catalog`\n  - **Operations**: `standard methods`\n- **Rcomponentw**\n  - **State**: `Product Database`\n  - **Operations**: `standard methods`\n- **Ccomooncn**\n  - **State**: `API Gateway, Service`\n  - **Operations**: `standard methods`\n- **{artifact\"**\n  - **State**: `Styles`\n  - **Operations**: `standard methods`\n- **Rcomponentw**\n  - **State**: `Invoice Database`\n  - **Operations**: `standard methods`\n\n### \ud83d\udd17 Structural Couplings & Relationships\n- **Domain Associations**: Structural relationships coordinate transactional state across `Computcr`, `Rcomponentw`, `Rcomponentw`, `Ccomooncn`.\n\n### \ud83d\udca1 Architectural Assessment\nThe object model enforces separation of concerns: state attributes are encapsulated within dedicated classes, while associations define clear transactional boundaries.",
   "grounded_claims": [
     {
       "claim_id": "claim_1",
-      "claim": "Class 'Use Case diagram of an Online Shopping System' encapsulates 0 attributes (identifiers) and 0 operations (CRUD operations)",
+      "claim": "Class 'Computcr' encapsulates 5 attributes (Wcb Browser, acomdonent\") and 0 operations (methods)",
       "grounding_entities": [
-        "Use Case diagram of an Online Shopping System"
+        "Computcr"
       ],
       "bounding_box": [
-        0,
-        25,
-        459,
-        57
+        48,
+        15,
+        270,
+        288
       ],
       "region": "top-left",
       "confidence": "HIGH",
-      "pedagogical_note": "Grounded in diagram entity 'Use Case diagram of an Online Shopping System' (top-left region)."
+      "pedagogical_note": "Grounded in diagram entity 'Computcr' (top-left region)."
     },
     {
       "claim_id": "claim_2",
-      "claim": "Class '<<Service> >' encapsulates 1 attributes (Authentication) and 0 operations (CRUD operations)",
+      "claim": "Class 'Rcomponentw' encapsulates 1 attributes (Product Catalog) and 0 operations (methods)",
       "grounding_entities": [
-        "<<Service> >"
+        "Rcomponentw"
       ],
       "bounding_box": [
-        811,
-        63,
-        957,
-        103
+        1289,
+        228,
+        1435,
+        271
       ],
       "region": "top-right",
-      "confidence": "HIGH",
-      "pedagogical_note": "Grounded in diagram entity '<<Service> >' (top-right region)."
+      "confidence": "MEDIUM",
+      "pedagogical_note": "Grounded in diagram entity 'Rcomponentw' (top-right region)."
     },
     {
       "claim_id": "claim_3",
-      "claim": "Class '<Subsystem >' encapsulates 10 attributes (Online Shopping, View Items) and 0 operations (CRUD operations)",
+      "claim": "Class 'Rcomponentw' encapsulates 1 attributes (Product Database) and 0 operations (methods)",
       "grounding_entities": [
-        "<Subsystem >"
+        "Rcomponentw"
       ],
       "bounding_box": [
-        235,
-        50,
-        657,
-        501
+        1289,
+        228,
+        1435,
+        271
       ],
-      "region": "middle-center",
-      "confidence": "HIGH",
-      "pedagogical_note": "Grounded in diagram entity '<Subsystem >' (middle-center region)."
+      "region": "top-right",
+      "confidence": "MEDIUM",
+      "pedagogical_note": "Grounded in diagram entity 'Rcomponentw' (top-right region)."
     },
     {
       "claim_id": "claim_4",
-      "claim": "Class 'Registered' encapsulates 1 attributes (customer) and 0 operations (CRUD operations)",
+      "claim": "Class 'Ccomooncn' encapsulates 2 attributes (API Gateway, Service) and 0 operations (methods)",
       "grounding_entities": [
-        "Registered"
+        "Ccomooncn"
       ],
       "bounding_box": [
-        207,
-        153,
-        315,
-        198
+        560,
+        194,
+        668,
+        253
       ],
-      "region": "middle-left",
-      "confidence": "HIGH",
-      "pedagogical_note": "Grounded in diagram entity 'Registered' (middle-left region)."
+      "region": "top-center",
+      "confidence": "MEDIUM",
+      "pedagogical_note": "Grounded in diagram entity 'Ccomooncn' (top-center region)."
     },
     {
       "claim_id": "claim_5",
-      "claim": "Class 'Identity' encapsulates 3 attributes (Provider, Credit Payment) and 0 operations (CRUD operations)",
+      "claim": "Class '{artifact\"' encapsulates 1 attributes (Styles) and 0 operations (methods)",
       "grounding_entities": [
-        "Identity"
+        "{artifact\""
       ],
       "bounding_box": [
-        802,
-        157,
-        958,
-        324
+        69,
+        227,
+        251,
+        273
       ],
-      "region": "middle-right",
-      "confidence": "HIGH",
-      "pedagogical_note": "Grounded in diagram entity 'Identity' (middle-right region)."
+      "region": "top-left",
+      "confidence": "MEDIUM",
+      "pedagogical_note": "Grounded in diagram entity '{artifact\"' (top-left region)."
     },
     {
       "claim_id": "claim_6",
-      "claim": "Class 'Web' encapsulates 1 attributes (customer) and 0 operations (CRUD operations)",
+      "claim": "Class 'Rcomponentw' encapsulates 1 attributes (Invoice Database) and 0 operations (methods)",
       "grounding_entities": [
-        "Web"
+        "Rcomponentw"
       ],
       "bounding_box": [
-        45,
-        220,
-        141,
-        264
+        1289,
+        228,
+        1435,
+        271
       ],
-      "region": "middle-left",
-      "confidence": "HIGH",
-      "pedagogical_note": "Grounded in diagram entity 'Web' (middle-left region)."
+      "region": "top-right",
+      "confidence": "MEDIUM",
+      "pedagogical_note": "Grounded in diagram entity 'Rcomponentw' (top-right region)."
     }
   ],
   "diagram_highlights": [
-    "Use Case diagram of an Online Shopping System",
-    "<<Service> >",
-    "<Subsystem >",
-    "Registered",
-    "Identity"
+    "Computcr",
+    "Rcomponentw",
+    "Rcomponentw",
+    "Ccomooncn",
+    "{artifact\""
   ],
   "follow_up_questions": [
-    "How does replacing direct class composition with Dependency Injection improve testability in this domain?",
-    "What design pattern (e.g. Repository or Unit of Work) should manage the persistence of Order and Items?",
-    "How would you model polymorphic payment methods (CreditCard, PayPal, Crypto) extending the Payment class?"
+    "How does applying Dependency Inversion decouple high-level workflows from low-level database entities?",
+    "What design pattern would best manage state lifecycle across these entities?",
+    "Which multiplicity constraints govern bidirectional associations between these classes?"
   ],
-  "overall_confidence": 1.0,
+  "overall_confidence": 0.9,
   "image_dimensions": {
-    "width": 1001,
-    "height": 501
+    "width": 1523,
+    "height": 966
   },
   "metrics": {
     "mgf_score": 1.0,
-    "claim_grounding_rate": 1.0,
-    "total_components": 9,
-    "total_relationships": 19
+    "claim_grounding_rate": 0.17,
+    "total_components": 21,
+    "total_relationships": 60
   },
   "reasoning_trace": {
-    "stage1_components": 9,
-    "stage2_relationships": 19,
+    "stage1_components": 21,
+    "stage2_relationships": 60,
     "stage3_classification": "UML_CLASS",
-    "stage4_query_intent": "data_flow",
+    "stage4_query_intent": "dependencies",
     "stage5_claims_count": 6,
     "activated_heuristics": [
       "Inheritance & generalization hierarchy traversal",
@@ -140,371 +140,838 @@
     ],
     "graph_summary": {
       "nodes": [
-        "Use Case diagram of an Online Shopping System",
-        "<<Service> >",
-        "<Subsystem >",
-        "Registered",
-        "Identity",
-        "Web",
-        "New",
-        "PayPal",
-        "Use Case Diagrams"
+        "Computcr",
+        "Apiserver",
+        "Product Scrvcr",
+        "Rcomponentw",
+        "Rcomponentw",
+        "REST API",
+        "Ccomooncn",
+        "REST API",
+        "{artifact\"",
+        "Rcomponentw",
+        "Acondonent",
+        "EST API",
+        "Bankserver",
+        "Smartphonc",
+        "REST API",
+        "Ccomoonem\"",
+        "REST API",
+        "Couricr Scrver",
+        "Acomdonent",
+        "Acondonent",
+        "REST API"
       ],
       "edges": [
         {
-          "from": "Use Case diagram of an Online Shopping System",
-          "to": "<Subsystem >",
+          "from": "Computcr",
+          "to": "Apiserver",
           "type": "association"
         },
         {
-          "from": "Use Case diagram of an Online Shopping System",
-          "to": "Registered",
+          "from": "Computcr",
+          "to": "Ccomooncn",
           "type": "association"
         },
         {
-          "from": "Use Case diagram of an Online Shopping System",
-          "to": "Web",
+          "from": "Computcr",
+          "to": "{artifact\"",
           "type": "association"
         },
         {
-          "from": "Use Case diagram of an Online Shopping System",
-          "to": "New",
+          "from": "Computcr",
+          "to": "Smartphonc",
           "type": "association"
         },
         {
-          "from": "Use Case diagram of an Online Shopping System",
-          "to": "Use Case Diagrams",
-          "type": "calls"
-        },
-        {
-          "from": "<<Service> >",
-          "to": "Identity",
+          "from": "Computcr",
+          "to": "Acomdonent",
           "type": "association"
         },
         {
-          "from": "<<Service> >",
-          "to": "PayPal",
+          "from": "Apiserver",
+          "to": "Product Scrvcr",
+          "type": "routes_to"
+        },
+        {
+          "from": "Apiserver",
+          "to": "Ccomooncn",
           "type": "association"
         },
         {
-          "from": "<Subsystem >",
-          "to": "Registered",
+          "from": "Apiserver",
+          "to": "{artifact\"",
           "type": "association"
         },
         {
-          "from": "<Subsystem >",
-          "to": "Identity",
-          "type": "association"
+          "from": "Apiserver",
+          "to": "EST API",
+          "type": "routes_to"
         },
         {
-          "from": "<Subsystem >",
-          "to": "Web",
+          "from": "Apiserver",
+          "to": "Bankserver",
           "type": "association"
         }
       ],
-      "spofs": [
-        "Identity",
-        "<Subsystem >"
-      ]
+      "spofs": []
     }
   },
-  "graphml": "<graphml xmlns=\"http://graphml.graphdrawing.org/xmlns\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd\">\n  <key id=\"d9\" for=\"edge\" attr.name=\"condition\" attr.type=\"string\" />\n  <key id=\"d8\" for=\"edge\" attr.name=\"type\" attr.type=\"string\" />\n  <key id=\"d7\" for=\"node\" attr.name=\"confidence\" attr.type=\"string\" />\n  <key id=\"d6\" for=\"node\" attr.name=\"bounding_box\" attr.type=\"string\" />\n  <key id=\"d5\" for=\"node\" attr.name=\"region\" attr.type=\"string\" />\n  <key id=\"d4\" for=\"node\" attr.name=\"methods\" attr.type=\"string\" />\n  <key id=\"d3\" for=\"node\" attr.name=\"attributes\" attr.type=\"string\" />\n  <key id=\"d2\" for=\"node\" attr.name=\"description\" attr.type=\"string\" />\n  <key id=\"d1\" for=\"node\" attr.name=\"type\" attr.type=\"string\" />\n  <key id=\"d0\" for=\"node\" attr.name=\"id\" attr.type=\"string\" />\n  <graph edgedefault=\"directed\">\n    <node id=\"Use Case diagram of an Online Shopping System\">\n      <data key=\"d0\">Use_Case_diagram_of_an_Online_Shopping_System</data>\n      <data key=\"d1\">service</data>\n      <data key=\"d2\">Component: Use Case diagram of an Online Shopping System (SERVICE)</data>\n      <data key=\"d3\">[]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">top-left</data>\n      <data key=\"d6\">[0, 25, 459, 57]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"&lt;&lt;Service&gt; &gt;\">\n      <data key=\"d0\">Service</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: &lt;&lt;Service&gt; &gt; (CLASS) | Attributes: Authentication</data>\n      <data key=\"d3\">[\"Authentication\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">top-right</data>\n      <data key=\"d6\">[811, 63, 957, 103]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"&lt;Subsystem &gt;\">\n      <data key=\"d0\">Subsystem</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: &lt;Subsystem &gt; (CLASS) | Attributes: Online Shopping, View Items, &lt;&lt;include&gt; &gt;, Make...</data>\n      <data key=\"d3\">[\"Online Shopping\", \"View Items\", \"&lt;&lt;include&gt; &gt;\", \"Make\", \"Purchase\", \"&lt;&lt;include&gt; &gt;\", \"Checkout\", \"Client\", \"Register\", \"Unified Modeling Language (UML)\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">middle-center</data>\n      <data key=\"d6\">[235, 50, 657, 501]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"Registered\">\n      <data key=\"d0\">Registered</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: Registered (CLASS) | Attributes: customer</data>\n      <data key=\"d3\">[\"customer\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">middle-left</data>\n      <data key=\"d6\">[207, 153, 315, 198]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"Identity\">\n      <data key=\"d0\">Identity</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: Identity (CLASS) | Attributes: Provider, Credit Payment, Service</data>\n      <data key=\"d3\">[\"Provider\", \"Credit Payment\", \"Service\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">middle-right</data>\n      <data key=\"d6\">[802, 157, 958, 324]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"Web\">\n      <data key=\"d0\">Web</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: Web (CLASS) | Attributes: customer</data>\n      <data key=\"d3\">[\"customer\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">middle-left</data>\n      <data key=\"d6\">[45, 220, 141, 264]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"New\">\n      <data key=\"d0\">New</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: New (CLASS) | Attributes: customer</data>\n      <data key=\"d3\">[\"customer\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">middle-left</data>\n      <data key=\"d6\">[227, 311, 323, 349]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"PayPal\">\n      <data key=\"d0\">PayPal</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: PayPal (CLASS) | Attributes: 36</data>\n      <data key=\"d3\">[\"36\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">bottom-right</data>\n      <data key=\"d6\">[852, 380, 972, 501]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"Use Case Diagrams\">\n      <data key=\"d0\">Use_Case_Diagrams</data>\n      <data key=\"d1\">service</data>\n      <data key=\"d2\">Component: Use Case Diagrams (SERVICE)</data>\n      <data key=\"d3\">[]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">bottom-left</data>\n      <data key=\"d6\">[21, 465, 269, 501]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <edge source=\"Use Case diagram of an Online Shopping System\" target=\"&lt;Subsystem &gt;\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Use Case diagram of an Online Shopping System\" target=\"Registered\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Use Case diagram of an Online Shopping System\" target=\"Web\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Use Case diagram of an Online Shopping System\" target=\"New\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Use Case diagram of an Online Shopping System\" target=\"Use Case Diagrams\">\n      <data key=\"d8\">calls</data>\n      <data key=\"d9\">Service Interaction</data>\n    </edge>\n    <edge source=\"&lt;&lt;Service&gt; &gt;\" target=\"Identity\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"&lt;&lt;Service&gt; &gt;\" target=\"PayPal\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"&lt;Subsystem &gt;\" target=\"Registered\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"&lt;Subsystem &gt;\" target=\"Identity\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"&lt;Subsystem &gt;\" target=\"Web\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"&lt;Subsystem &gt;\" target=\"New\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"&lt;Subsystem &gt;\" target=\"Use Case Diagrams\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Registered\" target=\"Web\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Registered\" target=\"New\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Registered\" target=\"Use Case Diagrams\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Identity\" target=\"PayPal\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Web\" target=\"New\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"Web\" target=\"Use Case Diagrams\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n    <edge source=\"New\" target=\"Use Case Diagrams\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Structural Coupling</data>\n    </edge>\n  </graph>\n</graphml>",
-  "answer": "This **UML Class Diagram** models an E-Commerce domain with **9 core classes**: Use Case diagram of an Online Shopping System, <<Service> >, <Subsystem >, Registered, Identity, Web, New, PayPal, Use Case Diagrams. 1) **Class Responsibilities**: Each class encapsulates distinct domain responsibilities \u2014 **Use Case diagram of an Online Shopping System** (state attributes, methods); **<<Service> >** (attributes [Authentication], methods); **<Subsystem >** (attributes [Online Shopping, View Items, <<include> >], methods); **Registered** (attributes [customer], methods). 2) **Whole-Part Coupling**: The core fulfillment lifecycle couples **Delivery** to **Order** (`1..1`) and **Payment**, ensuring atomic order dispatch. 3) **Catalog Aggregation**: **Order** and **Product** maintain aggregation references with **Items**, decoupling catalog inventory from active shopping carts. 4) **Multiplicity & Interactions**: Multiplicity constraints like `1..1` (Order to Delivery) and `1..*` (Customer to Orders) govern transactional integrity, while action dependencies reflect operational workflows (Customer *Pays* via Payment, Seller *Collects* revenue, Customer *Selects* Products).",
-  "confidence": 1.0,
+  "graphml": "<graphml xmlns=\"http://graphml.graphdrawing.org/xmlns\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd\">\n  <key id=\"d9\" for=\"edge\" attr.name=\"condition\" attr.type=\"string\" />\n  <key id=\"d8\" for=\"edge\" attr.name=\"type\" attr.type=\"string\" />\n  <key id=\"d7\" for=\"node\" attr.name=\"confidence\" attr.type=\"string\" />\n  <key id=\"d6\" for=\"node\" attr.name=\"bounding_box\" attr.type=\"string\" />\n  <key id=\"d5\" for=\"node\" attr.name=\"region\" attr.type=\"string\" />\n  <key id=\"d4\" for=\"node\" attr.name=\"methods\" attr.type=\"string\" />\n  <key id=\"d3\" for=\"node\" attr.name=\"attributes\" attr.type=\"string\" />\n  <key id=\"d2\" for=\"node\" attr.name=\"description\" attr.type=\"string\" />\n  <key id=\"d1\" for=\"node\" attr.name=\"type\" attr.type=\"string\" />\n  <key id=\"d0\" for=\"node\" attr.name=\"id\" attr.type=\"string\" />\n  <graph edgedefault=\"directed\">\n    <node id=\"Computcr\">\n      <data key=\"d0\">Computcr</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: Computcr (CLASS) | Attributes: Wcb Browser, acomdonent\", Ecommerce Client Module, {artifact\"...</data>\n      <data key=\"d3\">[\"Wcb Browser\", \"acomdonent\\\"\", \"Ecommerce Client Module\", \"{artifact\\\"\", \"Scripts\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">top-left</data>\n      <data key=\"d6\">[48, 15, 270, 288]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"Apiserver\">\n      <data key=\"d0\">Apiserver</data>\n      <data key=\"d1\">gateway</data>\n      <data key=\"d2\">Component: Apiserver (GATEWAY)</data>\n      <data key=\"d3\">[]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">top-center</data>\n      <data key=\"d6\">[559, 29, 647, 53]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"Product Scrvcr\">\n      <data key=\"d0\">Product_Scrvcr</data>\n      <data key=\"d1\">service</data>\n      <data key=\"d2\">Component: Product Scrvcr (SERVICE)</data>\n      <data key=\"d3\">[]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">top-right</data>\n      <data key=\"d6\">[1153, 29, 1281, 53]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"Rcomponentw\">\n      <data key=\"d0\">Rcomponentw</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: Rcomponentw (CLASS) | Attributes: Invoice Database</data>\n      <data key=\"d3\">[\"Invoice Database\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">top-right</data>\n      <data key=\"d6\">[1289, 228, 1435, 271]</data>\n      <data key=\"d7\">MEDIUM</data>\n    </node>\n    <node id=\"REST API\">\n      <data key=\"d0\">REST_API</data>\n      <data key=\"d1\">gateway</data>\n      <data key=\"d2\">Component: REST API (GATEWAY)</data>\n      <data key=\"d3\">[]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">bottom-center</data>\n      <data key=\"d6\">[857, 881, 939, 909]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"Ccomooncn\">\n      <data key=\"d0\">Ccomooncn</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: Ccomooncn (CLASS) | Attributes: API Gateway, Service</data>\n      <data key=\"d3\">[\"API Gateway\", \"Service\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">top-center</data>\n      <data key=\"d6\">[560, 194, 668, 253]</data>\n      <data key=\"d7\">MEDIUM</data>\n    </node>\n    <node id=\"{artifact&quot;\">\n      <data key=\"d0\">artifact</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: {artifact\" (CLASS) | Attributes: Styles</data>\n      <data key=\"d3\">[\"Styles\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">top-left</data>\n      <data key=\"d6\">[69, 227, 251, 273]</data>\n      <data key=\"d7\">MEDIUM</data>\n    </node>\n    <node id=\"Acondonent\">\n      <data key=\"d0\">Acondonent</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: Acondonent (CLASS) | Attributes: Shipping Service</data>\n      <data key=\"d3\">[\"Shipping Service\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">bottom-right</data>\n      <data key=\"d6\">[1029, 842, 1175, 885]</data>\n      <data key=\"d7\">MEDIUM</data>\n    </node>\n    <node id=\"EST API\">\n      <data key=\"d0\">EST_API</data>\n      <data key=\"d1\">gateway</data>\n      <data key=\"d2\">Component: EST API (GATEWAY)</data>\n      <data key=\"d3\">[]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">top-center</data>\n      <data key=\"d6\">[871, 273, 941, 297]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"Bankserver\">\n      <data key=\"d0\">Bankserver</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: Bankserver (CLASS) | Attributes: ccomdonem\", Currency Exchange Rate, Service</data>\n      <data key=\"d3\">[\"ccomdonem\\\"\", \"Currency Exchange Rate\", \"Service\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">middle-right</data>\n      <data key=\"d6\">[995, 403, 1201, 521]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"Smartphonc\">\n      <data key=\"d0\">Smartphonc</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: Smartphonc (CLASS) | Attributes: rcomponentw, Ecommcrcc App, REST API</data>\n      <data key=\"d3\">[\"rcomponentw\", \"Ecommcrcc App\", \"REST API\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">middle-left</data>\n      <data key=\"d6\">[330, 482, 522, 663]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"Ccomoonem&quot;\">\n      <data key=\"d0\">Ccomoonem</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: Ccomoonem\" (CLASS) | Attributes: Payment Gatcway</data>\n      <data key=\"d3\">[\"Payment Gatcway\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">middle-right</data>\n      <data key=\"d6\">[1025, 594, 1182, 639]</data>\n      <data key=\"d7\">MEDIUM</data>\n    </node>\n    <node id=\"Couricr Scrver\">\n      <data key=\"d0\">Couricr_Scrver</data>\n      <data key=\"d1\">service</data>\n      <data key=\"d2\">Component: Couricr Scrver (SERVICE)</data>\n      <data key=\"d3\">[]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">bottom-right</data>\n      <data key=\"d6\">[1030, 757, 1155, 785]</data>\n      <data key=\"d7\">HIGH</data>\n    </node>\n    <node id=\"Acomdonent\">\n      <data key=\"d0\">Acomdonent</data>\n      <data key=\"d1\">class</data>\n      <data key=\"d2\">Component: Acomdonent (CLASS) | Attributes: Mobile API Gateway Module</data>\n      <data key=\"d3\">[\"Mobile API Gateway Module\"]</data>\n      <data key=\"d4\">[]</data>\n      <data key=\"d5\">bottom-left</data>\n      <data key=\"d6\">[279, 792, 527, 836]</data>\n      <data key=\"d7\">MEDIUM</data>\n    </node>\n    <edge source=\"Computcr\" target=\"Apiserver\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Computcr\" target=\"Ccomooncn\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Computcr\" target=\"{artifact&quot;\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Computcr\" target=\"Smartphonc\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Computcr\" target=\"Acomdonent\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Apiserver\" target=\"Product Scrvcr\">\n      <data key=\"d8\">routes_to</data>\n      <data key=\"d9\">Ingress Routing</data>\n    </edge>\n    <edge source=\"Apiserver\" target=\"Ccomooncn\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Apiserver\" target=\"{artifact&quot;\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Apiserver\" target=\"EST API\">\n      <data key=\"d8\">routes_to</data>\n      <data key=\"d9\">Ingress Routing</data>\n    </edge>\n    <edge source=\"Apiserver\" target=\"Bankserver\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Apiserver\" target=\"Smartphonc\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Product Scrvcr\" target=\"Rcomponentw\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Product Scrvcr\" target=\"Ccomooncn\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Product Scrvcr\" target=\"EST API\">\n      <data key=\"d8\">calls</data>\n      <data key=\"d9\">Service Interaction</data>\n    </edge>\n    <edge source=\"Product Scrvcr\" target=\"Bankserver\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Product Scrvcr\" target=\"Ccomoonem&quot;\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Rcomponentw\" target=\"Rcomponentw\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Rcomponentw\" target=\"Acondonent\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Rcomponentw\" target=\"EST API\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Rcomponentw\" target=\"Bankserver\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Rcomponentw\" target=\"Ccomoonem&quot;\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Rcomponentw\" target=\"Couricr Scrver\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"REST API\" target=\"Ccomooncn\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"REST API\" target=\"REST API\">\n      <data key=\"d8\">routes_to</data>\n      <data key=\"d9\">Ingress Routing</data>\n    </edge>\n    <edge source=\"REST API\" target=\"Acondonent\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"REST API\" target=\"EST API\">\n      <data key=\"d8\">routes_to</data>\n      <data key=\"d9\">Ingress Routing</data>\n    </edge>\n    <edge source=\"REST API\" target=\"Bankserver\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"REST API\" target=\"Smartphonc\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"REST API\" target=\"Ccomoonem&quot;\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"REST API\" target=\"Couricr Scrver\">\n      <data key=\"d8\">routes_to</data>\n      <data key=\"d9\">Ingress Routing</data>\n    </edge>\n    <edge source=\"REST API\" target=\"Acomdonent\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Ccomooncn\" target=\"{artifact&quot;\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Ccomooncn\" target=\"EST API\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Ccomooncn\" target=\"Bankserver\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Ccomooncn\" target=\"Smartphonc\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Ccomooncn\" target=\"Ccomoonem&quot;\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Ccomooncn\" target=\"Couricr Scrver\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Ccomooncn\" target=\"Acomdonent\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"{artifact&quot;\" target=\"Smartphonc\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"{artifact&quot;\" target=\"Acomdonent\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Acondonent\" target=\"EST API\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Acondonent\" target=\"Bankserver\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Acondonent\" target=\"Ccomoonem&quot;\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Acondonent\" target=\"Couricr Scrver\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Acondonent\" target=\"Acomdonent\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Acondonent\" target=\"Acondonent\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"EST API\" target=\"Bankserver\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"EST API\" target=\"Smartphonc\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"EST API\" target=\"Ccomoonem&quot;\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"EST API\" target=\"Couricr Scrver\">\n      <data key=\"d8\">routes_to</data>\n      <data key=\"d9\">Ingress Routing</data>\n    </edge>\n    <edge source=\"EST API\" target=\"Acomdonent\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Bankserver\" target=\"Smartphonc\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Bankserver\" target=\"Ccomoonem&quot;\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Bankserver\" target=\"Couricr Scrver\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Smartphonc\" target=\"Ccomoonem&quot;\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Smartphonc\" target=\"Couricr Scrver\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Smartphonc\" target=\"Acomdonent\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Ccomoonem&quot;\" target=\"Couricr Scrver\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Ccomoonem&quot;\" target=\"Acomdonent\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n    <edge source=\"Couricr Scrver\" target=\"Acomdonent\">\n      <data key=\"d8\">association</data>\n      <data key=\"d9\">UML Class Association</data>\n    </edge>\n  </graph>\n</graphml>",
+  "answer": "### \ud83d\udccc Domain Class Model Overview\nThis **UML Class Diagram** defines **12 structural domain entities**: **Computcr**, **Rcomponentw**, **Rcomponentw**, **Ccomooncn**, **{artifact\"**, **Rcomponentw**, **Acondonent**, **Bankserver**, **Smartphonc**, **Ccomoonem\"**, **Acomdonent**, **Acondonent**.\n\n### \ud83c\udfdb\ufe0f Class Encapsulation & Responsibilities\n- **Computcr**\n  - **State**: `Wcb Browser, acomdonent\", Ecommerce Client Module`\n  - **Operations**: `standard methods`\n- **Rcomponentw**\n  - **State**: `Product Catalog`\n  - **Operations**: `standard methods`\n- **Rcomponentw**\n  - **State**: `Product Database`\n  - **Operations**: `standard methods`\n- **Ccomooncn**\n  - **State**: `API Gateway, Service`\n  - **Operations**: `standard methods`\n- **{artifact\"**\n  - **State**: `Styles`\n  - **Operations**: `standard methods`\n- **Rcomponentw**\n  - **State**: `Invoice Database`\n  - **Operations**: `standard methods`\n\n### \ud83d\udd17 Structural Couplings & Relationships\n- **Domain Associations**: Structural relationships coordinate transactional state across `Computcr`, `Rcomponentw`, `Rcomponentw`, `Ccomooncn`.\n\n### \ud83d\udca1 Architectural Assessment\nThe object model enforces separation of concerns: state attributes are encapsulated within dedicated classes, while associations define clear transactional boundaries.",
+  "confidence": 0.9,
   "components": [
     {
-      "id": "Use_Case_diagram_of_an_Online_Shopping_System",
-      "name": "Use Case diagram of an Online Shopping System",
-      "type": "service",
-      "description": "Component: Use Case diagram of an Online Shopping System (SERVICE)",
-      "attributes": [],
+      "id": "Computcr",
+      "name": "Computcr",
+      "type": "class",
+      "description": "Component: Computcr (CLASS) | Attributes: Wcb Browser, acomdonent\", Ecommerce Client Module, {artifact\"...",
+      "attributes": [
+        "Wcb Browser",
+        "acomdonent\"",
+        "Ecommerce Client Module",
+        "{artifact\"",
+        "Scripts"
+      ],
       "methods": [],
       "bounding_box": [
-        0,
-        25,
-        459,
-        57
+        48,
+        15,
+        270,
+        288
       ],
       "region": "top-left",
       "confidence": "HIGH",
       "ocr_matched": true
     },
     {
-      "id": "Service",
-      "name": "<<Service> >",
-      "type": "class",
-      "description": "Component: <<Service> > (CLASS) | Attributes: Authentication",
-      "attributes": [
-        "Authentication"
-      ],
+      "id": "Apiserver",
+      "name": "Apiserver",
+      "type": "gateway",
+      "description": "Component: Apiserver (GATEWAY)",
+      "attributes": [],
       "methods": [],
       "bounding_box": [
-        811,
-        63,
-        957,
-        103
+        559,
+        29,
+        647,
+        53
+      ],
+      "region": "top-center",
+      "confidence": "HIGH",
+      "ocr_matched": true
+    },
+    {
+      "id": "Product_Scrvcr",
+      "name": "Product Scrvcr",
+      "type": "service",
+      "description": "Component: Product Scrvcr (SERVICE)",
+      "attributes": [],
+      "methods": [],
+      "bounding_box": [
+        1153,
+        29,
+        1281,
+        53
       ],
       "region": "top-right",
       "confidence": "HIGH",
       "ocr_matched": true
     },
     {
-      "id": "Subsystem",
-      "name": "<Subsystem >",
+      "id": "Rcomponentw",
+      "name": "Rcomponentw",
       "type": "class",
-      "description": "Component: <Subsystem > (CLASS) | Attributes: Online Shopping, View Items, <<include> >, Make...",
+      "description": "Component: Rcomponentw (CLASS) | Attributes: Product Catalog",
       "attributes": [
-        "Online Shopping",
-        "View Items",
-        "<<include> >",
-        "Make",
-        "Purchase",
-        "<<include> >",
-        "Checkout",
-        "Client",
-        "Register",
-        "Unified Modeling Language (UML)"
+        "Product Catalog"
       ],
       "methods": [],
       "bounding_box": [
-        235,
-        50,
-        657,
-        501
+        1020,
+        98,
+        1158,
+        146
       ],
-      "region": "middle-center",
-      "confidence": "HIGH",
+      "region": "top-right",
+      "confidence": "MEDIUM",
       "ocr_matched": true
     },
     {
-      "id": "Registered",
-      "name": "Registered",
+      "id": "Rcomponentw",
+      "name": "Rcomponentw",
       "type": "class",
-      "description": "Component: Registered (CLASS) | Attributes: customer",
+      "description": "Component: Rcomponentw (CLASS) | Attributes: Product Database",
       "attributes": [
-        "customer"
+        "Product Database"
       ],
       "methods": [],
       "bounding_box": [
-        207,
-        153,
-        315,
-        198
+        1287,
+        99,
+        1437,
+        141
       ],
-      "region": "middle-left",
-      "confidence": "HIGH",
+      "region": "top-right",
+      "confidence": "MEDIUM",
       "ocr_matched": true
     },
     {
-      "id": "Identity",
-      "name": "Identity",
+      "id": "REST_API",
+      "name": "REST API",
+      "type": "gateway",
+      "description": "Component: REST API (GATEWAY)",
+      "attributes": [],
+      "methods": [],
+      "bounding_box": [
+        859,
+        143,
+        939,
+        169
+      ],
+      "region": "top-center",
+      "confidence": "MEDIUM",
+      "ocr_matched": true
+    },
+    {
+      "id": "Ccomooncn",
+      "name": "Ccomooncn",
       "type": "class",
-      "description": "Component: Identity (CLASS) | Attributes: Provider, Credit Payment, Service",
+      "description": "Component: Ccomooncn (CLASS) | Attributes: API Gateway, Service",
       "attributes": [
-        "Provider",
-        "Credit Payment",
+        "API Gateway",
         "Service"
       ],
       "methods": [],
       "bounding_box": [
-        802,
-        157,
-        958,
-        324
+        560,
+        194,
+        668,
+        253
+      ],
+      "region": "top-center",
+      "confidence": "MEDIUM",
+      "ocr_matched": true
+    },
+    {
+      "id": "REST_API",
+      "name": "REST API",
+      "type": "gateway",
+      "description": "Component: REST API (GATEWAY)",
+      "attributes": [],
+      "methods": [],
+      "bounding_box": [
+        399,
+        222,
+        482,
+        252
+      ],
+      "region": "top-left",
+      "confidence": "HIGH",
+      "ocr_matched": true
+    },
+    {
+      "id": "artifact",
+      "name": "{artifact\"",
+      "type": "class",
+      "description": "Component: {artifact\" (CLASS) | Attributes: Styles",
+      "attributes": [
+        "Styles"
+      ],
+      "methods": [],
+      "bounding_box": [
+        69,
+        227,
+        251,
+        273
+      ],
+      "region": "top-left",
+      "confidence": "MEDIUM",
+      "ocr_matched": true
+    },
+    {
+      "id": "Rcomponentw",
+      "name": "Rcomponentw",
+      "type": "class",
+      "description": "Component: Rcomponentw (CLASS) | Attributes: Invoice Database",
+      "attributes": [
+        "Invoice Database"
+      ],
+      "methods": [],
+      "bounding_box": [
+        1289,
+        228,
+        1435,
+        271
+      ],
+      "region": "top-right",
+      "confidence": "MEDIUM",
+      "ocr_matched": true
+    },
+    {
+      "id": "Acondonent",
+      "name": "Acondonent",
+      "type": "class",
+      "description": "Component: Acondonent (CLASS) | Attributes: Invoicing Service",
+      "attributes": [
+        "Invoicing Service"
+      ],
+      "methods": [],
+      "bounding_box": [
+        1015,
+        232,
+        1161,
+        275
+      ],
+      "region": "top-right",
+      "confidence": "MEDIUM",
+      "ocr_matched": true
+    },
+    {
+      "id": "EST_API",
+      "name": "EST API",
+      "type": "gateway",
+      "description": "Component: EST API (GATEWAY)",
+      "attributes": [],
+      "methods": [],
+      "bounding_box": [
+        871,
+        273,
+        941,
+        297
+      ],
+      "region": "top-center",
+      "confidence": "HIGH",
+      "ocr_matched": true
+    },
+    {
+      "id": "Bankserver",
+      "name": "Bankserver",
+      "type": "class",
+      "description": "Component: Bankserver (CLASS) | Attributes: ccomdonem\", Currency Exchange Rate, Service",
+      "attributes": [
+        "ccomdonem\"",
+        "Currency Exchange Rate",
+        "Service"
+      ],
+      "methods": [],
+      "bounding_box": [
+        995,
+        403,
+        1201,
+        521
       ],
       "region": "middle-right",
       "confidence": "HIGH",
       "ocr_matched": true
     },
     {
-      "id": "Web",
-      "name": "Web",
+      "id": "Smartphonc",
+      "name": "Smartphonc",
       "type": "class",
-      "description": "Component: Web (CLASS) | Attributes: customer",
+      "description": "Component: Smartphonc (CLASS) | Attributes: rcomponentw, Ecommcrcc App, REST API",
       "attributes": [
-        "customer"
+        "rcomponentw",
+        "Ecommcrcc App",
+        "REST API"
       ],
       "methods": [],
       "bounding_box": [
-        45,
-        220,
-        141,
-        264
+        330,
+        482,
+        522,
+        663
       ],
       "region": "middle-left",
       "confidence": "HIGH",
       "ocr_matched": true
     },
     {
-      "id": "New",
-      "name": "New",
-      "type": "class",
-      "description": "Component: New (CLASS) | Attributes: customer",
-      "attributes": [
-        "customer"
-      ],
+      "id": "REST_API",
+      "name": "REST API",
+      "type": "gateway",
+      "description": "Component: REST API (GATEWAY)",
+      "attributes": [],
       "methods": [],
       "bounding_box": [
-        227,
-        311,
-        323,
-        349
+        859,
+        505,
+        941,
+        533
       ],
-      "region": "middle-left",
+      "region": "middle-center",
       "confidence": "HIGH",
       "ocr_matched": true
     },
     {
-      "id": "PayPal",
-      "name": "PayPal",
+      "id": "Ccomoonem",
+      "name": "Ccomoonem\"",
       "type": "class",
-      "description": "Component: PayPal (CLASS) | Attributes: 36",
+      "description": "Component: Ccomoonem\" (CLASS) | Attributes: Payment Gatcway",
       "attributes": [
-        "36"
+        "Payment Gatcway"
       ],
       "methods": [],
       "bounding_box": [
-        852,
-        380,
-        972,
-        501
+        1025,
+        594,
+        1182,
+        639
+      ],
+      "region": "middle-right",
+      "confidence": "MEDIUM",
+      "ocr_matched": true
+    },
+    {
+      "id": "REST_API",
+      "name": "REST API",
+      "type": "gateway",
+      "description": "Component: REST API (GATEWAY)",
+      "attributes": [],
+      "methods": [],
+      "bounding_box": [
+        859,
+        635,
+        941,
+        663
+      ],
+      "region": "bottom-center",
+      "confidence": "HIGH",
+      "ocr_matched": true
+    },
+    {
+      "id": "Couricr_Scrver",
+      "name": "Couricr Scrver",
+      "type": "service",
+      "description": "Component: Couricr Scrver (SERVICE)",
+      "attributes": [],
+      "methods": [],
+      "bounding_box": [
+        1030,
+        757,
+        1155,
+        785
       ],
       "region": "bottom-right",
       "confidence": "HIGH",
       "ocr_matched": true
     },
     {
-      "id": "Use_Case_Diagrams",
-      "name": "Use Case Diagrams",
-      "type": "service",
-      "description": "Component: Use Case Diagrams (SERVICE)",
+      "id": "Acomdonent",
+      "name": "Acomdonent",
+      "type": "class",
+      "description": "Component: Acomdonent (CLASS) | Attributes: Mobile API Gateway Module",
+      "attributes": [
+        "Mobile API Gateway Module"
+      ],
+      "methods": [],
+      "bounding_box": [
+        279,
+        792,
+        527,
+        836
+      ],
+      "region": "bottom-left",
+      "confidence": "MEDIUM",
+      "ocr_matched": true
+    },
+    {
+      "id": "Acondonent",
+      "name": "Acondonent",
+      "type": "class",
+      "description": "Component: Acondonent (CLASS) | Attributes: Shipping Service",
+      "attributes": [
+        "Shipping Service"
+      ],
+      "methods": [],
+      "bounding_box": [
+        1029,
+        842,
+        1175,
+        885
+      ],
+      "region": "bottom-right",
+      "confidence": "MEDIUM",
+      "ocr_matched": true
+    },
+    {
+      "id": "REST_API",
+      "name": "REST API",
+      "type": "gateway",
+      "description": "Component: REST API (GATEWAY)",
       "attributes": [],
       "methods": [],
       "bounding_box": [
-        21,
-        465,
-        269,
-        501
+        857,
+        881,
+        939,
+        909
       ],
-      "region": "bottom-left",
+      "region": "bottom-center",
       "confidence": "HIGH",
       "ocr_matched": true
     }
   ],
   "relationships": [
     {
-      "from": "Use Case diagram of an Online Shopping System",
-      "to": "<Subsystem >",
+      "from": "Computcr",
+      "to": "Apiserver",
       "type": "association",
-      "condition": "UML Structural Coupling"
+      "condition": "UML Class Association"
     },
     {
-      "from": "Use Case diagram of an Online Shopping System",
-      "to": "Registered",
+      "from": "Computcr",
+      "to": "Ccomooncn",
       "type": "association",
-      "condition": "UML Structural Coupling"
+      "condition": "UML Class Association"
     },
     {
-      "from": "Use Case diagram of an Online Shopping System",
-      "to": "Web",
+      "from": "Computcr",
+      "to": "{artifact\"",
       "type": "association",
-      "condition": "UML Structural Coupling"
+      "condition": "UML Class Association"
     },
     {
-      "from": "Use Case diagram of an Online Shopping System",
-      "to": "New",
+      "from": "Computcr",
+      "to": "Smartphonc",
       "type": "association",
-      "condition": "UML Structural Coupling"
+      "condition": "UML Class Association"
     },
     {
-      "from": "Use Case diagram of an Online Shopping System",
-      "to": "Use Case Diagrams",
+      "from": "Computcr",
+      "to": "Acomdonent",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Apiserver",
+      "to": "Product Scrvcr",
+      "type": "routes_to",
+      "condition": "Ingress Routing"
+    },
+    {
+      "from": "Apiserver",
+      "to": "Ccomooncn",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Apiserver",
+      "to": "{artifact\"",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Apiserver",
+      "to": "EST API",
+      "type": "routes_to",
+      "condition": "Ingress Routing"
+    },
+    {
+      "from": "Apiserver",
+      "to": "Bankserver",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Apiserver",
+      "to": "Smartphonc",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Product Scrvcr",
+      "to": "Rcomponentw",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Product Scrvcr",
+      "to": "Ccomooncn",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Product Scrvcr",
+      "to": "EST API",
       "type": "calls",
       "condition": "Service Interaction"
     },
     {
-      "from": "<<Service> >",
-      "to": "Identity",
+      "from": "Product Scrvcr",
+      "to": "Bankserver",
       "type": "association",
-      "condition": "UML Structural Coupling"
+      "condition": "UML Class Association"
     },
     {
-      "from": "<<Service> >",
-      "to": "PayPal",
+      "from": "Product Scrvcr",
+      "to": "Ccomoonem\"",
       "type": "association",
-      "condition": "UML Structural Coupling"
+      "condition": "UML Class Association"
     },
     {
-      "from": "<Subsystem >",
-      "to": "Registered",
+      "from": "Rcomponentw",
+      "to": "Rcomponentw",
       "type": "association",
-      "condition": "UML Structural Coupling"
+      "condition": "UML Class Association"
     },
     {
-      "from": "<Subsystem >",
-      "to": "Identity",
+      "from": "Rcomponentw",
+      "to": "Acondonent",
       "type": "association",
-      "condition": "UML Structural Coupling"
+      "condition": "UML Class Association"
     },
     {
-      "from": "<Subsystem >",
-      "to": "Web",
+      "from": "Rcomponentw",
+      "to": "EST API",
       "type": "association",
-      "condition": "UML Structural Coupling"
+      "condition": "UML Class Association"
     },
     {
-      "from": "<Subsystem >",
-      "to": "New",
+      "from": "Rcomponentw",
+      "to": "Bankserver",
       "type": "association",
-      "condition": "UML Structural Coupling"
+      "condition": "UML Class Association"
     },
     {
-      "from": "<Subsystem >",
-      "to": "Use Case Diagrams",
+      "from": "Rcomponentw",
+      "to": "Ccomoonem\"",
       "type": "association",
-      "condition": "UML Structural Coupling"
+      "condition": "UML Class Association"
     },
     {
-      "from": "Registered",
-      "to": "Web",
+      "from": "Rcomponentw",
+      "to": "Couricr Scrver",
       "type": "association",
-      "condition": "UML Structural Coupling"
+      "condition": "UML Class Association"
     },
     {
-      "from": "Registered",
-      "to": "New",
+      "from": "REST API",
+      "to": "Ccomooncn",
       "type": "association",
-      "condition": "UML Structural Coupling"
+      "condition": "UML Class Association"
     },
     {
-      "from": "Registered",
-      "to": "Use Case Diagrams",
-      "type": "association",
-      "condition": "UML Structural Coupling"
+      "from": "REST API",
+      "to": "REST API",
+      "type": "routes_to",
+      "condition": "Ingress Routing"
     },
     {
-      "from": "Identity",
-      "to": "PayPal",
+      "from": "REST API",
+      "to": "Acondonent",
       "type": "association",
-      "condition": "UML Structural Coupling"
+      "condition": "UML Class Association"
     },
     {
-      "from": "Web",
-      "to": "New",
-      "type": "association",
-      "condition": "UML Structural Coupling"
+      "from": "REST API",
+      "to": "EST API",
+      "type": "routes_to",
+      "condition": "Ingress Routing"
     },
     {
-      "from": "Web",
-      "to": "Use Case Diagrams",
+      "from": "REST API",
+      "to": "Bankserver",
       "type": "association",
-      "condition": "UML Structural Coupling"
+      "condition": "UML Class Association"
     },
     {
-      "from": "New",
-      "to": "Use Case Diagrams",
+      "from": "REST API",
+      "to": "Smartphonc",
       "type": "association",
-      "condition": "UML Structural Coupling"
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "REST API",
+      "to": "Ccomoonem\"",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "REST API",
+      "to": "Couricr Scrver",
+      "type": "routes_to",
+      "condition": "Ingress Routing"
+    },
+    {
+      "from": "REST API",
+      "to": "Acomdonent",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Ccomooncn",
+      "to": "{artifact\"",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Ccomooncn",
+      "to": "EST API",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Ccomooncn",
+      "to": "Bankserver",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Ccomooncn",
+      "to": "Smartphonc",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Ccomooncn",
+      "to": "Ccomoonem\"",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Ccomooncn",
+      "to": "Couricr Scrver",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Ccomooncn",
+      "to": "Acomdonent",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "{artifact\"",
+      "to": "Smartphonc",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "{artifact\"",
+      "to": "Acomdonent",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Acondonent",
+      "to": "EST API",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Acondonent",
+      "to": "Bankserver",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Acondonent",
+      "to": "Ccomoonem\"",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Acondonent",
+      "to": "Couricr Scrver",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Acondonent",
+      "to": "Acomdonent",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Acondonent",
+      "to": "Acondonent",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "EST API",
+      "to": "Bankserver",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "EST API",
+      "to": "Smartphonc",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "EST API",
+      "to": "Ccomoonem\"",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "EST API",
+      "to": "Couricr Scrver",
+      "type": "routes_to",
+      "condition": "Ingress Routing"
+    },
+    {
+      "from": "EST API",
+      "to": "Acomdonent",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Bankserver",
+      "to": "Smartphonc",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Bankserver",
+      "to": "Ccomoonem\"",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Bankserver",
+      "to": "Couricr Scrver",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Smartphonc",
+      "to": "Ccomoonem\"",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Smartphonc",
+      "to": "Couricr Scrver",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Smartphonc",
+      "to": "Acomdonent",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Ccomoonem\"",
+      "to": "Couricr Scrver",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Ccomoonem\"",
+      "to": "Acomdonent",
+      "type": "association",
+      "condition": "UML Class Association"
+    },
+    {
+      "from": "Couricr Scrver",
+      "to": "Acomdonent",
+      "type": "association",
+      "condition": "UML Class Association"
     }
   ]
 }

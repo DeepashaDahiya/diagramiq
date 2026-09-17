@@ -1,0 +1,22 @@
+@startuml
+' Diagram: CI/CD Automated Deployment Flowchart
+' Category: FLOWCHART
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+rectangle "CodePush" as CodePush
+rectangle "RunUnitTests" as RunUnitTests
+rectangle "BuildDockerImage" as BuildDockerImage
+rectangle "DeployStaging" as DeployStaging
+rectangle "RunIntegrationTests" as RunIntegrationTests
+rectangle "DeployProduction" as DeployProduction
+rectangle "AlertDevs" as AlertDevs
+CodePush --> RunUnitTests : transitions_to
+RunUnitTests --> BuildDockerImage : transitions_to
+RunUnitTests --> AlertDevs : transitions_to
+BuildDockerImage --> DeployStaging : transitions_to
+DeployStaging --> RunIntegrationTests : transitions_to
+RunIntegrationTests --> DeployProduction : transitions_to
+RunIntegrationTests --> AlertDevs : transitions_to
+@enduml

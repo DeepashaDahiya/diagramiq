@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_026",
+  "title": "Online Auction Marketplace",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Seller",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+sellerId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "AuctionItem",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+auctionitemId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Bid",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+bidId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Buyer",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+buyerId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "EscrowAccount",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+escrowaccountId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Seller",
+      "to": "AuctionItem",
+      "type": "associates"
+    },
+    {
+      "from": "Buyer",
+      "to": "Bid",
+      "type": "associates"
+    },
+    {
+      "from": "Bid",
+      "to": "AuctionItem",
+      "type": "associates"
+    },
+    {
+      "from": "AuctionItem",
+      "to": "EscrowAccount",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_026.png",
+  "puml_file": "plantuml_sources/uml_class_026.puml"
+}

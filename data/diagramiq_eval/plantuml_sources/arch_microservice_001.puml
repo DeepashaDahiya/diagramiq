@@ -1,0 +1,21 @@
+@startuml
+' Diagram: E-Commerce Microservices Architecture
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "ClientApp" as ClientApp
+node "APIGateway" as APIGateway
+node "AuthService" as AuthService
+node "OrderService" as OrderService
+node "PaymentGateway" as PaymentGateway
+node "UserDB" as UserDB
+node "OrderDB" as OrderDB
+ClientApp --> APIGateway : calls
+APIGateway --> AuthService : calls
+AuthService --> UserDB : writes_to
+APIGateway --> OrderService : calls
+OrderService --> OrderDB : writes_to
+OrderService --> PaymentGateway : calls
+@enduml

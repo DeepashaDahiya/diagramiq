@@ -1,0 +1,32 @@
+@startuml
+' Diagram: Digital Crypto Wallet
+' Category: UML_CLASS
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+class Wallet {
+  +walletId
+  +execute()
+}
+class PrivateKey {
+  +privatekeyId
+  +execute()
+}
+class TransactionRecord {
+  +transactionrecordId
+  +execute()
+}
+class CryptoToken {
+  +cryptotokenId
+  +execute()
+}
+class ExchangeNode {
+  +exchangenodeId
+  +execute()
+}
+Wallet --> PrivateKey : associates
+Wallet --> TransactionRecord : associates
+TransactionRecord --> CryptoToken : associates
+Wallet --> ExchangeNode : associates
+@enduml

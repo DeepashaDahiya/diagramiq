@@ -1,0 +1,114 @@
+{
+  "diagram_id": "flowchart_er_012",
+  "title": "E-Commerce Order Fulfillment Flowchart",
+  "category": "FLOWCHART",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "OrderPlaced",
+      "type": "process",
+      "bounding_box": [
+        60,
+        480,
+        220,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "CheckInventory",
+      "type": "decision",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "ProcessPayment",
+      "type": "process",
+      "bounding_box": [
+        500,
+        480,
+        660,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PickAndPack",
+      "type": "process",
+      "bounding_box": [
+        720,
+        480,
+        880,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DispatchCourier",
+      "type": "process",
+      "bounding_box": [
+        60,
+        300,
+        220,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "CancelOrder",
+      "type": "process",
+      "bounding_box": [
+        280,
+        300,
+        440,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "OrderPlaced",
+      "to": "CheckInventory",
+      "type": "transitions_to"
+    },
+    {
+      "from": "CheckInventory",
+      "to": "ProcessPayment",
+      "type": "transitions_to"
+    },
+    {
+      "from": "CheckInventory",
+      "to": "CancelOrder",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ProcessPayment",
+      "to": "PickAndPack",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ProcessPayment",
+      "to": "CancelOrder",
+      "type": "transitions_to"
+    },
+    {
+      "from": "PickAndPack",
+      "to": "DispatchCourier",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_er_012.png",
+  "puml_file": "plantuml_sources/flowchart_er_012.puml"
+}

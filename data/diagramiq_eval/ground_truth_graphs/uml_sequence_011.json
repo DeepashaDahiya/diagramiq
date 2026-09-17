@@ -1,0 +1,75 @@
+{
+  "diagram_id": "uml_sequence_011",
+  "title": "Circuit Breaker Tripping on Service Failure",
+  "category": "UML_SEQUENCE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "ClientCaller",
+      "type": "actor",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "APIGateway",
+      "type": "participant",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "FailingService",
+      "type": "participant",
+      "bounding_box": [
+        480,
+        480,
+        640,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "FallbackCache",
+      "type": "participant",
+      "bounding_box": [
+        680,
+        480,
+        840,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "ClientCaller",
+      "to": "APIGateway",
+      "type": "sends_message"
+    },
+    {
+      "from": "APIGateway",
+      "to": "FailingService",
+      "type": "sends_message"
+    },
+    {
+      "from": "APIGateway",
+      "to": "FallbackCache",
+      "type": "sends_message"
+    }
+  ],
+  "image_file": "images/uml_sequence_011.png",
+  "puml_file": "plantuml_sources/uml_sequence_011.puml"
+}

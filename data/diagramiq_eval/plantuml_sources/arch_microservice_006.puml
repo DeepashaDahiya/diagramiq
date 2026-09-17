@@ -1,0 +1,17 @@
+@startuml
+' Diagram: Distributed Search Ingestion Pipeline
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "WebCrawler" as WebCrawler
+node "KafkaQueue" as KafkaQueue
+node "SparkParser" as SparkParser
+node "Elasticsearch" as Elasticsearch
+node "SearchAPI" as SearchAPI
+WebCrawler --> KafkaQueue : calls
+KafkaQueue --> SparkParser : calls
+SparkParser --> Elasticsearch : calls
+SearchAPI --> Elasticsearch : calls
+@enduml

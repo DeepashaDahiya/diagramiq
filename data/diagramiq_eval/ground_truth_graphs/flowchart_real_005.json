@@ -1,0 +1,572 @@
+{
+  "diagram_id": "flowchart_real_005",
+  "title": "Real Control Flowchart #5",
+  "category": "FLOWCHART",
+  "complexity": "MEDIUM",
+  "source_dataset": "MananSuri27/Flowchart2Mermaid",
+  "nodes": [
+    {
+      "id": "A",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "B",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "B1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "B2",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "B3",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "B4",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "C",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "C1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "C2",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "C3",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "C4",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "D",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "D1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "D2",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "E",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "E1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "E2",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "E3",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "E{\"Is the stain fresh and not dried?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F2",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "G",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "G1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "G2",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "G3",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "H",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "H1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "H2",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "I",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "I1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "I2",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "J",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| C3",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| G",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| H",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| C2",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| E1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| G1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "A",
+      "to": "B",
+      "type": "transitions_to"
+    },
+    {
+      "from": "B",
+      "to": "B1",
+      "type": "transitions_to"
+    },
+    {
+      "from": "B1",
+      "to": "B2",
+      "type": "transitions_to"
+    },
+    {
+      "from": "B2",
+      "to": "B3",
+      "type": "transitions_to"
+    },
+    {
+      "from": "B3",
+      "to": "B4",
+      "type": "transitions_to"
+    },
+    {
+      "from": "B4",
+      "to": "C",
+      "type": "transitions_to"
+    },
+    {
+      "from": "C",
+      "to": "C1",
+      "type": "transitions_to"
+    },
+    {
+      "from": "C1",
+      "to": "|\"Yes\"| C2",
+      "type": "transitions_to"
+    },
+    {
+      "from": "C1",
+      "to": "|\"No\"| C3",
+      "type": "transitions_to"
+    },
+    {
+      "from": "C2",
+      "to": "C4",
+      "type": "transitions_to"
+    },
+    {
+      "from": "C3",
+      "to": "C4",
+      "type": "transitions_to"
+    },
+    {
+      "from": "C4",
+      "to": "D",
+      "type": "transitions_to"
+    },
+    {
+      "from": "D",
+      "to": "D1",
+      "type": "transitions_to"
+    },
+    {
+      "from": "D1",
+      "to": "D2",
+      "type": "transitions_to"
+    },
+    {
+      "from": "D2",
+      "to": "E{\"Is the stain fresh and not dried?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "E",
+      "to": "|\"Yes\"| E1",
+      "type": "transitions_to"
+    },
+    {
+      "from": "E",
+      "to": "|\"No\"| G",
+      "type": "transitions_to"
+    },
+    {
+      "from": "E1",
+      "to": "E2",
+      "type": "transitions_to"
+    },
+    {
+      "from": "E2",
+      "to": "E3",
+      "type": "transitions_to"
+    },
+    {
+      "from": "E3",
+      "to": "F",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F",
+      "to": "F1",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F1",
+      "to": "F2",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F2",
+      "to": "G",
+      "type": "transitions_to"
+    },
+    {
+      "from": "G",
+      "to": "|\"Yes\"| G1",
+      "type": "transitions_to"
+    },
+    {
+      "from": "G",
+      "to": "|\"No\"| H",
+      "type": "transitions_to"
+    },
+    {
+      "from": "G1",
+      "to": "G2",
+      "type": "transitions_to"
+    },
+    {
+      "from": "G2",
+      "to": "G3",
+      "type": "transitions_to"
+    },
+    {
+      "from": "G3",
+      "to": "H",
+      "type": "transitions_to"
+    },
+    {
+      "from": "H",
+      "to": "H1",
+      "type": "transitions_to"
+    },
+    {
+      "from": "H1",
+      "to": "H2",
+      "type": "transitions_to"
+    },
+    {
+      "from": "H2",
+      "to": "I",
+      "type": "transitions_to"
+    },
+    {
+      "from": "I",
+      "to": "I1",
+      "type": "transitions_to"
+    },
+    {
+      "from": "I1",
+      "to": "I2",
+      "type": "transitions_to"
+    },
+    {
+      "from": "I2",
+      "to": "J",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_real_005.png"
+}

@@ -1,0 +1,17 @@
+@startuml
+' Diagram: Ad-Tech Real-Time Bidding Exchange
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "AdPublisher" as AdPublisher
+node "ExchangeGateway" as ExchangeGateway
+node "BIDEvaluator" as BIDEvaluator
+node "BudgetPacer" as BudgetPacer
+node "AdStorage" as AdStorage
+AdPublisher --> ExchangeGateway : calls
+ExchangeGateway --> BIDEvaluator : calls
+BIDEvaluator --> BudgetPacer : calls
+ExchangeGateway --> AdStorage : calls
+@enduml

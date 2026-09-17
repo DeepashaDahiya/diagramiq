@@ -32,6 +32,8 @@ const NODE_TYPE_COLORS = {
   storage: "#8b5cf6",
   security: "#f43f5e",
   actor: "#10b981",
+  use_case: "#8b5cf6",
+  subsystem: "#0284c7",
   queue: "#f59e0b",
   cache: "#ec4899",
   class: "#3b82f6",
@@ -39,6 +41,134 @@ const NODE_TYPE_COLORS = {
   decision: "#eab308",
   unknown: "#64748b",
 };
+
+function renderFormattedInline(text) {
+  if (!text) return text;
+  const parts = [];
+  const tokenRegex = /(\*\*[^*]+\*\*|`[^`]+`)/g;
+  let lastIndex = 0;
+  let match;
+  let key = 0;
+
+  while ((match = tokenRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.substring(lastIndex, match.index));
+    }
+    const token = match[0];
+    if (token.startsWith("**") && token.endsWith("**")) {
+      parts.push(
+        <strong key={key++} className="md-bold">
+          {token.slice(2, -2)}
+        </strong>
+      );
+    } else if (token.startsWith("`") && token.endsWith("`")) {
+      parts.push(
+        <code key={key++} className="md-code">
+          {token.slice(1, -1)}
+        </code>
+      );
+    }
+    lastIndex = match.index + token.length;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.substring(lastIndex));
+  }
+
+  return parts.length > 0 ? parts : text;
+}
+
+function MarkdownRenderer({ content }) {
+  if (!content) return null;
+
+  const lines = content.split("\n");
+  const elements = [];
+  let currentList = [];
+  let listType = null;
+
+  function flushList() {
+    if (currentList.length > 0) {
+      if (listType === "ol") {
+        elements.push(
+          <ol key={`ol-${elements.length}`} className="md-ordered-list">
+            {currentList.map((item, idx) => (
+              <li key={idx} className="md-list-item">
+                {renderFormattedInline(item)}
+              </li>
+            ))}
+          </ol>
+        );
+      } else {
+        elements.push(
+          <ul key={`ul-${elements.length}`} className="md-unordered-list">
+            {currentList.map((item, idx) => (
+              <li key={idx} className="md-list-item">
+                {renderFormattedInline(item)}
+              </li>
+            ))}
+          </ul>
+        );
+      }
+      currentList = [];
+      listType = null;
+    }
+  }
+
+  lines.forEach((line, idx) => {
+    const trimmed = line.trim();
+
+    if (!trimmed) {
+      flushList();
+      return;
+    }
+
+    if (trimmed.startsWith("### ")) {
+      flushList();
+      elements.push(
+        <h4 key={`h3-${idx}`} className="md-header-3">
+          {renderFormattedInline(trimmed.replace(/^###\s+/, ""))}
+        </h4>
+      );
+      return;
+    }
+
+    if (trimmed.startsWith("## ")) {
+      flushList();
+      elements.push(
+        <h3 key={`h2-${idx}`} className="md-header-2">
+          {renderFormattedInline(trimmed.replace(/^##\s+/, ""))}
+        </h3>
+      );
+      return;
+    }
+
+    if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
+      if (listType !== "ul") flushList();
+      listType = "ul";
+      currentList.push(trimmed.replace(/^[-*]\s+/, ""));
+      return;
+    }
+
+    const olMatch = trimmed.match(/^(\d+)\.\s+(.*)/);
+    if (olMatch) {
+      if (listType !== "ol") flushList();
+      listType = "ol";
+      currentList.push(olMatch[2]);
+      return;
+    }
+
+    flushList();
+    elements.push(
+      <p key={`p-${idx}`} className="md-paragraph">
+        {renderFormattedInline(trimmed)}
+      </p>
+    );
+  });
+
+  flushList();
+
+  return <div className="markdown-container">{elements}</div>;
+}
 
 export default function App() {
   const [image, setImage] = useState(null);
@@ -611,7 +741,10 @@ export default function App() {
                                 color: confStyle.text,
                               }}
                             >
-                              📍 {claim.grounding_entities?.[0] || claim.supporting_component || "Entity"}
+                              📍 {(() => {
+                                const rawName = claim.grounding_entities?.[0] || claim.supporting_component || "Entity";
+                                return rawName.length > 22 ? rawName.slice(0, 20) + "..." : rawName;
+                              })()}
                             </span>
                           </div>
                         );
@@ -885,20 +1018,17 @@ export default function App() {
               <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
                 {/* Answer Card with Rich Pedagogical Formatting */}
                 <div
+                  className="answer-card-container"
                   style={{
                     background: "var(--bg-input)",
                     border: "1px solid var(--border-subtle)",
                     borderRadius: "var(--radius-sm)",
-                    padding: "1.1rem",
-                    fontSize: "0.85rem",
-                    lineHeight: 1.7,
+                    padding: "1.25rem",
                     color: "var(--text-primary)",
                     borderLeft: "4px solid var(--accent-primary)",
                   }}
                 >
-                  <div style={{ whiteSpace: "pre-line" }}>
-                    {result.direct_answer || result.answer}
-                  </div>
+                  <MarkdownRenderer content={result.direct_answer || result.answer} />
                 </div>
 
                 {/* Overall Confidence Gauge */}

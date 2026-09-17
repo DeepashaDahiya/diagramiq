@@ -1,0 +1,15 @@
+@startuml
+' Diagram: Hotel Reservation & Room ERD
+' Category: ER_DIAGRAM
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+rectangle "Guest" as Guest
+rectangle "Reservation" as Reservation
+rectangle "Room" as Room
+rectangle "RoomType" as RoomType
+Guest --> Reservation : relates_to
+Reservation --> Room : relates_to
+Room --> RoomType : relates_to
+@enduml

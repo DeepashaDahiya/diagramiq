@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_011",
+  "title": "AI Recommendation Vector Search",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "UserEvents",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "EventCollector",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "EmbeddingModel",
+      "type": "gateway",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "MilvusVectorDB",
+      "type": "database",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "RankerService",
+      "type": "service",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "UserEvents",
+      "to": "EventCollector",
+      "type": "calls"
+    },
+    {
+      "from": "EventCollector",
+      "to": "EmbeddingModel",
+      "type": "calls"
+    },
+    {
+      "from": "EmbeddingModel",
+      "to": "MilvusVectorDB",
+      "type": "writes_to"
+    },
+    {
+      "from": "RankerService",
+      "to": "MilvusVectorDB",
+      "type": "writes_to"
+    }
+  ],
+  "image_file": "images/arch_microservice_011.png",
+  "puml_file": "plantuml_sources/arch_microservice_011.puml"
+}

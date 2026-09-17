@@ -1,0 +1,17 @@
+@startuml
+' Diagram: Enterprise Data Governance Catalog
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "SchemaCrawler" as SchemaCrawler
+node "DataLineageEngine" as DataLineageEngine
+node "CatalogDB" as CatalogDB
+node "PrivacyScanner" as PrivacyScanner
+node "DataStewardUI" as DataStewardUI
+SchemaCrawler --> DataLineageEngine : calls
+DataLineageEngine --> CatalogDB : writes_to
+PrivacyScanner --> CatalogDB : writes_to
+DataStewardUI --> CatalogDB : writes_to
+@enduml

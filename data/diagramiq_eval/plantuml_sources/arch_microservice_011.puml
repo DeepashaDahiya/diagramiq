@@ -1,0 +1,17 @@
+@startuml
+' Diagram: AI Recommendation Vector Search
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "UserEvents" as UserEvents
+node "EventCollector" as EventCollector
+node "EmbeddingModel" as EmbeddingModel
+node "MilvusVectorDB" as MilvusVectorDB
+node "RankerService" as RankerService
+UserEvents --> EventCollector : calls
+EventCollector --> EmbeddingModel : calls
+EmbeddingModel --> MilvusVectorDB : writes_to
+RankerService --> MilvusVectorDB : writes_to
+@enduml

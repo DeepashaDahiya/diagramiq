@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_025",
+  "title": "Enterprise Data Governance Catalog",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "SchemaCrawler",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DataLineageEngine",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "CatalogDB",
+      "type": "database",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PrivacyScanner",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DataStewardUI",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "SchemaCrawler",
+      "to": "DataLineageEngine",
+      "type": "calls"
+    },
+    {
+      "from": "DataLineageEngine",
+      "to": "CatalogDB",
+      "type": "writes_to"
+    },
+    {
+      "from": "PrivacyScanner",
+      "to": "CatalogDB",
+      "type": "writes_to"
+    },
+    {
+      "from": "DataStewardUI",
+      "to": "CatalogDB",
+      "type": "writes_to"
+    }
+  ],
+  "image_file": "images/arch_microservice_025.png",
+  "puml_file": "plantuml_sources/arch_microservice_025.puml"
+}

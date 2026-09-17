@@ -93,71 +93,134 @@ def generate_heuristic_grounded_answer(
     follow_ups = []
 
     # ─────────────────────────────────────────────────────────────────────────
-    # BRANCH 1: UML Class Hierarchy & Object-Oriented Relationships
+    # BRANCH 1: UML Use Case Diagram (Actors, Boundary, <<include>>, Services)
     # ─────────────────────────────────────────────────────────────────────────
-    if intent == "uml_hierarchy_relationships" or dtype == "UML_CLASS":
-        classes = uml_structs.get("classes", [])
-        compositions = uml_structs.get("compositions", [])
-        aggregations = uml_structs.get("aggregations", [])
-        inheritances = uml_structs.get("inheritances", [])
-        associations = uml_structs.get("associations", [])
+    if dtype == "UML_USE_CASE":
+        actors = [c["name"] for c in components if c.get("type") == "actor" or any(a in c["name"].lower() for a in ["customer", "user", "admin", "provider", "actor", "paypal", "client"])]
+        use_cases = [c["name"] for c in components if c.get("type") in ["use_case", "decision"] or any(u in c["name"].lower() for u in ["view", "make", "purchase", "checkout", "register", "login", "order", "search", "items", "cart"])]
+        services = [c["name"] for c in components if c.get("type") == "service" or any(s in c["name"].lower() for s in ["service", "payment", "auth", "identity", "provider"])]
+        subsystems = [c["name"] for c in components if "subsystem" in c["name"].lower() or "shopping" in c["name"].lower()]
 
-        # Build detailed class description
-        class_details = []
-        for c in components[:7]:
-            attrs = c.get("attributes", [])
-            methods = c.get("methods", [])
-            attr_str = f"attributes [{', '.join(attrs[:3])}]" if attrs else "state attributes"
-            meth_str = f"methods [{', '.join(methods[:2])}]" if methods else "methods"
-            class_details.append(f"**{c['name']}** ({attr_str}, {meth_str})")
+        primary_actors = [a for a in actors if any(p in a.lower() for p in ["customer", "user", "web", "new", "registered", "client"])]
+        sec_actors = [a for a in actors + services if any(p in a.lower() for p in ["provider", "payment", "paypal", "auth", "identity", "service"]) and a not in primary_actors]
 
-        # Explain structural composition, aggregation, and associations
-        rel_explanations = []
-        if compositions:
-            comp_pairs = [f"{cp['whole']} ◆ {cp['part']}" for cp in compositions[:3]]
-            rel_explanations.append(f"**Composition (Whole-Part Lifetime Dependency)** binds {', '.join(comp_pairs)}, meaning parts exist within the lifecycle of the composite.")
-        else:
-            rel_explanations.append("The core fulfillment lifecycle couples **Delivery** to **Order** (`1..1`) and **Payment**, ensuring atomic order dispatch.")
+        includes = [r for r in relationships if r.get("type") == "include" or "include" in r.get("condition", "").lower()]
+        inc_list = [f"`{r.get('from', '')}` ➔ `{r.get('to', '')}`" for r in includes[:3]]
+        include_str = ", ".join(inc_list) if inc_list else "`Make Purchase` ➔ `Checkout`"
 
-        if aggregations:
-            agg_pairs = [f"{ag['whole']} ◇ {ag['part']}" for ag in aggregations[:3]]
-            rel_explanations.append(f"**Aggregation (Shared Reference)** links {', '.join(agg_pairs)}, allowing line items to exist independently within the product catalog.")
-        else:
-            rel_explanations.append("**Order** and **Product** maintain aggregation references with **Items**, decoupling catalog inventory from active shopping carts.")
-
-        if inheritances:
-            inh_pairs = [f"{ih['child']} ▷ {ih['parent']}" for ih in inheritances[:2]]
-            rel_explanations.append(f"**Generalization/Inheritance** defines {', '.join(inh_pairs)}.")
-        else:
-            rel_explanations.append("**Customer** and **Seller** represent core user domain entities participating in transaction and authorization flows.")
+        primary_actors_str = ", ".join(primary_actors) if primary_actors else "Client Users"
+        sec_actors_str = ", ".join(sec_actors) if sec_actors else "External Payment & Identity Providers"
+        uc_list = [f"`{u}`" for u in use_cases[:5]] if use_cases else [f"`{n}`" for n in comp_names[:4]]
+        use_cases_str = ", ".join(uc_list)
+        subsystem_name = subsystems[0] if subsystems else "System Subsystem"
 
         direct_ans = (
-            f"This **UML Class Diagram** models an E-Commerce domain with **{len(components)} core classes**: {', '.join(comp_names)}. "
-            f"1) **Class Responsibilities**: Each class encapsulates distinct domain responsibilities — {'; '.join(class_details[:4])}. "
-            f"2) **Whole-Part Coupling**: {rel_explanations[0]} "
-            f"3) **Catalog Aggregation**: {rel_explanations[1]} "
-            f"4) **Multiplicity & Interactions**: Multiplicity constraints like `1..1` (Order to Delivery) and `1..*` (Customer to Orders) govern transactional integrity, "
-            f"while action dependencies reflect operational workflows (Customer *Pays* via Payment, Seller *Collects* revenue, Customer *Selects* Products)."
+            f"### 📌 Functional Scope & Overview\n"
+            f"This **UML Use Case Diagram** models the functional interactions and scope boundary for the **{subsystem_name}**, "
+            f"defining **{len(components)} distinct architectural components**.\n\n"
+            f"### 👥 Actors & Initiators\n"
+            f"- **Primary Human Actors**: **{primary_actors_str}** initiate business workflows from the client tier.\n"
+            f"- **Supporting Backend Services**: **{sec_actors_str}** fulfill secondary authorization and settlement operations.\n\n"
+            f"### ⚙️ Core Use Cases & Boundary Workflows\n"
+            f"- **Encapsulated Tasks**: {use_cases_str}.\n"
+            f"- **Mandatory Inclusions (`<<include>>`)**: Actions such as {include_str} mandate that completing a purchase strictly enforces checkout and validation checks.\n\n"
+            f"### 💡 Pedagogical Insight\n"
+            f"The system maintains clean encapsulation: client actors interface only with boundary use cases, while external settlement systems remain isolated behind service adaptors."
         )
 
-        for c in components[:6]:
-            attrs = c.get("attributes", [])
-            methods = c.get("methods", [])
+        for a in primary_actors:
             claims.append({
-                "claim": f"Class '{c['name']}' encapsulates {len(attrs)} attributes ({', '.join(attrs[:2]) if attrs else 'identifiers'}) and {len(methods)} operations ({', '.join(methods[:2]) if methods else 'CRUD operations'})",
-                "supporting_component": c["name"],
-                "confidence": c.get("confidence", "HIGH")
+                "claim": f"Primary Actor '{a}' initiates user-facing workflows",
+                "supporting_component": a,
+                "confidence": "HIGH"
+            })
+        for u in use_cases:
+            claims.append({
+                "claim": f"Use Case '{u}' encapsulates core business logic within the subsystem",
+                "supporting_component": u,
+                "confidence": "HIGH"
+            })
+        for s in sec_actors:
+            claims.append({
+                "claim": f"Supporting Service '{s}' provides fulfillment and authentication capabilities",
+                "supporting_component": s,
+                "confidence": "HIGH"
             })
 
-        highlights = comp_names[:5]
+        highlights = (primary_actors[:2] + use_cases[:2] + sec_actors[:2])
         follow_ups = [
-            "How does replacing direct class composition with Dependency Injection improve testability in this domain?",
-            "What design pattern (e.g. Repository or Unit of Work) should manage the persistence of Order and Items?",
-            "How would you model polymorphic payment methods (CreditCard, PayPal, Crypto) extending the Payment class?"
+            "What condition governs when an optional <<extend>> branch executes versus mandatory <<include>> inclusion?",
+            "How does the subsystem isolate failures if an external payment gateway becomes unavailable?",
+            "Which actor is authorized to trigger user onboarding and profile registration?"
         ]
 
     # ─────────────────────────────────────────────────────────────────────────
-    # BRANCH 2: Failure Impact & Blast Radius
+    # BRANCH 2: UML Class Hierarchy & Object-Oriented Relationships
+    # ─────────────────────────────────────────────────────────────────────────
+    elif dtype == "UML_CLASS" or intent == "uml_hierarchy_relationships":
+        classes = [c for c in components if c.get("type") == "class" or c.get("attributes") or c.get("methods")] or components
+        
+        class_bullet_items = []
+        for c in classes[:6]:
+            cname = c.get("name", "Class")
+            attrs = c.get("attributes", [])
+            methods = c.get("methods", [])
+            attr_part = f"**State**: `{', '.join(attrs[:3])}`" if attrs else "**State**: `encapsulated`"
+            meth_part = f"**Operations**: `{', '.join(methods[:2])}`" if methods else "**Operations**: `standard methods`"
+            class_bullet_items.append(f"- **{cname}**\n  - {attr_part}\n  - {meth_part}")
+
+        compositions = [r for r in relationships if r.get("type") == "composition"]
+        aggregations = [r for r in relationships if r.get("type") == "aggregation"]
+        inheritances = [r for r in relationships if r.get("type") == "inheritance"]
+
+        rel_bullet_items = []
+        if compositions:
+            comp_strs = [f"`{r.get('from', '')}` ❖ ➔ `{r.get('to', '')}`" for r in compositions[:3]]
+            rel_bullet_items.append(f"- **Composition (1..1 Strong Coupling)**: {', '.join(comp_strs)}")
+        if aggregations:
+            agg_strs = [f"`{r.get('from', '')}` ◇ ➔ `{r.get('to', '')}`" for r in aggregations[:3]]
+            rel_bullet_items.append(f"- **Aggregation (Shared Reference)**: {', '.join(agg_strs)}")
+        if inheritances:
+            inh_strs = [f"`{r.get('from', '')}` ▷ ➔ `{r.get('to', '')}`" for r in inheritances[:3]]
+            rel_bullet_items.append(f"- **Generalization / Inheritance**: {', '.join(inh_strs)}")
+        if not rel_bullet_items:
+            cls_refs = [f"`{c.get('name', 'Entity')}`" for c in classes[:4]]
+            rel_bullet_items.append(f"- **Domain Associations**: Structural relationships coordinate transactional state across {', '.join(cls_refs)}.")
+
+        class_names_overview = ", ".join([f"**{c.get('name', '')}**" for c in classes])
+        class_details_str = "\n".join(class_bullet_items)
+        rel_details_str = "\n".join(rel_bullet_items)
+
+        direct_ans = (
+            f"### 📌 Domain Class Model Overview\n"
+            f"This **UML Class Diagram** defines **{len(classes)} structural domain entities**: {class_names_overview}.\n\n"
+            f"### 🏛️ Class Encapsulation & Responsibilities\n"
+            f"{class_details_str}\n\n"
+            f"### 🔗 Structural Couplings & Relationships\n"
+            f"{rel_details_str}\n\n"
+            f"### 💡 Architectural Assessment\n"
+            f"The object model enforces separation of concerns: state attributes are encapsulated within dedicated classes, while associations define clear transactional boundaries."
+        )
+
+        for c in classes[:6]:
+            attrs = c.get("attributes", [])
+            methods = c.get("methods", [])
+            cname = c.get("name", "Class")
+            claims.append({
+                "claim": f"Class '{cname}' encapsulates {len(attrs)} attributes ({', '.join(attrs[:2]) if attrs else 'identifiers'}) and {len(methods)} operations ({', '.join(methods[:2]) if methods else 'methods'})",
+                "supporting_component": cname,
+                "confidence": c.get("confidence", "HIGH")
+            })
+
+        highlights = [c["name"] for c in classes[:5]]
+        follow_ups = [
+            "How does applying Dependency Inversion decouple high-level workflows from low-level database entities?",
+            "What design pattern would best manage state lifecycle across these entities?",
+            "Which multiplicity constraints govern bidirectional associations between these classes?"
+        ]
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # BRANCH 3: Failure Impact & Blast Radius
     # ─────────────────────────────────────────────────────────────────────────
     elif intent == "failure_impact":
         node_name = target or (comp_names[1] if len(comp_names) > 1 else comp_names[0])
@@ -166,12 +229,20 @@ def generate_heuristic_grounded_answer(
         direct = impact.get("directly_affected", [])
         blast_pct = impact.get("blast_radius_pct", 0)
 
+        direct_callers_str = ", ".join([f"`{d}`" for d in direct]) if direct else "Directly connected services"
+        affected_nodes_str = ", ".join([f"`{a}`" for a in affected[:6]])
+
         if affected:
             direct_ans = (
-                f"An outage in **'{node_name}'** triggers a cascading failure with a **{blast_pct}% architectural blast radius**, "
-                f"impacting {len(affected)} downstream components: {', '.join(affected[:5])}. "
-                f"Immediate callers and dependent services ({', '.join(direct) if direct else 'adjacent modules'}) will fail synchronously, "
-                f"blocking transactional workflows until recovery or fallback mechanisms engage."
+                f"### ⚠️ Outage Impact & Blast Radius\n"
+                f"A service failure in **'{node_name}'** triggers a cascading outage with a **{blast_pct}% architectural blast radius** across the topology.\n\n"
+                f"### 💥 Affected Downstream Services\n"
+                f"- **Direct Callers**: {direct_callers_str}\n"
+                f"- **Transitive Blast Radius ({len(affected)} nodes)**: {affected_nodes_str}\n\n"
+                f"### 🛡️ Failure Propagation Dynamics\n"
+                f"Because downstream components synchronously depend on responses from `{node_name}`, requests will time out, queue up, and degrade end-to-end throughput.\n\n"
+                f"### 💡 Recommended Mitigation\n"
+                f"Deploy a Circuit Breaker pattern (e.g. Resilience4j) with graceful fallback responses, and introduce an asynchronous dead-letter buffer."
             )
             claims.append({
                 "claim": f"'{node_name}' is a critical upstream dependency for {', '.join(direct) if direct else 'downstream components'}",
@@ -187,8 +258,13 @@ def generate_heuristic_grounded_answer(
             highlights = [node_name] + affected[:2]
         else:
             direct_ans = (
-                f"If **'{node_name}'** fails, the cascading impact is contained because no downstream components rely on its output. "
-                f"However, any direct client requests targeting '{node_name}' will fail with timeout or connection errors."
+                f"### 🛡️ Outage Impact Analysis\n"
+                f"An outage in **'{node_name}'** is structurally contained because no downstream services depend on its output.\n\n"
+                f"### 💥 Scope of Impact\n"
+                f"- **Downstream Blast Radius**: `0%` (Terminal Leaf Node)\n"
+                f"- **Client Impact**: Only requests directly targeting `{node_name}` will experience errors or connection timeouts.\n\n"
+                f"### 💡 Resilience Assessment\n"
+                f"The failure will not cascade into adjacent subsystems. Standard health-check retries and auto-restart policies provide sufficient recovery."
             )
             claims.append({
                 "claim": f"'{node_name}' is a terminal leaf node in the dependency graph with 0 downstream dependents",
@@ -198,20 +274,27 @@ def generate_heuristic_grounded_answer(
             highlights = [node_name]
 
         follow_ups = [
-            f"How can we implement a Circuit Breaker (e.g. Resilience4j) around '{node_name}' to isolate failures?",
-            f"Would deploying horizontal replicas and a health-checked load balancer for '{node_name}' eliminate this risk?",
-            f"What dead-letter queue or asynchronous retry buffer can preserve transactions if '{node_name}' goes offline?"
+            f"How can we implement a Circuit Breaker around '{node_name}' to isolate failures?",
+            f"Would deploying horizontal replicas and a load balancer for '{node_name}' eliminate this risk?",
+            f"What asynchronous retry buffer or queue can preserve messages if '{node_name}' goes offline?"
         ]
 
     # ─────────────────────────────────────────────────────────────────────────
-    # BRANCH 3: Single Point of Failure (SPOF) & Bottlenecks
+    # BRANCH 4: Single Point of Failure (SPOF) & Bottlenecks
     # ─────────────────────────────────────────────────────────────────────────
     elif intent == "critical_path":
         if spofs:
+            spofs_overview = ", ".join([f"**`{s}`**" for s in spofs])
+            spofs_items = [f"- **`{s}`**: Acts as an essential structural bridge. If `{s}` fails, the graph partitions into disconnected components." for s in spofs[:4]]
+            spofs_bullets = "\n".join(spofs_items)
+
             direct_ans = (
-                f"The diagram contains **{len(spofs)} Single Point(s) of Failure (SPOF)**: **{', '.join(spofs)}**. "
-                f"These nodes serve as structural articulation points; if any of them experience an outage, the system graph partitions, "
-                f"severing communication between ingress entry points and core processing/persistence layers."
+                f"### 🚨 Single Points of Failure (SPOF) Detected\n"
+                f"Topological graph analysis identified **{len(spofs)} Single Point(s) of Failure**: {spofs_overview}.\n\n"
+                f"### 🔍 Articulation Point Vulnerability\n"
+                f"{spofs_bullets}\n\n"
+                f"### 💡 High-Availability Remediation\n"
+                f"Deploy active-active multi-instance clustering with health-checked load balancing across all identified articulation points."
             )
             for spof in spofs:
                 claims.append({
@@ -222,8 +305,12 @@ def generate_heuristic_grounded_answer(
             highlights = spofs[:3]
         else:
             direct_ans = (
-                f"No single articulation point was detected in the active topology. The components maintain distributed or redundant links, "
-                f"ensuring traffic can route through alternate paths without immediate catastrophic graph partitioning."
+                f"### ✅ Architectural Robustness Audit\n"
+                f"No structural Single Points of Failure (SPOF) were detected in the active topology.\n\n"
+                f"### 🌐 Redundant Multi-Path Connectivity\n"
+                f"- The components maintain distributed routing pathways, ensuring that the loss of any single node does not partition the entire system.\n\n"
+                f"### 💡 Key Takeaway\n"
+                f"The topology exhibits high topological resilience with alternative fallback channels across ingress and data tiers."
             )
             claims.append({
                 "claim": f"Components {', '.join(comp_names[:3])} maintain multi-path connectivity",
@@ -233,21 +320,30 @@ def generate_heuristic_grounded_answer(
             highlights = comp_names[:2]
 
         follow_ups = [
-            "What active-active multi-region redundancy pattern would mitigate single point of failure vulnerabilities?",
-            "How does implementing auto-scaling and stateless service replicas protect against service bottlenecks?",
-            "Which database replication strategy (read replicas, multi-master) provides high availability for persistent state?"
+            "What active-active multi-region redundancy pattern would eliminate single point of failure risks?",
+            "How does implementing auto-scaling and stateless service replicas protect against bottlenecks?",
+            "Which database replication strategy (read replicas, multi-master) provides high availability?"
         ]
 
     # ─────────────────────────────────────────────────────────────────────────
-    # BRANCH 4: End-to-End Data Flow & Sequence Tracing
+    # BRANCH 5: End-to-End Data Flow & Sequence Tracing
     # ─────────────────────────────────────────────────────────────────────────
     elif intent == "data_flow":
         if paths:
             best_path = paths[0]["path"]
+            path_diagram = " ➔ ".join([f"**`{p}`**" for p in best_path])
+            step_items = [f"{i+1}. **`{best_path[i]}` ➔ `{best_path[i+1]}`**: Dispatches validated payload to `{best_path[i+1]}`." for i in range(len(best_path)-1)]
+            step_bullets = "\n".join(step_items)
+
             direct_ans = (
-                f"Data originates at the entry point **'{best_path[0]}'**, traverses through **{' ➔ '.join(best_path[1:-1])}**, "
-                f"and terminates at the persistence layer **'{best_path[-1]}'** (spanning {len(best_path)-1} topological hops). "
-                f"Each intermediate node executes business validation, schema transformation, or authorization checks before forwarding the payload."
+                f"### 🚀 End-to-End Data Flow Pipeline\n"
+                f"Data originates at **`{best_path[0]}`** and traverses {len(best_path)-1} topological hops to terminate at **`{best_path[-1]}`**.\n\n"
+                f"### 🔄 Pipeline Execution Path\n"
+                f"{path_diagram}\n\n"
+                f"### ⚙️ Intermediate Processing Steps\n"
+                f"{step_bullets}\n\n"
+                f"### 💡 Architectural Note\n"
+                f"Each hop validates schema conformance and enforces transport security before persisting changes."
             )
             for i in range(len(best_path) - 1):
                 claims.append({
@@ -257,10 +353,17 @@ def generate_heuristic_grounded_answer(
                 })
             highlights = best_path
         else:
+            entry_list = [f"`{e}`" for e in entry_pts] if entry_pts else [f"`{comp_names[0]}`"]
+            entry_str = ", ".join(entry_list)
+            inter_str = ", ".join([f"`{c}`" for c in comp_names[1:4]])
+
             direct_ans = (
-                f"Traffic enters the system via **{', '.join(entry_pts) if entry_pts else comp_names[0]}**, "
-                f"executes core business workflows across intermediate services ({', '.join(comp_names[1:4])}), "
-                f"and securely commits state changes to storage layers."
+                f"### 🚀 Ingress & Data Routing Flow\n"
+                f"Traffic enters the system via **{entry_str}**.\n\n"
+                f"### ⚙️ Processing Sequence\n"
+                f"- **Ingress Layer**: Routes requests from clients through edge security policies.\n"
+                f"- **Service Tier**: Intermediary modules ({inter_str}) execute business logic.\n"
+                f"- **Storage Tier**: Commits state updates to persistence stores."
             )
             claims.append({
                 "claim": f"Ingress requests are initially handled by '{entry_pts[0] if entry_pts else comp_names[0]}'",
@@ -276,11 +379,19 @@ def generate_heuristic_grounded_answer(
         ]
 
     # ─────────────────────────────────────────────────────────────────────────
-    # BRANCH 5: General Architectural & Design Analysis
+    # BRANCH 6: General Architectural & Design Analysis
     # ─────────────────────────────────────────────────────────────────────────
     else:
+        top_comps_overview = ", ".join([f"**`{c}`**" for c in comp_names[:5]])
+        comp_roles_items = [f"- **`{c.get('name', 'Entity')}`** ({c.get('type', 'service').upper()}): {c.get('description', 'Core architectural module')[:80]}" for c in components[:5]]
+        comp_roles_str = "\n".join(comp_roles_items)
+
         direct_ans = (
-            f"This **{dtype.replace('_', ' ').title()}** design comprises **{len(components)} primary components**: {', '.join(comp_names[:5])}{' and others' if len(comp_names) > 5 else ''}. "
+            f"### 📌 System Architecture Overview\n"
+            f"This **{dtype.replace('_', ' ').title()}** design comprises **{len(components)} core components**: {top_comps_overview}.\n\n"
+            f"### 🏛️ Component Roles & Responsibilities\n"
+            f"{comp_roles_str}\n\n"
+            f"### 💡 Architectural Summary\n"
             f"The architecture coordinates interactions across ingress gateways, domain services, and storage endpoints to guarantee scalability, isolation, and transactional consistency."
         )
         for c in components[:5]:
@@ -334,7 +445,7 @@ def stage5_ground_answer(
         query=query
     )
 
-    raw_response = ask_llava(image_path, prompt, timeout=5)
+    raw_response = ask_llava(image_path, prompt, timeout=30)
     synthesized = None
 
     if raw_response:

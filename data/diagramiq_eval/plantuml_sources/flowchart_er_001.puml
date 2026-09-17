@@ -1,0 +1,19 @@
+@startuml
+' Diagram: Hospital Patient & Department ERD
+' Category: ER_DIAGRAM
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+rectangle "Patient" as Patient
+rectangle "Admission" as Admission
+rectangle "Doctor" as Doctor
+rectangle "Department" as Department
+rectangle "Prescription" as Prescription
+rectangle "Room" as Room
+Patient --> Admission : relates_to
+Admission --> Doctor : relates_to
+Doctor --> Department : relates_to
+Doctor --> Prescription : relates_to
+Admission --> Room : relates_to
+@enduml

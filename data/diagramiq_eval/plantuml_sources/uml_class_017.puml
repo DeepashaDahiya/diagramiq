@@ -1,0 +1,32 @@
+@startuml
+' Diagram: RPG Game Entity System
+' Category: UML_CLASS
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+class Entity {
+  +entityId
+  +execute()
+}
+class Character {
+  +characterId
+  +execute()
+}
+class Weapon {
+  +weaponId
+  +execute()
+}
+class Inventory {
+  +inventoryId
+  +execute()
+}
+class Spell {
+  +spellId
+  +execute()
+}
+Character --> Entity : associates
+Character --> Inventory : associates
+Inventory --> Weapon : associates
+Character --> Spell : associates
+@enduml

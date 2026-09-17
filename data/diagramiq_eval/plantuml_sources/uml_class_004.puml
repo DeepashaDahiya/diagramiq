@@ -1,0 +1,42 @@
+@startuml
+' Diagram: University Course Registration
+' Category: UML_CLASS
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+class Student {
+  +studentId
+  +major
+  +registerCourse()
+}
+class Instructor {
+  +facultyId
+  +rank
+  +assignGrade()
+}
+class Course {
+  +courseCode
+  +credits
+  +getSyllabus()
+}
+class Section {
+  +sectionNum
+  +room
+  +getCapacity()
+}
+class Enrollment {
+  +grade
+  +term
+  +calcGPA()
+}
+class Department {
+  +name
+  +offerCourse()
+}
+Student --> Enrollment : has_enrollment
+Enrollment --> Section : enrolled_in
+Section --> Course : instance_of
+Instructor --> Section : teaches
+Department --> Course : offers
+@enduml

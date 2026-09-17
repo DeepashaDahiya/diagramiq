@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_018",
+  "title": "Document Management Engine",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Document",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+documentId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Folder",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+folderId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Permission",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+permissionId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "UserGroup",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+usergroupId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "VersionHistory",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+versionhistoryId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Folder",
+      "to": "Document",
+      "type": "associates"
+    },
+    {
+      "from": "Document",
+      "to": "VersionHistory",
+      "type": "associates"
+    },
+    {
+      "from": "Document",
+      "to": "Permission",
+      "type": "associates"
+    },
+    {
+      "from": "UserGroup",
+      "to": "Permission",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_018.png",
+  "puml_file": "plantuml_sources/uml_class_018.puml"
+}

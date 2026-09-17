@@ -1,0 +1,114 @@
+{
+  "diagram_id": "flowchart_er_019",
+  "title": "Machine Learning Training Pipeline Flowchart",
+  "category": "FLOWCHART",
+  "complexity": "SIMPLE",
+  "nodes": [
+    {
+      "id": "IngestDataset",
+      "type": "process",
+      "bounding_box": [
+        60,
+        480,
+        220,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "CleanFeatures",
+      "type": "process",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "TrainModel",
+      "type": "process",
+      "bounding_box": [
+        500,
+        480,
+        660,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "EvaluateAccuracy",
+      "type": "decision",
+      "bounding_box": [
+        720,
+        480,
+        880,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DeployEndpoint",
+      "type": "process",
+      "bounding_box": [
+        60,
+        300,
+        220,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "RetrainHyperparams",
+      "type": "process",
+      "bounding_box": [
+        280,
+        300,
+        440,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "IngestDataset",
+      "to": "CleanFeatures",
+      "type": "transitions_to"
+    },
+    {
+      "from": "CleanFeatures",
+      "to": "TrainModel",
+      "type": "transitions_to"
+    },
+    {
+      "from": "TrainModel",
+      "to": "EvaluateAccuracy",
+      "type": "transitions_to"
+    },
+    {
+      "from": "EvaluateAccuracy",
+      "to": "DeployEndpoint",
+      "type": "transitions_to"
+    },
+    {
+      "from": "EvaluateAccuracy",
+      "to": "RetrainHyperparams",
+      "type": "transitions_to"
+    },
+    {
+      "from": "RetrainHyperparams",
+      "to": "TrainModel",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_er_019.png",
+  "puml_file": "plantuml_sources/flowchart_er_019.puml"
+}

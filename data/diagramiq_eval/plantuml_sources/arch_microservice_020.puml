@@ -1,0 +1,17 @@
+@startuml
+' Diagram: Distributed Cache-Aside Cluster
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "WebServer" as WebServer
+node "RedisCluster" as RedisCluster
+node "CacheMissHandler" as CacheMissHandler
+node "MasterDB" as MasterDB
+node "ReplicaDB" as ReplicaDB
+WebServer --> RedisCluster : calls
+WebServer --> CacheMissHandler : calls
+CacheMissHandler --> MasterDB : writes_to
+MasterDB --> ReplicaDB : writes_to
+@enduml

@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_020",
+  "title": "Distributed Cache-Aside Cluster",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "WebServer",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "RedisCluster",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "CacheMissHandler",
+      "type": "database",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "MasterDB",
+      "type": "database",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "ReplicaDB",
+      "type": "database",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "WebServer",
+      "to": "RedisCluster",
+      "type": "calls"
+    },
+    {
+      "from": "WebServer",
+      "to": "CacheMissHandler",
+      "type": "calls"
+    },
+    {
+      "from": "CacheMissHandler",
+      "to": "MasterDB",
+      "type": "writes_to"
+    },
+    {
+      "from": "MasterDB",
+      "to": "ReplicaDB",
+      "type": "writes_to"
+    }
+  ],
+  "image_file": "images/arch_microservice_020.png",
+  "puml_file": "plantuml_sources/arch_microservice_020.puml"
+}

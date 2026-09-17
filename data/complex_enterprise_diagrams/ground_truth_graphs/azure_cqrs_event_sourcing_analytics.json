@@ -1,0 +1,259 @@
+{
+  "diagram_id": "azure_cqrs_event_sourcing_analytics",
+  "title": "Azure CQRS & Event Sourcing with Event Hubs, Databricks & Synapse",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "HIGHLY_COMPLEX",
+  "source_provenance": "Microsoft Azure Architecture Center \u2014 Data Architecture Guide",
+  "nodes": [
+    {
+      "id": "Write_Client",
+      "label": "Client Command\n(HTTP POST)",
+      "type": "traffic",
+      "bounding_box": [
+        45,
+        577,
+        195,
+        622
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Command_API",
+      "label": "Command API\n(FastAPI / Go)",
+      "type": "microservice",
+      "bounding_box": [
+        205,
+        577,
+        355,
+        622
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Command_Validator",
+      "label": "Domain Rule\nValidator",
+      "type": "service",
+      "bounding_box": [
+        205,
+        467,
+        355,
+        512
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Azure_Event_Hubs",
+      "label": "Azure Event Hubs\n(Kafka Ingestion Stream)",
+      "type": "stream",
+      "bounding_box": [
+        490,
+        577,
+        670,
+        622
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Cosmos_Event_Store",
+      "label": "Cosmos DB\n(Append-Only Event Store)",
+      "type": "database",
+      "bounding_box": [
+        490,
+        467,
+        670,
+        512
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Projector_Function",
+      "label": "Projection Worker\n(Azure Functions)",
+      "type": "worker",
+      "bounding_box": [
+        805,
+        577,
+        975,
+        622
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Read_Optimized_DB",
+      "label": "Azure SQL / Redis\n(Read Projections)",
+      "type": "database",
+      "bounding_box": [
+        980,
+        577,
+        1140,
+        622
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Query_API",
+      "label": "Query Read API\n(GraphQL / REST)",
+      "type": "api_gateway",
+      "bounding_box": [
+        980,
+        467,
+        1140,
+        512
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Azure_Stream_Analytics",
+      "label": "Azure Stream\nAnalytics (Complex CEP)",
+      "type": "analytics",
+      "bounding_box": [
+        490,
+        267,
+        670,
+        312
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Azure_Databricks",
+      "label": "Azure Databricks\n(Apache Spark Delta Lake)",
+      "type": "analytics",
+      "bounding_box": [
+        755,
+        267,
+        945,
+        312
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Azure_Synapse_Analytics",
+      "label": "Azure Synapse\nData Warehouse",
+      "type": "database",
+      "bounding_box": [
+        975,
+        267,
+        1145,
+        312
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Power_BI_Dashboard",
+      "label": "Power BI Executive\nLive Dashboard",
+      "type": "dashboard",
+      "bounding_box": [
+        755,
+        157,
+        945,
+        202
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Azure_Schema_Registry",
+      "label": "Avro Schema\nRegistry",
+      "type": "governance",
+      "bounding_box": [
+        45,
+        267,
+        195,
+        312
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Dead_Letter_Archive",
+      "label": "Blob Storage\nDead Letter Queue",
+      "type": "storage",
+      "bounding_box": [
+        200,
+        157,
+        360,
+        202
+      ],
+      "attributes": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "Write_Client",
+      "to": "Command_API",
+      "label": "Submit Mutation",
+      "style": "solid"
+    },
+    {
+      "from": "Command_API",
+      "to": "Command_Validator",
+      "label": "Validate Invariants",
+      "style": "solid"
+    },
+    {
+      "from": "Command_Validator",
+      "to": "Azure_Event_Hubs",
+      "label": "Publish Domain Event",
+      "style": "solid"
+    },
+    {
+      "from": "Azure_Event_Hubs",
+      "to": "Cosmos_Event_Store",
+      "label": "Append to Log",
+      "style": "solid"
+    },
+    {
+      "from": "Azure_Event_Hubs",
+      "to": "Projector_Function",
+      "label": "Stream Event Batch",
+      "style": "solid"
+    },
+    {
+      "from": "Projector_Function",
+      "to": "Read_Optimized_DB",
+      "label": "Materialize Read View",
+      "style": "solid"
+    },
+    {
+      "from": "Read_Optimized_DB",
+      "to": "Query_API",
+      "label": "Fast Key-Value Query",
+      "style": "solid"
+    },
+    {
+      "from": "Azure_Event_Hubs",
+      "to": "Azure_Stream_Analytics",
+      "label": "Sliding Window Telemetry",
+      "style": "solid"
+    },
+    {
+      "from": "Azure_Stream_Analytics",
+      "to": "Azure_Databricks",
+      "label": "Parquet Delta Feed",
+      "style": "solid"
+    },
+    {
+      "from": "Azure_Databricks",
+      "to": "Azure_Synapse_Analytics",
+      "label": "ETL Curated Aggregates",
+      "style": "solid"
+    },
+    {
+      "from": "Azure_Synapse_Analytics",
+      "to": "Power_BI_Dashboard",
+      "label": "DirectQuery Semantic Model",
+      "style": "solid"
+    },
+    {
+      "from": "Command_Validator",
+      "to": "Azure_Schema_Registry",
+      "label": "Validate Schema",
+      "style": "dashed"
+    },
+    {
+      "from": "Azure_Event_Hubs",
+      "to": "Dead_Letter_Archive",
+      "label": "Poison Pill Events",
+      "style": "dashed"
+    }
+  ],
+  "image_file": "images/azure_cqrs_event_sourcing_analytics.png",
+  "puml_file": "plantuml_sources/azure_cqrs_event_sourcing_analytics.puml"
+}

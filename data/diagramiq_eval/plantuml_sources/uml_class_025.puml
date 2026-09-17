@@ -1,0 +1,32 @@
+@startuml
+' Diagram: Telehealth Video Consultation
+' Category: UML_CLASS
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+class Doctor {
+  +doctorId
+  +execute()
+}
+class Patient {
+  +patientId
+  +execute()
+}
+class ConsultationSession {
+  +consultationsessionId
+  +execute()
+}
+class Prescription {
+  +prescriptionId
+  +execute()
+}
+class EHRRecord {
+  +ehrrecordId
+  +execute()
+}
+Doctor --> ConsultationSession : associates
+Patient --> ConsultationSession : associates
+ConsultationSession --> Prescription : associates
+Patient --> EHRRecord : associates
+@enduml

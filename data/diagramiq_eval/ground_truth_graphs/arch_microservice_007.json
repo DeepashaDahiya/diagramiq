@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_007",
+  "title": "IoT Sensor Ingestion & Telemetry Lake",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "IoTSensors",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "MQTTBroker",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "FlinkEngine",
+      "type": "gateway",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "TimescaleDB",
+      "type": "database",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "GrafanaDashboard",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "IoTSensors",
+      "to": "MQTTBroker",
+      "type": "calls"
+    },
+    {
+      "from": "MQTTBroker",
+      "to": "FlinkEngine",
+      "type": "calls"
+    },
+    {
+      "from": "FlinkEngine",
+      "to": "TimescaleDB",
+      "type": "writes_to"
+    },
+    {
+      "from": "TimescaleDB",
+      "to": "GrafanaDashboard",
+      "type": "calls"
+    }
+  ],
+  "image_file": "images/arch_microservice_007.png",
+  "puml_file": "plantuml_sources/arch_microservice_007.puml"
+}

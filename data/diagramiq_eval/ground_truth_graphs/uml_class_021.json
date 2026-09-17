@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_021",
+  "title": "Gym Fitness Membership",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Member",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+memberId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Trainer",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+trainerId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "WorkoutPlan",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+workoutplanId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "GymClass",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+gymclassId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Schedule",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+scheduleId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Member",
+      "to": "WorkoutPlan",
+      "type": "associates"
+    },
+    {
+      "from": "Trainer",
+      "to": "WorkoutPlan",
+      "type": "associates"
+    },
+    {
+      "from": "Trainer",
+      "to": "GymClass",
+      "type": "associates"
+    },
+    {
+      "from": "Member",
+      "to": "Schedule",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_021.png",
+  "puml_file": "plantuml_sources/uml_class_021.puml"
+}

@@ -1,0 +1,18 @@
+@startuml
+' Diagram: Customer Refund Processing Flowchart
+' Category: FLOWCHART
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+rectangle "RequestRefund" as RequestRefund
+rectangle "Validate30Days" as Validate30Days
+rectangle "InspectReturn" as InspectReturn
+rectangle "IssueRefund" as IssueRefund
+rectangle "DenyRefund" as DenyRefund
+RequestRefund --> Validate30Days : transitions_to
+Validate30Days --> InspectReturn : transitions_to
+Validate30Days --> DenyRefund : transitions_to
+InspectReturn --> IssueRefund : transitions_to
+InspectReturn --> DenyRefund : transitions_to
+@enduml

@@ -1,0 +1,277 @@
+{
+  "diagram_id": "azure_multi_region_active_passive_dr",
+  "title": "Azure Multi-Region Active-Passive Disaster Recovery & Traffic Manager",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "HIGHLY_COMPLEX",
+  "source_provenance": "Microsoft Azure Architecture Center \u2014 Reliability Pillar",
+  "nodes": [
+    {
+      "id": "Global_Users",
+      "label": "Global Users & API Consumers",
+      "type": "traffic",
+      "bounding_box": [
+        480,
+        577,
+        720,
+        622
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Azure_Traffic_Manager",
+      "label": "Azure Traffic Manager\n(DNS Probing & Failover)",
+      "type": "dns_router",
+      "bounding_box": [
+        270,
+        487,
+        490,
+        532
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Azure_Front_Door_Global",
+      "label": "Azure Front Door\n(Global Anycast CDN + WAF)",
+      "type": "gateway",
+      "bounding_box": [
+        705,
+        487,
+        935,
+        532
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Primary_App_Gateway",
+      "label": "Primary App Gateway\n(VNet Hub)",
+      "type": "load_balancer",
+      "bounding_box": [
+        115,
+        357,
+        285,
+        402
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Primary_AKS_Cluster",
+      "label": "Primary AKS Cluster\n(Microservices)",
+      "type": "microservice",
+      "bounding_box": [
+        355,
+        357,
+        525,
+        402
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Primary_SQL_Leader",
+      "label": "Azure SQL (Leader)\nRead-Write Replicas",
+      "type": "database",
+      "bounding_box": [
+        115,
+        237,
+        285,
+        282
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Primary_Blob_Storage",
+      "label": "Blob Storage (GRS)\nHot Tier Data",
+      "type": "storage",
+      "bounding_box": [
+        355,
+        237,
+        525,
+        282
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Primary_Key_Vault",
+      "label": "Primary Key Vault",
+      "type": "security",
+      "bounding_box": [
+        240,
+        150,
+        400,
+        190
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Secondary_App_Gateway",
+      "label": "Secondary App Gateway\n(Standby VNet Hub)",
+      "type": "load_balancer",
+      "bounding_box": [
+        690,
+        357,
+        870,
+        402
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Secondary_AKS_Cluster",
+      "label": "Secondary AKS Cluster\n(Scaled Down Nodes)",
+      "type": "microservice",
+      "bounding_box": [
+        930,
+        357,
+        1110,
+        402
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Secondary_SQL_Follower",
+      "label": "Azure SQL (Follower)\nAsync Read-Only Replicas",
+      "type": "database",
+      "bounding_box": [
+        690,
+        237,
+        870,
+        282
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Secondary_Blob_Storage",
+      "label": "Blob Storage (GRS)\nRead-Access Replica",
+      "type": "storage",
+      "bounding_box": [
+        930,
+        237,
+        1110,
+        282
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Secondary_Key_Vault",
+      "label": "Secondary Key Vault",
+      "type": "security",
+      "bounding_box": [
+        820,
+        150,
+        980,
+        190
+      ],
+      "attributes": []
+    },
+    {
+      "id": "VNet_Global_Peering",
+      "label": "Global VNet Peering & Failover Group Sync",
+      "type": "network",
+      "bounding_box": [
+        450,
+        52,
+        750,
+        97
+      ],
+      "attributes": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "Global_Users",
+      "to": "Azure_Traffic_Manager",
+      "label": "DNS Health Probe",
+      "style": "solid"
+    },
+    {
+      "from": "Global_Users",
+      "to": "Azure_Front_Door_Global",
+      "label": "HTTPS Traffic Ingress",
+      "style": "solid"
+    },
+    {
+      "from": "Azure_Traffic_Manager",
+      "to": "Primary_App_Gateway",
+      "label": "Primary Health: OK",
+      "style": "solid"
+    },
+    {
+      "from": "Azure_Traffic_Manager",
+      "to": "Secondary_App_Gateway",
+      "label": "Standby Probe",
+      "style": "dashed"
+    },
+    {
+      "from": "Azure_Front_Door_Global",
+      "to": "Primary_App_Gateway",
+      "label": "Route Active (100% weight)",
+      "style": "solid"
+    },
+    {
+      "from": "Azure_Front_Door_Global",
+      "to": "Secondary_App_Gateway",
+      "label": "Failover Route (0% weight)",
+      "style": "dashed"
+    },
+    {
+      "from": "Primary_App_Gateway",
+      "to": "Primary_AKS_Cluster",
+      "label": "Forward Traffic",
+      "style": "solid"
+    },
+    {
+      "from": "Primary_AKS_Cluster",
+      "to": "Primary_SQL_Leader",
+      "label": "Read/Write SQL",
+      "style": "solid"
+    },
+    {
+      "from": "Primary_AKS_Cluster",
+      "to": "Primary_Blob_Storage",
+      "label": "Store Media Assets",
+      "style": "solid"
+    },
+    {
+      "from": "Primary_AKS_Cluster",
+      "to": "Primary_Key_Vault",
+      "label": "Fetch Secrets",
+      "style": "dashed"
+    },
+    {
+      "from": "Secondary_App_Gateway",
+      "to": "Secondary_AKS_Cluster",
+      "label": "Forward on Failover",
+      "style": "dashed"
+    },
+    {
+      "from": "Secondary_AKS_Cluster",
+      "to": "Secondary_SQL_Follower",
+      "label": "Read Standby",
+      "style": "dashed"
+    },
+    {
+      "from": "Secondary_AKS_Cluster",
+      "to": "Secondary_Blob_Storage",
+      "label": "Read Assets",
+      "style": "dashed"
+    },
+    {
+      "from": "Primary_SQL_Leader",
+      "to": "VNet_Global_Peering",
+      "label": "Async DB Replication",
+      "style": "solid"
+    },
+    {
+      "from": "VNet_Global_Peering",
+      "to": "Secondary_SQL_Follower",
+      "label": "Sync SQL Log",
+      "style": "solid"
+    },
+    {
+      "from": "Primary_Blob_Storage",
+      "to": "Secondary_Blob_Storage",
+      "label": "Geo-Redundant Replication (GRS)",
+      "style": "solid"
+    }
+  ],
+  "image_file": "images/azure_multi_region_active_passive_dr.png",
+  "puml_file": "plantuml_sources/azure_multi_region_active_passive_dr.puml"
+}

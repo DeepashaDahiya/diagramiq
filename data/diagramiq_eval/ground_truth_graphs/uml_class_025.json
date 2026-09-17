@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_025",
+  "title": "Telehealth Video Consultation",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Doctor",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+doctorId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Patient",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+patientId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "ConsultationSession",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+consultationsessionId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Prescription",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+prescriptionId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "EHRRecord",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+ehrrecordId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Doctor",
+      "to": "ConsultationSession",
+      "type": "associates"
+    },
+    {
+      "from": "Patient",
+      "to": "ConsultationSession",
+      "type": "associates"
+    },
+    {
+      "from": "ConsultationSession",
+      "to": "Prescription",
+      "type": "associates"
+    },
+    {
+      "from": "Patient",
+      "to": "EHRRecord",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_025.png",
+  "puml_file": "plantuml_sources/uml_class_025.puml"
+}

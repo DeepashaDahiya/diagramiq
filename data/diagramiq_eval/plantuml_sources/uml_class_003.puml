@@ -1,0 +1,45 @@
+@startuml
+' Diagram: Hospital Management System
+' Category: UML_CLASS
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+class Person {
+  +id
+  +name
+  +getInfo()
+}
+class Doctor {
+  +specialization
+  +prescribe()
+  +diagnose()
+}
+class Patient {
+  +medicalHistory
+  +admit()
+  +discharge()
+}
+class Appointment {
+  +dateTime
+  +status
+  +schedule()
+  +cancel()
+}
+class Prescription {
+  +dosage
+  +medication
+  +issue()
+}
+class Department {
+  +deptCode
+  +name
+  +assignDoctor()
+}
+Doctor --> Person : inherits
+Patient --> Person : inherits
+Doctor --> Appointment : attends
+Patient --> Appointment : books
+Doctor --> Prescription : writes
+Doctor --> Department : belongs_to
+@enduml

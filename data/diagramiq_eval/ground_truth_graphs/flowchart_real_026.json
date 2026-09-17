@@ -1,0 +1,487 @@
+{
+  "diagram_id": "flowchart_real_026",
+  "title": "Real Control Flowchart #26",
+  "category": "FLOWCHART",
+  "complexity": "MEDIUM",
+  "source_dataset": "MananSuri27/Flowchart2Mermaid",
+  "nodes": [
+    {
+      "id": "A",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "B",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "C",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "D",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "D{\"Jab Step Correct?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "E",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F{\"Crossover Step Correct?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "G",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "H",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "I",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "J",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "K",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "L",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "M",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "N",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "O",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "P",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "P{\"Shoulders Square to Pitcher?\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "Q",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "R",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "S",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "T",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "U",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "V",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "W",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "X",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "Y",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| C",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| E",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| O",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| E",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| G",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| Q",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "A",
+      "to": "B",
+      "type": "transitions_to"
+    },
+    {
+      "from": "B",
+      "to": "C",
+      "type": "transitions_to"
+    },
+    {
+      "from": "C",
+      "to": "D{\"Jab Step Correct?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "D",
+      "to": "|\"Yes\"| E",
+      "type": "transitions_to"
+    },
+    {
+      "from": "D",
+      "to": "|\"No\"| C",
+      "type": "transitions_to"
+    },
+    {
+      "from": "E",
+      "to": "F{\"Crossover Step Correct?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F",
+      "to": "|\"Yes\"| G",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F",
+      "to": "|\"No\"| E",
+      "type": "transitions_to"
+    },
+    {
+      "from": "G",
+      "to": "H",
+      "type": "transitions_to"
+    },
+    {
+      "from": "H",
+      "to": "I",
+      "type": "transitions_to"
+    },
+    {
+      "from": "I",
+      "to": "J",
+      "type": "transitions_to"
+    },
+    {
+      "from": "J",
+      "to": "K",
+      "type": "transitions_to"
+    },
+    {
+      "from": "K",
+      "to": "L",
+      "type": "transitions_to"
+    },
+    {
+      "from": "L",
+      "to": "M",
+      "type": "transitions_to"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "type": "transitions_to"
+    },
+    {
+      "from": "N",
+      "to": "O",
+      "type": "transitions_to"
+    },
+    {
+      "from": "O",
+      "to": "P{\"Shoulders Square to Pitcher?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "P",
+      "to": "|\"Yes\"| Q",
+      "type": "transitions_to"
+    },
+    {
+      "from": "P",
+      "to": "|\"No\"| O",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Q",
+      "to": "R",
+      "type": "transitions_to"
+    },
+    {
+      "from": "R",
+      "to": "S",
+      "type": "transitions_to"
+    },
+    {
+      "from": "S",
+      "to": "T",
+      "type": "transitions_to"
+    },
+    {
+      "from": "T",
+      "to": "U",
+      "type": "transitions_to"
+    },
+    {
+      "from": "U",
+      "to": "V",
+      "type": "transitions_to"
+    },
+    {
+      "from": "V",
+      "to": "W",
+      "type": "transitions_to"
+    },
+    {
+      "from": "W",
+      "to": "X",
+      "type": "transitions_to"
+    },
+    {
+      "from": "X",
+      "to": "Y",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_real_026.png"
+}

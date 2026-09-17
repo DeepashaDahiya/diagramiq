@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_020",
+  "title": "Helpdesk Ticketing System",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Ticket",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+ticketId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Customer",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+customerId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "SupportAgent",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+supportagentId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "SLAContract",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+slacontractId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Resolution",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+resolutionId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Customer",
+      "to": "Ticket",
+      "type": "associates"
+    },
+    {
+      "from": "SupportAgent",
+      "to": "Ticket",
+      "type": "associates"
+    },
+    {
+      "from": "Ticket",
+      "to": "Resolution",
+      "type": "associates"
+    },
+    {
+      "from": "Ticket",
+      "to": "SLAContract",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_020.png",
+  "puml_file": "plantuml_sources/uml_class_020.puml"
+}

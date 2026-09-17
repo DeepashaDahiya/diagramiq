@@ -1,0 +1,17 @@
+@startuml
+' Diagram: Real-time Chat Messaging Architecture
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "WebClient" as WebClient
+node "LoadBalancer" as LoadBalancer
+node "ChatServer" as ChatServer
+node "RedisPubSub" as RedisPubSub
+node "CassandraDB" as CassandraDB
+WebClient --> LoadBalancer : calls
+LoadBalancer --> ChatServer : calls
+ChatServer --> RedisPubSub : calls
+ChatServer --> CassandraDB : writes_to
+@enduml

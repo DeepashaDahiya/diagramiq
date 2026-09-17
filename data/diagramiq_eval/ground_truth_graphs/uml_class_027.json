@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_027",
+  "title": "Digital Crypto Wallet",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Wallet",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+walletId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "PrivateKey",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+privatekeyId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "TransactionRecord",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+transactionrecordId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "CryptoToken",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+cryptotokenId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "ExchangeNode",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+exchangenodeId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Wallet",
+      "to": "PrivateKey",
+      "type": "associates"
+    },
+    {
+      "from": "Wallet",
+      "to": "TransactionRecord",
+      "type": "associates"
+    },
+    {
+      "from": "TransactionRecord",
+      "to": "CryptoToken",
+      "type": "associates"
+    },
+    {
+      "from": "Wallet",
+      "to": "ExchangeNode",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_027.png",
+  "puml_file": "plantuml_sources/uml_class_027.puml"
+}

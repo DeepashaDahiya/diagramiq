@@ -1,0 +1,17 @@
+@startuml
+' Diagram: Airline Booking & Flight ERD
+' Category: ER_DIAGRAM
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+rectangle "Passenger" as Passenger
+rectangle "Booking" as Booking
+rectangle "FlightSchedule" as FlightSchedule
+rectangle "Aircraft" as Aircraft
+rectangle "Airport" as Airport
+Passenger --> Booking : relates_to
+Booking --> FlightSchedule : relates_to
+FlightSchedule --> Aircraft : relates_to
+FlightSchedule --> Airport : relates_to
+@enduml

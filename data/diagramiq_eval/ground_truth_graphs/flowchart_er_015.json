@@ -1,0 +1,131 @@
+{
+  "diagram_id": "flowchart_er_015",
+  "title": "CI/CD Automated Deployment Flowchart",
+  "category": "FLOWCHART",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "CodePush",
+      "type": "process",
+      "bounding_box": [
+        60,
+        480,
+        220,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "RunUnitTests",
+      "type": "process",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "BuildDockerImage",
+      "type": "process",
+      "bounding_box": [
+        500,
+        480,
+        660,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DeployStaging",
+      "type": "process",
+      "bounding_box": [
+        720,
+        480,
+        880,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "RunIntegrationTests",
+      "type": "process",
+      "bounding_box": [
+        60,
+        300,
+        220,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DeployProduction",
+      "type": "process",
+      "bounding_box": [
+        280,
+        300,
+        440,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "AlertDevs",
+      "type": "process",
+      "bounding_box": [
+        500,
+        300,
+        660,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "CodePush",
+      "to": "RunUnitTests",
+      "type": "transitions_to"
+    },
+    {
+      "from": "RunUnitTests",
+      "to": "BuildDockerImage",
+      "type": "transitions_to"
+    },
+    {
+      "from": "RunUnitTests",
+      "to": "AlertDevs",
+      "type": "transitions_to"
+    },
+    {
+      "from": "BuildDockerImage",
+      "to": "DeployStaging",
+      "type": "transitions_to"
+    },
+    {
+      "from": "DeployStaging",
+      "to": "RunIntegrationTests",
+      "type": "transitions_to"
+    },
+    {
+      "from": "RunIntegrationTests",
+      "to": "DeployProduction",
+      "type": "transitions_to"
+    },
+    {
+      "from": "RunIntegrationTests",
+      "to": "AlertDevs",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_er_015.png",
+  "puml_file": "plantuml_sources/flowchart_er_015.puml"
+}

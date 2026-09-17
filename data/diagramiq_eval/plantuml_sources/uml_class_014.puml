@@ -1,0 +1,32 @@
+@startuml
+' Diagram: Warehouse Inventory Controller
+' Category: UML_CLASS
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+class Warehouse {
+  +warehouseId
+  +execute()
+}
+class StockItem {
+  +stockitemId
+  +execute()
+}
+class Supplier {
+  +supplierId
+  +execute()
+}
+class PurchaseOrder {
+  +purchaseorderId
+  +execute()
+}
+class Bin {
+  +binId
+  +execute()
+}
+Warehouse --> Bin : associates
+Bin --> StockItem : associates
+Supplier --> PurchaseOrder : associates
+PurchaseOrder --> StockItem : associates
+@enduml

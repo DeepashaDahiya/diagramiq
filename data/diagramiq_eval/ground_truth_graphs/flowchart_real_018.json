@@ -1,0 +1,452 @@
+{
+  "diagram_id": "flowchart_real_018",
+  "title": "Real Control Flowchart #18",
+  "category": "FLOWCHART",
+  "complexity": "MEDIUM",
+  "source_dataset": "MananSuri27/Flowchart2Mermaid",
+  "nodes": [
+    {
+      "id": "A",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "B",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "C",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "D",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "D{\"For each i from L to R\"}",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "E",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F{\"Is i between 10 and 15?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "G",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "H",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "I",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "J",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "K",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "K{\"While k is not 0\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "L",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "M",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "N",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "O",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "O{\"Is i = R?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "P",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "Q",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "R",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| H",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| I{\"Is i greater than 15?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| N",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| P",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| G",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| J",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| M",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| Q",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"i = L\"| E",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"k != 0\"| L{\"Is k % 16 >= 10?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"k = 0\"| H",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "A",
+      "to": "B",
+      "type": "transitions_to"
+    },
+    {
+      "from": "B",
+      "to": "C",
+      "type": "transitions_to"
+    },
+    {
+      "from": "C",
+      "to": "D{\"For each i from L to R\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "D",
+      "to": "|\"i = L\"| E",
+      "type": "transitions_to"
+    },
+    {
+      "from": "E",
+      "to": "F{\"Is i between 10 and 15?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F",
+      "to": "|\"Yes\"| G",
+      "type": "transitions_to"
+    },
+    {
+      "from": "G",
+      "to": "H",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F",
+      "to": "|\"No\"| I{\"Is i greater than 15?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "I",
+      "to": "|\"Yes\"| J",
+      "type": "transitions_to"
+    },
+    {
+      "from": "J",
+      "to": "K{\"While k is not 0\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "K",
+      "to": "|\"k != 0\"| L{\"Is k % 16 >= 10?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "L",
+      "to": "|\"Yes\"| M",
+      "type": "transitions_to"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "type": "transitions_to"
+    },
+    {
+      "from": "N",
+      "to": "K",
+      "type": "transitions_to"
+    },
+    {
+      "from": "L",
+      "to": "|\"No\"| N",
+      "type": "transitions_to"
+    },
+    {
+      "from": "K",
+      "to": "|\"k = 0\"| H",
+      "type": "transitions_to"
+    },
+    {
+      "from": "I",
+      "to": "|\"No\"| H",
+      "type": "transitions_to"
+    },
+    {
+      "from": "H",
+      "to": "O{\"Is i = R?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "O",
+      "to": "|\"No\"| P",
+      "type": "transitions_to"
+    },
+    {
+      "from": "P",
+      "to": "D",
+      "type": "transitions_to"
+    },
+    {
+      "from": "O",
+      "to": "|\"Yes\"| Q",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Q",
+      "to": "R",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_real_018.png"
+}

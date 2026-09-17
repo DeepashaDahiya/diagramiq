@@ -1,0 +1,17 @@
+@startuml
+' Diagram: University Academic Schema ERD
+' Category: ER_DIAGRAM
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+rectangle "Student" as Student
+rectangle "Enrollment" as Enrollment
+rectangle "Course" as Course
+rectangle "Instructor" as Instructor
+rectangle "Department" as Department
+Student --> Enrollment : relates_to
+Enrollment --> Course : relates_to
+Course --> Department : relates_to
+Instructor --> Department : relates_to
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+' Diagram: IoT Firmware OTA Update Flowchart
+' Category: FLOWCHART
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+rectangle "CheckVersion" as CheckVersion
+rectangle "BatteryCheck" as BatteryCheck
+rectangle "DownloadPayload" as DownloadPayload
+rectangle "FlashFirmware" as FlashFirmware
+rectangle "RebootVerify" as RebootVerify
+rectangle "AbortUpdate" as AbortUpdate
+CheckVersion --> BatteryCheck : transitions_to
+BatteryCheck --> DownloadPayload : transitions_to
+BatteryCheck --> AbortUpdate : transitions_to
+DownloadPayload --> FlashFirmware : transitions_to
+FlashFirmware --> RebootVerify : transitions_to
+RebootVerify --> AbortUpdate : transitions_to
+@enduml

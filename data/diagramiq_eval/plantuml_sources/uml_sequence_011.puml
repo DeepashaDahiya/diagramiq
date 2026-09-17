@@ -1,0 +1,15 @@
+@startuml
+' Diagram: Circuit Breaker Tripping on Service Failure
+' Category: UML_SEQUENCE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+participant "ClientCaller" as ClientCaller
+participant "APIGateway" as APIGateway
+participant "FailingService" as FailingService
+participant "FallbackCache" as FallbackCache
+ClientCaller -> APIGateway : sends_message
+APIGateway -> FailingService : sends_message
+APIGateway -> FallbackCache : sends_message
+@enduml

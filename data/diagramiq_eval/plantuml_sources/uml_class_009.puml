@@ -1,0 +1,32 @@
+@startuml
+' Diagram: Social Media Network
+' Category: UML_CLASS
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+class UserProfile {
+  +userprofileId
+  +execute()
+}
+class Post {
+  +postId
+  +execute()
+}
+class Comment {
+  +commentId
+  +execute()
+}
+class MediaAttachment {
+  +mediaattachmentId
+  +execute()
+}
+class Like {
+  +likeId
+  +execute()
+}
+UserProfile --> Post : associates
+Post --> Comment : associates
+Post --> MediaAttachment : associates
+UserProfile --> Like : associates
+@enduml

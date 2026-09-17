@@ -1,0 +1,32 @@
+@startuml
+' Diagram: Hotel Booking Platform
+' Category: UML_CLASS
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+class Guest {
+  +guestId
+  +execute()
+}
+class Room {
+  +roomId
+  +execute()
+}
+class Booking {
+  +bookingId
+  +execute()
+}
+class Invoice {
+  +invoiceId
+  +execute()
+}
+class Hotel {
+  +hotelId
+  +execute()
+}
+Guest --> Booking : associates
+Booking --> Room : associates
+Booking --> Invoice : associates
+Hotel --> Room : associates
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+' Diagram: Live Auction Real-Time Bid Broadcast
+' Category: UML_SEQUENCE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+participant "Bidder" as Bidder
+participant "AuctionWSServer" as AuctionWSServer
+participant "BidValidator" as BidValidator
+participant "BidBroadcaster" as BidBroadcaster
+Bidder -> AuctionWSServer : sends_message
+AuctionWSServer -> BidValidator : sends_message
+AuctionWSServer -> BidBroadcaster : sends_message
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+' Diagram: Stripe Credit Card Payment Flow
+' Category: UML_SEQUENCE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+participant "Customer" as Customer
+participant "FrontendUI" as FrontendUI
+participant "BackendServer" as BackendServer
+participant "StripeAPI" as StripeAPI
+participant "CardNetwork" as CardNetwork
+Customer -> FrontendUI : sends_message
+FrontendUI -> BackendServer : sends_message
+BackendServer -> StripeAPI : sends_message
+StripeAPI -> CardNetwork : sends_message
+CardNetwork -> StripeAPI : sends_message
+StripeAPI -> BackendServer : sends_message
+@enduml

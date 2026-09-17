@@ -1,0 +1,15 @@
+@startuml
+' Diagram: Warehouse Logistics ERD
+' Category: ER_DIAGRAM
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+rectangle "WarehouseFacility" as WarehouseFacility
+rectangle "StorageAisle" as StorageAisle
+rectangle "PalletLocation" as PalletLocation
+rectangle "InventorySKU" as InventorySKU
+WarehouseFacility --> StorageAisle : relates_to
+StorageAisle --> PalletLocation : relates_to
+PalletLocation --> InventorySKU : relates_to
+@enduml

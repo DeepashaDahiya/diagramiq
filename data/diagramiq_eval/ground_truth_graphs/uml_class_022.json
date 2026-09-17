@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_022",
+  "title": "Project Task Management",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Workspace",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+workspaceId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Project",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+projectId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Task",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+taskId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "SubTask",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+subtaskId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Assignee",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+assigneeId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Workspace",
+      "to": "Project",
+      "type": "associates"
+    },
+    {
+      "from": "Project",
+      "to": "Task",
+      "type": "associates"
+    },
+    {
+      "from": "Task",
+      "to": "SubTask",
+      "type": "associates"
+    },
+    {
+      "from": "Task",
+      "to": "Assignee",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_022.png",
+  "puml_file": "plantuml_sources/uml_class_022.puml"
+}

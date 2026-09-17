@@ -1,0 +1,15 @@
+@startuml
+' Diagram: WebSocket Connection Upgrade Handshake
+' Category: UML_SEQUENCE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+participant "Browser" as Browser
+participant "ReverseProxy" as ReverseProxy
+participant "WebSocketServer" as WebSocketServer
+participant "PubSubChannel" as PubSubChannel
+Browser -> ReverseProxy : sends_message
+ReverseProxy -> WebSocketServer : sends_message
+WebSocketServer -> PubSubChannel : sends_message
+@enduml

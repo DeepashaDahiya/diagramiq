@@ -1,0 +1,17 @@
+@startuml
+' Diagram: Zero-Trust Mesh with OPA Policy
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "ServiceA" as ServiceA
+node "EnvoyProxyA" as EnvoyProxyA
+node "OPAPolicyEngine" as OPAPolicyEngine
+node "EnvoyProxyB" as EnvoyProxyB
+node "ServiceB" as ServiceB
+ServiceA --> EnvoyProxyA : calls
+EnvoyProxyA --> OPAPolicyEngine : calls
+EnvoyProxyA --> EnvoyProxyB : calls
+EnvoyProxyB --> ServiceB : calls
+@enduml

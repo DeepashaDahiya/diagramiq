@@ -1,0 +1,75 @@
+{
+  "diagram_id": "flowchart_er_004",
+  "title": "Hotel Reservation & Room ERD",
+  "category": "ER_DIAGRAM",
+  "complexity": "SIMPLE",
+  "nodes": [
+    {
+      "id": "Guest",
+      "type": "entity",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Reservation",
+      "type": "entity",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Room",
+      "type": "entity",
+      "bounding_box": [
+        480,
+        480,
+        640,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "RoomType",
+      "type": "entity",
+      "bounding_box": [
+        680,
+        480,
+        840,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "Guest",
+      "to": "Reservation",
+      "type": "relates_to"
+    },
+    {
+      "from": "Reservation",
+      "to": "Room",
+      "type": "relates_to"
+    },
+    {
+      "from": "Room",
+      "to": "RoomType",
+      "type": "relates_to"
+    }
+  ],
+  "image_file": "images/flowchart_er_004.png",
+  "puml_file": "plantuml_sources/flowchart_er_004.puml"
+}

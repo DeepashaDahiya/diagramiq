@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_013",
+  "title": "Multi-Region Cloud Disaster Recovery",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Route53DNS",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "RegionAGateway",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "RegionAPostgres",
+      "type": "gateway",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "ReplicationPipe",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "RegionBPostgres",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "Route53DNS",
+      "to": "RegionAGateway",
+      "type": "calls"
+    },
+    {
+      "from": "RegionAGateway",
+      "to": "RegionAPostgres",
+      "type": "calls"
+    },
+    {
+      "from": "RegionAPostgres",
+      "to": "ReplicationPipe",
+      "type": "calls"
+    },
+    {
+      "from": "ReplicationPipe",
+      "to": "RegionBPostgres",
+      "type": "calls"
+    }
+  ],
+  "image_file": "images/arch_microservice_013.png",
+  "puml_file": "plantuml_sources/arch_microservice_013.puml"
+}

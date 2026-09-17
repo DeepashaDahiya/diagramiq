@@ -1,0 +1,15 @@
+@startuml
+' Diagram: SAML 2.0 Enterprise Single Sign-On
+' Category: UML_SEQUENCE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+participant "Employee" as Employee
+participant "ServiceProvider" as ServiceProvider
+participant "SAMLIdentityServer" as SAMLIdentityServer
+participant "LDAPServer" as LDAPServer
+Employee -> ServiceProvider : sends_message
+ServiceProvider -> SAMLIdentityServer : sends_message
+SAMLIdentityServer -> LDAPServer : sends_message
+@enduml

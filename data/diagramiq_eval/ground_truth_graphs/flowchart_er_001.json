@@ -1,0 +1,109 @@
+{
+  "diagram_id": "flowchart_er_001",
+  "title": "Hospital Patient & Department ERD",
+  "category": "ER_DIAGRAM",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Patient",
+      "type": "entity",
+      "bounding_box": [
+        60,
+        480,
+        220,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Admission",
+      "type": "entity",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Doctor",
+      "type": "entity",
+      "bounding_box": [
+        500,
+        480,
+        660,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Department",
+      "type": "entity",
+      "bounding_box": [
+        720,
+        480,
+        880,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Prescription",
+      "type": "entity",
+      "bounding_box": [
+        60,
+        300,
+        220,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Room",
+      "type": "entity",
+      "bounding_box": [
+        280,
+        300,
+        440,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "Patient",
+      "to": "Admission",
+      "type": "relates_to"
+    },
+    {
+      "from": "Admission",
+      "to": "Doctor",
+      "type": "relates_to"
+    },
+    {
+      "from": "Doctor",
+      "to": "Department",
+      "type": "relates_to"
+    },
+    {
+      "from": "Doctor",
+      "to": "Prescription",
+      "type": "relates_to"
+    },
+    {
+      "from": "Admission",
+      "to": "Room",
+      "type": "relates_to"
+    }
+  ],
+  "image_file": "images/flowchart_er_001.png",
+  "puml_file": "plantuml_sources/flowchart_er_001.puml"
+}

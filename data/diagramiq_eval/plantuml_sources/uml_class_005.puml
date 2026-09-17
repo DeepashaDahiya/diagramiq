@@ -1,0 +1,39 @@
+@startuml
+' Diagram: Ride-Sharing Driver & Rider Model
+' Category: UML_CLASS
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+class Rider {
+  +riderId
+  +rating
+  +requestRide()
+}
+class Driver {
+  +driverId
+  +licenseNum
+  +acceptRide()
+}
+class Ride {
+  +pickupLoc
+  +dropoffLoc
+  +fare
+  +start()
+  +complete()
+}
+class Vehicle {
+  +plate
+  +model
+  +inspect()
+}
+class TripPayment {
+  +amount
+  +tip
+  +chargeRider()
+}
+Rider --> Ride : requests
+Driver --> Ride : fulfills
+Driver --> Vehicle : drives
+Ride --> TripPayment : generates
+@enduml

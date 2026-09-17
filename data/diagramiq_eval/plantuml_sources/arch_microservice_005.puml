@@ -1,0 +1,19 @@
+@startuml
+' Diagram: Fintech Payment Switch & Ledger
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "POSMerchant" as POSMerchant
+node "APIGateway" as APIGateway
+node "FraudDetection" as FraudDetection
+node "CardTokenizer" as CardTokenizer
+node "BankSwitch" as BankSwitch
+node "LedgerDB" as LedgerDB
+POSMerchant --> APIGateway : calls
+APIGateway --> FraudDetection : calls
+APIGateway --> CardTokenizer : calls
+CardTokenizer --> BankSwitch : calls
+BankSwitch --> LedgerDB : writes_to
+@enduml

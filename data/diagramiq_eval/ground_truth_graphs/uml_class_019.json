@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_019",
+  "title": "HR & Recruitment Pipeline",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Applicant",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+applicantId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "JobPosting",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+jobpostingId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Resume",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+resumeId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Interview",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+interviewId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Recruiter",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+recruiterId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Applicant",
+      "to": "Resume",
+      "type": "associates"
+    },
+    {
+      "from": "Applicant",
+      "to": "Interview",
+      "type": "associates"
+    },
+    {
+      "from": "JobPosting",
+      "to": "Applicant",
+      "type": "associates"
+    },
+    {
+      "from": "Recruiter",
+      "to": "Interview",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_019.png",
+  "puml_file": "plantuml_sources/uml_class_019.puml"
+}

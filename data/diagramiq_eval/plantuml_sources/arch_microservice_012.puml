@@ -1,0 +1,17 @@
+@startuml
+' Diagram: Serverless Event-Driven Order Processing
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "APIGW" as APIGW
+node "LambdaAuth" as LambdaAuth
+node "LambdaOrder" as LambdaOrder
+node "DynamoDB" as DynamoDB
+node "EventBridge" as EventBridge
+APIGW --> LambdaAuth : calls
+APIGW --> LambdaOrder : calls
+LambdaOrder --> DynamoDB : writes_to
+LambdaOrder --> EventBridge : calls
+@enduml

@@ -1,0 +1,114 @@
+{
+  "diagram_id": "flowchart_er_013",
+  "title": "Support Ticket Escalation Flowchart",
+  "category": "FLOWCHART",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "TicketLogged",
+      "type": "process",
+      "bounding_box": [
+        60,
+        480,
+        220,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Tier1Triage",
+      "type": "process",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "CheckResolved",
+      "type": "decision",
+      "bounding_box": [
+        500,
+        480,
+        660,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Tier2Escalation",
+      "type": "process",
+      "bounding_box": [
+        720,
+        480,
+        880,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "ManagerReview",
+      "type": "process",
+      "bounding_box": [
+        60,
+        300,
+        220,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "CloseTicket",
+      "type": "process",
+      "bounding_box": [
+        280,
+        300,
+        440,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "TicketLogged",
+      "to": "Tier1Triage",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Tier1Triage",
+      "to": "CheckResolved",
+      "type": "transitions_to"
+    },
+    {
+      "from": "CheckResolved",
+      "to": "CloseTicket",
+      "type": "transitions_to"
+    },
+    {
+      "from": "CheckResolved",
+      "to": "Tier2Escalation",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Tier2Escalation",
+      "to": "ManagerReview",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ManagerReview",
+      "to": "CloseTicket",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_er_013.png",
+  "puml_file": "plantuml_sources/flowchart_er_013.puml"
+}

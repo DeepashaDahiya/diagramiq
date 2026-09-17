@@ -1,0 +1,17 @@
+@startuml
+' Diagram: High-Frequency Trading Engine
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "MarketDataFeed" as MarketDataFeed
+node "FIXGateway" as FIXGateway
+node "OrderMatcher" as OrderMatcher
+node "RiskEngine" as RiskEngine
+node "FastJournal" as FastJournal
+MarketDataFeed --> FIXGateway : calls
+FIXGateway --> RiskEngine : calls
+RiskEngine --> OrderMatcher : calls
+OrderMatcher --> FastJournal : calls
+@enduml

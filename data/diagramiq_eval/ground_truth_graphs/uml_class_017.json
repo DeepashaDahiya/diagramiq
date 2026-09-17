@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_017",
+  "title": "RPG Game Entity System",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Entity",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+entityId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Character",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+characterId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Weapon",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+weaponId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Inventory",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+inventoryId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Spell",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+spellId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Character",
+      "to": "Entity",
+      "type": "associates"
+    },
+    {
+      "from": "Character",
+      "to": "Inventory",
+      "type": "associates"
+    },
+    {
+      "from": "Inventory",
+      "to": "Weapon",
+      "type": "associates"
+    },
+    {
+      "from": "Character",
+      "to": "Spell",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_017.png",
+  "puml_file": "plantuml_sources/uml_class_017.puml"
+}

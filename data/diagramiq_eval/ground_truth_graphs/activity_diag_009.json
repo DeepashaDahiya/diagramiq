@@ -1,0 +1,87 @@
+{
+  "diagram_id": "activity_diag_009",
+  "title": "Activity Workflow Schema #9",
+  "category": "UML_SEQUENCE",
+  "complexity": "MEDIUM",
+  "source_dataset": "Francesco/activity-diagrams-qdobr",
+  "nodes": [
+    {
+      "id": "ActivityStep_1",
+      "type": "activity_node",
+      "category_code": 6,
+      "bounding_box": [
+        55,
+        394,
+        110,
+        475
+      ]
+    },
+    {
+      "id": "ActivityStep_2",
+      "type": "activity_node",
+      "category_code": 12,
+      "bounding_box": [
+        50,
+        546,
+        117,
+        610
+      ]
+    },
+    {
+      "id": "ActivityStep_3",
+      "type": "activity_node",
+      "category_code": 18,
+      "bounding_box": [
+        65,
+        47,
+        113,
+        111
+      ]
+    },
+    {
+      "id": "ActivityStep_4",
+      "type": "activity_node",
+      "category_code": 9,
+      "bounding_box": [
+        65,
+        152,
+        113,
+        219
+      ]
+    },
+    {
+      "id": "ActivityStep_5",
+      "type": "activity_node",
+      "category_code": 1,
+      "bounding_box": [
+        38,
+        266,
+        129,
+        340
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "ActivityStep_1",
+      "to": "ActivityStep_2",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ActivityStep_2",
+      "to": "ActivityStep_3",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ActivityStep_3",
+      "to": "ActivityStep_4",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ActivityStep_4",
+      "to": "ActivityStep_5",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/activity_diag_009.png"
+}

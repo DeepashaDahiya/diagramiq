@@ -1,0 +1,37 @@
+@startuml
+' Diagram: Azure CQRS & Event Sourcing with Event Hubs, Databricks & Synapse
+' Source: Microsoft Azure Architecture Center — Data Architecture Guide
+skinparam backgroundColor #0b1120
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+skinparam rectangleBackgroundColor #1e293b
+skinparam rectangleBorderColor #0284c7
+rectangle "Client Command (HTTP POST)" as Write_Client
+rectangle "Command API (FastAPI / Go)" as Command_API
+rectangle "Domain Rule Validator" as Command_Validator
+rectangle "Azure Event Hubs (Kafka Ingestion Stream)" as Azure_Event_Hubs
+rectangle "Cosmos DB (Append-Only Event Store)" as Cosmos_Event_Store
+rectangle "Projection Worker (Azure Functions)" as Projector_Function
+rectangle "Azure SQL / Redis (Read Projections)" as Read_Optimized_DB
+rectangle "Query Read API (GraphQL / REST)" as Query_API
+rectangle "Azure Stream Analytics (Complex CEP)" as Azure_Stream_Analytics
+rectangle "Azure Databricks (Apache Spark Delta Lake)" as Azure_Databricks
+rectangle "Azure Synapse Data Warehouse" as Azure_Synapse_Analytics
+rectangle "Power BI Executive Live Dashboard" as Power_BI_Dashboard
+rectangle "Avro Schema Registry" as Azure_Schema_Registry
+rectangle "Blob Storage Dead Letter Queue" as Dead_Letter_Archive
+Write_Client --> Command_API : Submit Mutation
+Command_API --> Command_Validator : Validate Invariants
+Command_Validator --> Azure_Event_Hubs : Publish Domain Event
+Azure_Event_Hubs --> Cosmos_Event_Store : Append to Log
+Azure_Event_Hubs --> Projector_Function : Stream Event Batch
+Projector_Function --> Read_Optimized_DB : Materialize Read View
+Read_Optimized_DB --> Query_API : Fast Key-Value Query
+Azure_Event_Hubs --> Azure_Stream_Analytics : Sliding Window Telemetry
+Azure_Stream_Analytics --> Azure_Databricks : Parquet Delta Feed
+Azure_Databricks --> Azure_Synapse_Analytics : ETL Curated Aggregates
+Azure_Synapse_Analytics --> Power_BI_Dashboard : DirectQuery Semantic Model
+Command_Validator ..> Azure_Schema_Registry : Validate Schema
+Azure_Event_Hubs ..> Dead_Letter_Archive : Poison Pill Events
+@enduml

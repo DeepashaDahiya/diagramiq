@@ -1,0 +1,19 @@
+@startuml
+' Diagram: Software Bug Triage Flowchart
+' Category: FLOWCHART
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+rectangle "BugReported" as BugReported
+rectangle "ReproduceBug" as ReproduceBug
+rectangle "IsCritical" as IsCritical
+rectangle "HotfixDeploy" as HotfixDeploy
+rectangle "SprintBacklog" as SprintBacklog
+rectangle "DiscardReport" as DiscardReport
+BugReported --> ReproduceBug : transitions_to
+ReproduceBug --> IsCritical : transitions_to
+ReproduceBug --> DiscardReport : transitions_to
+IsCritical --> HotfixDeploy : transitions_to
+IsCritical --> SprintBacklog : transitions_to
+@enduml

@@ -1,0 +1,114 @@
+{
+  "diagram_id": "flowchart_er_017",
+  "title": "IoT Firmware OTA Update Flowchart",
+  "category": "FLOWCHART",
+  "complexity": "SIMPLE",
+  "nodes": [
+    {
+      "id": "CheckVersion",
+      "type": "decision",
+      "bounding_box": [
+        60,
+        480,
+        220,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "BatteryCheck",
+      "type": "decision",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DownloadPayload",
+      "type": "process",
+      "bounding_box": [
+        500,
+        480,
+        660,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "FlashFirmware",
+      "type": "process",
+      "bounding_box": [
+        720,
+        480,
+        880,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "RebootVerify",
+      "type": "process",
+      "bounding_box": [
+        60,
+        300,
+        220,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "AbortUpdate",
+      "type": "process",
+      "bounding_box": [
+        280,
+        300,
+        440,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "CheckVersion",
+      "to": "BatteryCheck",
+      "type": "transitions_to"
+    },
+    {
+      "from": "BatteryCheck",
+      "to": "DownloadPayload",
+      "type": "transitions_to"
+    },
+    {
+      "from": "BatteryCheck",
+      "to": "AbortUpdate",
+      "type": "transitions_to"
+    },
+    {
+      "from": "DownloadPayload",
+      "to": "FlashFirmware",
+      "type": "transitions_to"
+    },
+    {
+      "from": "FlashFirmware",
+      "to": "RebootVerify",
+      "type": "transitions_to"
+    },
+    {
+      "from": "RebootVerify",
+      "to": "AbortUpdate",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_er_017.png",
+  "puml_file": "plantuml_sources/flowchart_er_017.puml"
+}

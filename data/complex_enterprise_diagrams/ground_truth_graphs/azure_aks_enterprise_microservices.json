@@ -1,0 +1,361 @@
+{
+  "diagram_id": "azure_aks_enterprise_microservices",
+  "title": "Azure AKS Enterprise Multi-Tier Microservices with APIM & Cosmos DB",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "HIGHLY_COMPLEX",
+  "source_provenance": "Microsoft Azure Architecture Center \u2014 Reference Architecture",
+  "nodes": [
+    {
+      "id": "Client_Traffic",
+      "label": "Client Traffic\n(Web & Mobile)",
+      "type": "traffic",
+      "bounding_box": [
+        45,
+        557,
+        195,
+        602
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Azure_Front_Door",
+      "label": "Azure Front Door\n+ WAF Rules",
+      "type": "gateway",
+      "bounding_box": [
+        45,
+        477,
+        195,
+        522
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Azure_App_Gateway",
+      "label": "Application Gateway\n(WAF v2)",
+      "type": "load_balancer",
+      "bounding_box": [
+        295,
+        577,
+        465,
+        622
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Azure_APIM",
+      "label": "API Management\n(APIM Gateway)",
+      "type": "api_gateway",
+      "bounding_box": [
+        295,
+        477,
+        465,
+        522
+      ],
+      "attributes": []
+    },
+    {
+      "id": "AKS_Ingress_Controller",
+      "label": "NGINX Ingress\nController",
+      "type": "ingress",
+      "bounding_box": [
+        545,
+        577,
+        695,
+        622
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Auth_Service_Pod",
+      "label": "Auth Service\n(OAuth2 / JWT)",
+      "type": "microservice",
+      "bounding_box": [
+        725,
+        577,
+        875,
+        622
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Order_Service_Pod",
+      "label": "Order Service\n(Spring Boot)",
+      "type": "microservice",
+      "bounding_box": [
+        545,
+        457,
+        695,
+        502
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Payment_Service_Pod",
+      "label": "Payment Service\n(.NET Core)",
+      "type": "microservice",
+      "bounding_box": [
+        725,
+        457,
+        875,
+        502
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Inventory_Service_Pod",
+      "label": "Inventory Service\n(Go Microservice)",
+      "type": "microservice",
+      "bounding_box": [
+        545,
+        337,
+        695,
+        382
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Notification_Worker",
+      "label": "Notification\nBackground Worker",
+      "type": "worker",
+      "bounding_box": [
+        725,
+        337,
+        875,
+        382
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Azure_Redis_Cache",
+      "label": "Azure Cache\nfor Redis",
+      "type": "cache",
+      "bounding_box": [
+        295,
+        327,
+        465,
+        372
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Azure_Service_Bus",
+      "label": "Azure Service Bus\n(Topics & DLQ)",
+      "type": "message_broker",
+      "bounding_box": [
+        295,
+        217,
+        465,
+        262
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Cosmos_DB_Global",
+      "label": "Azure Cosmos DB\n(Multi-Region NoSQL)",
+      "type": "database",
+      "bounding_box": [
+        955,
+        555,
+        1125,
+        605
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Azure_SQL_Failover",
+      "label": "Azure SQL DB\n(Auto-Failover Group)",
+      "type": "database",
+      "bounding_box": [
+        955,
+        435,
+        1125,
+        485
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Azure_Blob_Storage",
+      "label": "Azure Blob Storage\n(Data Lake Gen2)",
+      "type": "storage",
+      "bounding_box": [
+        955,
+        315,
+        1125,
+        365
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Azure_Key_Vault",
+      "label": "Azure Key Vault\n(Managed Identity HSM)",
+      "type": "security",
+      "bounding_box": [
+        110,
+        77,
+        290,
+        122
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Microsoft_Entra_ID",
+      "label": "Microsoft Entra ID\n(Azure AD B2C)",
+      "type": "identity",
+      "bounding_box": [
+        360,
+        77,
+        540,
+        122
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Azure_Log_Analytics",
+      "label": "Log Analytics Workspace\n+ App Insights",
+      "type": "monitoring",
+      "bounding_box": [
+        620,
+        77,
+        820,
+        122
+      ],
+      "attributes": []
+    },
+    {
+      "id": "Azure_Monitor_Alerts",
+      "label": "Azure Monitor\n(Alerts & Metrics)",
+      "type": "monitoring",
+      "bounding_box": [
+        890,
+        77,
+        1070,
+        122
+      ],
+      "attributes": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "Client_Traffic",
+      "to": "Azure_Front_Door",
+      "label": "HTTPS (Port 443)",
+      "style": "solid"
+    },
+    {
+      "from": "Azure_Front_Door",
+      "to": "Azure_App_Gateway",
+      "label": "Global Load Balancing",
+      "style": "solid"
+    },
+    {
+      "from": "Azure_App_Gateway",
+      "to": "Azure_APIM",
+      "label": "WAF Filtered Ingress",
+      "style": "solid"
+    },
+    {
+      "from": "Azure_APIM",
+      "to": "AKS_Ingress_Controller",
+      "label": "Private Link Endpoint",
+      "style": "solid"
+    },
+    {
+      "from": "AKS_Ingress_Controller",
+      "to": "Order_Service_Pod",
+      "label": "Route /orders",
+      "style": "solid"
+    },
+    {
+      "from": "AKS_Ingress_Controller",
+      "to": "Auth_Service_Pod",
+      "label": "Route /auth",
+      "style": "solid"
+    },
+    {
+      "from": "Order_Service_Pod",
+      "to": "Auth_Service_Pod",
+      "label": "Validate JWT Token",
+      "style": "solid"
+    },
+    {
+      "from": "Order_Service_Pod",
+      "to": "Payment_Service_Pod",
+      "label": "gRPC Direct Call",
+      "style": "solid"
+    },
+    {
+      "from": "Order_Service_Pod",
+      "to": "Inventory_Service_Pod",
+      "label": "gRPC Check Stock",
+      "style": "solid"
+    },
+    {
+      "from": "Order_Service_Pod",
+      "to": "Azure_Redis_Cache",
+      "label": "Read/Write Session Cache",
+      "style": "solid"
+    },
+    {
+      "from": "Order_Service_Pod",
+      "to": "Azure_Service_Bus",
+      "label": "Publish 'OrderCreated'",
+      "style": "solid"
+    },
+    {
+      "from": "Azure_Service_Bus",
+      "to": "Notification_Worker",
+      "label": "Consume Events (Topic)",
+      "style": "solid"
+    },
+    {
+      "from": "Payment_Service_Pod",
+      "to": "Azure_SQL_Failover",
+      "label": "ACID Ledger Transactions",
+      "style": "solid"
+    },
+    {
+      "from": "Order_Service_Pod",
+      "to": "Cosmos_DB_Global",
+      "label": "Persist JSON Order Doc",
+      "style": "solid"
+    },
+    {
+      "from": "Inventory_Service_Pod",
+      "to": "Cosmos_DB_Global",
+      "label": "Update Stock Item Count",
+      "style": "solid"
+    },
+    {
+      "from": "Notification_Worker",
+      "to": "Azure_Blob_Storage",
+      "label": "Archive PDF Invoices",
+      "style": "solid"
+    },
+    {
+      "from": "Auth_Service_Pod",
+      "to": "Microsoft_Entra_ID",
+      "label": "OAuth2 Handshake",
+      "style": "dashed"
+    },
+    {
+      "from": "AKS_Ingress_Controller",
+      "to": "Azure_Key_Vault",
+      "label": "Fetch TLS Certificates",
+      "style": "dashed"
+    },
+    {
+      "from": "AKS_Ingress_Controller",
+      "to": "Azure_Log_Analytics",
+      "label": "Stream W3C Traces",
+      "style": "dashed"
+    },
+    {
+      "from": "Azure_Log_Analytics",
+      "to": "Azure_Monitor_Alerts",
+      "label": "Telemetry Trigger",
+      "style": "dashed"
+    }
+  ],
+  "image_file": "images/azure_aks_enterprise_microservices.png",
+  "puml_file": "plantuml_sources/azure_aks_enterprise_microservices.puml"
+}

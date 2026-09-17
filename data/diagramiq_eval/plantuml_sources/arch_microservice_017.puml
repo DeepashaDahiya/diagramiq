@@ -1,0 +1,17 @@
+@startuml
+' Diagram: Dynamic Ride Pricing & Surge Engine
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "TripDemandTracker" as TripDemandTracker
+node "WeatherAPI" as WeatherAPI
+node "SurgeCalculator" as SurgeCalculator
+node "PricingCache" as PricingCache
+node "DispatchAPI" as DispatchAPI
+TripDemandTracker --> SurgeCalculator : calls
+WeatherAPI --> SurgeCalculator : calls
+SurgeCalculator --> PricingCache : calls
+PricingCache --> DispatchAPI : calls
+@enduml

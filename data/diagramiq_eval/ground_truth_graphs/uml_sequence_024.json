@@ -1,0 +1,75 @@
+{
+  "diagram_id": "uml_sequence_024",
+  "title": "Hotel Room Hold & Booking Settlement",
+  "category": "UML_SEQUENCE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Traveler",
+      "type": "actor",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "BookingEngine",
+      "type": "participant",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "InventoryDB",
+      "type": "participant",
+      "bounding_box": [
+        480,
+        480,
+        640,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PaymentProcessor",
+      "type": "participant",
+      "bounding_box": [
+        680,
+        480,
+        840,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "Traveler",
+      "to": "BookingEngine",
+      "type": "sends_message"
+    },
+    {
+      "from": "BookingEngine",
+      "to": "InventoryDB",
+      "type": "sends_message"
+    },
+    {
+      "from": "BookingEngine",
+      "to": "PaymentProcessor",
+      "type": "sends_message"
+    }
+  ],
+  "image_file": "images/uml_sequence_024.png",
+  "puml_file": "plantuml_sources/uml_sequence_024.puml"
+}

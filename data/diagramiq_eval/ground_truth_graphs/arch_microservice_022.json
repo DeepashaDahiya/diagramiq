@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_022",
+  "title": "Mobile Banking Microservices Gateway",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "MobileApp",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "WAFSecurity",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "APIGateway",
+      "type": "gateway",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "CoreBankingHost",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "SMS2FAService",
+      "type": "service",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "MobileApp",
+      "to": "WAFSecurity",
+      "type": "calls"
+    },
+    {
+      "from": "WAFSecurity",
+      "to": "APIGateway",
+      "type": "calls"
+    },
+    {
+      "from": "APIGateway",
+      "to": "CoreBankingHost",
+      "type": "calls"
+    },
+    {
+      "from": "APIGateway",
+      "to": "SMS2FAService",
+      "type": "calls"
+    }
+  ],
+  "image_file": "images/arch_microservice_022.png",
+  "puml_file": "plantuml_sources/arch_microservice_022.puml"
+}

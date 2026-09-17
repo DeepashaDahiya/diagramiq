@@ -1,0 +1,92 @@
+{
+  "diagram_id": "flowchart_er_003",
+  "title": "E-Commerce Product & Order Schema ERD",
+  "category": "ER_DIAGRAM",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Customer",
+      "type": "entity",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "OrderHeader",
+      "type": "entity",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "OrderItem",
+      "type": "entity",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "ProductCatalog",
+      "type": "entity",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PaymentRecord",
+      "type": "entity",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "Customer",
+      "to": "OrderHeader",
+      "type": "relates_to"
+    },
+    {
+      "from": "OrderHeader",
+      "to": "OrderItem",
+      "type": "relates_to"
+    },
+    {
+      "from": "OrderItem",
+      "to": "ProductCatalog",
+      "type": "relates_to"
+    },
+    {
+      "from": "OrderHeader",
+      "to": "PaymentRecord",
+      "type": "relates_to"
+    }
+  ],
+  "image_file": "images/flowchart_er_003.png",
+  "puml_file": "plantuml_sources/flowchart_er_003.puml"
+}

@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_014",
+  "title": "Zero-Trust Mesh with OPA Policy",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "ServiceA",
+      "type": "service",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "EnvoyProxyA",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "OPAPolicyEngine",
+      "type": "gateway",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "EnvoyProxyB",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "ServiceB",
+      "type": "service",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "ServiceA",
+      "to": "EnvoyProxyA",
+      "type": "calls"
+    },
+    {
+      "from": "EnvoyProxyA",
+      "to": "OPAPolicyEngine",
+      "type": "calls"
+    },
+    {
+      "from": "EnvoyProxyA",
+      "to": "EnvoyProxyB",
+      "type": "calls"
+    },
+    {
+      "from": "EnvoyProxyB",
+      "to": "ServiceB",
+      "type": "calls"
+    }
+  ],
+  "image_file": "images/arch_microservice_014.png",
+  "puml_file": "plantuml_sources/arch_microservice_014.puml"
+}

@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_013",
+  "title": "Smart Home IoT Architecture",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "SmartHub",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+smarthubId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Device",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+deviceId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Sensor",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+sensorId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Actuator",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+actuatorId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "AutomationRule",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+automationruleId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "SmartHub",
+      "to": "Device",
+      "type": "associates"
+    },
+    {
+      "from": "Device",
+      "to": "Sensor",
+      "type": "associates"
+    },
+    {
+      "from": "Device",
+      "to": "Actuator",
+      "type": "associates"
+    },
+    {
+      "from": "SmartHub",
+      "to": "AutomationRule",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_013.png",
+  "puml_file": "plantuml_sources/uml_class_013.puml"
+}

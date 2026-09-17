@@ -1,0 +1,19 @@
+@startuml
+' Diagram: Two-Factor Authentication SMS Verification
+' Category: UML_SEQUENCE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+participant "User" as User
+participant "WebPortal" as WebPortal
+participant "AuthEngine" as AuthEngine
+participant "TwilioSMSGateway" as TwilioSMSGateway
+participant "UserMobile" as UserMobile
+User -> WebPortal : sends_message
+WebPortal -> AuthEngine : sends_message
+AuthEngine -> TwilioSMSGateway : sends_message
+TwilioSMSGateway -> UserMobile : sends_message
+User -> WebPortal : sends_message
+WebPortal -> AuthEngine : sends_message
+@enduml

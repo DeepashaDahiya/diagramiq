@@ -1,0 +1,80 @@
+{
+  "diagram_id": "uml_sequence_009",
+  "title": "Direct S3 Pre-Signed File Upload",
+  "category": "UML_SEQUENCE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "ClientApp",
+      "type": "actor",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "BackendAPI",
+      "type": "participant",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "S3Storage",
+      "type": "participant",
+      "bounding_box": [
+        480,
+        480,
+        640,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "AntivirusWorker",
+      "type": "participant",
+      "bounding_box": [
+        680,
+        480,
+        840,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "ClientApp",
+      "to": "BackendAPI",
+      "type": "sends_message"
+    },
+    {
+      "from": "BackendAPI",
+      "to": "S3Storage",
+      "type": "sends_message"
+    },
+    {
+      "from": "ClientApp",
+      "to": "S3Storage",
+      "type": "sends_message"
+    },
+    {
+      "from": "S3Storage",
+      "to": "AntivirusWorker",
+      "type": "sends_message"
+    }
+  ],
+  "image_file": "images/uml_sequence_009.png",
+  "puml_file": "plantuml_sources/uml_sequence_009.puml"
+}

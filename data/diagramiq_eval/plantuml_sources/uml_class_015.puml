@@ -1,0 +1,32 @@
+@startuml
+' Diagram: Real Estate MLS Platform
+' Category: UML_CLASS
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+class Property {
+  +propertyId
+  +execute()
+}
+class ListingAgent {
+  +listingagentId
+  +execute()
+}
+class Buyer {
+  +buyerId
+  +execute()
+}
+class Offer {
+  +offerId
+  +execute()
+}
+class InspectionReport {
+  +inspectionreportId
+  +execute()
+}
+Buyer --> Offer : associates
+Offer --> Property : associates
+ListingAgent --> Property : associates
+Property --> InspectionReport : associates
+@enduml

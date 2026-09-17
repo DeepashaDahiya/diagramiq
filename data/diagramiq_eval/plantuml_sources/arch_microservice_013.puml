@@ -1,0 +1,17 @@
+@startuml
+' Diagram: Multi-Region Cloud Disaster Recovery
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "Route53DNS" as Route53DNS
+node "RegionAGateway" as RegionAGateway
+node "RegionAPostgres" as RegionAPostgres
+node "ReplicationPipe" as ReplicationPipe
+node "RegionBPostgres" as RegionBPostgres
+Route53DNS --> RegionAGateway : calls
+RegionAGateway --> RegionAPostgres : calls
+RegionAPostgres --> ReplicationPipe : calls
+ReplicationPipe --> RegionBPostgres : calls
+@enduml

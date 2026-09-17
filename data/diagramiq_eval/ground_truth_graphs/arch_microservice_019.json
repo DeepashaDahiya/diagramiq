@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_019",
+  "title": "Healthcare FHIR Interoperability Bridge",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "HospitalEHR",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "MLLPAdapter",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "FHIRTransformer",
+      "type": "gateway",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "SecureVaultDB",
+      "type": "database",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "ClinicalPortal",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "HospitalEHR",
+      "to": "MLLPAdapter",
+      "type": "calls"
+    },
+    {
+      "from": "MLLPAdapter",
+      "to": "FHIRTransformer",
+      "type": "calls"
+    },
+    {
+      "from": "FHIRTransformer",
+      "to": "SecureVaultDB",
+      "type": "writes_to"
+    },
+    {
+      "from": "ClinicalPortal",
+      "to": "SecureVaultDB",
+      "type": "writes_to"
+    }
+  ],
+  "image_file": "images/arch_microservice_019.png",
+  "puml_file": "plantuml_sources/arch_microservice_019.puml"
+}

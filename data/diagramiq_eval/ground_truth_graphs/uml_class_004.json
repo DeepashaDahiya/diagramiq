@@ -1,0 +1,138 @@
+{
+  "diagram_id": "uml_class_004",
+  "title": "University Course Registration",
+  "category": "UML_CLASS",
+  "complexity": "COMPLEX",
+  "nodes": [
+    {
+      "id": "Student",
+      "type": "class",
+      "bounding_box": [
+        60,
+        480,
+        220,
+        540
+      ],
+      "attributes": [
+        "+studentId",
+        "+major"
+      ],
+      "methods": [
+        "+registerCourse()"
+      ]
+    },
+    {
+      "id": "Instructor",
+      "type": "class",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [
+        "+facultyId",
+        "+rank"
+      ],
+      "methods": [
+        "+assignGrade()"
+      ]
+    },
+    {
+      "id": "Course",
+      "type": "class",
+      "bounding_box": [
+        500,
+        480,
+        660,
+        540
+      ],
+      "attributes": [
+        "+courseCode",
+        "+credits"
+      ],
+      "methods": [
+        "+getSyllabus()"
+      ]
+    },
+    {
+      "id": "Section",
+      "type": "class",
+      "bounding_box": [
+        720,
+        480,
+        880,
+        540
+      ],
+      "attributes": [
+        "+sectionNum",
+        "+room"
+      ],
+      "methods": [
+        "+getCapacity()"
+      ]
+    },
+    {
+      "id": "Enrollment",
+      "type": "class",
+      "bounding_box": [
+        60,
+        300,
+        220,
+        360
+      ],
+      "attributes": [
+        "+grade",
+        "+term"
+      ],
+      "methods": [
+        "+calcGPA()"
+      ]
+    },
+    {
+      "id": "Department",
+      "type": "class",
+      "bounding_box": [
+        280,
+        300,
+        440,
+        360
+      ],
+      "attributes": [
+        "+name"
+      ],
+      "methods": [
+        "+offerCourse()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Student",
+      "to": "Enrollment",
+      "type": "has_enrollment"
+    },
+    {
+      "from": "Enrollment",
+      "to": "Section",
+      "type": "enrolled_in"
+    },
+    {
+      "from": "Section",
+      "to": "Course",
+      "type": "instance_of"
+    },
+    {
+      "from": "Instructor",
+      "to": "Section",
+      "type": "teaches"
+    },
+    {
+      "from": "Department",
+      "to": "Course",
+      "type": "offers"
+    }
+  ],
+  "image_file": "images/uml_class_004.png",
+  "puml_file": "plantuml_sources/uml_class_004.puml"
+}

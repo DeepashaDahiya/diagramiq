@@ -1,0 +1,344 @@
+{
+  "diagram_id": "refactoring_guru_abstract_factory_ecosystem",
+  "title": "Abstract Factory & Builder Multi-Platform UI Framework (Refactoring.Guru)",
+  "category": "UML_CLASS",
+  "complexity": "HIGHLY_COMPLEX",
+  "source_provenance": "Refactoring.Guru \u2014 Gang of Four Design Patterns Catalog",
+  "nodes": [
+    {
+      "id": "GUIFactory",
+      "label": "\u00abinterface\u00bb\nGUIFactory",
+      "type": "interface",
+      "bounding_box": [
+        150,
+        560,
+        330,
+        620
+      ],
+      "attributes": [
+        "+createButton(): Button",
+        "+createCheckbox(): Checkbox",
+        "+createScrollbar(): Scrollbar"
+      ]
+    },
+    {
+      "id": "Button",
+      "label": "\u00abinterface\u00bb\nButton",
+      "type": "interface",
+      "bounding_box": [
+        50,
+        335,
+        190,
+        385
+      ],
+      "attributes": [
+        "+render()",
+        "+onClick()"
+      ]
+    },
+    {
+      "id": "Checkbox",
+      "label": "\u00abinterface\u00bb\nCheckbox",
+      "type": "interface",
+      "bounding_box": [
+        200,
+        335,
+        340,
+        385
+      ],
+      "attributes": [
+        "+render()",
+        "+toggle()"
+      ]
+    },
+    {
+      "id": "Scrollbar",
+      "label": "\u00abinterface\u00bb\nScrollbar",
+      "type": "interface",
+      "bounding_box": [
+        120,
+        215,
+        270,
+        265
+      ],
+      "attributes": [
+        "+render()",
+        "+scrollTo()"
+      ]
+    },
+    {
+      "id": "WinFactory",
+      "label": "WinFactory",
+      "type": "class",
+      "bounding_box": [
+        520,
+        562,
+        680,
+        617
+      ],
+      "attributes": [
+        "+createButton(): WinButton",
+        "+createCheckbox(): WinCheckbox"
+      ]
+    },
+    {
+      "id": "WinButton",
+      "label": "WinButton",
+      "type": "class",
+      "bounding_box": [
+        525,
+        337,
+        675,
+        382
+      ],
+      "attributes": [
+        "+render() (DirectX)"
+      ]
+    },
+    {
+      "id": "WinCheckbox",
+      "label": "WinCheckbox",
+      "type": "class",
+      "bounding_box": [
+        525,
+        217,
+        675,
+        262
+      ],
+      "attributes": [
+        "+render() (DirectX)"
+      ]
+    },
+    {
+      "id": "MacFactory",
+      "label": "MacFactory",
+      "type": "class",
+      "bounding_box": [
+        740,
+        562,
+        900,
+        617
+      ],
+      "attributes": [
+        "+createButton(): MacButton",
+        "+createCheckbox(): MacCheckbox"
+      ]
+    },
+    {
+      "id": "MacButton",
+      "label": "MacButton",
+      "type": "class",
+      "bounding_box": [
+        745,
+        337,
+        895,
+        382
+      ],
+      "attributes": [
+        "+render() (Metal)"
+      ]
+    },
+    {
+      "id": "MacCheckbox",
+      "label": "MacCheckbox",
+      "type": "class",
+      "bounding_box": [
+        745,
+        217,
+        895,
+        262
+      ],
+      "attributes": [
+        "+render() (Metal)"
+      ]
+    },
+    {
+      "id": "LinuxFactory",
+      "label": "LinuxFactory",
+      "type": "class",
+      "bounding_box": [
+        950,
+        562,
+        1110,
+        617
+      ],
+      "attributes": [
+        "+createButton(): LinuxButton",
+        "+createCheckbox(): LinuxCheckbox"
+      ]
+    },
+    {
+      "id": "LinuxButton",
+      "label": "LinuxButton",
+      "type": "class",
+      "bounding_box": [
+        955,
+        337,
+        1105,
+        382
+      ],
+      "attributes": [
+        "+render() (Vulkan)"
+      ]
+    },
+    {
+      "id": "LinuxCheckbox",
+      "label": "LinuxCheckbox",
+      "type": "class",
+      "bounding_box": [
+        955,
+        217,
+        1105,
+        262
+      ],
+      "attributes": [
+        "+render() (Vulkan)"
+      ]
+    },
+    {
+      "id": "ApplicationConfigurator",
+      "label": "ApplicationConfigurator",
+      "type": "class",
+      "bounding_box": [
+        100,
+        57,
+        300,
+        102
+      ],
+      "attributes": [
+        "+main()",
+        "+detectOS()"
+      ]
+    },
+    {
+      "id": "UIDirector",
+      "label": "UIDirector\n(Dialog Builder)",
+      "type": "class",
+      "bounding_box": [
+        450,
+        57,
+        630,
+        102
+      ],
+      "attributes": [
+        "+buildLoginForm()",
+        "+buildSettings()"
+      ]
+    },
+    {
+      "id": "ClientApp",
+      "label": "ClientApp",
+      "type": "class",
+      "bounding_box": [
+        800,
+        57,
+        960,
+        102
+      ],
+      "attributes": [
+        "-factory: GUIFactory",
+        "-button: Button"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "WinFactory",
+      "to": "GUIFactory",
+      "label": "implements",
+      "style": "dashed"
+    },
+    {
+      "from": "MacFactory",
+      "to": "GUIFactory",
+      "label": "implements",
+      "style": "dashed"
+    },
+    {
+      "from": "LinuxFactory",
+      "to": "GUIFactory",
+      "label": "implements",
+      "style": "dashed"
+    },
+    {
+      "from": "WinButton",
+      "to": "Button",
+      "label": "implements",
+      "style": "dashed"
+    },
+    {
+      "from": "MacButton",
+      "to": "Button",
+      "label": "implements",
+      "style": "dashed"
+    },
+    {
+      "from": "LinuxButton",
+      "to": "Button",
+      "label": "implements",
+      "style": "dashed"
+    },
+    {
+      "from": "WinCheckbox",
+      "to": "Checkbox",
+      "label": "implements",
+      "style": "dashed"
+    },
+    {
+      "from": "MacCheckbox",
+      "to": "Checkbox",
+      "label": "implements",
+      "style": "dashed"
+    },
+    {
+      "from": "LinuxCheckbox",
+      "to": "Checkbox",
+      "label": "implements",
+      "style": "dashed"
+    },
+    {
+      "from": "WinFactory",
+      "to": "WinButton",
+      "label": "instantiates",
+      "style": "solid"
+    },
+    {
+      "from": "MacFactory",
+      "to": "MacButton",
+      "label": "instantiates",
+      "style": "solid"
+    },
+    {
+      "from": "LinuxFactory",
+      "to": "LinuxButton",
+      "label": "instantiates",
+      "style": "solid"
+    },
+    {
+      "from": "ApplicationConfigurator",
+      "to": "ClientApp",
+      "label": "injects Factory",
+      "style": "solid"
+    },
+    {
+      "from": "ClientApp",
+      "to": "GUIFactory",
+      "label": "uses interface",
+      "style": "solid"
+    },
+    {
+      "from": "ClientApp",
+      "to": "Button",
+      "label": "holds reference",
+      "style": "solid"
+    },
+    {
+      "from": "UIDirector",
+      "to": "ClientApp",
+      "label": "composes UI",
+      "style": "solid"
+    }
+  ],
+  "image_file": "images/refactoring_guru_abstract_factory_ecosystem.png",
+  "puml_file": "plantuml_sources/refactoring_guru_abstract_factory_ecosystem.puml"
+}

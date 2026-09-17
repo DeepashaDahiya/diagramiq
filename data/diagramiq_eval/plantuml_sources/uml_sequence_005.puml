@@ -1,0 +1,16 @@
+@startuml
+' Diagram: JWT Token Refresh Handshake
+' Category: UML_SEQUENCE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+participant "ClientSPA" as ClientSPA
+participant "APIGateway" as APIGateway
+participant "AuthService" as AuthService
+participant "RedisTokenBlacklist" as RedisTokenBlacklist
+ClientSPA -> APIGateway : sends_message
+APIGateway -> AuthService : sends_message
+AuthService -> RedisTokenBlacklist : sends_message
+AuthService -> ClientSPA : sends_message
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+' Diagram: Music Streaming Catalog
+' Category: UML_CLASS
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+class Artist {
+  +artistId
+  +execute()
+}
+class Album {
+  +albumId
+  +execute()
+}
+class Track {
+  +trackId
+  +execute()
+}
+class Playlist {
+  +playlistId
+  +execute()
+}
+class Listener {
+  +listenerId
+  +execute()
+}
+Artist --> Album : associates
+Album --> Track : associates
+Listener --> Playlist : associates
+Playlist --> Track : associates
+@enduml

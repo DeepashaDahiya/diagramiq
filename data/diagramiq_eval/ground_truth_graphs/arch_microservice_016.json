@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_016",
+  "title": "High-Frequency Trading Engine",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "MarketDataFeed",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "FIXGateway",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "OrderMatcher",
+      "type": "gateway",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "RiskEngine",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "FastJournal",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "MarketDataFeed",
+      "to": "FIXGateway",
+      "type": "calls"
+    },
+    {
+      "from": "FIXGateway",
+      "to": "RiskEngine",
+      "type": "calls"
+    },
+    {
+      "from": "RiskEngine",
+      "to": "OrderMatcher",
+      "type": "calls"
+    },
+    {
+      "from": "OrderMatcher",
+      "to": "FastJournal",
+      "type": "calls"
+    }
+  ],
+  "image_file": "images/arch_microservice_016.png",
+  "puml_file": "plantuml_sources/arch_microservice_016.puml"
+}

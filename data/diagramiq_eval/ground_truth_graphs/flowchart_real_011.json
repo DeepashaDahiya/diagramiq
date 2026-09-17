@@ -1,0 +1,527 @@
+{
+  "diagram_id": "flowchart_real_011",
+  "title": "Real Control Flowchart #11",
+  "category": "FLOWCHART",
+  "complexity": "MEDIUM",
+  "source_dataset": "MananSuri27/Flowchart2Mermaid",
+  "nodes": [
+    {
+      "id": "A",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "AA",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "B",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "B1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "C",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "D",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "E",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "F",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "G",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "G{\"Is the sacral chakra blocked?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "H",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "I",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "J",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "K",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "L",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "M",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "N",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "O",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "P",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "Q",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "R",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "S",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "T",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "U",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "V",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "V{\"Is there access to a natural body of water?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "W",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "X",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "X{\"Is it possible to enter the water?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "Y",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "Z",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| AA",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| P",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| N",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| W",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| Y",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "A",
+      "to": "B",
+      "type": "transitions_to"
+    },
+    {
+      "from": "B",
+      "to": "I",
+      "type": "transitions_to"
+    },
+    {
+      "from": "I",
+      "to": "C",
+      "type": "transitions_to"
+    },
+    {
+      "from": "C",
+      "to": "J",
+      "type": "transitions_to"
+    },
+    {
+      "from": "J",
+      "to": "D",
+      "type": "transitions_to"
+    },
+    {
+      "from": "D",
+      "to": "K",
+      "type": "transitions_to"
+    },
+    {
+      "from": "K",
+      "to": "E",
+      "type": "transitions_to"
+    },
+    {
+      "from": "E",
+      "to": "L",
+      "type": "transitions_to"
+    },
+    {
+      "from": "L",
+      "to": "F",
+      "type": "transitions_to"
+    },
+    {
+      "from": "F",
+      "to": "M",
+      "type": "transitions_to"
+    },
+    {
+      "from": "M",
+      "to": "G{\"Is the sacral chakra blocked?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "G",
+      "to": "|\"Yes\"| N",
+      "type": "transitions_to"
+    },
+    {
+      "from": "N",
+      "to": "O",
+      "type": "transitions_to"
+    },
+    {
+      "from": "O",
+      "to": "P",
+      "type": "transitions_to"
+    },
+    {
+      "from": "G",
+      "to": "|\"No\"| P",
+      "type": "transitions_to"
+    },
+    {
+      "from": "L",
+      "to": "H",
+      "type": "transitions_to"
+    },
+    {
+      "from": "H",
+      "to": "Q",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Q",
+      "to": "R",
+      "type": "transitions_to"
+    },
+    {
+      "from": "R",
+      "to": "S",
+      "type": "transitions_to"
+    },
+    {
+      "from": "S",
+      "to": "T",
+      "type": "transitions_to"
+    },
+    {
+      "from": "T",
+      "to": "U",
+      "type": "transitions_to"
+    },
+    {
+      "from": "U",
+      "to": "V{\"Is there access to a natural body of water?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "V",
+      "to": "|\"Yes\"| W",
+      "type": "transitions_to"
+    },
+    {
+      "from": "W",
+      "to": "X{\"Is it possible to enter the water?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "X",
+      "to": "|\"Yes\"| Y",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Y",
+      "to": "Z",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Z",
+      "to": "P",
+      "type": "transitions_to"
+    },
+    {
+      "from": "X",
+      "to": "|\"No\"| P",
+      "type": "transitions_to"
+    },
+    {
+      "from": "V",
+      "to": "|\"No\"| AA",
+      "type": "transitions_to"
+    },
+    {
+      "from": "AA",
+      "to": "Z",
+      "type": "transitions_to"
+    },
+    {
+      "from": "P",
+      "to": "B1",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_real_011.png"
+}

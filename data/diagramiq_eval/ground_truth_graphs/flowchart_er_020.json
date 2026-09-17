@@ -1,0 +1,97 @@
+{
+  "diagram_id": "flowchart_er_020",
+  "title": "Customer Refund Processing Flowchart",
+  "category": "FLOWCHART",
+  "complexity": "SIMPLE",
+  "nodes": [
+    {
+      "id": "RequestRefund",
+      "type": "process",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Validate30Days",
+      "type": "decision",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "InspectReturn",
+      "type": "process",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "IssueRefund",
+      "type": "decision",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DenyRefund",
+      "type": "process",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "RequestRefund",
+      "to": "Validate30Days",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Validate30Days",
+      "to": "InspectReturn",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Validate30Days",
+      "to": "DenyRefund",
+      "type": "transitions_to"
+    },
+    {
+      "from": "InspectReturn",
+      "to": "IssueRefund",
+      "type": "transitions_to"
+    },
+    {
+      "from": "InspectReturn",
+      "to": "DenyRefund",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_er_020.png",
+  "puml_file": "plantuml_sources/flowchart_er_020.puml"
+}

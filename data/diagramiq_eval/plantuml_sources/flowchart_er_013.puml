@@ -1,0 +1,20 @@
+@startuml
+' Diagram: Support Ticket Escalation Flowchart
+' Category: FLOWCHART
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+rectangle "TicketLogged" as TicketLogged
+rectangle "Tier1Triage" as Tier1Triage
+rectangle "CheckResolved" as CheckResolved
+rectangle "Tier2Escalation" as Tier2Escalation
+rectangle "ManagerReview" as ManagerReview
+rectangle "CloseTicket" as CloseTicket
+TicketLogged --> Tier1Triage : transitions_to
+Tier1Triage --> CheckResolved : transitions_to
+CheckResolved --> CloseTicket : transitions_to
+CheckResolved --> Tier2Escalation : transitions_to
+Tier2Escalation --> ManagerReview : transitions_to
+ManagerReview --> CloseTicket : transitions_to
+@enduml

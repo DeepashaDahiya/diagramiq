@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_023",
+  "title": "Automated CI/CD Build Cloud",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "GitWebhook",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "BuildOrchestrator",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DockerWorkerPool",
+      "type": "service",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "ArtifactRegistry",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "KubernetesCluster",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "GitWebhook",
+      "to": "BuildOrchestrator",
+      "type": "calls"
+    },
+    {
+      "from": "BuildOrchestrator",
+      "to": "DockerWorkerPool",
+      "type": "calls"
+    },
+    {
+      "from": "DockerWorkerPool",
+      "to": "ArtifactRegistry",
+      "type": "calls"
+    },
+    {
+      "from": "ArtifactRegistry",
+      "to": "KubernetesCluster",
+      "type": "calls"
+    }
+  ],
+  "image_file": "images/arch_microservice_023.png",
+  "puml_file": "plantuml_sources/arch_microservice_023.puml"
+}

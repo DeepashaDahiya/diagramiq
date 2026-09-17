@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_023",
+  "title": "Music Streaming Catalog",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Artist",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+artistId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Album",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+albumId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Track",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+trackId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Playlist",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+playlistId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Listener",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+listenerId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Artist",
+      "to": "Album",
+      "type": "associates"
+    },
+    {
+      "from": "Album",
+      "to": "Track",
+      "type": "associates"
+    },
+    {
+      "from": "Listener",
+      "to": "Playlist",
+      "type": "associates"
+    },
+    {
+      "from": "Playlist",
+      "to": "Track",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_023.png",
+  "puml_file": "plantuml_sources/uml_class_023.puml"
+}

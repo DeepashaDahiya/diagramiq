@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_011",
+  "title": "Video Streaming Platform",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "User",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+userId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Video",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+videoId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Playlist",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+playlistId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Subscription",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+subscriptionId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Channel",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+channelId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "User",
+      "to": "Subscription",
+      "type": "associates"
+    },
+    {
+      "from": "Subscription",
+      "to": "Channel",
+      "type": "associates"
+    },
+    {
+      "from": "Channel",
+      "to": "Video",
+      "type": "associates"
+    },
+    {
+      "from": "User",
+      "to": "Playlist",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_011.png",
+  "puml_file": "plantuml_sources/uml_class_011.puml"
+}

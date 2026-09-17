@@ -1,0 +1,32 @@
+@startuml
+' Diagram: Helpdesk Ticketing System
+' Category: UML_CLASS
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+class Ticket {
+  +ticketId
+  +execute()
+}
+class Customer {
+  +customerId
+  +execute()
+}
+class SupportAgent {
+  +supportagentId
+  +execute()
+}
+class SLAContract {
+  +slacontractId
+  +execute()
+}
+class Resolution {
+  +resolutionId
+  +execute()
+}
+Customer --> Ticket : associates
+SupportAgent --> Ticket : associates
+Ticket --> Resolution : associates
+Ticket --> SLAContract : associates
+@enduml

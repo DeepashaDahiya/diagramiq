@@ -1,0 +1,32 @@
+@startuml
+' Diagram: Smart Home IoT Architecture
+' Category: UML_CLASS
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+class SmartHub {
+  +smarthubId
+  +execute()
+}
+class Device {
+  +deviceId
+  +execute()
+}
+class Sensor {
+  +sensorId
+  +execute()
+}
+class Actuator {
+  +actuatorId
+  +execute()
+}
+class AutomationRule {
+  +automationruleId
+  +execute()
+}
+SmartHub --> Device : associates
+Device --> Sensor : associates
+Device --> Actuator : associates
+SmartHub --> AutomationRule : associates
+@enduml

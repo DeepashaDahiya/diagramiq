@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_014",
+  "title": "Warehouse Inventory Controller",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Warehouse",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+warehouseId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "StockItem",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+stockitemId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Supplier",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+supplierId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "PurchaseOrder",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+purchaseorderId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Bin",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+binId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Warehouse",
+      "to": "Bin",
+      "type": "associates"
+    },
+    {
+      "from": "Bin",
+      "to": "StockItem",
+      "type": "associates"
+    },
+    {
+      "from": "Supplier",
+      "to": "PurchaseOrder",
+      "type": "associates"
+    },
+    {
+      "from": "PurchaseOrder",
+      "to": "StockItem",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_014.png",
+  "puml_file": "plantuml_sources/uml_class_014.puml"
+}

@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_021",
+  "title": "Ad-Tech Real-Time Bidding Exchange",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "AdPublisher",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "ExchangeGateway",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "BIDEvaluator",
+      "type": "gateway",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "BudgetPacer",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "AdStorage",
+      "type": "database",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "AdPublisher",
+      "to": "ExchangeGateway",
+      "type": "calls"
+    },
+    {
+      "from": "ExchangeGateway",
+      "to": "BIDEvaluator",
+      "type": "calls"
+    },
+    {
+      "from": "BIDEvaluator",
+      "to": "BudgetPacer",
+      "type": "calls"
+    },
+    {
+      "from": "ExchangeGateway",
+      "to": "AdStorage",
+      "type": "calls"
+    }
+  ],
+  "image_file": "images/arch_microservice_021.png",
+  "puml_file": "plantuml_sources/arch_microservice_021.puml"
+}

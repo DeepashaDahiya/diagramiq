@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_009",
+  "title": "Social Media Network",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "UserProfile",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+userprofileId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Post",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+postId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Comment",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+commentId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "MediaAttachment",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+mediaattachmentId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Like",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+likeId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "UserProfile",
+      "to": "Post",
+      "type": "associates"
+    },
+    {
+      "from": "Post",
+      "to": "Comment",
+      "type": "associates"
+    },
+    {
+      "from": "Post",
+      "to": "MediaAttachment",
+      "type": "associates"
+    },
+    {
+      "from": "UserProfile",
+      "to": "Like",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_009.png",
+  "puml_file": "plantuml_sources/uml_class_009.puml"
+}

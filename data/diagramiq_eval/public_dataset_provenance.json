@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-08-27 20:12:39",
+  "total_real_diagrams": 100,
+  "total_qa_pairs": 300,
+  "category_distribution": {
+    "UML_SEQUENCE": 30,
+    "FLOWCHART": 30,
+    "UML_CLASS": 20,
+    "SW_ARCHITECTURE": 20
+  },
+  "source_datasets": [
+    {
+      "name": "Francesco/activity-diagrams-qdobr",
+      "role": "Activity & sequence workflow diagrams with real bounding boxes"
+    },
+    {
+      "name": "MananSuri27/Flowchart2Mermaid",
+      "role": "Real-world algorithmic control flowcharts"
+    },
+    {
+      "name": "lmms-lab-encoder/ai2d",
+      "role": "Allen Institute technical structure diagram QA benchmark"
+    }
+  ]
+}

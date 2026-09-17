@@ -1,0 +1,15 @@
+@startuml
+' Diagram: Fleet Maintenance Log ERD
+' Category: ER_DIAGRAM
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+rectangle "Vehicle" as Vehicle
+rectangle "MaintenanceTicket" as MaintenanceTicket
+rectangle "Mechanic" as Mechanic
+rectangle "SparePart" as SparePart
+Vehicle --> MaintenanceTicket : relates_to
+Mechanic --> MaintenanceTicket : relates_to
+MaintenanceTicket --> SparePart : relates_to
+@enduml

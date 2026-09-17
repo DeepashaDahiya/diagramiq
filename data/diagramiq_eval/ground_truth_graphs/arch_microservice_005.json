@@ -1,0 +1,109 @@
+{
+  "diagram_id": "arch_microservice_005",
+  "title": "Fintech Payment Switch & Ledger",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "COMPLEX",
+  "nodes": [
+    {
+      "id": "POSMerchant",
+      "type": "gateway",
+      "bounding_box": [
+        60,
+        480,
+        220,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "APIGateway",
+      "type": "gateway",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "FraudDetection",
+      "type": "gateway",
+      "bounding_box": [
+        500,
+        480,
+        660,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "CardTokenizer",
+      "type": "gateway",
+      "bounding_box": [
+        720,
+        480,
+        880,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "BankSwitch",
+      "type": "gateway",
+      "bounding_box": [
+        60,
+        300,
+        220,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "LedgerDB",
+      "type": "database",
+      "bounding_box": [
+        280,
+        300,
+        440,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "POSMerchant",
+      "to": "APIGateway",
+      "type": "calls"
+    },
+    {
+      "from": "APIGateway",
+      "to": "FraudDetection",
+      "type": "calls"
+    },
+    {
+      "from": "APIGateway",
+      "to": "CardTokenizer",
+      "type": "calls"
+    },
+    {
+      "from": "CardTokenizer",
+      "to": "BankSwitch",
+      "type": "calls"
+    },
+    {
+      "from": "BankSwitch",
+      "to": "LedgerDB",
+      "type": "writes_to"
+    }
+  ],
+  "image_file": "images/arch_microservice_005.png",
+  "puml_file": "plantuml_sources/arch_microservice_005.puml"
+}

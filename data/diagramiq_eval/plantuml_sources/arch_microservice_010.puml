@@ -1,0 +1,17 @@
+@startuml
+' Diagram: Medallion Data Lakehouse Architecture
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "SourceDB" as SourceDB
+node "BronzeLayer" as BronzeLayer
+node "SparkETL" as SparkETL
+node "SilverLayer" as SilverLayer
+node "GoldAnalytics" as GoldAnalytics
+SourceDB --> BronzeLayer : calls
+BronzeLayer --> SparkETL : calls
+SparkETL --> SilverLayer : calls
+SilverLayer --> GoldAnalytics : calls
+@enduml

@@ -1,0 +1,126 @@
+{
+  "diagram_id": "arch_microservice_001",
+  "title": "E-Commerce Microservices Architecture",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "ClientApp",
+      "type": "gateway",
+      "bounding_box": [
+        60,
+        480,
+        220,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "APIGateway",
+      "type": "gateway",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "AuthService",
+      "type": "service",
+      "bounding_box": [
+        500,
+        480,
+        660,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "OrderService",
+      "type": "service",
+      "bounding_box": [
+        720,
+        480,
+        880,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PaymentGateway",
+      "type": "gateway",
+      "bounding_box": [
+        60,
+        300,
+        220,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "UserDB",
+      "type": "database",
+      "bounding_box": [
+        280,
+        300,
+        440,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "OrderDB",
+      "type": "database",
+      "bounding_box": [
+        500,
+        300,
+        660,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "ClientApp",
+      "to": "APIGateway",
+      "type": "calls"
+    },
+    {
+      "from": "APIGateway",
+      "to": "AuthService",
+      "type": "calls"
+    },
+    {
+      "from": "AuthService",
+      "to": "UserDB",
+      "type": "writes_to"
+    },
+    {
+      "from": "APIGateway",
+      "to": "OrderService",
+      "type": "calls"
+    },
+    {
+      "from": "OrderService",
+      "to": "OrderDB",
+      "type": "writes_to"
+    },
+    {
+      "from": "OrderService",
+      "to": "PaymentGateway",
+      "type": "calls"
+    }
+  ],
+  "image_file": "images/arch_microservice_001.png",
+  "puml_file": "plantuml_sources/arch_microservice_001.puml"
+}

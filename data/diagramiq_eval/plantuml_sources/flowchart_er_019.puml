@@ -1,0 +1,20 @@
+@startuml
+' Diagram: Machine Learning Training Pipeline Flowchart
+' Category: FLOWCHART
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+rectangle "IngestDataset" as IngestDataset
+rectangle "CleanFeatures" as CleanFeatures
+rectangle "TrainModel" as TrainModel
+rectangle "EvaluateAccuracy" as EvaluateAccuracy
+rectangle "DeployEndpoint" as DeployEndpoint
+rectangle "RetrainHyperparams" as RetrainHyperparams
+IngestDataset --> CleanFeatures : transitions_to
+CleanFeatures --> TrainModel : transitions_to
+TrainModel --> EvaluateAccuracy : transitions_to
+EvaluateAccuracy --> DeployEndpoint : transitions_to
+EvaluateAccuracy --> RetrainHyperparams : transitions_to
+RetrainHyperparams --> TrainModel : transitions_to
+@enduml

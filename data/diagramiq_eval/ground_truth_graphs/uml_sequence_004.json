@@ -1,0 +1,80 @@
+{
+  "diagram_id": "uml_sequence_004",
+  "title": "Database Connection Pool Allocation",
+  "category": "UML_SEQUENCE",
+  "complexity": "SIMPLE",
+  "nodes": [
+    {
+      "id": "AppThread",
+      "type": "actor",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PoolManager",
+      "type": "participant",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "JDBCDriver",
+      "type": "participant",
+      "bounding_box": [
+        480,
+        480,
+        640,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DatabaseServer",
+      "type": "participant",
+      "bounding_box": [
+        680,
+        480,
+        840,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "AppThread",
+      "to": "PoolManager",
+      "type": "sends_message"
+    },
+    {
+      "from": "PoolManager",
+      "to": "JDBCDriver",
+      "type": "sends_message"
+    },
+    {
+      "from": "JDBCDriver",
+      "to": "DatabaseServer",
+      "type": "sends_message"
+    },
+    {
+      "from": "PoolManager",
+      "to": "AppThread",
+      "type": "sends_message"
+    }
+  ],
+  "image_file": "images/uml_sequence_004.png",
+  "puml_file": "plantuml_sources/uml_sequence_004.puml"
+}

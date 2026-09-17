@@ -1,0 +1,75 @@
+{
+  "diagram_id": "uml_sequence_010",
+  "title": "SAML 2.0 Enterprise Single Sign-On",
+  "category": "UML_SEQUENCE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Employee",
+      "type": "actor",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "ServiceProvider",
+      "type": "participant",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "SAMLIdentityServer",
+      "type": "participant",
+      "bounding_box": [
+        480,
+        480,
+        640,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "LDAPServer",
+      "type": "participant",
+      "bounding_box": [
+        680,
+        480,
+        840,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "Employee",
+      "to": "ServiceProvider",
+      "type": "sends_message"
+    },
+    {
+      "from": "ServiceProvider",
+      "to": "SAMLIdentityServer",
+      "type": "sends_message"
+    },
+    {
+      "from": "SAMLIdentityServer",
+      "to": "LDAPServer",
+      "type": "sends_message"
+    }
+  ],
+  "image_file": "images/uml_sequence_010.png",
+  "puml_file": "plantuml_sources/uml_sequence_010.puml"
+}

@@ -1,0 +1,32 @@
+@startuml
+' Diagram: Gym Fitness Membership
+' Category: UML_CLASS
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+class Member {
+  +memberId
+  +execute()
+}
+class Trainer {
+  +trainerId
+  +execute()
+}
+class WorkoutPlan {
+  +workoutplanId
+  +execute()
+}
+class GymClass {
+  +gymclassId
+  +execute()
+}
+class Schedule {
+  +scheduleId
+  +execute()
+}
+Member --> WorkoutPlan : associates
+Trainer --> WorkoutPlan : associates
+Trainer --> GymClass : associates
+Member --> Schedule : associates
+@enduml

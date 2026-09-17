@@ -1,0 +1,109 @@
+{
+  "diagram_id": "flowchart_er_016",
+  "title": "Software Bug Triage Flowchart",
+  "category": "FLOWCHART",
+  "complexity": "SIMPLE",
+  "nodes": [
+    {
+      "id": "BugReported",
+      "type": "process",
+      "bounding_box": [
+        60,
+        480,
+        220,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "ReproduceBug",
+      "type": "process",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "IsCritical",
+      "type": "decision",
+      "bounding_box": [
+        500,
+        480,
+        660,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "HotfixDeploy",
+      "type": "process",
+      "bounding_box": [
+        720,
+        480,
+        880,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "SprintBacklog",
+      "type": "process",
+      "bounding_box": [
+        60,
+        300,
+        220,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DiscardReport",
+      "type": "process",
+      "bounding_box": [
+        280,
+        300,
+        440,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "BugReported",
+      "to": "ReproduceBug",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ReproduceBug",
+      "to": "IsCritical",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ReproduceBug",
+      "to": "DiscardReport",
+      "type": "transitions_to"
+    },
+    {
+      "from": "IsCritical",
+      "to": "HotfixDeploy",
+      "type": "transitions_to"
+    },
+    {
+      "from": "IsCritical",
+      "to": "SprintBacklog",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_er_016.png",
+  "puml_file": "plantuml_sources/flowchart_er_016.puml"
+}

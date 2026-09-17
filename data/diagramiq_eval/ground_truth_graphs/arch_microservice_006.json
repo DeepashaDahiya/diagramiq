@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_006",
+  "title": "Distributed Search Ingestion Pipeline",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "WebCrawler",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "KafkaQueue",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "SparkParser",
+      "type": "gateway",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Elasticsearch",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "SearchAPI",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "WebCrawler",
+      "to": "KafkaQueue",
+      "type": "calls"
+    },
+    {
+      "from": "KafkaQueue",
+      "to": "SparkParser",
+      "type": "calls"
+    },
+    {
+      "from": "SparkParser",
+      "to": "Elasticsearch",
+      "type": "calls"
+    },
+    {
+      "from": "SearchAPI",
+      "to": "Elasticsearch",
+      "type": "calls"
+    }
+  ],
+  "image_file": "images/arch_microservice_006.png",
+  "puml_file": "plantuml_sources/arch_microservice_006.puml"
+}

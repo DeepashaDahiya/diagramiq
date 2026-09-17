@@ -1,0 +1,17 @@
+@startuml
+' Diagram: IoT Sensor Ingestion & Telemetry Lake
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "IoTSensors" as IoTSensors
+node "MQTTBroker" as MQTTBroker
+node "FlinkEngine" as FlinkEngine
+node "TimescaleDB" as TimescaleDB
+node "GrafanaDashboard" as GrafanaDashboard
+IoTSensors --> MQTTBroker : calls
+MQTTBroker --> FlinkEngine : calls
+FlinkEngine --> TimescaleDB : writes_to
+TimescaleDB --> GrafanaDashboard : calls
+@enduml

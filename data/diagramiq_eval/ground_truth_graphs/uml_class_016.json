@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_016",
+  "title": "Learning Management System",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Course",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+courseId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Assignment",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+assignmentId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Submission",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+submissionId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Student",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+studentId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "GradeBook",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+gradebookId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Student",
+      "to": "Submission",
+      "type": "associates"
+    },
+    {
+      "from": "Submission",
+      "to": "Assignment",
+      "type": "associates"
+    },
+    {
+      "from": "Course",
+      "to": "Assignment",
+      "type": "associates"
+    },
+    {
+      "from": "Course",
+      "to": "GradeBook",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_016.png",
+  "puml_file": "plantuml_sources/uml_class_016.puml"
+}

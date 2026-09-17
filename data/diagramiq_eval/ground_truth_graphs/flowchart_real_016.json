@@ -1,0 +1,672 @@
+{
+  "diagram_id": "flowchart_real_016",
+  "title": "Real Control Flowchart #16",
+  "category": "FLOWCHART",
+  "complexity": "MEDIUM",
+  "source_dataset": "MananSuri27/Flowchart2Mermaid",
+  "nodes": [
+    {
+      "id": "CARPOOL",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "DECISION1A",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "DECISION1A{\"Within biking distance?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "DECISION1B",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "DECISION2A",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "DECISION2A{\"Brushing teeth or washing hands?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "DECISION3A",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "DECISION3A{\"Leaving a room?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "DECISION3B",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "END",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "ENERGY_SAVING_BULBS",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "GREY_WATER_SYSTEM",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "INPUT1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "INPUT2",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "INPUT3",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "INPUT4",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "INPUT5",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "LOW_ENERGY_APPLIANCES",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "MASON_JAR_LUMINARIES",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "OUTPUT1",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "OUTPUT2",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "OUTPUT3",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "OUTPUT4",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "OUTPUT5",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "OUTPUT6",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "OUTPUT7",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "PROCESS1A",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "RECYCLE_HOUSE_WATER",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "SAVE_WATER_WHILE_BRUSHING",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "SHORT_SHOWER",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "START",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "TURN_OFF_APPLIANCES",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "TURN_OFF_LIGHTS",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "USE_BIKE",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "USE_LESS_HVAC",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "USE_PUBLIC",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "WASH_CAR_BUCKET",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| CARPOOL",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| DECISION1B{\"Public transportation available?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| DECISION3B{\"Is it summer or winter?\"}",
+      "type": "decision",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| SHORT_SHOWER",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"No\"| TURN_OFF_APPLIANCES",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| SAVE_WATER_WHILE_BRUSHING",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| TURN_OFF_LIGHTS",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| USE_BIKE",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| USE_LESS_HVAC",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    },
+    {
+      "id": "|\"Yes\"| USE_PUBLIC",
+      "type": "process",
+      "bounding_box": [
+        50,
+        50,
+        200,
+        100
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "START",
+      "to": "INPUT1",
+      "type": "transitions_to"
+    },
+    {
+      "from": "INPUT1",
+      "to": "INPUT2",
+      "type": "transitions_to"
+    },
+    {
+      "from": "INPUT2",
+      "to": "INPUT3",
+      "type": "transitions_to"
+    },
+    {
+      "from": "INPUT3",
+      "to": "INPUT4",
+      "type": "transitions_to"
+    },
+    {
+      "from": "INPUT4",
+      "to": "INPUT5",
+      "type": "transitions_to"
+    },
+    {
+      "from": "INPUT5",
+      "to": "PROCESS1A",
+      "type": "transitions_to"
+    },
+    {
+      "from": "PROCESS1A",
+      "to": "OUTPUT1",
+      "type": "transitions_to"
+    },
+    {
+      "from": "OUTPUT1",
+      "to": "DECISION1A{\"Within biking distance?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "DECISION1A",
+      "to": "|\"Yes\"| USE_BIKE",
+      "type": "transitions_to"
+    },
+    {
+      "from": "USE_BIKE",
+      "to": "OUTPUT2",
+      "type": "transitions_to"
+    },
+    {
+      "from": "DECISION1A",
+      "to": "|\"No\"| DECISION1B{\"Public transportation available?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "DECISION1B",
+      "to": "|\"Yes\"| USE_PUBLIC",
+      "type": "transitions_to"
+    },
+    {
+      "from": "USE_PUBLIC",
+      "to": "OUTPUT2",
+      "type": "transitions_to"
+    },
+    {
+      "from": "DECISION1B",
+      "to": "|\"No\"| CARPOOL",
+      "type": "transitions_to"
+    },
+    {
+      "from": "CARPOOL",
+      "to": "OUTPUT2",
+      "type": "transitions_to"
+    },
+    {
+      "from": "OUTPUT2",
+      "to": "DECISION2A{\"Brushing teeth or washing hands?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "DECISION2A",
+      "to": "|\"Yes\"| SAVE_WATER_WHILE_BRUSHING",
+      "type": "transitions_to"
+    },
+    {
+      "from": "SAVE_WATER_WHILE_BRUSHING",
+      "to": "OUTPUT3",
+      "type": "transitions_to"
+    },
+    {
+      "from": "DECISION2A",
+      "to": "|\"No\"| SHORT_SHOWER",
+      "type": "transitions_to"
+    },
+    {
+      "from": "SHORT_SHOWER",
+      "to": "GREY_WATER_SYSTEM",
+      "type": "transitions_to"
+    },
+    {
+      "from": "GREY_WATER_SYSTEM",
+      "to": "RECYCLE_HOUSE_WATER",
+      "type": "transitions_to"
+    },
+    {
+      "from": "RECYCLE_HOUSE_WATER",
+      "to": "WASH_CAR_BUCKET",
+      "type": "transitions_to"
+    },
+    {
+      "from": "WASH_CAR_BUCKET",
+      "to": "OUTPUT3",
+      "type": "transitions_to"
+    },
+    {
+      "from": "OUTPUT3",
+      "to": "DECISION3A{\"Leaving a room?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "DECISION3A",
+      "to": "|\"Yes\"| TURN_OFF_LIGHTS",
+      "type": "transitions_to"
+    },
+    {
+      "from": "TURN_OFF_LIGHTS",
+      "to": "OUTPUT4",
+      "type": "transitions_to"
+    },
+    {
+      "from": "DECISION3A",
+      "to": "|\"No\"| DECISION3B{\"Is it summer or winter?\"}",
+      "type": "transitions_to"
+    },
+    {
+      "from": "DECISION3B",
+      "to": "|\"Yes\"| USE_LESS_HVAC",
+      "type": "transitions_to"
+    },
+    {
+      "from": "USE_LESS_HVAC",
+      "to": "OUTPUT4",
+      "type": "transitions_to"
+    },
+    {
+      "from": "DECISION3B",
+      "to": "|\"No\"| TURN_OFF_APPLIANCES",
+      "type": "transitions_to"
+    },
+    {
+      "from": "TURN_OFF_APPLIANCES",
+      "to": "ENERGY_SAVING_BULBS",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ENERGY_SAVING_BULBS",
+      "to": "MASON_JAR_LUMINARIES",
+      "type": "transitions_to"
+    },
+    {
+      "from": "MASON_JAR_LUMINARIES",
+      "to": "LOW_ENERGY_APPLIANCES",
+      "type": "transitions_to"
+    },
+    {
+      "from": "LOW_ENERGY_APPLIANCES",
+      "to": "OUTPUT4",
+      "type": "transitions_to"
+    },
+    {
+      "from": "OUTPUT4",
+      "to": "OUTPUT5",
+      "type": "transitions_to"
+    },
+    {
+      "from": "OUTPUT5",
+      "to": "OUTPUT6",
+      "type": "transitions_to"
+    },
+    {
+      "from": "OUTPUT6",
+      "to": "OUTPUT7",
+      "type": "transitions_to"
+    },
+    {
+      "from": "OUTPUT7",
+      "to": "END",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_real_016.png"
+}

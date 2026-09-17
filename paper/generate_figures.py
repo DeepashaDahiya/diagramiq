@@ -81,17 +81,20 @@ def generate_benchmark_comparison():
     x = np.arange(len(models))
     width = 0.24
 
-    fig, ax = plt.subplots(figsize=(7.5, 3.8))
+    fig, ax = plt.subplots(figsize=(8.0, 4.2))
     
     rects1 = ax.bar(x - width, ema, width, label='Exact Match Accuracy (EMA %)', color='#3b82f6', edgecolor='#1d4ed8', linewidth=0.9)
     rects2 = ax.bar(x, mgf, width, label='Grounding Fidelity (MGF %)', color='#10b981', edgecolor='#047857', linewidth=0.9)
     rects3 = ax.bar(x + width, hallucination, width, label='Hallucination Rate (%) [Lower is Better]', color='#ef4444', edgecolor='#b91c1c', linewidth=0.9)
 
     ax.set_ylabel('Score (%)', fontweight='bold')
-    ax.set_title('Evaluation on DiagramIQ-Eval Benchmark (100 Software Diagrams)', fontweight='bold', pad=8)
+    ax.set_title('Evaluation on DiagramIQ-Eval Benchmark (100 Software Diagrams)', fontweight='bold', pad=30)
     ax.set_xticks(x)
-    ax.set_xticklabels(models, fontweight='bold')
-    ax.legend(loc='upper right', framealpha=0.95, fontsize=9)
+    ax.set_xticklabels(models, fontweight='bold', fontsize=10)
+    
+    # Place horizontal legend cleanly ABOVE the plot with zero overlap on any bar or percentage
+    ax.legend(loc='lower center', bbox_to_anchor=(0.5, 1.01), ncol=3, frameon=True,
+              facecolor='#f8fafc', edgecolor='#cbd5e1', fontsize=8.5)
     ax.set_ylim(0, 110)
     ax.grid(axis='y', linestyle='--', alpha=0.35)
 
@@ -100,7 +103,7 @@ def generate_benchmark_comparison():
             height = rect.get_height()
             ax.annotate(f'{height:.1f}%',
                         xy=(rect.get_x() + rect.get_width() / 2, height),
-                        xytext=(0, 2),
+                        xytext=(0, 3),
                         textcoords="offset points",
                         ha='center', va='bottom', fontsize=8.5, fontweight='bold')
 
@@ -131,15 +134,16 @@ def generate_ablation_chart():
     x = np.arange(len(variants))
     width = 0.30
 
-    fig, ax = plt.subplots(figsize=(7.5, 3.6))
+    fig, ax = plt.subplots(figsize=(7.8, 3.8))
     rects1 = ax.bar(x - width/2, ema_scores, width, label='Exact Match Accuracy (EMA %)', color='#6366f1', edgecolor='#4338ca', linewidth=0.9)
     rects2 = ax.bar(x + width/2, hrr_scores, width, label='Hallucination Reduction Rate (HRR %)', color='#f59e0b', edgecolor='#b45309', linewidth=0.9)
 
     ax.set_ylabel('Score (%)', fontweight='bold')
-    ax.set_title('Ablation Study: Component Contributions', fontweight='bold', pad=8)
+    ax.set_title('Ablation Study: Component Contributions', fontweight='bold', pad=28)
     ax.set_xticks(x)
     ax.set_xticklabels(variants, fontweight='bold', fontsize=9.0)
-    ax.legend(loc='upper right', framealpha=0.95, fontsize=9)
+    ax.legend(loc='lower center', bbox_to_anchor=(0.5, 1.01), ncol=2, frameon=True,
+              facecolor='#f8fafc', edgecolor='#cbd5e1', fontsize=9)
     ax.set_ylim(0, 110)
     ax.grid(axis='y', linestyle='--', alpha=0.35)
 
@@ -148,7 +152,7 @@ def generate_ablation_chart():
             h = rect.get_height()
             ax.annotate(f'{h:.1f}%',
                         xy=(rect.get_x() + rect.get_width() / 2, h),
-                        xytext=(0, 2),
+                        xytext=(0, 3),
                         textcoords="offset points",
                         ha='center', va='bottom', fontsize=8.5, fontweight='bold')
 
@@ -175,31 +179,37 @@ def generate_user_study_chart():
 
     y_pos = np.arange(len(criteria))
 
-    fig, ax = plt.subplots(figsize=(7.5, 3.6))
+    # Extended width and height so all text labels and error bars have abundant breathing room
+    fig, ax = plt.subplots(figsize=(8.5, 4.0))
     
-    # Clean modern horizontal bars
-    bars = ax.barh(y_pos, means, xerr=errors, align='center', height=0.55,
-                   color='#0284c7', ecolor='#1e293b', capsize=4, edgecolor='#0369a1', linewidth=1.0)
+    # Modern clean horizontal bars
+    bars = ax.barh(y_pos, means, xerr=errors, align='center', height=0.50,
+                   color='#0284c7', ecolor='#0f172a', capsize=5, edgecolor='#0369a1', linewidth=1.1)
     
     ax.set_yticks(y_pos)
     ax.set_yticklabels(criteria, fontweight='bold', fontsize=9.5)
     ax.invert_yaxis()  # top-down order
+    ax.set_ylim(4.6, -0.6)  # generous headroom at top and bottom
     ax.set_xlabel('Mean Rating (1.0 to 5.0 Likert Scale)', fontweight='bold')
-    ax.set_title('Student Pedagogical Evaluation Quality (PEQ, N=15)', fontweight='bold', pad=8)
+    ax.set_title('Student Pedagogical Evaluation Quality (PEQ, N=15)', fontweight='bold', pad=28)
     
-    # Extended x-limit so text labels have plenty of breathing room and never overlap axis spine
-    ax.set_xlim(1.0, 5.8)
+    # Range up to 6.3 ensures 4.80 + 0.41 = 5.21 and label text has wide margin before boundary
+    ax.set_xlim(1.0, 6.3)
     ax.set_xticks([1.0, 2.0, 3.0, 4.0, 5.0])
-    ax.axvline(x=4.0, color='#94a3b8', linestyle='--', linewidth=1.2, alpha=0.7, label='Benchmark Target (4.0)')
-    ax.grid(axis='x', linestyle=':', alpha=0.4)
+    
+    # Benchmark Target threshold line with an integrated top label placed cleanly in the whitespace
+    ax.axvline(x=4.0, color='#64748b', linestyle='--', linewidth=1.3, alpha=0.85)
+    ax.text(4.0, -0.75, 'Benchmark Target (4.0)', ha='center', va='bottom',
+            fontsize=8.5, fontweight='bold', color='#334155',
+            bbox=dict(boxstyle='round,pad=0.3', facecolor='#f8fafc', edgecolor='#cbd5e1', linewidth=0.8))
+    
+    ax.grid(axis='x', linestyle=':', alpha=0.45)
 
     for bar, m, err in zip(bars, means, errors):
-        # Place label cleanly after error bar
-        x_text = m + err + 0.08
+        x_text = m + err + 0.12
         ax.text(x_text, bar.get_y() + bar.get_height()/2, f'{m:.2f} (±{err:.2f})',
-                ha='left', va='center', fontweight='bold', fontsize=9.0, color='#0f172a')
+                ha='left', va='center', fontweight='bold', fontsize=9.2, color='#0f172a')
 
-    ax.legend(loc='lower right', framealpha=0.9, fontsize=8.5)
     plt.tight_layout()
     png_path = OUTPUT_DIR / "fig4_user_study_peq.png"
     pdf_path = OUTPUT_DIR / "fig4_user_study_peq.pdf"

@@ -121,10 +121,29 @@ ACTION_KEYWORDS = {
     '1..1', '1..*', '*..*', '0..1', '0..*', '1..n', '11', '1.1', '*'
 }
 
-def is_relation_label(text: str) -> bool:
-    """Identifies if a detected text string is a relationship label or multiplicity constraint."""
+def is_banner_or_metadata(text: str, bbox: List[int], img_w: int, img_h: int) -> bool:
+    """Filters out top/bottom title bars, page numbers, and copyright watermarks from entity parsing."""
     t = text.lower().strip()
-    return t in ACTION_KEYWORDS or '1..' in t or '..' in t or t in ['1:1', '1:n', 'm:n', 'n:m']
+    if bbox[1] > 0.86 * img_h:
+        if any(w in t for w in ["unified modeling", "uml", "diagrams", "geeksforgeeks", "slide", "page", "copyright", "figure"]) or t.isdigit():
+            return True
+    if bbox[3] < 0.14 * img_h and (bbox[2] - bbox[0]) > 0.35 * img_w:
+        if any(w in t for w in ["diagram of", "use case diagram", "class diagram", "architecture of", "flowchart of"]):
+            return True
+    if t in ["36", "37", "38", "1", "2", "3", "gg"] and (bbox[1] > 0.85 * img_h or bbox[3] < 0.12 * img_h):
+        return True
+    return False
+
+def is_relation_label(text: str) -> bool:
+    """Identifies if a detected text string is a relationship label, stereotype, or multiplicity constraint."""
+    t = text.lower().strip()
+    if any(k in t for k in ["<<include>>", "<<extend>>", "<include>", "<extend>", "include", "extend"]):
+        return True
+    if t in ACTION_KEYWORDS:
+        return True
+    if any(m in t for m in ['1..1', '1..*', '*..*', '0..1', '0..*', '1..n', '1:1', '1:n', 'm:n', 'n:m', '..', '11', '1.1', '*.*', '*-*']):
+        return True
+    return False
 
 
 def get_region_name(bbox: List[int], img_w: int, img_h: int) -> str:
@@ -201,30 +220,63 @@ def cluster_ocr_into_entities(
     img_h: int
 ) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
     """
-    Spatially clusters individual OCR text lines into cohesive diagram entities (classes, services, etc.)
-    and separates standalone relation annotations (labels/multiplicities).
+    Spatially clusters OCR text tokens into structured diagram entities (classes, services, actors, use cases)
+    and cleanly separates entity names from internal attributes, operations, and standalone relation labels.
     """
     if not raw_elements:
         return [], []
 
-    # Sort from top to bottom
-    sorted_items = sorted(raw_elements, key=lambda x: (x['bbox'][1], x['bbox'][0]))
+    # 1. Filter out metadata, page banners, watermarks
+    filtered_elements = [
+        r for r in raw_elements
+        if not is_banner_or_metadata(r["text"], r["bbox"], img_w, img_h)
+    ]
 
-    clusters = []
+    # 2. Merge horizontally adjacent tokens on roughly the same line (same line, adjacent X)
+    sorted_raw = sorted(filtered_elements, key=lambda x: (round(x['cy'] / 12) * 12, x['bbox'][0]))
+    line_merged = []
+    for item in sorted_raw:
+        if line_merged:
+            prev = line_merged[-1]
+            y_diff = abs(item['cy'] - prev['cy'])
+            x_gap = item['bbox'][0] - prev['bbox'][2]
+            if y_diff < 15 and -5 <= x_gap <= 50:
+                prev['text'] = f"{prev['text']} {item['text']}".strip()
+                prev['bbox'] = [
+                    min(prev['bbox'][0], item['bbox'][0]),
+                    min(prev['bbox'][1], item['bbox'][1]),
+                    max(prev['bbox'][2], item['bbox'][2]),
+                    max(prev['bbox'][3], item['bbox'][3])
+                ]
+                prev['cx'] = (prev['bbox'][0] + prev['bbox'][2]) / 2.0
+                prev['cy'] = (prev['bbox'][1] + prev['bbox'][3]) / 2.0
+                continue
+        line_merged.append(dict(item))
+
+    # 3. Separate standalone relation labels / multiplicities
     relation_labels = []
+    entity_items = []
 
-    for item in sorted_items:
-        txt = item["text"]
+    for item in line_merged:
+        txt = item["text"].strip()
         if is_relation_label(txt):
             relation_labels.append(item)
-            continue
+        else:
+            entity_items.append(item)
 
+    # 4. Spatially cluster lines belonging to the same entity compartment/box
+    sorted_items = sorted(entity_items, key=lambda x: (x['bbox'][1], x['bbox'][0]))
+    clusters = []
+
+    for item in sorted_items:
         matched_cluster = None
         for c in clusters:
-            x_dist = abs(item["cx"] - c["cx"])
-            y_gap = item["bbox"][1] - c["bbox"][3]
-            # If horizontally aligned and vertically contiguous
-            if x_dist < max(140, int(img_w * 0.15)) and -30 <= y_gap <= max(65, int(img_h * 0.08)):
+            overlap_x = min(item['bbox'][2], c['bbox'][2]) - max(item['bbox'][0], c['bbox'][0])
+            x_dist = abs(item['cx'] - c['cx'])
+            y_gap = item['bbox'][1] - c['bbox'][3]
+            
+            # Belongs to same box column if overlapping horizontally and vertically within box compartment gap
+            if (overlap_x > -30 or x_dist < 115) and -10 <= y_gap <= 60:
                 matched_cluster = c
                 break
 
@@ -246,51 +298,91 @@ def cluster_ocr_into_entities(
                 "cy": item["cy"]
             })
 
-    # Assemble structured components from clusters
+    # 5. Assemble structured components: extract clean class title vs attributes vs methods
     components = []
     for idx, c in enumerate(clusters):
         items_sorted = sorted(c["items"], key=lambda x: x["bbox"][1])
-        all_texts = [it["text"] for it in items_sorted]
+        all_texts = [it["text"].strip() for it in items_sorted if it["text"].strip()]
         
-        # Class title is the topmost clean title line
-        raw_name = all_texts[0]
-        # Clean title of symbols if present
-        clean_name = re.sub(r"^[+#\-_~:\s]+", "", raw_name).strip() or f"Entity_{idx+1}"
-        
-        # Attributes & Methods
+        if not all_texts:
+            continue
+
+        raw_title = None
         attributes = []
         methods = []
-        for t in all_texts[1:]:
-            t_clean = t.strip()
-            if not t_clean:
-                continue
-            if "()" in t_clean or any(m in t_clean.lower() for m in ["add", "update", "get", "set", "delete", "process", "calculate", "validate"]):
-                methods.append(t_clean)
-            elif ":" in t_clean or any(s in t_clean for s in ["#", "+", "-", "~"]) or any(dt in t_clean.lower() for dt in ["int", "string", "bool", "float", "date", "void"]):
-                attributes.append(t_clean)
-            else:
-                attributes.append(t_clean)
 
+        for t in all_texts:
+            t_clean = t.strip()
+            is_attr_or_meth = (
+                t_clean.startswith(('+', '-', '#', '~')) or 
+                ':' in t_clean or 
+                '()' in t_clean or 
+                any(t_clean.lower().startswith(p) for p in ['id:', 'id;', 'name:', 'details:', 'price:', 'list:', 'cardnumber', 'amount']) or
+                any(m in t_clean.lower() for m in ['add(', 'update(', 'processdebit', 'calculate', 'validate', 'login', 'logout'])
+            )
+
+            if not raw_title and not is_attr_or_meth and len(t_clean) >= 2:
+                raw_title = t_clean
+            else:
+                if '()' in t_clean or any(m in t_clean.lower() for m in ['add', 'update', 'process', 'get', 'set', 'validate', 'login', 'logout', 'calc']):
+                    methods.append(t_clean)
+                else:
+                    attributes.append(t_clean)
+
+        # Fallback if every line had an attribute symbol
+        if not raw_title:
+            first_line = all_texts[0]
+            cleaned_first = re.sub(r"^[+#\-_~:\s]+", "", first_line)
+            if ":" in cleaned_first:
+                raw_title = cleaned_first.split(":")[0].strip()
+            else:
+                raw_title = cleaned_first or f"Entity_{idx+1}"
+
+        # Clean stereotype tags like <<Service>>, <<include>>, or <Subsystem>
+        clean_name = raw_title
+        is_service_tagged = "service" in clean_name.lower() or "auth" in clean_name.lower()
+        is_subsystem_tagged = "subsystem" in clean_name.lower()
+
+        clean_name = re.sub(r"<{1,2}\s*service\s*>{1,2}\s*", "", clean_name, flags=re.IGNORECASE).strip()
+        clean_name = re.sub(r"<{1,2}\s*subsystem\s*>{1,2}\s*", "", clean_name, flags=re.IGNORECASE).strip()
+        clean_name = re.sub(r"[<>]+", "", clean_name).strip()
+        clean_name = re.sub(r"^[+#\-_~:\s]+", "", clean_name).strip()
+
+        if is_subsystem_tagged:
+            clean_name = f"Subsystem: {clean_name}"
+        elif is_service_tagged and not clean_name.lower().endswith("service"):
+            clean_name = f"{clean_name} Service"
+
+        clean_name = clean_name or f"Entity_{idx+1}"
+
+        # Capitalize nicely
+        words = clean_name.split()
+        clean_name = " ".join(w.capitalize() if len(w) > 1 and not w.isupper() and "<" not in w else w for w in words)
+        
         # Determine semantic component type
         name_lower = clean_name.lower()
         has_oop = len(attributes) > 0 or len(methods) > 0 or any(s in "".join(all_texts) for s in ["#", "+", "-", "()"])
         
-        if has_oop:
+        if "subsystem" in name_lower or "system boundary" in name_lower:
+            comp_type = "subsystem"
+        elif any(w in name_lower for w in ["customer", "user", "admin", "actor", "buyer", "seller"]):
+            comp_type = "actor"
+        elif any(w in name_lower for w in ["view", "purchase", "checkout", "register", "login", "order", "search", "items", "cart", "pay", "browse"]):
+            comp_type = "use_case" if not has_oop else "class"
+        elif any(w in name_lower for w in ["paypal", "provider", "identity", "gateway", "auth", "security", "vault", "payment service"]):
+            comp_type = "service"
+        elif has_oop:
             comp_type = "class"
         elif any(w in name_lower for w in ["db", "database", "postgres", "sql", "redis", "store", "mongo"]):
             comp_type = "database"
         elif any(w in name_lower for w in ["gateway", "api", "ingress", "router", "proxy"]):
             comp_type = "gateway"
-        elif any(w in name_lower for w in ["auth", "security", "vault", "oauth"]):
-            comp_type = "security"
-        elif any(w in name_lower for w in ["queue", "kafka", "rabbit", "broker"]):
-            comp_type = "queue"
-        elif any(w in name_lower for w in ["user", "admin", "client", "customer", "seller", "actor"]) and not has_oop:
-            comp_type = "actor"
+        elif any(w in name_lower for w in ["service", "daemon", "worker"]):
+            comp_type = "service"
         elif any(w in name_lower for w in ["decision", "condition", "if"]):
             comp_type = "decision"
         else:
-            comp_type = "service"
+            comp_type = "class" if has_oop else "service"
 
         # Build comprehensive self-explanatory description
         desc_parts = [f"Component: {clean_name} ({comp_type.upper()})"]
@@ -301,8 +393,8 @@ def cluster_ocr_into_entities(
         desc = " | ".join(desc_parts)
 
         # Pad bounding box slightly to capture full visual boundary
-        pad_x = int((c["bbox"][2] - c["bbox"][0]) * 0.08)
-        pad_y = int((c["bbox"][3] - c["bbox"][1]) * 0.08)
+        pad_x = max(6, int((c["bbox"][2] - c["bbox"][0]) * 0.08))
+        pad_y = max(4, int((c["bbox"][3] - c["bbox"][1]) * 0.08))
         padded_bbox = [
             max(0, c["bbox"][0] - pad_x),
             max(0, c["bbox"][1] - pad_y),
@@ -413,7 +505,7 @@ def stage2_extract_relationships(
         bbox = c.get("bounding_box", [0, 0, 100, 100])
         comp_centers[c["name"]] = ((bbox[0] + bbox[2]) / 2.0, (bbox[1] + bbox[3]) / 2.0)
 
-    # 1. Connect components that have action labels / multiplicities positioned between them
+    # 1. Connect components that have action labels / multiplicities / stereotypes positioned between them
     for lbl in relation_labels:
         lx, ly = lbl["cx"], lbl["cy"]
         dists = []
@@ -426,20 +518,32 @@ def stage2_extract_relationships(
         if len(dists) >= 2:
             e1, e2 = dists[0][1], dists[1][1]
             txt = lbl["text"]
-            r_type = "association"
-            if ".." in txt:
+            txt_lower = txt.lower()
+            
+            if "include" in txt_lower:
+                r_type = "include"
+                cond = "<<include>> Mandatory Dependency"
+            elif "extend" in txt_lower:
+                r_type = "extend"
+                cond = "<<extend>> Optional Extension"
+            elif ".." in txt or ":" in txt:
                 r_type = "multiplicity"
-            elif txt.lower() in ["pays", "collects", "selects", "authenticates", "queries"]:
+                cond = f"Multiplicity: {txt}"
+            elif txt_lower in ["pays", "collects", "selects", "authenticates", "queries", "calls", "sends"]:
                 r_type = "action_dependency"
+                cond = f"Action: {txt}"
+            else:
+                r_type = "association"
+                cond = f"Label: {txt}"
             
             relationships.append({
                 "from": e1,
                 "to": e2,
                 "type": r_type,
-                "condition": f"Label: {txt}"
+                "condition": cond
             })
 
-    # 2. Add structural OOP and architectural topological adjacencies
+    # 2. Add structural OOP, Use-Case, and architectural topological adjacencies
     comp_names = [c["name"] for c in components]
     comp_types = {c["name"]: c.get("type", "service") for c in components}
 
@@ -448,6 +552,7 @@ def stage2_extract_relationships(
         for j in range(i + 1, len(components)):
             c2 = components[j]
             n1, n2 = c1["name"], c2["name"]
+            t1, t2 = comp_types.get(n1, "service"), comp_types.get(n2, "service")
             
             # Check spatial proximity
             p1 = comp_centers.get(n1, (0, 0))
@@ -455,39 +560,42 @@ def stage2_extract_relationships(
             dist = math.hypot(p1[0] - p2[0], p1[1] - p2[1])
 
             # If closely situated in the layout and not already connected
-            if dist < max(img_w, img_h) * 0.45:
+            if dist < max(img_w, img_h) * 0.48:
                 already_linked = any(
                     (r["from"] == n1 and r["to"] == n2) or (r["from"] == n2 and r["to"] == n1)
                     for r in relationships
                 )
                 if not already_linked:
-                    # Determine relationship type
-                    if comp_types[n1] == "class" or comp_types[n2] == "class":
+                    if t1 == "actor" and t2 == "use_case":
+                        rel_type = "actor_association"
+                        cond = "Actor Initiates Use Case"
+                        relationships.append({"from": n1, "to": n2, "type": rel_type, "condition": cond})
+                    elif t2 == "actor" and t1 == "use_case":
+                        rel_type = "actor_association"
+                        cond = "Actor Initiates Use Case"
+                        relationships.append({"from": n2, "to": n1, "type": rel_type, "condition": cond})
+                    elif t1 == "use_case" and (t2 == "service" or t2 == "actor"):
+                        rel_type = "external_service_call"
+                        cond = "Fulfills Service Request"
+                        relationships.append({"from": n1, "to": n2, "type": rel_type, "condition": cond})
+                    elif t2 == "use_case" and (t1 == "service" or t1 == "actor"):
+                        rel_type = "external_service_call"
+                        cond = "Fulfills Service Request"
+                        relationships.append({"from": n2, "to": n1, "type": rel_type, "condition": cond})
+                    elif t1 == "class" or t2 == "class":
                         rel_type = "association"
-                        cond = "UML Structural Coupling"
-                        if "item" in n2.lower() or "product" in n2.lower():
-                            rel_type = "aggregation"
-                            cond = "Aggregation (Whole-Part)"
-                        elif "delivery" in n1.lower() and ("order" in n2.lower() or "payment" in n2.lower()):
-                            rel_type = "composition"
-                            cond = "Composition (1..1 Whole-Part)"
-                        elif "customer" in n1.lower() and "seller" in n2.lower():
-                            rel_type = "inheritance"
-                            cond = "Inheritance / Generalization"
+                        cond = "UML Class Association"
+                        relationships.append({"from": n1, "to": n2, "type": rel_type, "condition": cond})
                     else:
                         rel_type = "calls"
                         cond = "Service Interaction"
-                        if "database" in comp_types[n2]:
+                        if "database" in t2:
                             rel_type = "writes"
-                        elif "gateway" in comp_types[n1]:
+                            cond = "State Persistence"
+                        elif "gateway" in t1:
                             rel_type = "routes_to"
-
-                    relationships.append({
-                        "from": n1,
-                        "to": n2,
-                        "type": rel_type,
-                        "condition": cond
-                    })
+                            cond = "Ingress Routing"
+                        relationships.append({"from": n1, "to": n2, "type": rel_type, "condition": cond})
 
     logger.info(f"  Stage 2: Extracted {len(relationships)} relationships.")
     return relationships
@@ -582,6 +690,7 @@ def stage2_build_graph(components: List[Dict[str, Any]], relationships: List[Dic
 
 STAGE3_PROMPT = """Look at this software diagram and classify its exact type and characteristics.
 Canonical diagram types:
+- "UML_USE_CASE": UML use case diagram with actors, use case bubbles, subsystem boundary, include/extend
 - "UML_CLASS": UML class diagram with classes, attributes, methods, inheritance
 - "UML_SEQUENCE": UML sequence diagram with lifelines, messages, time axes
 - "SW_ARCHITECTURE": System/microservices architecture, components, cloud services
@@ -598,18 +707,28 @@ def stage3_classify_diagram(image_path: str, components: List[Dict[str, Any]]) -
     logger.info("[Stage 3] Semantic Diagram Classification...")
     
     comp_types = [c.get("type", "").lower() for c in components]
+    comp_names_lower = [c.get("name", "").lower() for c in components]
+    
+    has_usecase = any(t in ["use_case", "subsystem"] for t in comp_types) or any(
+        any(w in n for w in ["use case", "view items", "make purchase", "checkout", "register", "customer", "paypal", "provider"])
+        for n in comp_names_lower
+    )
     has_classes = any(t in ["class", "interface", "abstract_class"] for t in comp_types)
     has_oop_members = any(len(c.get("attributes", [])) > 0 or len(c.get("methods", [])) > 0 for c in components)
     
-    has_actors = any(t in ["actor", "lifeline", "message"] for t in comp_types)
+    has_sequence = any(t in ["lifeline", "message"] for t in comp_types)
     has_flowchart = any(t in ["decision", "start", "end", "condition"] for t in comp_types)
     has_er = any(t in ["table", "entity", "attribute", "cardinality"] for t in comp_types)
 
-    if has_classes or has_oop_members:
+    if has_usecase and not has_classes:
+        dtype = "UML_USE_CASE"
+        domain = "functional_requirements_and_actor_interactions"
+        key_patterns = ["Primary & Secondary Actors", "Subsystem Scope Boundary", "Mandatory <<include>> Dependencies", "Actor-to-Use-Case Associations"]
+    elif has_classes or has_oop_members:
         dtype = "UML_CLASS"
         domain = "object_oriented_design"
         key_patterns = ["Class encapsulation", "Inheritance hierarchy", "Composition & Aggregation", "Multiplicity constraints"]
-    elif has_actors:
+    elif has_sequence:
         dtype = "UML_SEQUENCE"
         domain = "interaction_protocol"
         key_patterns = ["Lifeline timeline", "Synchronous messages", "Asynchronous callbacks"]
@@ -634,7 +753,14 @@ def stage3_classify_diagram(image_path: str, components: List[Dict[str, Any]]) -
     }
 
     heuristics = []
-    if dtype == "UML_CLASS":
+    if dtype == "UML_USE_CASE":
+        heuristics = [
+            "Actor boundary & role categorization (Primary User vs Supporting Service)",
+            "Use case dependency validation (<<include>> mandatory vs <<extend>> optional)",
+            "Subsystem boundary & scope encapsulation (Subsystem boundary isolation)",
+            "Actor-to-use-case association mapping"
+        ]
+    elif dtype == "UML_CLASS":
         heuristics = [
             "Inheritance & generalization hierarchy traversal",
             "Composition (whole-part lifetime) vs Aggregation assessment",

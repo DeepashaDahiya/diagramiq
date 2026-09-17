@@ -1,0 +1,15 @@
+@startuml
+' Diagram: Social Media Engagement ERD
+' Category: ER_DIAGRAM
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+rectangle "UserAccount" as UserAccount
+rectangle "UserPost" as UserPost
+rectangle "CommentRecord" as CommentRecord
+rectangle "LikeReaction" as LikeReaction
+UserAccount --> UserPost : relates_to
+UserPost --> CommentRecord : relates_to
+UserPost --> LikeReaction : relates_to
+@enduml

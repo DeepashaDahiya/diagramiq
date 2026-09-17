@@ -1,0 +1,102 @@
+{
+  "diagram_id": "uml_sequence_003",
+  "title": "Two-Factor Authentication SMS Verification",
+  "category": "UML_SEQUENCE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "User",
+      "type": "actor",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "WebPortal",
+      "type": "participant",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "AuthEngine",
+      "type": "participant",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "TwilioSMSGateway",
+      "type": "participant",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "UserMobile",
+      "type": "participant",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "User",
+      "to": "WebPortal",
+      "type": "sends_message"
+    },
+    {
+      "from": "WebPortal",
+      "to": "AuthEngine",
+      "type": "sends_message"
+    },
+    {
+      "from": "AuthEngine",
+      "to": "TwilioSMSGateway",
+      "type": "sends_message"
+    },
+    {
+      "from": "TwilioSMSGateway",
+      "to": "UserMobile",
+      "type": "sends_message"
+    },
+    {
+      "from": "User",
+      "to": "WebPortal",
+      "type": "sends_message"
+    },
+    {
+      "from": "WebPortal",
+      "to": "AuthEngine",
+      "type": "sends_message"
+    }
+  ],
+  "image_file": "images/uml_sequence_003.png",
+  "puml_file": "plantuml_sources/uml_sequence_003.puml"
+}

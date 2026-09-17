@@ -1,0 +1,13 @@
+@startuml
+' Diagram: SSL/TLS 1.3 Cryptographic Handshake
+' Category: UML_SEQUENCE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+participant "WebClient" as WebClient
+participant "WebServer" as WebServer
+participant "CertificateAuthority" as CertificateAuthority
+WebClient -> WebServer : sends_message
+WebServer -> WebClient : sends_message
+@enduml

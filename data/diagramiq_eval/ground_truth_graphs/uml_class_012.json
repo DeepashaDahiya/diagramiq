@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_012",
+  "title": "Vehicle Rental System",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Customer",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+customerId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "RentalContract",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+rentalcontractId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Car",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+carId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "InsurancePolicy",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+insurancepolicyId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Location",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+locationId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Customer",
+      "to": "RentalContract",
+      "type": "associates"
+    },
+    {
+      "from": "RentalContract",
+      "to": "Car",
+      "type": "associates"
+    },
+    {
+      "from": "RentalContract",
+      "to": "InsurancePolicy",
+      "type": "associates"
+    },
+    {
+      "from": "Car",
+      "to": "Location",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_012.png",
+  "puml_file": "plantuml_sources/uml_class_012.puml"
+}

@@ -1,0 +1,22 @@
+@startuml
+' Diagram: Netflix-style Video Streaming Cloud
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "UserDevice" as UserDevice
+node "CloudFrontCDN" as CloudFrontCDN
+node "APIGateway" as APIGateway
+node "TranscodingWorker" as TranscodingWorker
+node "S3Storage" as S3Storage
+node "MetadataDB" as MetadataDB
+node "AuthServer" as AuthServer
+UserDevice --> CloudFrontCDN : calls
+UserDevice --> APIGateway : calls
+APIGateway --> AuthServer : calls
+APIGateway --> TranscodingWorker : calls
+TranscodingWorker --> S3Storage : calls
+TranscodingWorker --> MetadataDB : writes_to
+CloudFrontCDN --> S3Storage : calls
+@enduml

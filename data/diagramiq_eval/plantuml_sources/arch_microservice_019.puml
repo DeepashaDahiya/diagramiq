@@ -1,0 +1,17 @@
+@startuml
+' Diagram: Healthcare FHIR Interoperability Bridge
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "HospitalEHR" as HospitalEHR
+node "MLLPAdapter" as MLLPAdapter
+node "FHIRTransformer" as FHIRTransformer
+node "SecureVaultDB" as SecureVaultDB
+node "ClinicalPortal" as ClinicalPortal
+HospitalEHR --> MLLPAdapter : calls
+MLLPAdapter --> FHIRTransformer : calls
+FHIRTransformer --> SecureVaultDB : writes_to
+ClinicalPortal --> SecureVaultDB : writes_to
+@enduml

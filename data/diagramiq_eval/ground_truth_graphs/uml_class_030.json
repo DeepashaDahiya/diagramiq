@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_030",
+  "title": "CDN Edge Cache Model",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "EdgeServer",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+edgeserverId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "OriginServer",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+originserverId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "CacheEntry",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+cacheentryId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "RoutingRule",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+routingruleId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "ClientSession",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+clientsessionId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "EdgeServer",
+      "to": "CacheEntry",
+      "type": "associates"
+    },
+    {
+      "from": "EdgeServer",
+      "to": "OriginServer",
+      "type": "associates"
+    },
+    {
+      "from": "ClientSession",
+      "to": "EdgeServer",
+      "type": "associates"
+    },
+    {
+      "from": "EdgeServer",
+      "to": "RoutingRule",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_030.png",
+  "puml_file": "plantuml_sources/uml_class_030.puml"
+}

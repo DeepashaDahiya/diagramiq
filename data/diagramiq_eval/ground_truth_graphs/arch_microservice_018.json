@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_018",
+  "title": "Automated Content Moderation Pipeline",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "UploadService",
+      "type": "service",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "KafkaBuffer",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "VisionAIWorker",
+      "type": "service",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "TextNLPWorker",
+      "type": "service",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "ModerationDB",
+      "type": "database",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "UploadService",
+      "to": "KafkaBuffer",
+      "type": "calls"
+    },
+    {
+      "from": "KafkaBuffer",
+      "to": "VisionAIWorker",
+      "type": "calls"
+    },
+    {
+      "from": "KafkaBuffer",
+      "to": "TextNLPWorker",
+      "type": "calls"
+    },
+    {
+      "from": "VisionAIWorker",
+      "to": "ModerationDB",
+      "type": "writes_to"
+    }
+  ],
+  "image_file": "images/arch_microservice_018.png",
+  "puml_file": "plantuml_sources/arch_microservice_018.puml"
+}

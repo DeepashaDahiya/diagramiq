@@ -1,0 +1,118 @@
+{
+  "diagram_id": "uml_class_002",
+  "title": "Banking & Account Management",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "BankAccount",
+      "type": "abstract_class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "#accountNumber",
+        "#balance"
+      ],
+      "methods": [
+        "+deposit()",
+        "+withdraw()*"
+      ]
+    },
+    {
+      "id": "SavingsAccount",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+interestRate"
+      ],
+      "methods": [
+        "+applyInterest()",
+        "+withdraw()"
+      ]
+    },
+    {
+      "id": "CheckingAccount",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+overdraftLimit"
+      ],
+      "methods": [
+        "+withdraw()"
+      ]
+    },
+    {
+      "id": "Transaction",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+txId",
+        "+amount",
+        "+timestamp"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "BankCustomer",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+name",
+        "+ssn"
+      ],
+      "methods": [
+        "+openAccount()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "SavingsAccount",
+      "to": "BankAccount",
+      "type": "inherits"
+    },
+    {
+      "from": "CheckingAccount",
+      "to": "BankAccount",
+      "type": "inherits"
+    },
+    {
+      "from": "BankCustomer",
+      "to": "BankAccount",
+      "type": "owns"
+    },
+    {
+      "from": "BankAccount",
+      "to": "Transaction",
+      "type": "records"
+    }
+  ],
+  "image_file": "images/uml_class_002.png",
+  "puml_file": "plantuml_sources/uml_class_002.puml"
+}

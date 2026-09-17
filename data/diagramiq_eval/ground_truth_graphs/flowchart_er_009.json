@@ -1,0 +1,75 @@
+{
+  "diagram_id": "flowchart_er_009",
+  "title": "Banking Ledger Schema ERD",
+  "category": "ER_DIAGRAM",
+  "complexity": "SIMPLE",
+  "nodes": [
+    {
+      "id": "AccountHolder",
+      "type": "entity",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Account",
+      "type": "entity",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "LedgerEntry",
+      "type": "entity",
+      "bounding_box": [
+        480,
+        480,
+        640,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "BankBranch",
+      "type": "entity",
+      "bounding_box": [
+        680,
+        480,
+        840,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "AccountHolder",
+      "to": "Account",
+      "type": "relates_to"
+    },
+    {
+      "from": "Account",
+      "to": "LedgerEntry",
+      "type": "relates_to"
+    },
+    {
+      "from": "Account",
+      "to": "BankBranch",
+      "type": "relates_to"
+    }
+  ],
+  "image_file": "images/flowchart_er_009.png",
+  "puml_file": "plantuml_sources/flowchart_er_009.puml"
+}

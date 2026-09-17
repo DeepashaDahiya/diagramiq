@@ -1,0 +1,136 @@
+{
+  "diagram_id": "flowchart_er_011",
+  "title": "User Authentication & 2FA Flowchart",
+  "category": "FLOWCHART",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Start",
+      "type": "process",
+      "bounding_box": [
+        60,
+        480,
+        220,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "InputCredentials",
+      "type": "process",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "ValidatePassword",
+      "type": "decision",
+      "bounding_box": [
+        500,
+        480,
+        660,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Check2FAEnabled",
+      "type": "decision",
+      "bounding_box": [
+        720,
+        480,
+        880,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PromptOTP",
+      "type": "process",
+      "bounding_box": [
+        60,
+        300,
+        220,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "LoginSuccess",
+      "type": "process",
+      "bounding_box": [
+        280,
+        300,
+        440,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "LockoutAccount",
+      "type": "process",
+      "bounding_box": [
+        500,
+        300,
+        660,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "Start",
+      "to": "InputCredentials",
+      "type": "transitions_to"
+    },
+    {
+      "from": "InputCredentials",
+      "to": "ValidatePassword",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ValidatePassword",
+      "to": "Check2FAEnabled",
+      "type": "transitions_to"
+    },
+    {
+      "from": "ValidatePassword",
+      "to": "LockoutAccount",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Check2FAEnabled",
+      "to": "PromptOTP",
+      "type": "transitions_to"
+    },
+    {
+      "from": "Check2FAEnabled",
+      "to": "LoginSuccess",
+      "type": "transitions_to"
+    },
+    {
+      "from": "PromptOTP",
+      "to": "LoginSuccess",
+      "type": "transitions_to"
+    },
+    {
+      "from": "PromptOTP",
+      "to": "LockoutAccount",
+      "type": "transitions_to"
+    }
+  ],
+  "image_file": "images/flowchart_er_011.png",
+  "puml_file": "plantuml_sources/flowchart_er_011.puml"
+}

@@ -1,0 +1,15 @@
+@startuml
+' Diagram: Cache-Aside Read Flow with Cache Miss
+' Category: UML_SEQUENCE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+participant "Application" as Application
+participant "RedisCache" as RedisCache
+participant "PostgresDB" as PostgresDB
+participant "MonitoringLogger" as MonitoringLogger
+Application -> RedisCache : sends_message
+Application -> PostgresDB : sends_message
+Application -> RedisCache : sends_message
+@enduml

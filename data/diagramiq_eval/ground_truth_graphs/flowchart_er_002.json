@@ -1,0 +1,92 @@
+{
+  "diagram_id": "flowchart_er_002",
+  "title": "University Academic Schema ERD",
+  "category": "ER_DIAGRAM",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Student",
+      "type": "entity",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Enrollment",
+      "type": "entity",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Course",
+      "type": "entity",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Instructor",
+      "type": "entity",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Department",
+      "type": "entity",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "Student",
+      "to": "Enrollment",
+      "type": "relates_to"
+    },
+    {
+      "from": "Enrollment",
+      "to": "Course",
+      "type": "relates_to"
+    },
+    {
+      "from": "Course",
+      "to": "Department",
+      "type": "relates_to"
+    },
+    {
+      "from": "Instructor",
+      "to": "Department",
+      "type": "relates_to"
+    }
+  ],
+  "image_file": "images/flowchart_er_002.png",
+  "puml_file": "plantuml_sources/flowchart_er_002.puml"
+}

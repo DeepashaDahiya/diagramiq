@@ -1,0 +1,17 @@
+@startuml
+' Diagram: Mobile Banking Microservices Gateway
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "MobileApp" as MobileApp
+node "WAFSecurity" as WAFSecurity
+node "APIGateway" as APIGateway
+node "CoreBankingHost" as CoreBankingHost
+node "SMS2FAService" as SMS2FAService
+MobileApp --> WAFSecurity : calls
+WAFSecurity --> APIGateway : calls
+APIGateway --> CoreBankingHost : calls
+APIGateway --> SMS2FAService : calls
+@enduml

@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_006",
+  "title": "Library Management System",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Book",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+bookId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Author",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+authorId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Member",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+memberId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Loan",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+loanId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Librarian",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+librarianId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Member",
+      "to": "Loan",
+      "type": "associates"
+    },
+    {
+      "from": "Loan",
+      "to": "Book",
+      "type": "associates"
+    },
+    {
+      "from": "Author",
+      "to": "Book",
+      "type": "associates"
+    },
+    {
+      "from": "Librarian",
+      "to": "Loan",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_006.png",
+  "puml_file": "plantuml_sources/uml_class_006.puml"
+}

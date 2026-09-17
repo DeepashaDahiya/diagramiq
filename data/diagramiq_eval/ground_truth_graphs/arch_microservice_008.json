@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_008",
+  "title": "Cloud Single Sign-On Identity System",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "BrowserClient",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "OAuthGateway",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "KeycloakIDP",
+      "type": "gateway",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "LDAPDirectory",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "SessionRedis",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "BrowserClient",
+      "to": "OAuthGateway",
+      "type": "calls"
+    },
+    {
+      "from": "OAuthGateway",
+      "to": "KeycloakIDP",
+      "type": "calls"
+    },
+    {
+      "from": "KeycloakIDP",
+      "to": "LDAPDirectory",
+      "type": "calls"
+    },
+    {
+      "from": "KeycloakIDP",
+      "to": "SessionRedis",
+      "type": "calls"
+    }
+  ],
+  "image_file": "images/arch_microservice_008.png",
+  "puml_file": "plantuml_sources/arch_microservice_008.puml"
+}

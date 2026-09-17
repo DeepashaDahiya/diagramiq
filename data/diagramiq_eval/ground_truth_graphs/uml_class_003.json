@@ -1,0 +1,145 @@
+{
+  "diagram_id": "uml_class_003",
+  "title": "Hospital Management System",
+  "category": "UML_CLASS",
+  "complexity": "COMPLEX",
+  "nodes": [
+    {
+      "id": "Person",
+      "type": "class",
+      "bounding_box": [
+        60,
+        480,
+        220,
+        540
+      ],
+      "attributes": [
+        "+id",
+        "+name"
+      ],
+      "methods": [
+        "+getInfo()"
+      ]
+    },
+    {
+      "id": "Doctor",
+      "type": "class",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [
+        "+specialization"
+      ],
+      "methods": [
+        "+prescribe()",
+        "+diagnose()"
+      ]
+    },
+    {
+      "id": "Patient",
+      "type": "class",
+      "bounding_box": [
+        500,
+        480,
+        660,
+        540
+      ],
+      "attributes": [
+        "+medicalHistory"
+      ],
+      "methods": [
+        "+admit()",
+        "+discharge()"
+      ]
+    },
+    {
+      "id": "Appointment",
+      "type": "class",
+      "bounding_box": [
+        720,
+        480,
+        880,
+        540
+      ],
+      "attributes": [
+        "+dateTime",
+        "+status"
+      ],
+      "methods": [
+        "+schedule()",
+        "+cancel()"
+      ]
+    },
+    {
+      "id": "Prescription",
+      "type": "class",
+      "bounding_box": [
+        60,
+        300,
+        220,
+        360
+      ],
+      "attributes": [
+        "+dosage",
+        "+medication"
+      ],
+      "methods": [
+        "+issue()"
+      ]
+    },
+    {
+      "id": "Department",
+      "type": "class",
+      "bounding_box": [
+        280,
+        300,
+        440,
+        360
+      ],
+      "attributes": [
+        "+deptCode",
+        "+name"
+      ],
+      "methods": [
+        "+assignDoctor()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Doctor",
+      "to": "Person",
+      "type": "inherits"
+    },
+    {
+      "from": "Patient",
+      "to": "Person",
+      "type": "inherits"
+    },
+    {
+      "from": "Doctor",
+      "to": "Appointment",
+      "type": "attends"
+    },
+    {
+      "from": "Patient",
+      "to": "Appointment",
+      "type": "books"
+    },
+    {
+      "from": "Doctor",
+      "to": "Prescription",
+      "type": "writes"
+    },
+    {
+      "from": "Doctor",
+      "to": "Department",
+      "type": "belongs_to"
+    }
+  ],
+  "image_file": "images/uml_class_003.png",
+  "puml_file": "plantuml_sources/uml_class_003.puml"
+}

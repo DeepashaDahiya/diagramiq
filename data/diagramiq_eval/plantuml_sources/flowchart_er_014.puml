@@ -1,0 +1,21 @@
+@startuml
+' Diagram: Loan Credit Approval Decision Flowchart
+' Category: FLOWCHART
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+rectangle "ApplyLoan" as ApplyLoan
+rectangle "CreditScoreCheck" as CreditScoreCheck
+rectangle "DebtIncomeRatio" as DebtIncomeRatio
+rectangle "CollateralAudit" as CollateralAudit
+rectangle "ApproveLoan" as ApproveLoan
+rectangle "RejectLoan" as RejectLoan
+ApplyLoan --> CreditScoreCheck : transitions_to
+CreditScoreCheck --> DebtIncomeRatio : transitions_to
+CreditScoreCheck --> RejectLoan : transitions_to
+DebtIncomeRatio --> CollateralAudit : transitions_to
+DebtIncomeRatio --> RejectLoan : transitions_to
+CollateralAudit --> ApproveLoan : transitions_to
+CollateralAudit --> RejectLoan : transitions_to
+@enduml

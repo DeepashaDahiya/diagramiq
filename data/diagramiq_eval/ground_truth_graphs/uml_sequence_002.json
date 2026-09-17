@@ -1,0 +1,102 @@
+{
+  "diagram_id": "uml_sequence_002",
+  "title": "Stripe Credit Card Payment Flow",
+  "category": "UML_SEQUENCE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Customer",
+      "type": "actor",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "FrontendUI",
+      "type": "participant",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "BackendServer",
+      "type": "participant",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "StripeAPI",
+      "type": "participant",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "CardNetwork",
+      "type": "participant",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "Customer",
+      "to": "FrontendUI",
+      "type": "sends_message"
+    },
+    {
+      "from": "FrontendUI",
+      "to": "BackendServer",
+      "type": "sends_message"
+    },
+    {
+      "from": "BackendServer",
+      "to": "StripeAPI",
+      "type": "sends_message"
+    },
+    {
+      "from": "StripeAPI",
+      "to": "CardNetwork",
+      "type": "sends_message"
+    },
+    {
+      "from": "CardNetwork",
+      "to": "StripeAPI",
+      "type": "sends_message"
+    },
+    {
+      "from": "StripeAPI",
+      "to": "BackendServer",
+      "type": "sends_message"
+    }
+  ],
+  "image_file": "images/uml_sequence_002.png",
+  "puml_file": "plantuml_sources/uml_sequence_002.puml"
+}

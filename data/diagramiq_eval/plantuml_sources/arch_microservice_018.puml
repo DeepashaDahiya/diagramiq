@@ -1,0 +1,17 @@
+@startuml
+' Diagram: Automated Content Moderation Pipeline
+' Category: SW_ARCHITECTURE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+node "UploadService" as UploadService
+node "KafkaBuffer" as KafkaBuffer
+node "VisionAIWorker" as VisionAIWorker
+node "TextNLPWorker" as TextNLPWorker
+node "ModerationDB" as ModerationDB
+UploadService --> KafkaBuffer : calls
+KafkaBuffer --> VisionAIWorker : calls
+KafkaBuffer --> TextNLPWorker : calls
+VisionAIWorker --> ModerationDB : writes_to
+@enduml

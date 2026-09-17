@@ -1,0 +1,16 @@
+@startuml
+' Diagram: Direct S3 Pre-Signed File Upload
+' Category: UML_SEQUENCE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+participant "ClientApp" as ClientApp
+participant "BackendAPI" as BackendAPI
+participant "S3Storage" as S3Storage
+participant "AntivirusWorker" as AntivirusWorker
+ClientApp -> BackendAPI : sends_message
+BackendAPI -> S3Storage : sends_message
+ClientApp -> S3Storage : sends_message
+S3Storage -> AntivirusWorker : sends_message
+@enduml

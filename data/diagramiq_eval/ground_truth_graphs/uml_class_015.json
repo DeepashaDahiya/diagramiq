@@ -1,0 +1,112 @@
+{
+  "diagram_id": "uml_class_015",
+  "title": "Real Estate MLS Platform",
+  "category": "UML_CLASS",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Property",
+      "type": "class",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [
+        "+propertyId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "ListingAgent",
+      "type": "class",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [
+        "+listingagentId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Buyer",
+      "type": "class",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [
+        "+buyerId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "Offer",
+      "type": "class",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [
+        "+offerId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    },
+    {
+      "id": "InspectionReport",
+      "type": "class",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [
+        "+inspectionreportId"
+      ],
+      "methods": [
+        "+execute()"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "Buyer",
+      "to": "Offer",
+      "type": "associates"
+    },
+    {
+      "from": "Offer",
+      "to": "Property",
+      "type": "associates"
+    },
+    {
+      "from": "ListingAgent",
+      "to": "Property",
+      "type": "associates"
+    },
+    {
+      "from": "Property",
+      "to": "InspectionReport",
+      "type": "associates"
+    }
+  ],
+  "image_file": "images/uml_class_015.png",
+  "puml_file": "plantuml_sources/uml_class_015.puml"
+}

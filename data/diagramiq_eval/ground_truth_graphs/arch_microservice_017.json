@@ -1,0 +1,92 @@
+{
+  "diagram_id": "arch_microservice_017",
+  "title": "Dynamic Ride Pricing & Surge Engine",
+  "category": "SW_ARCHITECTURE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "TripDemandTracker",
+      "type": "gateway",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "WeatherAPI",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        480,
+        506,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "SurgeCalculator",
+      "type": "gateway",
+      "bounding_box": [
+        612,
+        480,
+        772,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PricingCache",
+      "type": "database",
+      "bounding_box": [
+        80,
+        300,
+        240,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DispatchAPI",
+      "type": "gateway",
+      "bounding_box": [
+        346,
+        300,
+        506,
+        360
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "TripDemandTracker",
+      "to": "SurgeCalculator",
+      "type": "calls"
+    },
+    {
+      "from": "WeatherAPI",
+      "to": "SurgeCalculator",
+      "type": "calls"
+    },
+    {
+      "from": "SurgeCalculator",
+      "to": "PricingCache",
+      "type": "calls"
+    },
+    {
+      "from": "PricingCache",
+      "to": "DispatchAPI",
+      "type": "calls"
+    }
+  ],
+  "image_file": "images/arch_microservice_017.png",
+  "puml_file": "plantuml_sources/arch_microservice_017.puml"
+}

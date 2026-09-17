@@ -1,0 +1,75 @@
+{
+  "diagram_id": "uml_sequence_007",
+  "title": "WebSocket Connection Upgrade Handshake",
+  "category": "UML_SEQUENCE",
+  "complexity": "MEDIUM",
+  "nodes": [
+    {
+      "id": "Browser",
+      "type": "actor",
+      "bounding_box": [
+        80,
+        480,
+        240,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "ReverseProxy",
+      "type": "participant",
+      "bounding_box": [
+        280,
+        480,
+        440,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "WebSocketServer",
+      "type": "participant",
+      "bounding_box": [
+        480,
+        480,
+        640,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PubSubChannel",
+      "type": "participant",
+      "bounding_box": [
+        680,
+        480,
+        840,
+        540
+      ],
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "Browser",
+      "to": "ReverseProxy",
+      "type": "sends_message"
+    },
+    {
+      "from": "ReverseProxy",
+      "to": "WebSocketServer",
+      "type": "sends_message"
+    },
+    {
+      "from": "WebSocketServer",
+      "to": "PubSubChannel",
+      "type": "sends_message"
+    }
+  ],
+  "image_file": "images/uml_sequence_007.png",
+  "puml_file": "plantuml_sources/uml_sequence_007.puml"
+}

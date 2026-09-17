@@ -1,0 +1,32 @@
+@startuml
+' Diagram: HR & Recruitment Pipeline
+' Category: UML_CLASS
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+class Applicant {
+  +applicantId
+  +execute()
+}
+class JobPosting {
+  +jobpostingId
+  +execute()
+}
+class Resume {
+  +resumeId
+  +execute()
+}
+class Interview {
+  +interviewId
+  +execute()
+}
+class Recruiter {
+  +recruiterId
+  +execute()
+}
+Applicant --> Resume : associates
+Applicant --> Interview : associates
+JobPosting --> Applicant : associates
+Recruiter --> Interview : associates
+@enduml

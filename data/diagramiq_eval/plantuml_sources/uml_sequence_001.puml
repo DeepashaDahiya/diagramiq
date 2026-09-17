@@ -1,0 +1,19 @@
+@startuml
+' Diagram: OAuth2 Authorization Code Grant Flow
+' Category: UML_SEQUENCE
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f8fafc
+skinparam classBackgroundColor #1e293b
+skinparam classBorderColor #38bdf8
+participant "User" as User
+participant "Browser" as Browser
+participant "ClientApp" as ClientApp
+participant "AuthServer" as AuthServer
+participant "ResourceServer" as ResourceServer
+User -> Browser : sends_message
+Browser -> AuthServer : sends_message
+AuthServer -> Browser : sends_message
+Browser -> ClientApp : sends_message
+ClientApp -> AuthServer : sends_message
+ClientApp -> ResourceServer : sends_message
+@enduml
