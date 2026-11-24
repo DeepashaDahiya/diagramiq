@@ -34,6 +34,28 @@ While modern Vision-Language Models (VLMs) like GPT-4V or vanilla LLaVA can gene
 4. **Grounded Pedagogical Explanation**: Synthesizes structured, student-friendly explanations where **every individual claim is visually grounded** to precise bounding boxes and assigned an empirical confidence level (`HIGH`, `MEDIUM`, `LOW`).
 5. **Local-First & Privacy-Preserving**: Runs 100% on-device via Ollama — zero cloud dependencies, zero API costs, and zero data leakage.
 
+
+## 🌐 Public Demo (Demo-Only)
+
+**Live demo:** [https://diagramiq-demo.pages.dev](https://diagramiq-demo.pages.dev)
+
+The public link is a **lightweight, static demonstration of the DiagramIQ interface**. It is intended for previews, presentations, and supervisor review without requiring visitors to install the local dependencies.
+
+> **Important — this is not the full live inference application.** The hosted demo displays a small set of curated sample diagrams and illustrative, precomputed analysis outputs. It does not run the EasyOCR/OpenCV/LLaVA perception pipeline, perform live model inference, or analyze arbitrary uploaded diagrams. The question field and analysis control are part of the demonstration interface; they do not invoke the research pipeline.
+
+### What the hosted demo demonstrates
+
+- Three sample architecture/topology scenarios.
+- Diagram and symbolic-graph visual views.
+- Example direct answers, component-grounded claim cards, topology summaries, and a six-stage pipeline walkthrough.
+- A responsive interface that can be opened directly in a browser.
+
+### Where to run the complete system
+
+For actual diagram uploads, OCR and visual perception, graph construction, topology reasoning, and model-generated grounded answers, clone the repository and follow the **[Quickstart & Installation](#-quickstart--installation)** instructions below. The full application runs locally with its Python backend and Ollama/LLaVA setup.
+
+The public demo and the local research application are deliberately kept separate: **the hosted site is a presentation/demo build; the local application is the full implementation.**
+
 ---
 
 ## ✨ Key Features
